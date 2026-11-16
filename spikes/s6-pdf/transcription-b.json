@@ -1,0 +1,407 @@
+{
+  "source": { "title": "Chess Fundamentals", "author": "J. R. Capablanca", "year": 1921, "file": "chessfundamental00capa.pdf" },
+  "examples": [
+    {
+      "id": "example-1",
+      "section": "1. Some Simple Mates",
+      "bookPage": 3,
+      "start": "diagram",
+      "diagrams": [
+        { "bookPage": 3, "placement": "7k/8/8/8/8/8/8/R6K", "toMove": "white", "line": null, "after": null }
+      ],
+      "lines": [
+        {
+          "id": "main",
+          "parent": null,
+          "moves": [
+            "1. R-R7", "1... K-Kt1",
+            "2. K-Kt2", "2... K-B1",
+            "3. K-B3", "3... K-K1",
+            "4. K-K4", "4... K-Q1",
+            "5. K-Q5", "5... K-B1",
+            "6. K-Q6", "6... K-Kt1",
+            "7. R-QB7", "7... K-R1",
+            "8. K-B6", "8... K-Kt1",
+            "9. K-Kt6", "9... K-R1",
+            "10. R-B8 mate"
+          ]
+        },
+        { "id": "a", "parent": "main", "moves": ["6. K-B6", "6... K-Q1"] },
+        { "id": "b", "parent": "main", "moves": ["6... K-Q1", "7. R-R8 mate"] },
+        {
+          "id": "c",
+          "parent": "main",
+          "moves": [
+            "5... K-K1",
+            "6. K-Q6", "6... K-B1",
+            "7. K-K6", "7... K-Kt1",
+            "8. K-B6", "8... K-R1",
+            "9. K-Kt6", "9... K-Kt1",
+            "10. R-R8 mate"
+          ]
+        }
+      ],
+      "comments": [
+        { "line": "main", "after": null, "text": "The first thing a student should do, is to familiarise himself with the power of the pieces. This can best be done by learning how to accomplish quickly some of the simple mates." },
+        { "line": "main", "after": null, "text": "The ending Rook and King against King. The principle is to drive the opposing King to the last line on any side of the board." },
+        { "line": "main", "after": null, "text": "In this position the power of the Rook is demonstrated by the first move, R—R 7, which immediately confines the Black King to the last rank, and the mate is quickly accomplished by:" },
+        { "line": "main", "after": "2. K-Kt2", "text": "The combined action of King and Rook is needed to arrive at a position in which mate can be forced. The general principle for a beginner to follow is to keep his King as much as possible on the same rank, or, as in this case, file, as the opposing King. When, in this case, the King has been brought to the sixth rank, it is better to place it, not on the same file, but on the one next to it towards the centre." },
+        { "line": "main", "after": "6. K-Q6", "text": "Not K—B 6, because then the Black King will go back to Q 1 and it will take much longer to mate. If now the King moves back to Q 1, R—R 8 mates at once." },
+        { "line": "main", "after": "10. R-B8 mate", "text": "It has taken exactly ten moves to mate from the original position. On move 5 Black could have played K—K 1, and, according to principle, White would have continued" },
+        { "line": "c", "after": "6... K-B1", "text": "(the Black King will ultimately be forced to move in front of the White King and be mated by R—R 8)" }
+      ],
+      "doubts": [
+        { "bookPage": 4, "what": "Line a (6. K-B6, 6... K-Q1) comes from the sentence 'Not K—B 6, because then the Black King will go back to Q 1 and it will take much longer to mate'. The White move is printed without a number and Black's reply is given only in words ('will go back to Q 1'). It could also be read as a comment only, not a line." },
+        { "bookPage": 4, "what": "Line b: the book prints 'If now the King moves back to Q 1, R—R 8 mates at once' (no move numbers, Black's move in words, 'mates' not 'mate'). Written as 6... K-Q1, 7. R-R8 mate." },
+        { "bookPage": 4, "what": "Diagram toMove 'white' is taken from the text giving '1 R—R 7' as the first move; the text does not literally say 'White to move'." }
+      ]
+    },
+    {
+      "id": "example-2",
+      "section": "1. Some Simple Mates",
+      "bookPage": 5,
+      "start": "diagram",
+      "diagrams": [
+        { "bookPage": 5, "placement": "8/8/8/4k3/8/8/8/4K2R", "toMove": "white", "line": null, "after": null }
+      ],
+      "lines": [
+        {
+          "id": "main",
+          "parent": null,
+          "moves": [
+            "1. K-K2", "1... K-Q4",
+            "2. K-K3", "2... K-B5",
+            "3. R-R5", "3... K-B6",
+            "4. R-R4", "4... K-B7",
+            "5. R-B4 ch", "5... K-Kt6",
+            "6. K-Q3", "6... K-Kt7",
+            "7. R-Kt4 ch", "7... K-R6",
+            "8. K-B3", "8... K-R7",
+            "9. R-R4 ch", "9... K-Kt8",
+            { "n": "10.", "vague": "R - any square on the Rook's file" },
+            "10... K-B8",
+            "11. R-R1 mate"
+          ]
+        },
+        { "id": "a", "parent": "main", "moves": ["2... K-K4", "3. R-R5 ch"] },
+        { "id": "b", "parent": "main", "moves": ["3... K-Kt5", "4. K-Q3"] }
+      ],
+      "comments": [
+        { "line": "main", "after": null, "text": "Since the Black King is in the centre of the board, the best way to proceed is to advance your own King thus:" },
+        { "line": "main", "after": "2. K-K3", "text": "As the Rook has not yet come into play, it is better to advance the King straight into the centre of the board, not in front, but to one side of the other King." },
+        { "line": "a", "after": "3. R-R5 ch", "text": "Should now the Black King move to K 4, the Rook drives it back by R—R 5 ch." },
+        { "line": "main", "after": "3. R-R5", "text": "On the other hand, if 2...K—B 5 instead, then also 3 R—R 5." },
+        { "line": "b", "after": "4. K-Q3", "text": "If now 3...K—Kt 5, there follows 4 K—Q 3;" },
+        { "line": "main", "after": "4. R-R4", "text": "but if instead 3...K—B 6; then 4 R—R 4, keeping the King confined to as few squares as possible. Now the ending may continue:" },
+        { "line": "main", "after": "8... K-R7", "text": "It should be noticed how often the White King has moved next to the Rook, not only to defend it, but also to reduce the mobility of the opposing King. Now White mates in three moves thus:" },
+        { "line": "main", "after": "10. R - any square on the Rook's file", "text": "forcing the Black King in front of the White," },
+        { "line": "main", "after": "11. R-R1 mate", "text": "It has taken eleven moves to mate, and, under any conditions, I believe it should be done in under twenty. While it may be monotonous, it is worth while for the beginner to practice such things, as it will teach him the proper handling of his pieces." }
+      ],
+      "doubts": [
+        { "bookPage": 5, "what": "Line a: Black's move is given only in words ('Should now the Black King move to K 4'); written as 2... K-K4. White's reply 'R—R 5 ch' is printed without a number; written as 3. R-R5 ch." },
+        { "bookPage": 5, "what": "Main follows the 'if' moves 2...K—B 5, 3 R—R 5, 3...K—B 6, 4 R—R 4, because the numbered moves that follow ('Now the ending may continue: 4...K—B 7') continue from them. In main the book prints '3 R—R 5' without 'ch', while in line a it prints 'R—R 5 ch'." },
+        { "bookPage": 6, "what": "White's 10th move is not one definite move ('10 R—any square on the Rook's file'); recorded as a vague object. The comment 'forcing the Black King in front of the White' is attached to it by its text form." },
+        { "bookPage": 5, "what": "Diagram toMove 'white' is taken from the text giving '1 K—K 2' as the first move." }
+      ]
+    },
+    {
+      "id": "example-3",
+      "section": "1. Some Simple Mates",
+      "bookPage": 6,
+      "start": "diagram",
+      "diagrams": [
+        { "bookPage": 6, "placement": "7k/8/8/8/8/8/8/2B1KB2", "toMove": "white", "line": null, "after": null }
+      ],
+      "lines": [
+        {
+          "id": "main",
+          "parent": null,
+          "moves": [
+            "1. B-Q3", "1... K-Kt2",
+            "2. B-KKt5", "2... K-B2",
+            "3. B-B5", "3... K-Kt2",
+            "4. K-B2", "4... K-B2",
+            "5. K-Kt3", "5... K-Kt2",
+            "6. K-R4", "6... K-B2",
+            "7. K-R5", "7... K-Kt2",
+            "8. B-Kt6", "8... K-Kt1",
+            "9. K-R6", "9... K-B1",
+            "10. B-R5", "10... K-Kt1",
+            "11. B-K7", "11... K-R1",
+            "12. B-KKt4", "12... K-Kt1",
+            "13. B-K6 ch", "13... K-R1",
+            "14. B-B6 mate"
+          ]
+        }
+      ],
+      "comments": [
+        { "line": "main", "after": null, "text": "Now we come to two Bishops and King against King. Since the Black King is in the corner, White can play" },
+        { "line": "main", "after": "3. B-B5", "text": "and already the Black King is confined to a few squares. If the Black King, in the original position, had been in the centre of the board, or away from the last row, White should have advanced his King, and then, with the aid of his Bishops, restricted the Black King's movements to as few squares as possible. We might now continue:" },
+        { "line": "main", "after": "4. K-B2", "text": "In this ending the Black King must not only be driven to the edge of the board, but he must also be forced into a corner, and, before a mate can be given, the White King must be brought to the sixth rank and, at the same time, in one of the last two files; in this case either K R 6, K Kt 6, K B 7, K B 8, and as K R 6 and K Kt 6 are the nearest squares, it is to either of these squares that the King ought to go." },
+        { "line": "main", "after": "9... K-B1", "text": "White must now mark time and move one of the Bishops, so as to force the Black King to go back;" },
+        { "line": "main", "after": "11... K-R1", "text": "Now the White Bishop must take up a position from which it can give check next move along the White diagonal, when the Black King moves back to Kt 1." },
+        { "line": "main", "after": "14. B-B6 mate", "text": "It has taken fourteen moves to force the mate and, in any position, it should be done in under thirty. In all endings of this kind, care must be taken not to drift into a stale mate. In this particular ending one should remember that the King must not only be driven to the edge of the board, but also into a corner. In all such endings, however, it is immaterial whether the King is forced on to the last rank, or to an outside file, e.g. K R 5 or Q R 4, K 1 or Q 8." }
+      ],
+      "doubts": [
+        { "bookPage": 6, "what": "Diagram toMove 'white' is taken from the text 'White can play 1 B—Q 3'." }
+      ]
+    },
+    {
+      "id": "example-4",
+      "section": "1. Some Simple Mates",
+      "bookPage": 8,
+      "start": "diagram",
+      "diagrams": [
+        { "bookPage": 8, "placement": "8/8/8/4k3/8/8/8/4K2Q", "toMove": "white", "line": null, "after": null }
+      ],
+      "lines": [
+        {
+          "id": "main",
+          "parent": null,
+          "moves": [
+            "1. Q-B6", "1... K-Q5",
+            "2. K-Q2", "2... K-K4",
+            "3. K-K3", "3... K-B4",
+            "4. Q-Q6", "4... K-Kt4",
+            "5. Q-K6", "5... K-R5",
+            "6. Q-KKt6", "6... K-R6",
+            "7. K-B3",
+            { "n": "7...", "vague": "K moves" },
+            { "n": "8.", "vague": "Q mates" }
+          ]
+        },
+        { "id": "a", "parent": "main", "moves": ["4... K-Kt5", "5. Q-Kt6 ch"] },
+        { "id": "b", "parent": "main", "moves": ["5... K-R4", "6. K-B4"] }
+      ],
+      "comments": [
+        { "line": "main", "after": null, "text": "We now come to Queen and King against King. As the Queen combines the power of the Rook and the Bishop, it is the easiest mate of all and should always be accomplished in under ten moves. Take the following position:" },
+        { "line": "main", "after": null, "text": "A good way to begin is to make the first move with the Queen, trying to limit the Black King's mobility as much as possible. Thus:" },
+        { "line": "main", "after": "2. K-Q2", "text": "Already the Black King has only one available square" },
+        { "line": "a", "after": "5. Q-Kt6 ch", "text": "(Should Black play K—Kt 5, then Q—Kt 6 ch);" },
+        { "line": "b", "after": "6. K-B4", "text": "(if K—R 4, K—B 4 and mate next move);" },
+        { "line": "main", "after": "8. Q mates", "text": "In this ending, as in the case of the Rook, the Black King must be forced to the edge of the board; only" }
+      ],
+      "doubts": [
+        { "bookPage": 8, "what": "Line a '(Should Black play K—Kt 5, then Q—Kt 6 ch)' is printed without move numbers; it stands right after 4...K—Kt 4, so it is taken as 4... K-Kt5, 5. Q-Kt6 ch." },
+        { "bookPage": 8, "what": "Line b '(if K—R 4, K—B 4 and mate next move)' is printed without move numbers; it stands right after 5...K—R 5, so it is taken as 5... K-R4, 6. K-B4. 'and mate next move' names no move (Black's 6th move and the mating move are not given); it is kept in the comment only, not as moves." },
+        { "bookPage": 8, "what": "Main ends with two moves that are not definite: '7 ... K moves; 8 Q mates'. Recorded as vague objects." },
+        { "bookPage": 8, "what": "The closing prose is cut off at the foot of book page 8 ('... the edge of the board; only'); it continues on book page 9, which is not in the folder." },
+        { "bookPage": 8, "what": "Diagram toMove 'white' is taken from the text ('make the first move with the Queen ... 1 Q—B 6')." }
+      ]
+    },
+    {
+      "id": "example-17",
+      "section": "6. General Strategy of the Opening",
+      "bookPage": 26,
+      "start": "initial",
+      "diagrams": [
+        { "bookPage": 27, "placement": "r1bq1rk1/ppp2ppp/2np1n2/1B2p1B1/1b2P3/2NP1N2/PPP2PPP/R2q1RK1", "toMove": "black", "line": "main", "after": "7. B-Kt5" }
+      ],
+      "lines": [
+        {
+          "id": "main",
+          "parent": null,
+          "moves": [
+            "1. P-K4", "1... P-K4",
+            "2. Kt-KB3", "2... Kt-QB3",
+            "3. Kt-B3", "3... Kt-B3",
+            "4. B-Kt5", "4... B-Kt5",
+            "5. O-O", "5... O-O",
+            "6. P-Q3", "6... P-Q3",
+            "7. B-Kt5", "7... BxKt"
+          ]
+        },
+        { "id": "a", "parent": "main", "moves": ["2... Kt-KB3"] },
+        { "id": "b", "parent": "main", "moves": ["4. B-B4"] },
+        { "id": "c", "parent": "main", "moves": ["5... BxKt"] },
+        { "id": "d", "parent": "main", "moves": ["7... B-Kt5"] }
+      ],
+      "comments": [
+        { "line": "main", "after": null, "text": "The main thing is to develop the pieces quickly. Get them into play as fast as you can. From the outset two moves, 1 P—K 4 or 1 P—Q 4, open up lines for the Queen and a Bishop. Therefore, theoretically one of these two moves must be the best, as no other first move accomplishes so much." },
+        { "line": "main", "after": null, "text": "Suppose we begin:" },
+        { "line": "main", "after": "2. Kt-KB3", "text": "This is both an attacking and a developing move. Black can now either reply with the identical move or play" },
+        { "line": "main", "after": "2... Kt-QB3", "text": "This developing move at the same time defends the King's Pawn." },
+        { "line": "main", "after": "3... Kt-B3", "text": "These moves are of a purely developing nature." },
+        { "line": "main", "after": "4. B-Kt5", "text": "It is generally advisable not to bring this Bishop out until one Knight is out, preferably the King's Knight. The Bishop could also have been played to B 4, but it is advisable whenever possible to combine development and attack." },
+        { "line": "main", "after": "4... B-Kt5", "text": "Black replies in the same manner, threatening a possible exchange of Bishop for Knight with Kt × P to follow." },
+        { "line": "main", "after": "5. O-O", "text": "an indirect way of preventing 5...B × Kt, which more experience or study will show to be bad. At the same time the Rook is brought into action in the centre, a very important point." },
+        { "line": "main", "after": "5... O-O", "text": "Black follows the same line of reasoning." },
+        { "line": "main", "after": "6... P-Q3", "text": "These moves have a two-fold object, viz.: to protect the King's Pawn and to open the diagonal for the development of the Queen's Bishop." },
+        { "line": "main", "after": "7. B-Kt5", "text": "A very powerful move, which brings us to the middle-game stage, as there is already in view a combination to win quickly by Kt—Q 5. This threat makes it impossible for Black to continue the same course. (There is a long analysis showing that Black should lose if he also plays B—Kt 5.) He is now forced to play 7...B × Kt, as experience has shown, thus bringing up to notice three things." },
+        { "line": "main", "after": "7... BxKt", "text": "First, the complete development of the opening has taken only seven moves. (This varies up to ten or twelve moves in some very exceptional cases. As a rule, eight should be enough.) Second, Black has been compelled to exchange a Bishop for a Knight, but as a compensation he has isolated White's Q R P and doubled a Pawn. (This, at such an early stage of the game, is rather an advantage for White, as the Pawn is doubled towards the centre of the board.) Third, White by the exchange brings up a Pawn to control the square Q 4, puts Black on the defensive, as experience will show, and thus keeps the initiative, an unquestionable advantage.¹" },
+        { "line": "main", "after": "7... BxKt", "text": "Footnote 1: The value of the initiative is explained in section 20, p. 77." },
+        { "line": "main", "after": "7... BxKt", "text": "The strategical principles expounded above are the same for all the openings, only their tactical application varies according to the circumstances. Before proceeding further I wish to lay stress on the following point which the student should bear in mind. Before development has been completed no piece should be moved more than once, unless it is essential in order to obtain either material advantage or to secure freedom of action. The beginner would do well to remember this, as well as what has already been stated: viz., bring out the Knights before bringing out the Bishops." }
+      ],
+      "doubts": [
+        { "bookPage": 26, "what": "Line a (2... Kt-KB3) comes from words only: 'Black can now either reply with the identical move or play 2 ... Kt—Q B 3'. The identical move to 2 Kt—K B 3 is written as Kt-KB3." },
+        { "bookPage": 26, "what": "Line b (4. B-B4) comes from words only: 'The Bishop could also have been played to B 4'." },
+        { "bookPage": 26, "what": "Line c (5... BxKt): the book names 5...B × Kt only as the move that 5 O—O indirectly prevents ('which more experience or study will show to be bad'). Recorded as a one-move line; it could also be read as a comment only." },
+        { "bookPage": 27, "what": "Line d (7... B-Kt5) is printed without a number, in a bracket: '(There is a long analysis showing that Black should lose if he also plays B—Kt 5.)'. Taken as the alternative to Black's 7th move." },
+        { "bookPage": 27, "what": "7...B × Kt is given in the prose ('He is now forced to play 7...B × Kt'), not in the move column; it is put in main as the last move." },
+        { "bookPage": 27, "what": "Diagram: the Queen on White's Q 1 (d1, a light square) is printed solid, like a Black Queen. Transcribed as printed ('q'); it looks like a misprint for White's Queen." },
+        { "bookPage": 27, "what": "Diagram: the Queen on d8 (a dark, hatched square) looks lighter and greyer than the other Black pieces, close to an outline figure. Read as a Black Queen ('q'), but I could not be sure that it is not the outline (White) figure; if it is, the two Queens are printed swapped." },
+        { "bookPage": 27, "what": "Diagram: the Bishop on b4 stands on a dark, hatched square and is hard to read; read as a Black Bishop." },
+        { "bookPage": 27, "what": "Diagram toMove 'black' is taken from 'He is now forced to play 7...B × Kt' (the diagram stands after 7 B—Kt 5)." }
+      ]
+    },
+    {
+      "id": "example-18",
+      "section": "7. Control of the Centre",
+      "bookPage": 29,
+      "start": "initial",
+      "diagrams": [],
+      "lines": [
+        {
+          "id": "main",
+          "parent": null,
+          "moves": [
+            "1. P-K4", "1... P-K4",
+            "2. Kt-KB3", "2... P-Q3",
+            "3. P-Q4", "3... Kt-Q2",
+            "4. B-QB4", "4... P-KR3",
+            "5. Kt-B3", "5... KKt-B3",
+            "6. B-K3", "6... B-K2",
+            "7. Q-K2", "7... P-B3",
+            "8. R-Q1", "8... Q-B2",
+            "9. O-O"
+          ]
+        },
+        { "id": "a", "parent": "main", "moves": ["3... Kt-QB3"] },
+        { "id": "b", "parent": "main", "moves": ["4... B-K2", "5. PxP", "5... KtxP", "6. KtxKt", "6... PxKt", "7. Q-R5"] },
+        { "id": "c", "parent": "b", "moves": ["5... PxP", "6. Q-Q5"] }
+      ],
+      "comments": [
+        { "line": "main", "after": null, "text": "The four squares, K 4 and Q 4 on each side respectively, are the centre squares, and control of these squares is called control of the centre. The control of the centre is of great importance. No violent attack can succeed without controlling at least two of these squares, and possibly three. Many a manœuvre in the opening has for its sole object the control of the centre, which invariably ensures the initiative. It is well always to bear this in mind, since it will often be the reason of a series of moves which could not otherwise be properly understood. As this book progresses I shall dwell more fully on these different points. At present I shall devote some time to openings taken at random and explain the moves according to general principles. The student will in that way train his mind in the proper direction, and will thus have less trouble in finding a way out when confronted with a new and difficult situation." },
+        { "line": "main", "after": "2... P-Q3", "text": "A timid move. Black assumes a defensive attitude at once. On principle the move is wrong. In the openings, whenever possible, pieces should be moved in preference to Pawns." },
+        { "line": "main", "after": "3. P-Q4", "text": "White takes the offensive immediately and strives to control the centre so as to have ample room to deploy his forces." },
+        { "line": "main", "after": "3... Kt-Q2", "text": "Black does not wish to relinquish the centre and also prefers the text move to Kt—Q B 3, which would be the more natural square for the Kt. But on principle the move is wrong, because it blocks the action of the Queen's Bishop, and instead of facilitating the action of Black's pieces, tends, on the contrary, to cramp them." },
+        { "line": "main", "after": "4... P-KR3", "text": "Black is forced to pay the penalty of his previous move. Such a move on Black's part condemns by itself any form of opening that makes it necessary. White threatened Kt—Kt 5 and Black could not stop it with 4...B—K 2, because of 5 P × P, Kt × P (if 5...P × P, 6 Q—Q 5); 6 Kt × Kt, P × Kt; 7 Q—R 5, and White wins a Pawn and has besides a perfectly safe position." },
+        { "line": "b", "after": "7. Q-R5", "text": "and White wins a Pawn and has besides a perfectly safe position." },
+        { "line": "main", "after": "7. Q-K2", "text": "It should be noticed that White does not Castle yet. The reason is that he wants to deploy his forces first, and through the last move force Black to play P—Q B 3 to make room for the Queen as White threatens R—Q 1, to be followed by P × P. Black's other alternatives would finally force him to play P × P, thus abandoning the centre to White." },
+        { "line": "main", "after": "9. O-O", "text": "With this last move White completes his development, while Black is evidently somewhat hampered. A simple examination will suffice to show that White's position is unassailable. There are no weak spots in his armour, and his pieces are ready for any manœuvre that he may wish to carry out in order to begin the attack on the enemy's position. The student should carefully study this example. It will show him that it is sometimes convenient to delay Castling. I have given the moves as they come to my mind without following any standard book on openings. Whether the moves given by me agree or not with the standard works, I do not know, but at the present stage of this book it is not convenient to enter into discussions of mere technicalities which the student will be able to understand when he has become more proficient." }
+      ],
+      "doubts": [
+        { "bookPage": 29, "what": "Line a (3... Kt-QB3) is printed without a number: Black 'prefers the text move to Kt—Q B 3, which would be the more natural square for the Kt'. Taken as the alternative to 3... Kt—Q 2; it could also be read as a comment only." },
+        { "bookPage": 30, "what": "Line c '(if 5...P × P, 6 Q—Q 5)' stands inside the variation that begins 4...B—K 2, so its parent is line b, not main." },
+        { "bookPage": 30, "what": "Black's 7th move is printed 'P—B 3' in the move column (written 7... P-B3), while the prose just above calls the same move 'P—Q B 3'. Black's 5th move is printed 'K Kt—B 3' (written 5... KKt-B3)." },
+        { "bookPage": 30, "what": "'White threatened Kt—Kt 5', 'White threatens R—Q 1, to be followed by P × P' and 'force him to play P × P' are kept as comments (threats and ideas, not played)." }
+      ]
+    },
+    {
+      "id": "example-19",
+      "section": "7. Control of the Centre",
+      "bookPage": 31,
+      "start": "initial",
+      "diagrams": [
+        { "bookPage": 32, "placement": "rn2kbnr/p4ppp/1pp2q2/4p3/2B1P3/1QN5/PPP2PPP/R1B1K2R", "toMove": "white", "line": "main", "after": "8... P-QB3" }
+      ],
+      "lines": [
+        {
+          "id": "main",
+          "parent": null,
+          "moves": [
+            "1. P-K4", "1... P-K4",
+            "2. Kt-KB3", "2... P-Q3",
+            "3. P-Q4", "3... B-Kt5",
+            "4. PxP", "4... BxKt",
+            "5. QxB", "5... PxP",
+            "6. B-QB4", "6... Q-B3",
+            "7. Q-QKt3", "7... P-QKt3",
+            "8. Kt-B3", "8... P-QB3"
+          ]
+        },
+        { "id": "a", "parent": "main", "moves": ["4... PxP"] },
+        { "id": "b", "parent": "main", "moves": ["6... Kt-B3", "7. Q-QKt3"] }
+      ],
+      "comments": [
+        { "line": "main", "after": "3... B-Kt5", "text": "A bad move, which violates one of the principles set down, according to which at least one Knight should be developed before the Bishops are brought out, and also because it exchanges a Bishop for a Knight, which in the opening is generally bad, unless there is some compensation." },
+        { "line": "a", "after": "4... PxP", "text": "4...P × P loses a Pawn." },
+        { "line": "b", "after": "7. Q-QKt3", "text": "If Kt—B 3; Q—Q Kt 3 wins a Pawn." },
+        { "line": "main", "after": "8... P-QB3", "text": "To prevent Kt—Q 5." },
+        { "line": "main", "after": "8... P-QB3", "text": "Black, however, has no pieces out except his Queen, and White, with a Bishop and a Knight already developed, has a chance of obtaining an advantage quickly by playing Kt—Q 5 anyway. The student is left to work out the many variations arising from this position." },
+        { "line": "main", "after": "8... P-QB3", "text": "These examples will show the practical application of the principles previously enunciated. The student is warned against playing Pawns in preference to pieces at the beginning of the game, especially P—K R 3 and P—Q R 3, which are moves very commonly indulged in by beginners." }
+      ],
+      "doubts": [
+        { "bookPage": 31, "what": "Line b 'If Kt—B 3; Q—Q Kt 3 wins a Pawn.' is printed without move numbers; it stands right after 6 B—Q B 4, Q—B 3, so it is taken as 6... Kt-B3, 7. Q-QKt3." },
+        { "bookPage": 32, "what": "'White ... has a chance of obtaining an advantage quickly by playing Kt—Q 5 anyway' is kept as a comment. It could also be read as White's next move (9. Kt-Q5) continuing main; the book prints it without a number and gives no reply." },
+        { "bookPage": 32, "what": "Diagram: the Queen on f6 (a dark, hatched square) looks lighter than the other Black pieces and close to the outline Queen on b3. Read as a Black Queen ('q'), but I could not be sure it is not printed as an outline (White) Queen." },
+        { "bookPage": 32, "what": "Diagram: the Bishop on f8 (a dark, hatched square) also looks lighter than the other Black pieces; read as a Black Bishop." },
+        { "bookPage": 32, "what": "Diagram toMove 'white' is taken from the text after the diagram (White 'has a chance ... by playing Kt—Q 5'); the diagram stands after 8 ... P—Q B 3." }
+      ]
+    },
+    {
+      "id": "example-20",
+      "section": "8. Traps",
+      "bookPage": 33,
+      "start": "diagram",
+      "diagrams": [
+        { "bookPage": 33, "placement": "r2qkbnr/ppp2pp1/2np3p/4p3/2BPP1b1/2N2N2/PPP2PPP/R1BQK2R", "toMove": "white", "line": null, "after": null }
+      ],
+      "lines": [
+        {
+          "id": "main",
+          "parent": null,
+          "moves": [
+            "1. PxP", "1... KtxP",
+            "2. KtxKt", "2... BxQ",
+            "3. BxP ch", "3... K-K2",
+            "4. Kt-Q5 mate"
+          ]
+        },
+        { "id": "a", "parent": "main", "moves": ["1... PxP"] }
+      ],
+      "comments": [
+        { "line": "main", "after": null, "text": "I shall now give a few positions or traps to be avoided in the openings, and in which (practice has shown) beginners are often caught." },
+        { "line": "main", "after": null, "text": "White plays:" },
+        { "line": "main", "after": "1... KtxP", "text": "Black should have recaptured with the Pawn." }
+      ],
+      "doubts": [
+        { "bookPage": 33, "what": "Line a (1... PxP) comes from words only: 'Black should have recaptured with the Pawn.'" },
+        { "bookPage": 33, "what": "Diagram: the Queen on d8, the Bishop on f8 and the Rook on h8 (all dark, hatched squares) look lighter and greyer than the other Black pieces. Read as Black pieces; for the Queen on d8 I could not fully rule out an outline (White) figure." },
+        { "bookPage": 33, "what": "Diagram: small specks on a4 and on h7 are read as blemishes on empty squares, not pieces. Black's Rook Pawn is read on h6, not h7." },
+        { "bookPage": 33, "what": "In '2. Kt × Kt' the multiplication sign is printed small and damaged; read as ×." }
+      ]
+    },
+    {
+      "id": "example-21",
+      "section": "8. Traps",
+      "bookPage": 33,
+      "start": "diagram",
+      "diagrams": [
+        { "bookPage": 33, "placement": "rn1qkbnr/ppp1pppp/8/8/2B3b1/2N2N2/PPPP1PPP/R1BQK2R", "toMove": "black", "line": null, "after": null }
+      ],
+      "lines": [
+        {
+          "id": "main",
+          "parent": null,
+          "moves": [
+            "0... Kt-KB3",
+            "1. BxP ch", "1... KxB",
+            "2. Kt-K5 ch",
+            { "n": "2...", "vague": "K moves" },
+            "3. KtxB"
+          ]
+        },
+        { "id": "a", "parent": "main", "moves": ["0... P-K3"] },
+        { "id": "b", "parent": "main", "moves": ["1. Kt-K5", "1... BxQ", "2. BxP mate"] },
+        { "id": "c", "parent": "b", "moves": ["1... B-R5", "2. QxB"] },
+        { "id": "d", "parent": "b", "moves": ["1... B-K3"] }
+      ],
+      "comments": [
+        { "line": "main", "after": null, "text": "Black, having the move, should play P—K 3. But suppose he plays Kt—K B 3 instead, then comes —" },
+        { "line": "main", "after": "1. BxP ch", "text": "Kt—K 5 would also give White the advantage, the threat being of course if B × Q; 2 B × P mate. Nor does B—R 5 help matters, because of 2 Q × B, 1... B—K 3 leaves Black with the inferior position. But White's move in the text secures an immediate material advantage, and the beginner at any rate should never miss such an opportunity for the sake of a speculative advantage in position." },
+        { "line": "d", "after": "1... B-K3", "text": "leaves Black with the inferior position." },
+        { "line": "main", "after": "3. KtxB", "text": "and White has won a Pawn besides having the better position. There are a good many other traps — in fact, there is a book written on traps on the chess board; but the type given above is the most common of all." }
+      ],
+      "doubts": [
+        { "bookPage": 34, "what": "Black moves first from the diagram and the book gives his move no number ('suppose he plays Kt—K B 3 instead, then comes — 1. B × P ch'). Written as 0... Kt-KB3 in main, and 'should play P—K 3' as line a (0... P-K3)." },
+        { "bookPage": 34, "what": "Line b: 'Kt—K 5 would also give White the advantage, the threat being of course if B × Q; 2 B × P mate.' Kt—K 5 and B × Q are printed without numbers; taken as 1. Kt-K5 (instead of 1. B × P ch), 1... BxQ, 2. BxP mate." },
+        { "bookPage": 34, "what": "Lines c and d: 'Nor does B—R 5 help matters, because of 2 Q × B, 1... B—K 3 leaves Black with the inferior position.' Both are read as Black's replies to 1 Kt—K 5, so their parent is line b; the book does not say so in as many words. After '2 Q × B' the book prints a comma before '1...', where a full stop would be expected." },
+        { "bookPage": 34, "what": "In 'B—R 5' the digit is a small old-style numeral that I read as 5; transcribed as printed (1... B-R5)." },
+        { "bookPage": 34, "what": "Black's 2nd move in main is not one definite move ('K moves'); recorded as a vague object." },
+        { "bookPage": 33, "what": "Diagram: the Queen on d8 and the Bishop on f8 (dark, hatched squares) look lighter and greyer than the other Black pieces. Read as Black pieces; for the Queen on d8 I could not fully rule out an outline (White) figure." },
+        { "bookPage": 33, "what": "The diagram is printed on book page 33 under the heading 'Example 21.'; all the text of the example is on book page 34." }
+      ]
+    }
+  ]
+}

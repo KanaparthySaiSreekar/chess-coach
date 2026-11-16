@@ -1,0 +1,73 @@
+[
+  {
+    "id": "scholar-bc4-qh5",
+    "name": "Scholar's Mate",
+    "side": "black",
+    "kind": "avoid",
+    "moves": "e4 e5 Bc4 Nc6 Qh5",
+    "hope": "Nf6",
+    "move": "g6",
+    "why": "{m:g6} protects your pawn on {sq:f7} and attacks their queen on {sq:h5}.",
+    "idea": "They hope you play {m:Nf6}: then their queen takes on {sq:f7}, and it is checkmate.",
+    "themes": ["f7", "mateIn1"]
+  },
+  {
+    "id": "scholar-second-try",
+    "name": "Scholar's Mate, the second try",
+    "side": "black",
+    "kind": "avoid",
+    "moves": "e4 e5 Bc4 Nc6 Qh5 g6 Qf3",
+    "hope": "Bg7",
+    "move": "Nf6",
+    "why": "{m:Nf6} develops your knight and protects your pawn on {sq:f7}.",
+    "idea": "They hope you play {m:Bg7}: then their queen takes on {sq:f7}, and it is checkmate.",
+    "themes": ["f7", "mateIn1"]
+  },
+  {
+    "id": "queen-raid-qh5",
+    "name": "The early queen raid",
+    "side": "black",
+    "kind": "avoid",
+    "moves": "e4 e5 Qh5",
+    "hope": "g6",
+    "move": "Nc6",
+    "why": "{m:Nc6} develops your knight and protects your pawn on {sq:e5}.",
+    "idea": "They hope you chase the queen with {m:g6}: then {m:Qxe5+} wins your rook.",
+    "themes": ["queenRaid", "fork"]
+  },
+  {
+    "id": "queen-raid-qf3",
+    "name": "Scholar's Mate with the queen on f3",
+    "side": "black",
+    "kind": "avoid",
+    "moves": "e4 e5 Bc4 Nc6 Qf3",
+    "hope": "d6",
+    "move": "Nf6",
+    "why": "{m:Nf6} develops your knight and protects your pawn on {sq:f7}.",
+    "idea": "They hope you play {m:d6}: then their queen takes on {sq:f7}, and it is checkmate.",
+    "themes": ["f7", "mateIn1"]
+  },
+  {
+    "id": "knight-f7",
+    "name": "The knight attack on f7",
+    "side": "black",
+    "kind": "avoid",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5",
+    "hope": "h6",
+    "move": "d5",
+    "why": "{m:d5} protects your pawn on {sq:f7} and attacks their bishop on {sq:c4}.",
+    "idea": "They hope you play {m:h6}: then their knight takes on {sq:f7} and wins a pawn.",
+    "themes": ["f7"]
+  },
+  {
+    "id": "legal-f7",
+    "name": "Légal's trap (you spring it)",
+    "side": "white",
+    "kind": "punish",
+    "moves": "e4 e5 Nf3 d6 Bc4 Bg4 Nc3 g6",
+    "move": "Nxe5",
+    "why": "{m:Nxe5} wins a bishop and a pawn for your knight.",
+    "idea": "Their move {m:g6} was a mistake: it lets you win material.",
+    "themes": ["f7", "pin"]
+  }
+]

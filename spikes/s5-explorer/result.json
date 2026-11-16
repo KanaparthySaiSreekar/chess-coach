@@ -1,0 +1,629 @@
+{
+  "when": "2026-11-14T16:15:04.405Z",
+  "endpoint": "https://explorer.lichess.org/lichess",
+  "speeds": "rapid,classical",
+  "withoutToken": {
+    "status": 401,
+    "ms": 530,
+    "says": "<html>\r\n<head><title>401 Authorization Required</title></head>\r\n<body>\r\n<center><h1>401 Authorization Required</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+  },
+  "positions": [
+    {
+      "name": "start position",
+      "status": 200,
+      "ms": 159,
+      "games": 204908176,
+      "opening": null,
+      "moves": 12,
+      "top": [
+        {
+          "san": "e4",
+          "games": 140433108,
+          "sharePct": 68.5,
+          "whiteScorePct": 52.9
+        },
+        {
+          "san": "d4",
+          "games": 39587581,
+          "sharePct": 19.3,
+          "whiteScorePct": 52.3
+        },
+        {
+          "san": "e3",
+          "games": 6055367,
+          "sharePct": 3,
+          "whiteScorePct": 48.9
+        },
+        {
+          "san": "Nf3",
+          "games": 4942103,
+          "sharePct": 2.4,
+          "whiteScorePct": 51
+        },
+        {
+          "san": "c4",
+          "games": 3005700,
+          "sharePct": 1.5,
+          "whiteScorePct": 51.7
+        }
+      ],
+      "repeatMs": 156
+    },
+    {
+      "name": "1.e4",
+      "status": 200,
+      "ms": 158,
+      "games": 139856289,
+      "opening": "King's Pawn Game",
+      "moves": 12,
+      "top": [
+        {
+          "san": "e5",
+          "games": 90948016,
+          "sharePct": 65,
+          "whiteScorePct": 53.1
+        },
+        {
+          "san": "d5",
+          "games": 13924504,
+          "sharePct": 10,
+          "whiteScorePct": 52.1
+        },
+        {
+          "san": "e6",
+          "games": 7682699,
+          "sharePct": 5.5,
+          "whiteScorePct": 51
+        },
+        {
+          "san": "c5",
+          "games": 7480700,
+          "sharePct": 5.3,
+          "whiteScorePct": 48.9
+        },
+        {
+          "san": "c6",
+          "games": 4969743,
+          "sharePct": 3.6,
+          "whiteScorePct": 49.2
+        }
+      ],
+      "repeatMs": 160
+    },
+    {
+      "name": "1.e4 e5",
+      "status": 200,
+      "ms": 157,
+      "games": 90651233,
+      "opening": "King's Pawn Game",
+      "moves": 12,
+      "top": [
+        {
+          "san": "Nf3",
+          "games": 50975074,
+          "sharePct": 56.2,
+          "whiteScorePct": 54.5
+        },
+        {
+          "san": "Bc4",
+          "games": 10687528,
+          "sharePct": 11.8,
+          "whiteScorePct": 53.1
+        },
+        {
+          "san": "Qh5",
+          "games": 8450081,
+          "sharePct": 9.3,
+          "whiteScorePct": 53.1
+        },
+        {
+          "san": "d4",
+          "games": 5311305,
+          "sharePct": 5.9,
+          "whiteScorePct": 52.3
+        },
+        {
+          "san": "Nc3",
+          "games": 5182525,
+          "sharePct": 5.7,
+          "whiteScorePct": 51.8
+        }
+      ],
+      "repeatMs": 161
+    },
+    {
+      "name": "1.e4 e5 2.Nf3 Nc6",
+      "status": 200,
+      "ms": 159,
+      "games": 29033802,
+      "opening": "King's Knight Opening: Normal Variation",
+      "moves": 12,
+      "top": [
+        {
+          "san": "Bc4",
+          "games": 11420687,
+          "sharePct": 39.3,
+          "whiteScorePct": 53.9
+        },
+        {
+          "san": "Nc3",
+          "games": 7045533,
+          "sharePct": 24.3,
+          "whiteScorePct": 50.1
+        },
+        {
+          "san": "Bb5",
+          "games": 3911696,
+          "sharePct": 13.5,
+          "whiteScorePct": 54.1
+        },
+        {
+          "san": "d4",
+          "games": 3689752,
+          "sharePct": 12.7,
+          "whiteScorePct": 55.3
+        },
+        {
+          "san": "c3",
+          "games": 1030815,
+          "sharePct": 3.6,
+          "whiteScorePct": 51.3
+        }
+      ],
+      "repeatMs": 159
+    },
+    {
+      "name": "Italian: 1.e4 e5 2.Nf3 Nc6 3.Bc4",
+      "status": 200,
+      "ms": 156,
+      "games": 11868823,
+      "opening": "Italian Game",
+      "moves": 12,
+      "top": [
+        {
+          "san": "Nf6",
+          "games": 4723260,
+          "sharePct": 39.8,
+          "whiteScorePct": 55
+        },
+        {
+          "san": "Bc5",
+          "games": 2994452,
+          "sharePct": 25.2,
+          "whiteScorePct": 51.7
+        },
+        {
+          "san": "h6",
+          "games": 1164355,
+          "sharePct": 9.8,
+          "whiteScorePct": 50.4
+        },
+        {
+          "san": "d6",
+          "games": 719581,
+          "sharePct": 6.1,
+          "whiteScorePct": 54.1
+        },
+        {
+          "san": "Nd4",
+          "games": 464606,
+          "sharePct": 3.9,
+          "whiteScorePct": 46.9
+        }
+      ],
+      "repeatMs": 172
+    },
+    {
+      "name": "early queen raid: 1.e4 e5 2.Qh5",
+      "status": 200,
+      "ms": 172,
+      "games": 8428290,
+      "opening": "King's Pawn Game: Wayward Queen Attack",
+      "moves": 12,
+      "top": [
+        {
+          "san": "Nc6",
+          "games": 2721787,
+          "sharePct": 32.3,
+          "whiteScorePct": 46.6
+        },
+        {
+          "san": "Nf6",
+          "games": 2035260,
+          "sharePct": 24.1,
+          "whiteScorePct": 47.8
+        },
+        {
+          "san": "g6",
+          "games": 1049570,
+          "sharePct": 12.5,
+          "whiteScorePct": 77.9
+        },
+        {
+          "san": "d6",
+          "games": 823620,
+          "sharePct": 9.8,
+          "whiteScorePct": 53.2
+        },
+        {
+          "san": "Qf6",
+          "games": 630720,
+          "sharePct": 7.5,
+          "whiteScorePct": 49.3
+        }
+      ],
+      "repeatMs": 157
+    },
+    {
+      "name": "1.d4 d5",
+      "status": 200,
+      "ms": 157,
+      "games": 22639263,
+      "opening": "Queen's Pawn Game",
+      "moves": 12,
+      "top": [
+        {
+          "san": "Bf4",
+          "games": 4608831,
+          "sharePct": 20.4,
+          "whiteScorePct": 55.3
+        },
+        {
+          "san": "Nc3",
+          "games": 4045690,
+          "sharePct": 17.9,
+          "whiteScorePct": 50.6
+        },
+        {
+          "san": "c4",
+          "games": 4044668,
+          "sharePct": 17.9,
+          "whiteScorePct": 56.3
+        },
+        {
+          "san": "Nf3",
+          "games": 3407369,
+          "sharePct": 15.1,
+          "whiteScorePct": 52
+        },
+        {
+          "san": "e3",
+          "games": 3359937,
+          "sharePct": 14.8,
+          "whiteScorePct": 49.3
+        }
+      ],
+      "repeatMs": 154
+    }
+  ],
+  "headersSeen": {
+    "cache-control": "max-age=86400, public",
+    "expires": "Sun, 15 Nov 2026 16:15:43 GMT"
+  },
+  "depthAlongTheMostPlayedLine": [
+    {
+      "ply": 0,
+      "games": 204908176,
+      "ms": 159,
+      "mostPlayed": "e4",
+      "sharePct": 68.5,
+      "opening": null
+    },
+    {
+      "ply": 1,
+      "games": 139856289,
+      "ms": 158,
+      "mostPlayed": "e5",
+      "sharePct": 65,
+      "opening": "King's Pawn Game"
+    },
+    {
+      "ply": 2,
+      "games": 90651233,
+      "ms": 158,
+      "mostPlayed": "Nf3",
+      "sharePct": 56.2,
+      "opening": "King's Pawn Game"
+    },
+    {
+      "ply": 3,
+      "games": 50925461,
+      "ms": 157,
+      "mostPlayed": "Nc6",
+      "sharePct": 56.3,
+      "opening": "King's Knight Opening"
+    },
+    {
+      "ply": 4,
+      "games": 29033802,
+      "ms": 154,
+      "mostPlayed": "Bc4",
+      "sharePct": 39.3,
+      "opening": "King's Knight Opening: Normal Variation"
+    },
+    {
+      "ply": 5,
+      "games": 11868823,
+      "ms": 157,
+      "mostPlayed": "Nf6",
+      "sharePct": 39.8,
+      "opening": "Italian Game"
+    },
+    {
+      "ply": 6,
+      "games": 5323668,
+      "ms": 157,
+      "mostPlayed": "Ng5",
+      "sharePct": 36.1,
+      "opening": "Italian Game: Two Knights Defense"
+    },
+    {
+      "ply": 7,
+      "games": 1934843,
+      "ms": 159,
+      "mostPlayed": "d5",
+      "sharePct": 56.1,
+      "opening": "Italian Game: Two Knights Defense, Knight Attack"
+    },
+    {
+      "ply": 8,
+      "games": 1084775,
+      "ms": 159,
+      "mostPlayed": "exd5",
+      "sharePct": 87.9,
+      "opening": "Italian Game: Two Knights Defense, Knight Attack, Normal Variation"
+    },
+    {
+      "ply": 9,
+      "games": 953111,
+      "ms": 155,
+      "mostPlayed": "Nxd5",
+      "sharePct": 71.8,
+      "opening": null
+    },
+    {
+      "ply": 10,
+      "games": 690357,
+      "ms": 171,
+      "mostPlayed": "Nxf7",
+      "sharePct": 31.6,
+      "opening": null
+    },
+    {
+      "ply": 11,
+      "games": 216974,
+      "ms": 166,
+      "mostPlayed": "Kxf7",
+      "sharePct": 90.1,
+      "opening": "Italian Game: Two Knights Defense, Fried Liver Attack"
+    },
+    {
+      "ply": 12,
+      "games": 204543,
+      "ms": 170,
+      "mostPlayed": "Qf3+",
+      "sharePct": 95,
+      "opening": null
+    },
+    {
+      "ply": 13,
+      "games": 193733,
+      "ms": 157,
+      "mostPlayed": "Ke8",
+      "sharePct": 48.7,
+      "opening": null
+    },
+    {
+      "ply": 14,
+      "games": 94065,
+      "ms": 160,
+      "mostPlayed": "Bxd5",
+      "sharePct": 93.4,
+      "opening": null
+    },
+    {
+      "ply": 15,
+      "games": 86210,
+      "ms": 171,
+      "mostPlayed": "Nd4",
+      "sharePct": 38.6,
+      "opening": null
+    },
+    {
+      "ply": 16,
+      "games": 33101,
+      "ms": 170,
+      "mostPlayed": "Qf7#",
+      "sharePct": 91.5,
+      "opening": null
+    },
+    {
+      "ply": 17,
+      "games": 0,
+      "ms": 158,
+      "mostPlayed": null,
+      "sharePct": 0,
+      "opening": null
+    }
+  ],
+  "afterE4E5Nf3ByBucket": {
+    "0": {
+      "games": 17663400,
+      "ms": 166,
+      "top": [
+        {
+          "san": "Nc6",
+          "games": 8851156,
+          "sharePct": 50.1,
+          "whiteScorePct": 52.1
+        },
+        {
+          "san": "Nf6",
+          "games": 3322733,
+          "sharePct": 18.8,
+          "whiteScorePct": 57.3
+        },
+        {
+          "san": "d6",
+          "games": 1746163,
+          "sharePct": 9.9,
+          "whiteScorePct": 54.6
+        },
+        {
+          "san": "Bc5",
+          "games": 1163168,
+          "sharePct": 6.6,
+          "whiteScorePct": 54.3
+        }
+      ]
+    },
+    "1000": {
+      "games": 33262061,
+      "ms": 155,
+      "top": [
+        {
+          "san": "Nc6",
+          "games": 19806336,
+          "sharePct": 59.5,
+          "whiteScorePct": 52.6
+        },
+        {
+          "san": "Nf6",
+          "games": 4411903,
+          "sharePct": 13.3,
+          "whiteScorePct": 57
+        },
+        {
+          "san": "d6",
+          "games": 3720893,
+          "sharePct": 11.2,
+          "whiteScorePct": 54.9
+        },
+        {
+          "san": "Bc5",
+          "games": 1364965,
+          "sharePct": 4.1,
+          "whiteScorePct": 56.2
+        }
+      ]
+    },
+    "0,1000": {
+      "games": 50925461,
+      "ms": 171,
+      "top": [
+        {
+          "san": "Nc6",
+          "games": 28657492,
+          "sharePct": 56.3,
+          "whiteScorePct": 52.5
+        },
+        {
+          "san": "Nf6",
+          "games": 7734636,
+          "sharePct": 15.2,
+          "whiteScorePct": 57.2
+        },
+        {
+          "san": "d6",
+          "games": 5467056,
+          "sharePct": 10.7,
+          "whiteScorePct": 54.8
+        },
+        {
+          "san": "Bc5",
+          "games": 2528133,
+          "sharePct": 5,
+          "whiteScorePct": 55.4
+        }
+      ]
+    },
+    "1600,1800": {
+      "games": 89895512,
+      "ms": 155,
+      "top": [
+        {
+          "san": "Nc6",
+          "games": 59732999,
+          "sharePct": 66.4,
+          "whiteScorePct": 53.4
+        },
+        {
+          "san": "d6",
+          "games": 14628000,
+          "sharePct": 16.3,
+          "whiteScorePct": 54.6
+        },
+        {
+          "san": "Nf6",
+          "games": 9115363,
+          "sharePct": 10.1,
+          "whiteScorePct": 52.1
+        },
+        {
+          "san": "Bc5",
+          "games": 1689407,
+          "sharePct": 1.9,
+          "whiteScorePct": 55.6
+        }
+      ]
+    },
+    "2200,2500": {
+      "games": 1681582,
+      "ms": 158,
+      "top": [
+        {
+          "san": "Nc6",
+          "games": 1312272,
+          "sharePct": 78,
+          "whiteScorePct": 51.9
+        },
+        {
+          "san": "Nf6",
+          "games": 215052,
+          "sharePct": 12.8,
+          "whiteScorePct": 51
+        },
+        {
+          "san": "d6",
+          "games": 93641,
+          "sharePct": 5.6,
+          "whiteScorePct": 55.5
+        },
+        {
+          "san": "d5",
+          "games": 28155,
+          "sharePct": 1.7,
+          "whiteScorePct": 50.8
+        }
+      ]
+    }
+  },
+  "pacedWalk": {
+    "requests": 21,
+    "statuses": {
+      "200": 21
+    },
+    "medianMs": 160,
+    "maxMs": 171
+  },
+  "pace": {
+    "gapMs": 3000,
+    "seconds": 175,
+    "refusals": [],
+    "earlierRuns": {
+      "backToBack": "refused (429) after 28 calls sent back to back in about 6 s; one call got through a few seconds later, then refused again",
+      "onePerSecond": "refused (429) after 47 calls in 49 s; after the one-minute wait the remaining 13 calls were answered"
+    }
+  },
+  "summary": {
+    "calls": 59,
+    "ok": 58,
+    "refused": 0,
+    "otherStatuses": [
+      "no token: 401"
+    ],
+    "medianMs": 159,
+    "p95Ms": 171,
+    "maxMs": 172
+  }
+}

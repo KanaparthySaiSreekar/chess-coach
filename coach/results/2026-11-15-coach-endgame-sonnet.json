@@ -1,0 +1,528 @@
+{
+ "when": "2026-11-15T11:24:38.281Z",
+ "agent": "coach-endgame",
+ "model": "sonnet",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 10,
+  "inputTokens": 28784,
+  "outputTokens": 2652,
+  "cacheReadTokens": 179772,
+  "costUsd": 0.1595492
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 10,
+   "total": 10
+  },
+  "firstTryValidity": {
+   "ok": 10,
+   "total": 10,
+   "pct": 100,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 10,
+    "total": 10
+   },
+   "stays in budget": {
+    "pass": 10,
+    "total": 10
+   },
+   "scenario checks": {
+    "pass": 29,
+    "total": 29
+   },
+   "quiet when it should be": {
+    "pass": 1,
+    "total": 1
+   },
+   "asks before telling (first message)": {
+    "pass": 3,
+    "total": 3
+   }
+  },
+  "byCovers": {
+   "explains from facts": {
+    "pass": 4,
+    "total": 4
+   },
+   "quiet when it should be": {
+    "pass": 3,
+    "total": 3
+   },
+   "asks before telling": {
+    "pass": 2,
+    "total": 2
+   },
+   "hard rules": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 7157,
+  "failed": [],
+  "refusedBy": {}
+ },
+ "results": [
+  {
+   "id": "stalemate-slip",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /stalemate/",
+     "pass": true,
+     "detail": "Qc7 leaves their king on a8 with no move while it is not in check: that is stalemate, so the game is a draw. Qc8# was checkmate. Before every queen move, make sure their king still has a move unless you are giving check."
+    },
+    {
+     "check": "never says /%|centipawn|\\+\\d|0\\.00/",
+     "pass": true
+    }
+   ],
+   "ms": 7023,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Qc7 leaves their king on a8 with no move while it is not in check: that is stalemate, so the game is a draw. Qc8# was checkmate. Before every queen move, make sure their king still has a move unless you are giving check."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "square-slip",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /pawn|square|catch|ke6|ke5|ke7/",
+     "pass": true,
+     "detail": "Kg5 is a serious mistake: it lets them force checkmate, because your king ends up outside the pawn's square and can't catch it. Ke5 was a good, safe move that kept the draw. Before you move, count the square from the pawn to its queening square and across as many files, then step into it."
+    },
+    {
+     "check": "never says /%|centipawn|\\+\\d|0\\.00/",
+     "pass": true
+    }
+   ],
+   "ms": 7484,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Kg5 is a serious mistake: it lets them force checkmate, because your king ends up outside the pawn's square and can't catch it. Ke5 was a good, safe move that kept the draw. Before you move, count the square from the pawn to its queening square and across as many files, then step into it."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "opposition-slip",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /ke7|king|pawn|in front|face/",
+     "pass": true,
+     "detail": "Kd8 lets their king walk in with Kd6, and now they can force checkmate. Ke7 kept the draw: it faces their king with one square between, so their king can't get past. Keep your king facing theirs, right in front of the pawn."
+    },
+    {
+     "check": "never says /%|centipawn|\\+\\d|0\\.00/",
+     "pass": true
+    }
+   ],
+   "ms": 7488,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Kd8 lets their king walk in with Kd6, and now they can force checkmate. Ke7 kept the draw: it faces their king with one square between, so their king can't get past. Keep your king facing theirs, right in front of the pawn."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "hung-queen",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /queen/",
+     "pass": true,
+     "detail": "Qd4+ gives check, but it puts your queen right next to their king with nothing guarding it, so Kxd4 wins it and the game is a draw. Qd7 was the move that kept the win: it forces checkmate. Before every queen move, check that the square is not next to their king, where it can simply be taken."
+    },
+    {
+     "check": "never says /%|centipawn|\\+\\d|0\\.00/",
+     "pass": true
+    }
+   ],
+   "ms": 7966,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Qd4+ gives check, but it puts your queen right next to their king with nothing guarding it, so Kxd4 wins it and the game is a draw. Qd7 was the move that kept the win: it forces checkmate. Before every queen move, check that the square is not next to their king, where it can simply be taken."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "mate-praise",
+   "covers": "quiet when it should be",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind praise",
+     "pass": true,
+     "detail": "kinds: praise"
+    },
+    {
+     "check": "never says /talent|genius|natural|gifted/",
+     "pass": true
+    }
+   ],
+   "ms": 7014,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "praise",
+     "source": "coach",
+     "text": "Qc8# is checkmate: your queen and king worked together to leave their king no square."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "rook-mate-praise",
+   "covers": "quiet when it should be",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind praise",
+     "pass": true,
+     "detail": "kinds: praise"
+    },
+    {
+     "check": "never says /talent|genius|natural|gifted/",
+     "pass": true
+    }
+   ],
+   "ms": 7157,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "praise",
+     "source": "coach",
+     "text": "You faced their king with yours, then checked from the side with Rh8#, and that left their king no square."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "quiet-good-move",
+   "covers": "quiet when it should be",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "quiet when it should be",
+     "pass": true
+    }
+   ],
+   "ms": 7025,
+   "says": {
+    "ok": 0,
+    "total": 0
+   },
+   "messages": [],
+   "refused": [],
+   "tools": []
+  },
+  {
+   "id": "ask-question",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question",
+     "pass": true,
+     "detail": "it was question: Look at their king on e5: which squares can it still reach? Find a queen move that takes away many of them, so their king gets pushed toward the edge."
+    },
+    {
+     "check": "never says /\\b[KQ]x?[a-h][1-8]/",
+     "pass": true
+    }
+   ],
+   "ms": 6666,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Look at their king on e5: which squares can it still reach? Find a queen move that takes away many of them, so their king gets pushed toward the edge."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "ask-twice-nudge",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question",
+     "pass": true,
+     "detail": "it was question: Which squares can their king still reach, and which of them could your queen take away without giving check yet? Look for a quiet move that starts boxing their king in toward an edge."
+    },
+    {
+     "check": "a message of kind nudge",
+     "pass": true,
+     "detail": "kinds: question, nudge"
+    },
+    {
+     "check": "never says /\\b[KQ]x?[a-h][1-8]/",
+     "pass": true
+    }
+   ],
+   "ms": 11506,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Which squares can their king still reach, and which of them could your queen take away without giving check yet? Look for a quiet move that starts boxing their king in toward an edge."
+    },
+    {
+     "kind": "nudge",
+     "source": "coach",
+     "text": "Your queen is far from their king, and so is your own king. Try a queen move that cuts their king off from a whole row or file, so it has a smaller area to live in."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "ask-hold-draw",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question",
+     "pass": true,
+     "detail": "it was question: Their king is one step from getting past yours. Which of your king's moves keeps it facing theirs, directly in front of the pawn, so they can't get in?"
+    },
+    {
+     "check": "never says /\\bK[a-h][1-8]|the answer/",
+     "pass": true
+    }
+   ],
+   "ms": 5570,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their king is one step from getting past yours. Which of your king's moves keeps it facing theirs, directly in front of the pawn, so they can't get in?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  }
+ ]
+}

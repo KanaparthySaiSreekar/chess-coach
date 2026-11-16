@@ -1,0 +1,133 @@
+{
+ "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+ "answer": {
+  "white": 1249007,
+  "draws": 85159,
+  "black": 1075031,
+  "moves": [
+   {
+    "uci": "g7g6",
+    "san": "g6",
+    "averageRating": 1024,
+    "white": 738452,
+    "draws": 57691,
+    "black": 776735,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "g8h6",
+    "san": "Nh6",
+    "averageRating": 1018,
+    "white": 129298,
+    "draws": 8568,
+    "black": 106303,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "g8f6",
+    "san": "Nf6",
+    "averageRating": 957,
+    "white": 194630,
+    "draws": 2416,
+    "black": 27827,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "d8e7",
+    "san": "Qe7",
+    "averageRating": 1010,
+    "white": 66922,
+    "draws": 8970,
+    "black": 95285,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "d8f6",
+    "san": "Qf6",
+    "averageRating": 1039,
+    "white": 39356,
+    "draws": 5168,
+    "black": 47996,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "d7d5",
+    "san": "d5",
+    "averageRating": 988,
+    "white": 23530,
+    "draws": 1787,
+    "black": 18456,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "f8c5",
+    "san": "Bc5",
+    "averageRating": 899,
+    "white": 12985,
+    "draws": 43,
+    "black": 339,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "d7d6",
+    "san": "d6",
+    "averageRating": 926,
+    "white": 10652,
+    "draws": 39,
+    "black": 271,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "c6d4",
+    "san": "Nd4",
+    "averageRating": 875,
+    "white": 5264,
+    "draws": 13,
+    "black": 131,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "f8b4",
+    "san": "Bb4",
+    "averageRating": 829,
+    "white": 4057,
+    "draws": 18,
+    "black": 86,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "e8e7",
+    "san": "Ke7",
+    "averageRating": 836,
+    "white": 2557,
+    "draws": 344,
+    "black": 1089,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "f8e7",
+    "san": "Be7",
+    "averageRating": 825,
+    "white": 3049,
+    "draws": 13,
+    "black": 79,
+    "game": null,
+    "opening": null
+   }
+  ],
+  "recentGames": [],
+  "topGames": [],
+  "opening": null
+ }
+}

@@ -1,0 +1,184 @@
+{
+  "about": "The bot roster (feature F9): one human-like opponent per 100 Elo from 600 to 2000, then every 200 up to 2600. Each bot is Maia-3 asked to play like a person of that rating. Ratings are on Maia's own scale (Lichess). The band notes describe typical play at that level; they are a guide, not a measurement.",
+  "bands": {
+    "Beginner": "Develops a little, leaves pieces undefended and misses one-move threats.",
+    "Improver": "Knows the opening principles and the simple tactics; still blunders under pressure.",
+    "Club player": "Sound openings and two-move tactics; takes what you leave loose.",
+    "Strong club player": "Few free gifts. You have to create your own chances.",
+    "Expert": "Rarely gives anything away. For when you want to see how strong play looks.",
+    "Engine-style": "Stockfish held back to a short search: computer chess, not human chess. Its mistakes are not the ones people make, so it teaches less than the human-like bots; it is here for variety."
+  },
+  "bots": [
+    {
+      "id": "maia-600",
+      "name": "Pip",
+      "elo": 600,
+      "band": "Beginner",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-700",
+      "name": "Milo",
+      "elo": 700,
+      "band": "Beginner",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-800",
+      "name": "Juno",
+      "elo": 800,
+      "band": "Beginner",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-900",
+      "name": "Remy",
+      "elo": 900,
+      "band": "Beginner",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-1000",
+      "name": "Tess",
+      "elo": 1000,
+      "band": "Improver",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-1100",
+      "name": "Otto",
+      "elo": 1100,
+      "band": "Improver",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-1200",
+      "name": "Nia",
+      "elo": 1200,
+      "band": "Improver",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-1300",
+      "name": "Hugo",
+      "elo": 1300,
+      "band": "Improver",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-1400",
+      "name": "Ines",
+      "elo": 1400,
+      "band": "Club player",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-1500",
+      "name": "Kofi",
+      "elo": 1500,
+      "band": "Club player",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-1600",
+      "name": "Mara",
+      "elo": 1600,
+      "band": "Club player",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-1700",
+      "name": "Sven",
+      "elo": 1700,
+      "band": "Club player",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-1800",
+      "name": "Lena",
+      "elo": 1800,
+      "band": "Strong club player",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-1900",
+      "name": "Ravi",
+      "elo": 1900,
+      "band": "Strong club player",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-2000",
+      "name": "Vera",
+      "elo": 2000,
+      "band": "Strong club player",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-2200",
+      "name": "Emil",
+      "elo": 2200,
+      "band": "Expert",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-2400",
+      "name": "Zoe",
+      "elo": 2400,
+      "band": "Expert",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "maia-2600",
+      "name": "Aris",
+      "elo": 2600,
+      "band": "Expert",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "engine-1400",
+      "name": "Cog",
+      "elo": 1400,
+      "band": "Engine-style",
+      "kind": "engine",
+      "temperature": 1,
+      "topP": 1
+    },
+    {
+      "id": "engine-1700",
+      "name": "Gear",
+      "elo": 1700,
+      "band": "Engine-style",
+      "kind": "engine",
+      "temperature": 0.8,
+      "topP": 1
+    },
+    {
+      "id": "engine-2000",
+      "name": "Piston",
+      "elo": 2000,
+      "band": "Engine-style",
+      "kind": "engine",
+      "temperature": 0.6,
+      "topP": 0.9
+    }
+  ]
+}

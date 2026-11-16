@@ -1,0 +1,25 @@
+{
+  "topics": [
+    { "id": "queen-mate", "name": "Queen and king against king", "about": "The queen pushes their king to the edge; your king comes up to help give mate." },
+    { "id": "rook-mate", "name": "Rook and king against king", "about": "The rook cuts their king off; your king faces theirs; the rook checks from the side." },
+    { "id": "two-rooks", "name": "The two-rook ladder", "about": "Two rooks take turns checking, a rank at a time, until their king is on the edge." },
+    { "id": "square", "name": "The square of the pawn", "about": "Can the king catch a running pawn? Count the square from the pawn to its queening rank." },
+    { "id": "opposition", "name": "King and pawn: the opposition", "about": "Kings facing each other with one square between: the side that does not have to move holds the key squares." },
+    { "id": "rook-endings", "name": "Rook endings: Lucena and Philidor", "about": "The two positions every rook ending comes back to: how to win the first, how to hold the second." }
+  ],
+  "positions": [
+    { "id": "qm-centre", "topic": "queen-mate", "name": "From the middle of the board", "fen": "8/8/8/4k3/8/8/8/3QK3 w - - 0 1", "goal": "mate", "idea": "Use your queen to box their king in, a knight's move away from it, then bring your king up to help." },
+    { "id": "qm-corner", "topic": "queen-mate", "name": "Their king in the corner", "fen": "k7/8/1K6/2Q5/8/8/8/8 w - - 0 1", "goal": "mate", "idea": "Their king has almost no squares left. Before every queen move, make sure their king still has a move unless you are giving check." },
+    { "id": "qm-far", "topic": "queen-mate", "name": "The kings far apart", "fen": "8/8/3k4/8/8/8/8/K6Q w - - 0 1", "goal": "mate", "idea": "The queen alone cannot mate: shrink their king's box with the queen, then walk your king across." },
+    { "id": "rm-centre", "topic": "rook-mate", "name": "From the middle of the board", "fen": "8/8/8/4k3/8/8/8/R3K3 w - - 0 1", "goal": "mate", "idea": "Cut their king off with the rook, bring your king opposite theirs, and check from the side when they face each other." },
+    { "id": "rm-edge", "topic": "rook-mate", "name": "Kings facing each other", "fen": "4k3/8/4K3/8/8/8/8/7R w - - 0 1", "goal": "mate", "idea": "The kings face each other: a rook check from the side now leaves their king no square." },
+    { "id": "tr-ladder", "topic": "two-rooks", "name": "The ladder", "fen": "8/8/3k4/8/8/8/8/R3K2R w - - 0 1", "goal": "mate", "idea": "One rook checks, the other guards the next rank; keep them apart from their king so it cannot take them." },
+    { "id": "tr-edge", "topic": "two-rooks", "name": "Their king near the edge", "fen": "8/2k5/8/8/8/8/1R6/K6R w - - 0 1", "goal": "mate", "idea": "Push their king back a rank at a time with the two rooks; your king can stay at home." },
+    { "id": "sq-catch", "topic": "square", "name": "Catch the pawn", "fen": "8/8/5k2/1P6/8/8/8/7K b - - 0 1", "goal": "draw", "idea": "Step into the pawn's square: from the pawn to its queening square and across as many files. Inside it, your king catches the pawn." },
+    { "id": "sq-run", "topic": "square", "name": "Run with the pawn", "fen": "8/8/8/P7/8/5k2/8/7K w - - 0 1", "goal": "promote", "idea": "Their king is outside the pawn's square: push the pawn at once and it cannot be caught." },
+    { "id": "op-win", "topic": "opposition", "name": "The king in front of the pawn", "fen": "8/8/4k3/8/4K3/8/4P3/8 w - - 0 1", "goal": "promote", "idea": "Keep your king in front of the pawn and use a pawn move to make them give way." },
+    { "id": "op-hold", "topic": "opposition", "name": "Hold with the opposition", "fen": "4k3/8/8/4K3/4P3/8/8/8 b - - 0 1", "goal": "draw", "idea": "Face their king with one square between: then their king must give way, and yours stays in front of the pawn." },
+    { "id": "lucena", "topic": "rook-endings", "name": "Lucena: build a bridge", "fen": "1K1k4/1P6/8/8/8/8/r7/2R5 w - - 0 1", "goal": "promote", "idea": "Check their king away from the pawn, then bring your rook to the fourth rank to shield your king from the checks." },
+    { "id": "philidor", "topic": "rook-endings", "name": "Philidor: the third-rank defence", "fen": "4k3/7R/r7/3KP3/8/8/8/8 b - - 0 1", "goal": "draw", "idea": "Keep your rook on the sixth rank, your third, until the pawn moves up; then go to the back of the board and check from behind." }
+  ]
+}

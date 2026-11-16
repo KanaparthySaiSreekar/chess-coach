@@ -1,0 +1,22 @@
+{
+  "about": "The puzzle player's own sentences (COACH §7, PLAN WP 6.2): the task, the rungs of the hint ladder, and what is said on a miss and at the end. They work with the coach off. Everything about the position itself (what a wrong move runs into, why the solution works) comes from the engine's checked facts, word for word.",
+  "task.mistake": "From your own game: you went wrong here. Find the better move.",
+  "task.punish": "From your own game: your opponent slipped here and it went unpunished. Find the move that punishes it.",
+  "task.threat": "From your own game: find the move that deals with their threat.",
+  "task.theme": "Find the best move.",
+  "hint.question": "Run the routine: what are your checks, your captures and your threats here?",
+  "hint.nudge": "Look at your {role} on {square}.",
+  "hint.arrow": "The arrow shows the move. Play it, and ask yourself why it works.",
+  "wrong": "Not that one.",
+  "wrong.checking": "Not that one. Checking what it runs into…",
+  "solved.clean": "Solved, first try.",
+  "solved": "Solved.",
+  "solved.also": "Solved: that move works too.",
+  "shown": "The answer is on the board.",
+  "shown.misses": "That was the last try: the answer is on the board.",
+  "none": "There are no puzzles yet. They are made from your own games: open a game in My games and let the engine go through it.",
+  "none.left": "That was the last puzzle for now.",
+  "example": "Here is how it works. Next time a position like this comes, it is your turn to find it.",
+  "guide.example": "A new idea for you: {motif}. Try it yourself, or watch how it works first.",
+  "guide.partial": "Look for: {motif}."
+}

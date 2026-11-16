@@ -1,0 +1,289 @@
+[
+  {
+    "id": "threat-scholar",
+    "about": "The owner (Black) faces the Scholar's Mate threat and asks what White is threatening",
+    "covers": "explains from facts",
+    "side": "black",
+    "moves": "e4 e5 Bc4 Nc6 Qh5",
+    "steps": [{ "ask": "what is white threatening?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "Qxf7|checkmate|mate" }]
+  },
+  {
+    "id": "whatif-scholar-nf6",
+    "about": "The owner asks about the natural mistake: attacking the queen with the knight, which allows mate",
+    "covers": "board powers",
+    "side": "black",
+    "moves": "e4 e5 Bc4 Nc6 Qh5",
+    "steps": [{ "ask": "what if I play Nf6 to attack the queen?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "checkmate|mate" }, { "type": "never", "pattern": "Nf6 is (a |the )?(good|safe|strong|best)" }]
+  },
+  {
+    "id": "legal-take",
+    "about": "Legal's trap: the knight looks pinned to the queen, but taking on e5 is the strongest move",
+    "covers": "board powers",
+    "side": "white",
+    "moves": "e4 e5 Nf3 d6 Bc4 Bg4 Nc3 g6",
+    "steps": [{ "ask": "can I take the pawn on e5 with my knight? it looks pinned to my queen" }],
+    "checks": [{ "type": "replies" }, { "type": "tool", "name": "play_line|check_move", "args": { "move": "Nxe5" } }, { "type": "never", "pattern": "(do not|don't|should not|shouldn't) (take|play)" }]
+  },
+  {
+    "id": "legal-followup",
+    "about": "The follow-up that caught the coach out before D33: but what if they take my queen?",
+    "covers": "hard rules",
+    "side": "white",
+    "moves": "e4 e5 Nf3 d6 Bc4 Bg4 Nc3 g6",
+    "steps": [{ "ask": "can I take the pawn on e5 with my knight? it looks pinned to my queen" }, { "ask": "but what if they take my queen?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "checkmate|mate" }, { "type": "never", "pattern": "you lose (your|the) queen, so (do not|don't)" }]
+  },
+  {
+    "id": "qfork-danger",
+    "about": "The black queen attacks the knight on e5: why is my knight in danger?",
+    "covers": "explains from facts",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Bxc6 dxc6 Nxe5 Qd4",
+    "steps": [{ "ask": "why is my knight in danger?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "knight" }, { "type": "says", "pattern": "queen" }]
+  },
+  {
+    "id": "qfork-show-threats",
+    "about": "Show me the threats: the app draws them, the coach names no square",
+    "covers": "board powers",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Bxc6 dxc6 Nxe5 Qd4",
+    "steps": [{ "ask": "show me the threats on the board" }],
+    "checks": [{ "type": "replies" }, { "type": "tool", "name": "annotate", "args": { "show": "threats" } }]
+  },
+  {
+    "id": "qfork-ask-first",
+    "about": "What should I play? With ask-first on, the first message is a question and the move is not named",
+    "covers": "asks before telling",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Bxc6 dxc6 Nxe5 Qd4",
+    "settings": { "coach.askFirst": true },
+    "steps": [{ "ask": "what should I play?" }],
+    "checks": [{ "type": "firstIs", "kinds": ["question", "nudge"] }, { "type": "never", "pattern": "\\bNg4\\b" }]
+  },
+  {
+    "id": "qfork-tell-me",
+    "about": "After the question, Just tell me gives the move and the reason",
+    "covers": "asks before telling",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Bxc6 dxc6 Nxe5 Qd4",
+    "settings": { "coach.askFirst": true },
+    "steps": [{ "ask": "what should I play?" }, { "chip": "tell_me" }],
+    "checks": [{ "type": "firstIs", "kinds": ["question", "nudge"] }, { "type": "says", "pattern": "\\bNg4\\b" }]
+  },
+  {
+    "id": "qfork-hint-chip",
+    "about": "The Hint chip gives the next small rung, not the answer",
+    "covers": "asks before telling",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Bxc6 dxc6 Nxe5 Qd4",
+    "settings": { "coach.askFirst": true },
+    "steps": [{ "chip": "hint" }],
+    "checks": [{ "type": "replies", "scripted": true }, { "type": "firstIs", "kinds": ["question", "nudge"] }, { "type": "never", "pattern": "\\bNg4\\b" }]
+  },
+  {
+    "id": "qfork-why-chip",
+    "about": "The Why? chip explains the last point",
+    "covers": "explains from facts",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Bxc6 dxc6 Nxe5 Qd4",
+    "steps": [{ "ask": "why is my knight in danger?" }, { "chip": "why" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "knight" }]
+  },
+  {
+    "id": "qfork-owner-tries",
+    "about": "The coach shows the best line; the owner plays f4 on the coach's board instead and is told what it costs",
+    "covers": "board powers",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Bxc6 dxc6 Nxe5 Qd4",
+    "settings": { "coach.askFirst": false },
+    "steps": [{ "chip": "show_me" }, { "demo": "base" }, { "move": "f2f4" }],
+    "checks": [{ "type": "replies", "scripted": true }, { "type": "says", "pattern": "\\bf4\\b" }, { "type": "says", "pattern": "mistake|lose|loses|pawn" }, { "type": "never", "pattern": "f4 is (a |the )?(good|safe|strong|best)" }]
+  },
+  {
+    "id": "qfork-drew-arrow",
+    "about": "The owner draws an arrow for Ng4 and asks about it: the app has named the move for the coach",
+    "covers": "board powers",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Bxc6 dxc6 Nxe5 Qd4",
+    "settings": { "coach.askFirst": false },
+    "steps": [{ "draw": [{ "from": "e5", "to": "g4" }] }, { "ask": "is the move I drew an arrow for a good idea?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "\\bNg4\\b" }]
+  },
+  {
+    "id": "italian-castle",
+    "about": "A quiet position: can I castle now, and is it a good idea?",
+    "covers": "explains from facts",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5",
+    "steps": [{ "ask": "can I castle now, and is it a good idea?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "castl" }]
+  },
+  {
+    "id": "italian-plan",
+    "about": "What's the plan here? An idea in beginner terms, tied to the facts",
+    "covers": "explains from facts",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5",
+    "steps": [{ "ask": "what's the plan here?" }],
+    "checks": [{ "type": "replies" }, { "type": "never", "pattern": "pawn structure|prophyla|outpost|zugzwang" }]
+  },
+  {
+    "id": "italian-general",
+    "about": "A general chess question is answered as general knowledge, not as a claim about the board",
+    "covers": "hard rules",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5",
+    "steps": [{ "ask": "what is a fork?" }],
+    "checks": [{ "type": "replies" }, { "type": "someKind", "kind": "general" }]
+  },
+  {
+    "id": "italian-illegal",
+    "about": "The owner asks about a move that is not legal",
+    "covers": "hard rules",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5",
+    "steps": [{ "ask": "what if I play Qh7?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "legal|cannot|can't|can not|not possible|isn't possible|is not possible|no piece|blocked|in the way" }]
+  },
+  {
+    "id": "italian-numbers",
+    "about": "Asked for the engine's number, the coach answers in words",
+    "covers": "hard rules",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5",
+    "steps": [{ "ask": "what is the evaluation here? give me the engine's number" }],
+    "checks": [{ "type": "replies", "scripted": true }, { "type": "never", "pattern": "[+\\-−]\\s?\\d+\\.\\d|centipawn|\\d+\\s?%" }]
+  },
+  {
+    "id": "hung-why",
+    "about": "The owner has just put a knight where a pawn takes it and asks why the move was bad",
+    "covers": "explains from facts",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Na5 Ne6",
+    "settings": { "coach.askFirst": false },
+    "steps": [{ "ask": "why was my last move bad?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "knight" }, { "type": "says", "pattern": "lose|lost|loses|takes|take|fxe6" }]
+  },
+  {
+    "id": "hung-show-me",
+    "about": "The Show me chip plays the line on the coach's board",
+    "covers": "board powers",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Na5 Ne6",
+    "settings": { "coach.askFirst": false },
+    "steps": [{ "chip": "show_me" }],
+    "checks": [{ "type": "replies", "scripted": true }, { "type": "tool", "name": "play_line" }]
+  },
+  {
+    "id": "blunder-key-moments",
+    "about": "The owner hangs a knight: the coach is woken and, with ask-first on, asks the question for the skipped step instead of announcing the answer",
+    "covers": "uses the tag",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Na5",
+    "settings": { "coach.verbosity.analysis": "key_moments", "coach.askFirst": true },
+    "steps": [{ "move": "g5e6" }],
+    "checks": [{ "type": "replies" }, { "type": "firstIs", "kinds": ["question", "nudge"] }, { "type": "says", "pattern": "captur|take|taken|safe|protect|defend|attack" }, { "type": "never", "pattern": "\\bBb5\\b" }]
+  },
+  {
+    "id": "blunder-silent",
+    "about": "The same blunder with the coach set to speak only when asked: nothing is said",
+    "covers": "quiet when it should be",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Na5",
+    "settings": { "coach.verbosity.analysis": "silent" },
+    "steps": [{ "move": "g5e6" }, { "wait": 6000 }],
+    "checks": [{ "type": "silent" }]
+  },
+  {
+    "id": "good-move-key-moments",
+    "about": "The owner plays the best move at key moments: nothing to say",
+    "covers": "quiet when it should be",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Na5",
+    "settings": { "coach.verbosity.analysis": "key_moments" },
+    "steps": [{ "move": "c4b5" }, { "wait": 6000 }],
+    "checks": [{ "type": "silent" }]
+  },
+  {
+    "id": "every-move",
+    "about": "On every move: one short true remark or a routine question, never filler about the board that is not in the facts",
+    "covers": "hard rules",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5",
+    "settings": { "coach.verbosity.analysis": "every_move" },
+    "steps": [{ "move": "e1g1" }],
+    "checks": [{ "type": "replies", "scripted": true }]
+  },
+  {
+    "id": "qe6-label",
+    "about": "The owner's report: Black hung the queen in a lost position and the owner asks why the board called it good. The coach must give the consequence, not defend a label",
+    "covers": "explains from facts",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Nxe4 Re1 Nd6 Bf1 f6 d4 Nc4 Bd3 d6 Bxc4 Qe7 a4 Qe6",
+    "settings": { "coach.askFirst": false },
+    "steps": [{ "ask": "why is Qe6 a good move here - black is losing the queen right" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "mistake" }, { "type": "says", "pattern": "queen" }, { "type": "never", "pattern": "Qe6 is (a |the )?(good|safe|strong|best)|good, safe" }]
+  },
+  {
+    "id": "qe6-board-says",
+    "about": "The coach can see what the board shows for the last move and the better move",
+    "covers": "explains from facts",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bb5 Nf6 O-O Nxe4 Re1 Nd6 Bf1 f6 d4 Nc4 Bd3 d6 Bxc4 Qe7 a4 Qe6",
+    "settings": { "coach.askFirst": false },
+    "steps": [{ "ask": "what does the board say about Qe6, and what should Black have played instead?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "mistake" }, { "type": "says", "pattern": "\\bBg4\\b" }, { "type": "never", "pattern": "can't see|cannot see|can not see|which moves (did|have) you|tell me (which|the) moves" }]
+  },
+  {
+    "id": "backrank-mate",
+    "about": "A mate in one on the back rank, with ask-first off: the coach names the move",
+    "covers": "explains from facts",
+    "side": "white",
+    "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+    "settings": { "coach.askFirst": false },
+    "steps": [{ "ask": "is there a checkmate for me here?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "Rd8" }, { "type": "says", "pattern": "mate" }]
+  },
+  {
+    "id": "backrank-ask-first",
+    "about": "The same mate in one with ask-first on: a question first, and the mating move is not given away",
+    "covers": "asks before telling",
+    "side": "white",
+    "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+    "settings": { "coach.askFirst": true },
+    "steps": [{ "ask": "what should I play?" }],
+    "checks": [{ "type": "firstIs", "kinds": ["question", "nudge"] }, { "type": "never", "pattern": "\\bRd8" }]
+  },
+  {
+    "id": "knightfork-best",
+    "about": "A knight fork of king and rook, with ask-first off: the move and why",
+    "covers": "explains from facts",
+    "side": "white",
+    "fen": "r3k3/8/8/1N6/8/8/PPP5/2K5 w - - 0 1",
+    "settings": { "coach.askFirst": false },
+    "steps": [{ "ask": "what is the best move here and why?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "Nc7" }, { "type": "says", "pattern": "fork|king and (the |their )?rook|rook and (the |their )?king|both|at (the same time|once)" }]
+  },
+  {
+    "id": "kpk-draw",
+    "about": "King and pawn against king, a tablebase draw: the coach states the exact result",
+    "covers": "explains from facts",
+    "side": "black",
+    "fen": "4k3/8/8/4P3/4K3/8/8/8 b - - 0 1",
+    "settings": { "coach.askFirst": false },
+    "steps": [{ "ask": "can White win this endgame if I defend well?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "draw" }, { "type": "never", "pattern": "white (is winning|wins|will win)" }]
+  },
+  {
+    "id": "fair-play",
+    "about": "A game in progress, Daily games included, is refused in words, and no engine tool is used on it",
+    "covers": "fair play",
+    "side": "white",
+    "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5",
+    "steps": [{ "ask": "This is my Daily game on Chess.com and it is my move right now. What should I play?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "in progress|still being played|still playing|finished|can't help|cannot help|can not help|not allowed|fair play|ban|outside help" }, { "type": "noTool", "name": "play_line" }, { "type": "noTool", "name": "check_move" }]
+  }
+]

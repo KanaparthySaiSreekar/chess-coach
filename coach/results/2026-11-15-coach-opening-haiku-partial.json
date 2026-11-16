@@ -1,0 +1,151 @@
+{
+ "when": "2026-11-15T09:14:59.234Z",
+ "agent": "coach-opening",
+ "model": "haiku",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 2,
+  "inputTokens": 13217,
+  "outputTokens": 1305,
+  "cacheReadTokens": 34806,
+  "costUsd": 0.0036431600000000003
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 2,
+   "total": 2
+  },
+  "firstTryValidity": {
+   "ok": 2,
+   "total": 2,
+   "pct": 100,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 2,
+    "total": 2
+   },
+   "stays in budget": {
+    "pass": 2,
+    "total": 2
+   },
+   "scenario checks": {
+    "pass": 5,
+    "total": 5
+   },
+   "asks before telling (first message)": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "byCovers": {
+   "explains from facts": {
+    "pass": 1,
+    "total": 1
+   },
+   "uses the tag": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 12165,
+  "failed": [],
+  "refusedBy": {}
+ },
+ "results": [
+  {
+   "id": "trap-miss",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /mate|checkmate/",
+     "pass": true,
+     "detail": "Nf6 is the trap here: it allows checkmate in one, starting with a queen take on f7. Your repertoire plays g6 instead, because it protects your pawn on f7 and attacks their queen on h5."
+    },
+    {
+     "check": "says /g6|f7/",
+     "pass": true,
+     "detail": "Nf6 is the trap here: it allows checkmate in one, starting with a queen take on f7. Your repertoire plays g6 instead, because it protects your pawn on f7 and attacks their queen on h5."
+    }
+   ],
+   "ms": 10915,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Nf6 is the trap here: it allows checkmate in one, starting with a queen take on f7. Your repertoire plays g6 instead, because it protects your pawn on f7 and attacks their queen on h5."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "trap-why",
+   "covers": "uses the tag",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is praise or explain",
+     "pass": true,
+     "detail": "it was praise: Yes, that is the trap: Nf6 lets Qxf7# mate you on f7. Spotting that move and its mate is exactly what this card is about."
+    },
+    {
+     "check": "never says /\bnot (quite|really)\b/",
+     "pass": true
+    }
+   ],
+   "ms": 12165,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "praise",
+     "source": "coach",
+     "text": "Yes, that is the trap: Nf6 lets Qxf7# mate you on f7. Spotting that move and its mate is exactly what this card is about."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  }
+ ]
+}

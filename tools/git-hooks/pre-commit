@@ -1,0 +1,4 @@
+#!/bin/sh
+# Refuses a commit that contains the owner's data, course files or secrets (tools/check-staged.mjs).
+# git is pointed at this folder by `npm install` (the "prepare" script: core.hooksPath).
+exec node "$(git rev-parse --show-toplevel)/tools/check-staged.mjs"

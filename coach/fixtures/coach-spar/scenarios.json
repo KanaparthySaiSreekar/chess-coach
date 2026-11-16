@@ -1,0 +1,133 @@
+[
+  {
+    "id": "start-focus",
+    "about": "The game begins: one focus for the game, from the routine, and no move",
+    "covers": "uses the tag",
+    "side": "white",
+    "spar": { "bot": [] },
+    "steps": [{ "wait": 1000 }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "firstIs", "kinds": ["idea", "question"] },
+      { "type": "never", "pattern": "\\b(?:play|try|consider|go for|start with)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)" }
+    ]
+  },
+  {
+    "id": "turn-routine",
+    "about": "The owner's turn after the bot's reply: the routine question, made concrete, without a move",
+    "covers": "asks before telling",
+    "side": "white",
+    "spar": { "bot": ["e7e5"] },
+    "steps": [{ "gmove": "e2e4" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "question" },
+      { "type": "never", "pattern": "\\b(?:play|try|consider|go for)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)" }
+    ]
+  },
+  {
+    "id": "every-move",
+    "about": "Every-move verbosity with the overlay off: the coach still voices the routine before the owner's move",
+    "covers": "asks before telling",
+    "side": "white",
+    "settings": { "coach.verbosity.spar": "every_move", "play.routineOverlay": "off" },
+    "spar": { "bot": ["e7e5", "b8c6"] },
+    "steps": [{ "gmove": "e2e4" }, { "gmove": "g1f3" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "question" },
+      { "type": "never", "pattern": "\\b(?:play|try|consider|go for)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)" }
+    ]
+  },
+  {
+    "id": "silent",
+    "about": "Silent: nothing at all during the game unless asked",
+    "covers": "quiet when it should be",
+    "side": "white",
+    "settings": { "coach.verbosity.spar": "silent" },
+    "spar": { "bot": ["e7e5", "b8c6"] },
+    "steps": [{ "gmove": "e2e4" }, { "gmove": "g1f3" }],
+    "checks": [{ "type": "silent" }]
+  },
+  {
+    "id": "blunder-asks",
+    "about": "The owner gives the queen away (2.Qg4 Bxg4): the coach asks what was missed, without explaining",
+    "covers": "uses the tag",
+    "side": "white",
+    "settings": { "play.routineOverlay": "off" },
+    "spar": { "bot": ["d7d5", "c8g4"] },
+    "steps": [{ "gmove": "e2e4" }, { "gmove": "d1g4" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "question" },
+      { "type": "never", "pattern": "\\b(?:play|try|consider|go for)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)" }
+    ]
+  },
+  {
+    "id": "ask-question",
+    "about": "\"Ask the coach\" on the owner's turn: a question about the routine",
+    "covers": "asks before telling",
+    "side": "white",
+    "settings": { "play.routineOverlay": "off" },
+    "spar": { "bot": ["e7e5"] },
+    "steps": [{ "gmove": "e2e4" }, { "game": "ask" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "question" },
+      { "type": "never", "pattern": "\\b(?:play|try|consider|go for)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)" }
+    ]
+  },
+  {
+    "id": "ask-twice",
+    "about": "Asked twice: a question, then a nudge, and still no move",
+    "covers": "stop rules",
+    "side": "white",
+    "settings": { "play.routineOverlay": "off" },
+    "spar": { "bot": ["e7e5"] },
+    "steps": [{ "gmove": "e2e4" }, { "game": "ask" }, { "game": "ask" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "nudge" },
+      { "type": "never", "pattern": "\\b(?:play|try|consider|go for)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)" }
+    ]
+  },
+  {
+    "id": "never-suggests",
+    "about": "Several moves at every-move verbosity and a request for help: never a move suggested unasked, never the bot's mind read",
+    "covers": "hard rules",
+    "side": "white",
+    "settings": { "coach.verbosity.spar": "every_move" },
+    "spar": { "bot": ["e7e5", "b8c6", "f8c5"] },
+    "steps": [{ "gmove": "e2e4" }, { "gmove": "g1f3" }, { "gmove": "f1c4" }, { "game": "ask" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "never", "pattern": "\\b(?:play|try|consider|go for|you should|you could)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O|castl)" },
+      { "type": "never", "pattern": "\\b(?:bot|it|they) (?:thinks?|wants?|is planning|plans)\\b" }
+    ]
+  },
+  {
+    "id": "end-summary",
+    "about": "The game ends (resigned): one line, then the review",
+    "covers": "explains from facts",
+    "side": "white",
+    "settings": { "play.routineOverlay": "off" },
+    "spar": { "bot": ["e7e5"] },
+    "steps": [{ "gmove": "e2e4" }, { "game": "resign" }],
+    "checks": [
+      { "type": "someKind", "kind": "summary" },
+      { "type": "says", "pattern": "review|go through" }
+    ]
+  },
+  {
+    "id": "mini-goal",
+    "about": "A mini-game (queen against pawns): the focus is its goal",
+    "covers": "uses the tag",
+    "side": "white",
+    "spar": { "bot": [], "mini": "queen-vs-pawns" },
+    "steps": [{ "wait": 1000 }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "says", "pattern": "pawn" }
+    ]
+  }
+]

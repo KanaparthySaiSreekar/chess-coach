@@ -1,0 +1,30 @@
+[Event "Black repertoire: Against 1.e4"]
+[StudyName "Black repertoire"]
+[ChapterName "Against 1.e4"]
+[Orientation "black"]
+
+1. e4 e5 { Share the centre. } 2. Nf3 Nc6 3. Bc4 (3. Bb5 a6) (3. d4 exd4) 3... Bc5 *
+
+
+[Event "Black repertoire: Against 1.d4"]
+[StudyName "Black repertoire"]
+[ChapterName "Against 1.d4"]
+[Orientation "black"]
+
+1. d4 d5 2. c4 (2. Nf3 Nf6) 2... e6 *
+
+
+[Event "Black repertoire: White's notes"]
+[StudyName "Black repertoire"]
+[ChapterName "White's notes"]
+[Orientation "white"]
+
+1. e4 e5 *
+
+
+[Event "Black repertoire: Again"]
+[StudyName "Black repertoire"]
+[ChapterName "Again"]
+[Orientation "black"]
+
+1. e4 e5 2. Nf3 Nc6 *

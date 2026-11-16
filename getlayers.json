@@ -1,0 +1,30 @@
+{
+  "note": "What was taken from GetLayers for the UI revamp (feature I16, decision D44). GetLayers is a library for immersive marketing sites; this is an app, so one Style was committed for its surface and motion rules and nothing was materialized as a scene, section or video.",
+  "mode": "enhance-project",
+  "date": "2026-11-14",
+  "style": {
+    "id": "relay-style",
+    "title": "Relay",
+    "preview": "https://www.getlayers.ai/?layer=relay",
+    "kept": [
+      "glass (backdrop blur) only on what floats over the page: menus and the toast",
+      "ink as one colour at three strengths; structure drawn with hairlines at about a tenth",
+      "pill-shaped toolbar controls and rounded plates",
+      "motion tokens: 150 ms and 250 ms on cubic-bezier(0.2, 0, 0, 1), for colour, opacity and small moves only",
+      "Inter for everything the interface says",
+      "one serif moment: here it is the coach's voice (Newsreader), not a single word in a headline"
+    ],
+    "changed": [
+      "the lime accent: it would clash with the green 'best move' label and the board's own colours; blue (#0071e3) is the one 'press here' colour instead",
+      "pure black ground: Relay is black so a particle stream reads through its glass; there is no stream here, so the ground is graphite (#161618) and the panes are opaque",
+      "Fragment Mono for numbers: tabular figures of the interface face are used instead",
+      "spring and scroll-driven reveals: this is a tool used for hours, so nothing moves unless the owner did something"
+    ]
+  },
+  "considered": {
+    "styles": ["ridgeline-style", "relay-style"],
+    "fonts": ["inter", "lora", "baskervville"],
+    "notUsed": "3D scenes, gradients, video backgrounds and the tool effects (orb, shader backgrounds): a shader running beside Stockfish costs heat on this laptop, and ambient motion next to a board the owner is thinking over is a distraction. Open as TRACKER Q25 if one is wanted on the start screen or the bot lobby."
+  },
+  "tokens": "packages/web/src/styles.css (the :root block)"
+}

@@ -1,0 +1,3397 @@
+[
+ {
+  "key": "scholar",
+  "about": "Scholar's Mate threat: Black (the owner) to move",
+  "ms": 588,
+  "packet": {
+   "id": "P1",
+   "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+   "turn": "black",
+   "you": "black",
+   "moveNumber": 3,
+   "inCheck": false,
+   "material": {
+    "white": 39,
+    "black": 39,
+    "inWords": "Material is level."
+   },
+   "lastMove": {
+    "san": "Qh5",
+    "by": "opponent"
+   },
+   "pieces": {
+    "yours": [
+     {
+      "square": "e8",
+      "role": "king",
+      "color": "black"
+     },
+     {
+      "square": "d8",
+      "role": "queen",
+      "color": "black"
+     },
+     {
+      "square": "a8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "h8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "c6",
+      "role": "knight",
+      "color": "black"
+     },
+     {
+      "square": "c8",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "f8",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "g8",
+      "role": "knight",
+      "color": "black"
+     },
+     {
+      "square": "a7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "b7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "c7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "d7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "e5",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "f7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "g7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "h7",
+      "role": "pawn",
+      "color": "black"
+     }
+    ],
+    "theirs": [
+     {
+      "square": "e1",
+      "role": "king",
+      "color": "white"
+     },
+     {
+      "square": "h5",
+      "role": "queen",
+      "color": "white"
+     },
+     {
+      "square": "a1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "h1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "b1",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "c1",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "c4",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "g1",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "a2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "b2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "c2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "d2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "e4",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "f2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "g2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "h2",
+      "role": "pawn",
+      "color": "white"
+     }
+    ]
+   },
+   "hanging": {
+    "mine": [
+     {
+      "square": "f7",
+      "role": "pawn",
+      "color": "black"
+     }
+    ],
+    "theirs": []
+   },
+   "cct": {
+    "mine": {
+     "checks": [],
+     "captures": [],
+     "threats": [
+      "Nb4",
+      "Nd4",
+      "Na5",
+      "g6",
+      "Nf6"
+     ],
+     "mates": []
+    },
+    "theirs": {
+     "checks": [
+      "Bxf7+",
+      "Qxe5+"
+     ],
+     "captures": [
+      "Bxf7+",
+      "Qxe5+",
+      "Qxf7#",
+      "Qxh7"
+     ],
+     "threats": [
+      "Nf3"
+     ],
+     "mates": [
+      "Qxf7#"
+     ]
+    }
+   },
+   "engine": {
+    "best": [
+     {
+      "san": "g6",
+      "line": [
+       "g6",
+       "Qd1",
+       "Nge7",
+       "Nc3"
+      ],
+      "verdict": "about equal",
+      "outcome": "no material changes hands",
+      "win": 52.39152574834706
+     },
+     {
+      "san": "Qe7",
+      "line": [
+       "Qe7",
+       "Qd1",
+       "Nf6",
+       "Nc3"
+      ],
+      "verdict": "about equal",
+      "outcome": "no material changes hands",
+      "win": 51.380429102931544
+     },
+     {
+      "san": "Nh6",
+      "line": [
+       "Nh6",
+       "d3",
+       "g6",
+       "Qg5"
+      ],
+      "verdict": "about equal",
+      "outcome": "no material changes hands",
+      "win": 47.24124461074959
+     }
+    ]
+   },
+   "facts": [
+    {
+     "id": "P1.F1",
+     "type": "material",
+     "text": "Material is level.",
+     "data": {
+      "white": 39,
+      "black": 39
+     }
+    },
+    {
+     "id": "P1.F2",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pf7} is not defended well enough: {m:Bxf7+@P1.F2} wins material for them in the trade on {sq:f7} if you leave it there.",
+     "data": {
+      "baseFen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 3 3",
+      "line": [
+       "Bxf7+"
+      ],
+      "piece": {
+       "square": "f7",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "c4",
+        "role": "bishop",
+        "color": "white"
+       },
+       {
+        "square": "h5",
+        "role": "queen",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "e8",
+        "role": "king",
+        "color": "black"
+       }
+      ],
+      "net": 1,
+      "role": "pawn",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P1.F3",
+     "type": "attack",
+     "text": "Your pawn {pc:Pe5} is attacked by their queen {pc:Qh5}; it is defended by your knight {pc:Nc6}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 3 3",
+      "line": [
+       "Qxe5+"
+      ],
+      "piece": {
+       "square": "e5",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "h5",
+        "role": "queen",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "c6",
+        "role": "knight",
+        "color": "black"
+       }
+      ],
+      "net": -8,
+      "role": "pawn",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P1.F4",
+     "type": "attack",
+     "text": "Your pawn {pc:Ph7} is attacked by their queen {pc:Qh5}; it is defended by your rook {pc:Rh8}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 3 3",
+      "line": [
+       "Qxh7"
+      ],
+      "piece": {
+       "square": "h7",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "h5",
+        "role": "queen",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "h8",
+        "role": "rook",
+        "color": "black"
+       }
+      ],
+      "net": -8,
+      "role": "pawn",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P1.F5",
+     "type": "pin",
+     "text": "Your pawn {pc:Pf7} is pinned by their queen {pc:Qh5}: it cannot move away without exposing the king.",
+     "data": {
+      "pinned": {
+       "square": "f7",
+       "role": "pawn",
+       "color": "black"
+      },
+      "by": {
+       "square": "h5",
+       "role": "queen",
+       "color": "white"
+      }
+     }
+    },
+    {
+     "id": "P1.F6",
+     "type": "best_move",
+     "text": "Your strongest move is {m:g6}: no material changes hands. After it you are about equal.",
+     "data": {
+      "baseFen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+      "line": [
+       "g6"
+      ],
+      "move": "g6",
+      "delta": 0,
+      "side": "black",
+      "rank": 1
+     }
+    },
+    {
+     "id": "P1.F7",
+     "type": "good_move",
+     "text": "{m:Qe7} is also a good move for you: no material changes hands.",
+     "data": {
+      "baseFen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+      "line": [
+       "Qe7"
+      ],
+      "move": "Qe7",
+      "delta": 0,
+      "side": "black",
+      "rank": 2
+     }
+    },
+    {
+     "id": "P1.F8",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:Qxf7#@P1.F8} and it is checkmate in 1.",
+     "data": {
+      "baseFen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 3 3",
+      "line": [
+       "Qxf7#"
+      ],
+      "move": "Qxf7#",
+      "mateIn": 1,
+      "delta": 99,
+      "side": "white"
+     }
+    }
+   ],
+   "findable": {
+    "move": "g6",
+    "reason": "simple"
+   },
+   "threat": {
+    "move": "Qxf7#",
+    "line": [
+     "Qxf7#"
+    ],
+    "text": "Their threat: if you do nothing about it, they play {m:Qxf7#@P1.F8} and it is checkmate in 1.",
+    "factId": "P1.F8",
+    "mateIn": 1,
+    "delta": 99
+   }
+  }
+ },
+ {
+  "key": "legal",
+  "about": "Legal's trap: White (the owner) to move, the knight can take on e5",
+  "ms": 299,
+  "packet": {
+   "id": "P2",
+   "fen": "rn1qkbnr/ppp2p1p/3p2p1/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 0 5",
+   "turn": "white",
+   "you": "white",
+   "moveNumber": 5,
+   "inCheck": false,
+   "material": {
+    "white": 39,
+    "black": 39,
+    "inWords": "Material is level."
+   },
+   "lastMove": {
+    "san": "g6",
+    "by": "opponent"
+   },
+   "pieces": {
+    "yours": [
+     {
+      "square": "e1",
+      "role": "king",
+      "color": "white"
+     },
+     {
+      "square": "d1",
+      "role": "queen",
+      "color": "white"
+     },
+     {
+      "square": "a1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "h1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "c1",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "c3",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "c4",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "f3",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "a2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "b2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "c2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "d2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "e4",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "f2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "g2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "h2",
+      "role": "pawn",
+      "color": "white"
+     }
+    ],
+    "theirs": [
+     {
+      "square": "e8",
+      "role": "king",
+      "color": "black"
+     },
+     {
+      "square": "d8",
+      "role": "queen",
+      "color": "black"
+     },
+     {
+      "square": "a8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "h8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "b8",
+      "role": "knight",
+      "color": "black"
+     },
+     {
+      "square": "f8",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "g4",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "g8",
+      "role": "knight",
+      "color": "black"
+     },
+     {
+      "square": "a7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "b7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "c7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "d6",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "e5",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "f7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "g6",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "h7",
+      "role": "pawn",
+      "color": "black"
+     }
+    ]
+   },
+   "hanging": {
+    "mine": [],
+    "theirs": []
+   },
+   "cct": {
+    "mine": {
+     "checks": [
+      "Bb5+",
+      "Bxf7+"
+     ],
+     "captures": [
+      "Nxe5",
+      "Bxf7+"
+     ],
+     "threats": [
+      "d4",
+      "h3",
+      "Ng1",
+      "Bd5"
+     ],
+     "mates": []
+    },
+    "theirs": {
+     "checks": [],
+     "captures": [
+      "Bxf3"
+     ],
+     "threats": [
+      "Be6"
+     ],
+     "mates": []
+    }
+   },
+   "engine": {
+    "best": [
+     {
+      "san": "Nxe5",
+      "line": [
+       "Nxe5",
+       "dxe5",
+       "Qxg4",
+       "Nc6"
+      ],
+      "verdict": "a bit better",
+      "outcome": "you win a bishop and a pawn for a knight",
+      "win": 69.36887774077353
+     },
+     {
+      "san": "d4",
+      "line": [
+       "d4",
+       "Nc6",
+       "dxe5",
+       "Bxf3"
+      ],
+      "verdict": "a bit better",
+      "outcome": "no material changes hands",
+      "win": 59.7241050790976
+     },
+     {
+      "san": "h3",
+      "line": [
+       "h3",
+       "Bxf3",
+       "Qxf3",
+       "Qd7"
+      ],
+      "verdict": "a bit better",
+      "outcome": "an even trade (a knight for a bishop)",
+      "win": 58.29922971166973
+     }
+    ]
+   },
+   "facts": [
+    {
+     "id": "P2.F1",
+     "type": "material",
+     "text": "Material is level.",
+     "data": {
+      "white": 39,
+      "black": 39
+     }
+    },
+    {
+     "id": "P2.F2",
+     "type": "attack",
+     "text": "Their pawn {pc:Pe5} is attacked by your knight {pc:Nf3}; it is defended by their pawn {pc:Pd6}, so taking it does not win material.",
+     "data": {
+      "baseFen": "rn1qkbnr/ppp2p1p/3p2p1/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 0 5",
+      "line": [
+       "Nxe5"
+      ],
+      "piece": {
+       "square": "e5",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "f3",
+        "role": "knight",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "d6",
+        "role": "pawn",
+        "color": "black"
+       }
+      ],
+      "net": -2,
+      "role": "pawn",
+      "side": "theirs"
+     }
+    },
+    {
+     "id": "P2.F3",
+     "type": "attack",
+     "text": "Their pawn {pc:Pf7} is attacked by your bishop {pc:Bc4}; it is defended by their king {pc:Ke8}, so taking it does not win material.",
+     "data": {
+      "baseFen": "rn1qkbnr/ppp2p1p/3p2p1/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 0 5",
+      "line": [
+       "Bxf7+"
+      ],
+      "piece": {
+       "square": "f7",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "c4",
+        "role": "bishop",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "e8",
+        "role": "king",
+        "color": "black"
+       }
+      ],
+      "net": -2,
+      "role": "pawn",
+      "side": "theirs"
+     }
+    },
+    {
+     "id": "P2.F4",
+     "type": "attack",
+     "text": "Your knight {pc:Nf3} is attacked by their bishop {pc:Bg4}; it is defended by your pawn {pc:Pg2} and your queen {pc:Qd1}, so taking it does not win material.",
+     "data": {
+      "baseFen": "rn1qkbnr/ppp2p1p/3p2p1/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R b KQkq - 0 5",
+      "line": [
+       "Bxf3"
+      ],
+      "piece": {
+       "square": "f3",
+       "role": "knight",
+       "color": "white"
+      },
+      "attackers": [
+       {
+        "square": "g4",
+        "role": "bishop",
+        "color": "black"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "g2",
+        "role": "pawn",
+        "color": "white"
+       },
+       {
+        "square": "d1",
+        "role": "queen",
+        "color": "white"
+       }
+      ],
+      "net": 0,
+      "role": "knight",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P2.F5",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Nxe5}: you win a bishop and a pawn for a knight (the line goes {m:Nxe5} {m:dxe5@P2.F5} {m:Qxg4@P2.F5}). After it you are a bit better.",
+     "data": {
+      "baseFen": "rn1qkbnr/ppp2p1p/3p2p1/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 0 5",
+      "line": [
+       "Nxe5",
+       "dxe5",
+       "Qxg4"
+      ],
+      "move": "Nxe5",
+      "delta": 1,
+      "side": "white",
+      "rank": 1
+     }
+    }
+   ],
+   "findable": {
+    "move": "Nxe5",
+    "reason": "forcing"
+   }
+  }
+ },
+ {
+  "key": "queenfork",
+  "about": "Black queen attacks the knight on e5 and the pawn on e4: White (the owner) to move",
+  "ms": 308,
+  "packet": {
+   "id": "P3",
+   "fen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+   "turn": "white",
+   "you": "white",
+   "moveNumber": 6,
+   "inCheck": false,
+   "material": {
+    "white": 36,
+    "black": 35,
+    "inWords": "You have a knight and a pawn for a bishop: you are ahead in material."
+   },
+   "lastMove": {
+    "san": "Qd4",
+    "by": "opponent"
+   },
+   "pieces": {
+    "yours": [
+     {
+      "square": "e1",
+      "role": "king",
+      "color": "white"
+     },
+     {
+      "square": "d1",
+      "role": "queen",
+      "color": "white"
+     },
+     {
+      "square": "a1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "h1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "b1",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "c1",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "e5",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "a2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "b2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "c2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "d2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "e4",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "f2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "g2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "h2",
+      "role": "pawn",
+      "color": "white"
+     }
+    ],
+    "theirs": [
+     {
+      "square": "e8",
+      "role": "king",
+      "color": "black"
+     },
+     {
+      "square": "d4",
+      "role": "queen",
+      "color": "black"
+     },
+     {
+      "square": "a8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "h8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "c8",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "f8",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "g8",
+      "role": "knight",
+      "color": "black"
+     },
+     {
+      "square": "a6",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "b7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "c6",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "c7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "f7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "g7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "h7",
+      "role": "pawn",
+      "color": "black"
+     }
+    ]
+   },
+   "hanging": {
+    "mine": [
+     {
+      "square": "e5",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "e4",
+      "role": "pawn",
+      "color": "white"
+     }
+    ],
+    "theirs": []
+   },
+   "cct": {
+    "mine": {
+     "checks": [],
+     "captures": [
+      "Nxc6",
+      "Nxf7"
+     ],
+     "threats": [
+      "Qf3",
+      "Qh5",
+      "c3",
+      "Nf3"
+     ],
+     "mates": []
+    },
+    "theirs": {
+     "checks": [
+      "Qxd2+",
+      "Qxf2+",
+      "Qe3+",
+      "Qxe4+"
+     ],
+     "captures": [
+      "Qxe5",
+      "Qxb2",
+      "Qxd2+",
+      "Qxf2+",
+      "Qxe4+"
+     ],
+     "threats": [
+      "Bc5"
+     ],
+     "mates": []
+    }
+   },
+   "engine": {
+    "best": [
+     {
+      "san": "Ng4",
+      "line": [
+       "Ng4",
+       "Qxe4+",
+       "Ne3",
+       "Be6"
+      ],
+      "verdict": "about equal",
+      "outcome": "you lose a pawn",
+      "win": 45.775702105393144
+     },
+     {
+      "san": "Nf3",
+      "line": [
+       "Nf3",
+       "Qxe4+",
+       "Qe2",
+       "Qxe2+"
+      ],
+      "verdict": "about equal",
+      "outcome": "you lose a pawn",
+      "win": 43.95429240174578
+     },
+     {
+      "san": "Nd3",
+      "line": [
+       "Nd3",
+       "Qxe4+",
+       "Qe2",
+       "Bf5"
+      ],
+      "verdict": "a bit worse",
+      "outcome": "you lose a pawn",
+      "win": 41.34315034157369
+     }
+    ]
+   },
+   "facts": [
+    {
+     "id": "P3.F1",
+     "type": "material",
+     "text": "You have a knight and a pawn for a bishop: you are ahead in material.",
+     "data": {
+      "white": 36,
+      "black": 35
+     }
+    },
+    {
+     "id": "P3.F2",
+     "type": "attack",
+     "text": "Their pawn {pc:Pc6} is attacked by your knight {pc:Ne5}; it is defended by their pawn {pc:Pb7}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+      "line": [
+       "Nxc6"
+      ],
+      "piece": {
+       "square": "c6",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "e5",
+        "role": "knight",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "b7",
+        "role": "pawn",
+        "color": "black"
+       }
+      ],
+      "net": -2,
+      "role": "pawn",
+      "side": "theirs"
+     }
+    },
+    {
+     "id": "P3.F3",
+     "type": "attack",
+     "text": "Their pawn {pc:Pf7} is attacked by your knight {pc:Ne5}; it is defended by their king {pc:Ke8}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+      "line": [
+       "Nxf7"
+      ],
+      "piece": {
+       "square": "f7",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "e5",
+        "role": "knight",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "e8",
+        "role": "king",
+        "color": "black"
+       }
+      ],
+      "net": -2,
+      "role": "pawn",
+      "side": "theirs"
+     }
+    },
+    {
+     "id": "P3.F4",
+     "type": "hangs",
+     "text": "Your knight {pc:Ne5} is hanging: if you leave it there, their queen {pc:Qd4} can take it with {m:Qxe5@P3.F4} and nothing takes back.",
+     "data": {
+      "baseFen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R b KQkq - 1 6",
+      "line": [
+       "Qxe5"
+      ],
+      "piece": {
+       "square": "e5",
+       "role": "knight",
+       "color": "white"
+      },
+      "attackers": [
+       {
+        "square": "d4",
+        "role": "queen",
+        "color": "black"
+       }
+      ],
+      "defenders": [],
+      "net": 3,
+      "role": "knight",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P3.F5",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pe4} is hanging: if you leave it there, their queen {pc:Qd4} can take it with {m:Qxe4+@P3.F5} and nothing takes back.",
+     "data": {
+      "baseFen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R b KQkq - 1 6",
+      "line": [
+       "Qxe4+"
+      ],
+      "piece": {
+       "square": "e4",
+       "role": "pawn",
+       "color": "white"
+      },
+      "attackers": [
+       {
+        "square": "d4",
+        "role": "queen",
+        "color": "black"
+       }
+      ],
+      "defenders": [],
+      "net": 1,
+      "role": "pawn",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P3.F6",
+     "type": "attack",
+     "text": "Your pawn {pc:Pb2} is attacked by their queen {pc:Qd4}; it is defended by your bishop {pc:Bc1}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R b KQkq - 1 6",
+      "line": [
+       "Qxb2"
+      ],
+      "piece": {
+       "square": "b2",
+       "role": "pawn",
+       "color": "white"
+      },
+      "attackers": [
+       {
+        "square": "d4",
+        "role": "queen",
+        "color": "black"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "c1",
+        "role": "bishop",
+        "color": "white"
+       }
+      ],
+      "net": -8,
+      "role": "pawn",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P3.F7",
+     "type": "attack",
+     "text": "Your pawn {pc:Pd2} is attacked by their queen {pc:Qd4}; it is defended by your knight {pc:Nb1}, your bishop {pc:Bc1}, your queen {pc:Qd1} and your king {pc:Ke1}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R b KQkq - 1 6",
+      "line": [
+       "Qxd2+"
+      ],
+      "piece": {
+       "square": "d2",
+       "role": "pawn",
+       "color": "white"
+      },
+      "attackers": [
+       {
+        "square": "d4",
+        "role": "queen",
+        "color": "black"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "b1",
+        "role": "knight",
+        "color": "white"
+       },
+       {
+        "square": "c1",
+        "role": "bishop",
+        "color": "white"
+       },
+       {
+        "square": "d1",
+        "role": "queen",
+        "color": "white"
+       },
+       {
+        "square": "e1",
+        "role": "king",
+        "color": "white"
+       }
+      ],
+      "net": -8,
+      "role": "pawn",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P3.F8",
+     "type": "attack",
+     "text": "Your pawn {pc:Pf2} is attacked by their queen {pc:Qd4}; it is defended by your king {pc:Ke1}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R b KQkq - 1 6",
+      "line": [
+       "Qxf2+"
+      ],
+      "piece": {
+       "square": "f2",
+       "role": "pawn",
+       "color": "white"
+      },
+      "attackers": [
+       {
+        "square": "d4",
+        "role": "queen",
+        "color": "black"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "e1",
+        "role": "king",
+        "color": "white"
+       }
+      ],
+      "net": -8,
+      "role": "pawn",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P3.F9",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Ng4}: you lose a pawn (the line goes {m:Ng4} {m:Qxe4+@P3.F9} {m:Ne3@P3.F9}). After it you are about equal.",
+     "data": {
+      "baseFen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+      "line": [
+       "Ng4",
+       "Qxe4+",
+       "Ne3"
+      ],
+      "move": "Ng4",
+      "delta": -1,
+      "side": "white",
+      "rank": 1
+     }
+    },
+    {
+     "id": "P3.F10",
+     "type": "good_move",
+     "text": "{m:Nf3} is also a good move for you: you lose a pawn.",
+     "data": {
+      "baseFen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+      "line": [
+       "Nf3",
+       "Qxe4+",
+       "Qe2",
+       "Qxe2+",
+       "Kxe2"
+      ],
+      "move": "Nf3",
+      "delta": -1,
+      "side": "white",
+      "rank": 2
+     }
+    },
+    {
+     "id": "P3.F11",
+     "type": "good_move",
+     "text": "{m:Nd3} is also a good move for you: you lose a pawn.",
+     "data": {
+      "baseFen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+      "line": [
+       "Nd3",
+       "Qxe4+",
+       "Qe2"
+      ],
+      "move": "Nd3",
+      "delta": -1,
+      "side": "white",
+      "rank": 3
+     }
+    },
+    {
+     "id": "P3.F12",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:Qxe5@P3.F12} and you lose a knight.",
+     "data": {
+      "baseFen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R b KQkq - 1 6",
+      "line": [
+       "Qxe5"
+      ],
+      "move": "Qxe5",
+      "delta": 3,
+      "side": "black"
+     }
+    }
+   ],
+   "findable": {
+    "move": "Ng4",
+    "reason": "simple"
+   },
+   "threat": {
+    "move": "Qxe5",
+    "line": [
+     "Qxe5"
+    ],
+    "text": "Their threat: if you do nothing about it, they play {m:Qxe5@P3.F12} and you lose a knight.",
+    "factId": "P3.F12",
+    "delta": 3
+   }
+  }
+ },
+ {
+  "key": "pin",
+  "about": "Ruy Lopez: the knight on c6 is pinned: White to move, the owner is Black",
+  "ms": 493,
+  "packet": {
+   "id": "P4",
+   "fen": "r1bqkbnr/ppp2ppp/2np4/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4",
+   "turn": "white",
+   "you": "black",
+   "moveNumber": 4,
+   "inCheck": false,
+   "material": {
+    "white": 39,
+    "black": 39,
+    "inWords": "Material is level."
+   },
+   "lastMove": {
+    "san": "d6",
+    "by": "owner"
+   },
+   "pieces": {
+    "yours": [
+     {
+      "square": "e8",
+      "role": "king",
+      "color": "black"
+     },
+     {
+      "square": "d8",
+      "role": "queen",
+      "color": "black"
+     },
+     {
+      "square": "a8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "h8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "c6",
+      "role": "knight",
+      "color": "black"
+     },
+     {
+      "square": "c8",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "f8",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "g8",
+      "role": "knight",
+      "color": "black"
+     },
+     {
+      "square": "a7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "b7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "c7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "d6",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "e5",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "f7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "g7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "h7",
+      "role": "pawn",
+      "color": "black"
+     }
+    ],
+    "theirs": [
+     {
+      "square": "e1",
+      "role": "king",
+      "color": "white"
+     },
+     {
+      "square": "d1",
+      "role": "queen",
+      "color": "white"
+     },
+     {
+      "square": "a1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "h1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "b1",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "b5",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "c1",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "f3",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "a2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "b2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "c2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "d2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "e4",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "f2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "g2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "h2",
+      "role": "pawn",
+      "color": "white"
+     }
+    ]
+   },
+   "hanging": {
+    "mine": [],
+    "theirs": []
+   },
+   "cct": {
+    "mine": {
+     "checks": [],
+     "captures": [],
+     "threats": [
+      "d5",
+      "a6",
+      "f5",
+      "Nf6"
+     ],
+     "mates": []
+    },
+    "theirs": {
+     "checks": [
+      "Bxc6+"
+     ],
+     "captures": [
+      "Bxc6+",
+      "Nxe5"
+     ],
+     "threats": [
+      "d4"
+     ],
+     "mates": []
+    }
+   },
+   "engine": {
+    "best": [
+     {
+      "san": "Nc3",
+      "line": [
+       "Nc3",
+       "Be7",
+       "d4",
+       "exd4"
+      ],
+      "verdict": "about equal",
+      "outcome": "no material changes hands",
+      "win": 55.50076484124536
+     },
+     {
+      "san": "d4",
+      "line": [
+       "d4",
+       "exd4",
+       "Nxd4",
+       "Bd7"
+      ],
+      "verdict": "about equal",
+      "outcome": "pieces are traded evenly",
+      "win": 55.13672504375508
+     },
+     {
+      "san": "O-O",
+      "line": [
+       "O-O",
+       "Nf6",
+       "d4",
+       "Bd7"
+      ],
+      "verdict": "about equal",
+      "outcome": "no material changes hands",
+      "win": 55.04562746820834
+     }
+    ]
+   },
+   "opening": {
+    "eco": "C62",
+    "name": "Ruy Lopez: Steinitz Defense"
+   },
+   "facts": [
+    {
+     "id": "P4.F1",
+     "type": "material",
+     "text": "Material is level.",
+     "data": {
+      "white": 39,
+      "black": 39
+     }
+    },
+    {
+     "id": "P4.F2",
+     "type": "opening",
+     "text": "This position is from the opening called Ruy Lopez: Steinitz Defense.",
+     "data": {
+      "eco": "C62",
+      "name": "Ruy Lopez: Steinitz Defense"
+     }
+    },
+    {
+     "id": "P4.F3",
+     "type": "attack",
+     "text": "Your knight {pc:Nc6} is attacked by their bishop {pc:Bb5}; it is defended by your pawn {pc:Pb7}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1bqkbnr/ppp2ppp/2np4/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4",
+      "line": [
+       "Bxc6+"
+      ],
+      "piece": {
+       "square": "c6",
+       "role": "knight",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "b5",
+        "role": "bishop",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "b7",
+        "role": "pawn",
+        "color": "black"
+       }
+      ],
+      "net": 0,
+      "role": "knight",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P4.F4",
+     "type": "attack",
+     "text": "Your pawn {pc:Pe5} is attacked by their knight {pc:Nf3}; it is defended by your pawn {pc:Pd6} and your knight {pc:Nc6}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1bqkbnr/ppp2ppp/2np4/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4",
+      "line": [
+       "Nxe5"
+      ],
+      "piece": {
+       "square": "e5",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "f3",
+        "role": "knight",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "d6",
+        "role": "pawn",
+        "color": "black"
+       },
+       {
+        "square": "c6",
+        "role": "knight",
+        "color": "black"
+       }
+      ],
+      "net": -2,
+      "role": "pawn",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P4.F5",
+     "type": "pin",
+     "text": "Your knight {pc:Nc6} is pinned by their bishop {pc:Bb5}: it cannot move away without exposing the king.",
+     "data": {
+      "pinned": {
+       "square": "c6",
+       "role": "knight",
+       "color": "black"
+      },
+      "by": {
+       "square": "b5",
+       "role": "bishop",
+       "color": "white"
+      }
+     }
+    },
+    {
+     "id": "P4.F6",
+     "type": "best_move",
+     "text": "Their strongest move is {m:Nc3}: no material changes hands. After it you are about equal.",
+     "data": {
+      "baseFen": "r1bqkbnr/ppp2ppp/2np4/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4",
+      "line": [
+       "Nc3"
+      ],
+      "move": "Nc3",
+      "delta": 0,
+      "side": "white",
+      "rank": 1
+     }
+    },
+    {
+     "id": "P4.F7",
+     "type": "good_move",
+     "text": "{m:d4} is also a good move for them: pieces are traded evenly.",
+     "data": {
+      "baseFen": "r1bqkbnr/ppp2ppp/2np4/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4",
+      "line": [
+       "d4",
+       "exd4",
+       "Nxd4"
+      ],
+      "move": "d4",
+      "delta": 0,
+      "side": "white",
+      "rank": 2
+     }
+    },
+    {
+     "id": "P4.F8",
+     "type": "good_move",
+     "text": "{m:O-O} is also a good move for them: no material changes hands.",
+     "data": {
+      "baseFen": "r1bqkbnr/ppp2ppp/2np4/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4",
+      "line": [
+       "O-O"
+      ],
+      "move": "O-O",
+      "delta": 0,
+      "side": "white",
+      "rank": 3
+     }
+    },
+    {
+     "id": "P4.F9",
+     "type": "graded",
+     "text": "Your last move {m:d6@P4.F9} was a good, safe move: no material changes hands.",
+     "data": {
+      "baseFen": "r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3",
+      "line": [
+       "d6"
+      ],
+      "move": "d6",
+      "class": "ok",
+      "delta": 0,
+      "isBest": false
+     }
+    }
+   ],
+   "findable": {
+    "move": "Nc3",
+    "reason": "simple"
+   },
+   "graded": {
+    "san": "d6",
+    "cls": "ok",
+    "drop": 1.5565123808145316,
+    "live": true,
+    "isBest": false,
+    "best": "Nf6",
+    "line": [
+     "d6"
+    ],
+    "bestLine": [
+     "Nf6"
+    ],
+    "factId": "P4.F9"
+   }
+  }
+ },
+ {
+  "key": "italian",
+  "about": "A quiet Italian Game: White (the owner) to move",
+  "ms": 257,
+  "packet": {
+   "id": "P5",
+   "fen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+   "turn": "white",
+   "you": "white",
+   "moveNumber": 4,
+   "inCheck": false,
+   "material": {
+    "white": 39,
+    "black": 39,
+    "inWords": "Material is level."
+   },
+   "lastMove": {
+    "san": "Bc5",
+    "by": "opponent"
+   },
+   "pieces": {
+    "yours": [
+     {
+      "square": "e1",
+      "role": "king",
+      "color": "white"
+     },
+     {
+      "square": "d1",
+      "role": "queen",
+      "color": "white"
+     },
+     {
+      "square": "a1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "h1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "b1",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "c1",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "c4",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "f3",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "a2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "b2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "c2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "d2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "e4",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "f2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "g2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "h2",
+      "role": "pawn",
+      "color": "white"
+     }
+    ],
+    "theirs": [
+     {
+      "square": "e8",
+      "role": "king",
+      "color": "black"
+     },
+     {
+      "square": "d8",
+      "role": "queen",
+      "color": "black"
+     },
+     {
+      "square": "a8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "h8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "c5",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "c6",
+      "role": "knight",
+      "color": "black"
+     },
+     {
+      "square": "c8",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "g8",
+      "role": "knight",
+      "color": "black"
+     },
+     {
+      "square": "a7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "b7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "c7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "d7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "e5",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "f7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "g7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "h7",
+      "role": "pawn",
+      "color": "black"
+     }
+    ]
+   },
+   "hanging": {
+    "mine": [],
+    "theirs": []
+   },
+   "cct": {
+    "mine": {
+     "checks": [
+      "Bxf7+"
+     ],
+     "captures": [
+      "Nxe5",
+      "Bxf7+"
+     ],
+     "threats": [],
+     "mates": []
+    },
+    "theirs": {
+     "checks": [
+      "Bxf2+"
+     ],
+     "captures": [
+      "Bxf2+"
+     ],
+     "threats": [
+      "Na5",
+      "Nf6"
+     ],
+     "mates": []
+    }
+   },
+   "engine": {
+    "best": [
+     {
+      "san": "d3",
+      "line": [
+       "d3",
+       "Nf6",
+       "Nc3",
+       "d6"
+      ],
+      "verdict": "about equal",
+      "outcome": "no material changes hands",
+      "win": 51.84020844121936
+     },
+     {
+      "san": "O-O",
+      "line": [
+       "O-O",
+       "Nf6",
+       "d3",
+       "d6"
+      ],
+      "verdict": "about equal",
+      "outcome": "no material changes hands",
+      "win": 51.74827500461166
+     },
+     {
+      "san": "c3",
+      "line": [
+       "c3",
+       "Nf6",
+       "d3",
+       "d6"
+      ],
+      "verdict": "about equal",
+      "outcome": "no material changes hands",
+      "win": 51.65632973121441
+     }
+    ]
+   },
+   "opening": {
+    "eco": "C50",
+    "name": "Italian Game: Giuoco Piano"
+   },
+   "facts": [
+    {
+     "id": "P5.F1",
+     "type": "material",
+     "text": "Material is level.",
+     "data": {
+      "white": 39,
+      "black": 39
+     }
+    },
+    {
+     "id": "P5.F2",
+     "type": "opening",
+     "text": "This position is from the opening called Italian Game: Giuoco Piano.",
+     "data": {
+      "eco": "C50",
+      "name": "Italian Game: Giuoco Piano"
+     }
+    },
+    {
+     "id": "P5.F3",
+     "type": "attack",
+     "text": "Their pawn {pc:Pe5} is attacked by your knight {pc:Nf3}; it is defended by their knight {pc:Nc6}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "line": [
+       "Nxe5"
+      ],
+      "piece": {
+       "square": "e5",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "f3",
+        "role": "knight",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "c6",
+        "role": "knight",
+        "color": "black"
+       }
+      ],
+      "net": -2,
+      "role": "pawn",
+      "side": "theirs"
+     }
+    },
+    {
+     "id": "P5.F4",
+     "type": "attack",
+     "text": "Their pawn {pc:Pf7} is attacked by your bishop {pc:Bc4}; it is defended by their king {pc:Ke8}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "line": [
+       "Bxf7+"
+      ],
+      "piece": {
+       "square": "f7",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "c4",
+        "role": "bishop",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "e8",
+        "role": "king",
+        "color": "black"
+       }
+      ],
+      "net": -2,
+      "role": "pawn",
+      "side": "theirs"
+     }
+    },
+    {
+     "id": "P5.F5",
+     "type": "attack",
+     "text": "Your pawn {pc:Pf2} is attacked by their bishop {pc:Bc5}; it is defended by your king {pc:Ke1}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 4 4",
+      "line": [
+       "Bxf2+"
+      ],
+      "piece": {
+       "square": "f2",
+       "role": "pawn",
+       "color": "white"
+      },
+      "attackers": [
+       {
+        "square": "c5",
+        "role": "bishop",
+        "color": "black"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "e1",
+        "role": "king",
+        "color": "white"
+       }
+      ],
+      "net": -2,
+      "role": "pawn",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P5.F6",
+     "type": "best_move",
+     "text": "Your strongest move is {m:d3}: no material changes hands. After it you are about equal.",
+     "data": {
+      "baseFen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "line": [
+       "d3"
+      ],
+      "move": "d3",
+      "delta": 0,
+      "side": "white",
+      "rank": 1
+     }
+    },
+    {
+     "id": "P5.F7",
+     "type": "good_move",
+     "text": "{m:O-O} is also a good move for you: no material changes hands.",
+     "data": {
+      "baseFen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "line": [
+       "O-O"
+      ],
+      "move": "O-O",
+      "delta": 0,
+      "side": "white",
+      "rank": 2
+     }
+    },
+    {
+     "id": "P5.F8",
+     "type": "good_move",
+     "text": "{m:c3} is also a good move for you: no material changes hands.",
+     "data": {
+      "baseFen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "line": [
+       "c3"
+      ],
+      "move": "c3",
+      "delta": 0,
+      "side": "white",
+      "rank": 3
+     }
+    }
+   ],
+   "findable": {
+    "move": "d3",
+    "reason": "simple"
+   }
+  }
+ },
+ {
+  "key": "hung",
+  "about": "The owner (White) just put a knight where a pawn takes it",
+  "ms": 584,
+  "packet": {
+   "id": "P6",
+   "fen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 2 6",
+   "turn": "black",
+   "you": "white",
+   "moveNumber": 6,
+   "inCheck": false,
+   "material": {
+    "white": 39,
+    "black": 38,
+    "inWords": "You are up a pawn."
+   },
+   "lastMove": {
+    "san": "Ne6",
+    "by": "owner"
+   },
+   "pieces": {
+    "yours": [
+     {
+      "square": "e1",
+      "role": "king",
+      "color": "white"
+     },
+     {
+      "square": "d1",
+      "role": "queen",
+      "color": "white"
+     },
+     {
+      "square": "a1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "h1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "b1",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "c1",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "c4",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "e6",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "a2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "b2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "c2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "d2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "d5",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "f2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "g2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "h2",
+      "role": "pawn",
+      "color": "white"
+     }
+    ],
+    "theirs": [
+     {
+      "square": "e8",
+      "role": "king",
+      "color": "black"
+     },
+     {
+      "square": "d8",
+      "role": "queen",
+      "color": "black"
+     },
+     {
+      "square": "a8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "h8",
+      "role": "rook",
+      "color": "black"
+     },
+     {
+      "square": "a5",
+      "role": "knight",
+      "color": "black"
+     },
+     {
+      "square": "c8",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "f6",
+      "role": "knight",
+      "color": "black"
+     },
+     {
+      "square": "f8",
+      "role": "bishop",
+      "color": "black"
+     },
+     {
+      "square": "a7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "b7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "c7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "e5",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "f7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "g7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "h7",
+      "role": "pawn",
+      "color": "black"
+     }
+    ]
+   },
+   "hanging": {
+    "mine": [
+     {
+      "square": "c4",
+      "role": "bishop",
+      "color": "white"
+     },
+     {
+      "square": "e6",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "d5",
+      "role": "pawn",
+      "color": "white"
+     }
+    ],
+    "theirs": [
+     {
+      "square": "d8",
+      "role": "queen",
+      "color": "black"
+     }
+    ]
+   },
+   "cct": {
+    "mine": {
+     "checks": [
+      "Bb5+",
+      "Nxc7+",
+      "Nxg7+"
+     ],
+     "captures": [
+      "Nxd8",
+      "Nxf8",
+      "Nxc7+",
+      "Nxg7+"
+     ],
+     "threats": [
+      "Qe2",
+      "d4",
+      "f4"
+     ],
+     "mates": []
+    },
+    "theirs": {
+     "checks": [],
+     "captures": [
+      "fxe6",
+      "Nxc4",
+      "Bxe6",
+      "Nxd5",
+      "Qxd5"
+     ],
+     "threats": [
+      "Qd6",
+      "Qe7",
+      "Ke7"
+     ],
+     "mates": []
+    }
+   },
+   "engine": {
+    "best": [
+     {
+      "san": "fxe6",
+      "line": [
+       "fxe6",
+       "Bb5+",
+       "Bd7",
+       "Bxd7+"
+      ],
+      "verdict": "losing",
+      "outcome": "you lose a knight",
+      "win": 93.52032234843844
+     },
+     {
+      "san": "Bxe6",
+      "line": [
+       "Bxe6",
+       "dxe6",
+       "Nxc4",
+       "exf7+"
+      ],
+      "verdict": "clearly worse",
+      "outcome": "you lose a knight",
+      "win": 89.07850895108885
+     },
+     {
+      "san": "Qd6",
+      "line": [
+       "Qd6",
+       "Nxf8",
+       "Nxc4",
+       "O-O"
+      ],
+      "verdict": "clearly worse",
+      "outcome": "pieces are traded evenly",
+      "win": 80.2055385834644
+     }
+    ]
+   },
+   "facts": [
+    {
+     "id": "P6.F1",
+     "type": "material",
+     "text": "You are up a pawn.",
+     "data": {
+      "white": 39,
+      "black": 38
+     }
+    },
+    {
+     "id": "P6.F2",
+     "type": "hangs",
+     "text": "Your bishop {pc:Bc4} is hanging: their knight {pc:Na5} can take it with {m:Nxc4} and nothing takes back.",
+     "data": {
+      "baseFen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 2 6",
+      "line": [
+       "Nxc4"
+      ],
+      "piece": {
+       "square": "c4",
+       "role": "bishop",
+       "color": "white"
+      },
+      "attackers": [
+       {
+        "square": "a5",
+        "role": "knight",
+        "color": "black"
+       }
+      ],
+      "defenders": [],
+      "net": 3,
+      "role": "bishop",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P6.F3",
+     "type": "hangs",
+     "text": "Your knight {pc:Ne6} is not defended well enough: {m:fxe6} wins material for them in the trade on {sq:e6}.",
+     "data": {
+      "baseFen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 2 6",
+      "line": [
+       "fxe6"
+      ],
+      "piece": {
+       "square": "e6",
+       "role": "knight",
+       "color": "white"
+      },
+      "attackers": [
+       {
+        "square": "f7",
+        "role": "pawn",
+        "color": "black"
+       },
+       {
+        "square": "c8",
+        "role": "bishop",
+        "color": "black"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "d5",
+        "role": "pawn",
+        "color": "white"
+       }
+      ],
+      "net": 2,
+      "role": "knight",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P6.F4",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pd5} is not defended well enough: {m:Nxd5} wins material for them in the trade on {sq:d5}.",
+     "data": {
+      "baseFen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 2 6",
+      "line": [
+       "Nxd5"
+      ],
+      "piece": {
+       "square": "d5",
+       "role": "pawn",
+       "color": "white"
+      },
+      "attackers": [
+       {
+        "square": "f6",
+        "role": "knight",
+        "color": "black"
+       },
+       {
+        "square": "d8",
+        "role": "queen",
+        "color": "black"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "c4",
+        "role": "bishop",
+        "color": "white"
+       }
+      ],
+      "net": 1,
+      "role": "pawn",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P6.F5",
+     "type": "hangs",
+     "text": "Their queen {pc:Qd8} is not defended well enough: {m:Nxd8@P6.F5} wins material for you in the trade on {sq:d8} if they leave it there.",
+     "data": {
+      "baseFen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 2 6",
+      "line": [
+       "Nxd8"
+      ],
+      "piece": {
+       "square": "d8",
+       "role": "queen",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "e6",
+        "role": "knight",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "e8",
+        "role": "king",
+        "color": "black"
+       }
+      ],
+      "net": 6,
+      "role": "queen",
+      "side": "theirs"
+     }
+    },
+    {
+     "id": "P6.F6",
+     "type": "attack",
+     "text": "Their bishop {pc:Bf8} is attacked by your knight {pc:Ne6}; it is defended by their rook {pc:Rh8} and their king {pc:Ke8}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 2 6",
+      "line": [
+       "Nxf8"
+      ],
+      "piece": {
+       "square": "f8",
+       "role": "bishop",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "e6",
+        "role": "knight",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "h8",
+        "role": "rook",
+        "color": "black"
+       },
+       {
+        "square": "e8",
+        "role": "king",
+        "color": "black"
+       }
+      ],
+      "net": 0,
+      "role": "bishop",
+      "side": "theirs"
+     }
+    },
+    {
+     "id": "P6.F7",
+     "type": "attack",
+     "text": "Their pawn {pc:Pc7} is attacked by your knight {pc:Ne6}; it is defended by their queen {pc:Qd8}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 2 6",
+      "line": [
+       "Nxc7+"
+      ],
+      "piece": {
+       "square": "c7",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "e6",
+        "role": "knight",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "d8",
+        "role": "queen",
+        "color": "black"
+       }
+      ],
+      "net": -2,
+      "role": "pawn",
+      "side": "theirs"
+     }
+    },
+    {
+     "id": "P6.F8",
+     "type": "attack",
+     "text": "Their pawn {pc:Pg7} is attacked by your knight {pc:Ne6}; it is defended by their bishop {pc:Bf8}, so taking it does not win material.",
+     "data": {
+      "baseFen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 2 6",
+      "line": [
+       "Nxg7+"
+      ],
+      "piece": {
+       "square": "g7",
+       "role": "pawn",
+       "color": "black"
+      },
+      "attackers": [
+       {
+        "square": "e6",
+        "role": "knight",
+        "color": "white"
+       }
+      ],
+      "defenders": [
+       {
+        "square": "f8",
+        "role": "bishop",
+        "color": "black"
+       }
+      ],
+      "net": -2,
+      "role": "pawn",
+      "side": "theirs"
+     }
+    },
+    {
+     "id": "P6.F9",
+     "type": "best_move",
+     "text": "Their strongest move is {m:fxe6}: you lose a knight (the line goes {m:fxe6} {m:Bb5+@P6.F9} {m:Bd7@P6.F9} {m:Bxd7+@P6.F9}). After it you are losing.",
+     "data": {
+      "baseFen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 2 6",
+      "line": [
+       "fxe6",
+       "Bb5+",
+       "Bd7",
+       "Bxd7+",
+       "Qxd7"
+      ],
+      "move": "fxe6",
+      "delta": 3,
+      "side": "black",
+      "rank": 1
+     }
+    },
+    {
+     "id": "P6.F10",
+     "type": "good_move",
+     "text": "{m:Bxe6} is also a good move for them: you lose a knight.",
+     "data": {
+      "baseFen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 2 6",
+      "line": [
+       "Bxe6",
+       "dxe6",
+       "Nxc4",
+       "exf7+",
+       "Kxf7"
+      ],
+      "move": "Bxe6",
+      "delta": 3,
+      "side": "black",
+      "rank": 2
+     }
+    },
+    {
+     "id": "P6.F11",
+     "type": "graded",
+     "text": "Your last move {m:Ne6@P6.F11} was a mistake: you lose a knight after {m:fxe6@P6.F11}.",
+     "data": {
+      "baseFen": "r1bqkb1r/ppp2ppp/5n2/n2Pp1N1/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+      "line": [
+       "Ne6",
+       "fxe6",
+       "Bb5+",
+       "Bd7",
+       "Bxd7+",
+       "Qxd7",
+       "dxe6",
+       "Qxe6"
+      ],
+      "move": "Ne6",
+      "class": "blunder",
+      "delta": -3,
+      "isBest": false
+     }
+    },
+    {
+     "id": "P6.F12",
+     "type": "best_move",
+     "text": "The strongest move would have been {m:Bb5+@P6.F12}: pieces are traded evenly.",
+     "data": {
+      "baseFen": "r1bqkb1r/ppp2ppp/5n2/n2Pp1N1/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+      "line": [
+       "Bb5+",
+       "c6",
+       "dxc6",
+       "bxc6"
+      ],
+      "move": "Bb5+",
+      "delta": 0
+     }
+    }
+   ],
+   "findable": {
+    "move": "fxe6",
+    "reason": "forcing"
+   },
+   "threat": {
+    "move": "fxe6",
+    "line": [
+     "fxe6",
+     "Bb5+",
+     "Bd7",
+     "Bxd7+",
+     "Qxd7"
+    ],
+    "text": "Their strongest move is {m:fxe6}: you lose a knight (the line goes {m:fxe6} {m:Bb5+@P6.F9} {m:Bd7@P6.F9} {m:Bxd7+@P6.F9}). After it you are losing.",
+    "factId": "P6.F9",
+    "delta": 3
+   },
+   "graded": {
+    "san": "Ne6",
+    "cls": "blunder",
+    "drop": 44.7889943550828,
+    "live": true,
+    "isBest": false,
+    "best": "Bb5+",
+    "lost": "you lose a knight",
+    "line": [
+     "Ne6",
+     "fxe6",
+     "Bb5+",
+     "Bd7",
+     "Bxd7+",
+     "Qxd7",
+     "dxe6",
+     "Qxe6"
+    ],
+    "bestLine": [
+     "Bb5+",
+     "c6",
+     "dxc6",
+     "bxc6"
+    ],
+    "factId": "P6.F11",
+    "bestFactId": "P6.F12"
+   },
+   "skippedStep": "no_safety_check"
+  }
+ },
+ {
+  "key": "backrank",
+  "about": "A back-rank mate in one: White (the owner) to move",
+  "ms": 175,
+  "packet": {
+   "id": "P7",
+   "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+   "turn": "white",
+   "you": "white",
+   "moveNumber": 1,
+   "inCheck": false,
+   "material": {
+    "white": 8,
+    "black": 3,
+    "inWords": "You are up a rook."
+   },
+   "pieces": {
+    "yours": [
+     {
+      "square": "g1",
+      "role": "king",
+      "color": "white"
+     },
+     {
+      "square": "d1",
+      "role": "rook",
+      "color": "white"
+     },
+     {
+      "square": "f2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "g2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "h2",
+      "role": "pawn",
+      "color": "white"
+     }
+    ],
+    "theirs": [
+     {
+      "square": "g8",
+      "role": "king",
+      "color": "black"
+     },
+     {
+      "square": "f7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "g7",
+      "role": "pawn",
+      "color": "black"
+     },
+     {
+      "square": "h7",
+      "role": "pawn",
+      "color": "black"
+     }
+    ]
+   },
+   "hanging": {
+    "mine": [],
+    "theirs": []
+   },
+   "cct": {
+    "mine": {
+     "checks": [],
+     "captures": [],
+     "threats": [],
+     "mates": [
+      "Rd8#"
+     ]
+    },
+    "theirs": {
+     "checks": [],
+     "captures": [],
+     "threats": [],
+     "mates": []
+    }
+   },
+   "engine": {
+    "best": [
+     {
+      "san": "Rd8#",
+      "line": [
+       "Rd8#"
+      ],
+      "verdict": "a forced mate in 1",
+      "outcome": "it forces checkmate in 1",
+      "win": 100,
+      "mate": 1
+     },
+     {
+      "san": "Kf1",
+      "line": [
+       "Kf1",
+       "Kf8",
+       "Ke2",
+       "Ke8"
+      ],
+      "verdict": "winning",
+      "outcome": "no material changes hands",
+      "win": 92.939651755744
+     },
+     {
+      "san": "f3",
+      "line": [
+       "f3",
+       "f6",
+       "Kf2",
+       "h5"
+      ],
+      "verdict": "winning",
+      "outcome": "no material changes hands",
+      "win": 92.69418544037995
+     }
+    ],
+    "mate": 1
+   },
+   "facts": [
+    {
+     "id": "P7.F1",
+     "type": "material",
+     "text": "You are up a rook.",
+     "data": {
+      "white": 8,
+      "black": 3
+     }
+    },
+    {
+     "id": "P7.F2",
+     "type": "mate_in",
+     "text": "You have checkmate in one move: {m:Rd8#}.",
+     "data": {
+      "mateIn": 1,
+      "moves": [
+       "Rd8#"
+      ],
+      "side": "white"
+     }
+    }
+   ],
+   "findable": {
+    "move": "Rd8#",
+    "reason": "forcing"
+   }
+  }
+ },
+ {
+  "key": "knightfork",
+  "about": "A knight fork of king and rook: White (the owner) to move",
+  "ms": 167,
+  "packet": {
+   "id": "P8",
+   "fen": "r3k3/8/8/1N6/8/8/PPP5/2K5 w - - 0 1",
+   "turn": "white",
+   "you": "white",
+   "moveNumber": 1,
+   "inCheck": false,
+   "material": {
+    "white": 6,
+    "black": 5,
+    "inWords": "You have a knight and 3 pawns for a rook: you are ahead in material."
+   },
+   "pieces": {
+    "yours": [
+     {
+      "square": "c1",
+      "role": "king",
+      "color": "white"
+     },
+     {
+      "square": "b5",
+      "role": "knight",
+      "color": "white"
+     },
+     {
+      "square": "a2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "b2",
+      "role": "pawn",
+      "color": "white"
+     },
+     {
+      "square": "c2",
+      "role": "pawn",
+      "color": "white"
+     }
+    ],
+    "theirs": [
+     {
+      "square": "e8",
+      "role": "king",
+      "color": "black"
+     },
+     {
+      "square": "a8",
+      "role": "rook",
+      "color": "black"
+     }
+    ]
+   },
+   "hanging": {
+    "mine": [
+     {
+      "square": "a2",
+      "role": "pawn",
+      "color": "white"
+     }
+    ],
+    "theirs": []
+   },
+   "cct": {
+    "mine": {
+     "checks": [
+      "Nd6+",
+      "Nc7+"
+     ],
+     "captures": [],
+     "threats": [],
+     "mates": []
+    },
+    "theirs": {
+     "checks": [],
+     "captures": [
+      "Rxa2"
+     ],
+     "threats": [
+      "Ra5",
+      "Rb8"
+     ],
+     "mates": []
+    }
+   },
+   "engine": {
+    "best": [
+     {
+      "san": "Nc7+",
+      "line": [
+       "Nc7+",
+       "Kf8",
+       "Nxa8",
+       "Kg8"
+      ],
+      "verdict": "winning",
+      "outcome": "you win a rook",
+      "win": 96.3890278972153
+     },
+     {
+      "san": "a3",
+      "line": [
+       "a3",
+       "Kd7",
+       "Kd2",
+       "Rh8"
+      ],
+      "verdict": "a bit better",
+      "outcome": "no material changes hands",
+      "win": 67.78219194709055
+     },
+     {
+      "san": "Nc3",
+      "line": [
+       "Nc3",
+       "Rc8",
+       "Nb1",
+       "Ke7"
+      ],
+      "verdict": "a bit better",
+      "outcome": "no material changes hands",
+      "win": 65.9883343273332
+     }
+    ]
+   },
+   "facts": [
+    {
+     "id": "P8.F1",
+     "type": "material",
+     "text": "You have a knight and 3 pawns for a rook: you are ahead in material.",
+     "data": {
+      "white": 6,
+      "black": 5
+     }
+    },
+    {
+     "id": "P8.F2",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pa2} is hanging: if you leave it there, their rook {pc:Ra8} can take it with {m:Rxa2@P8.F2} and nothing takes back.",
+     "data": {
+      "baseFen": "r3k3/8/8/1N6/8/8/PPP5/2K5 b - - 0 1",
+      "line": [
+       "Rxa2"
+      ],
+      "piece": {
+       "square": "a2",
+       "role": "pawn",
+       "color": "white"
+      },
+      "attackers": [
+       {
+        "square": "a8",
+        "role": "rook",
+        "color": "black"
+       }
+      ],
+      "defenders": [],
+      "net": 1,
+      "role": "pawn",
+      "side": "mine"
+     }
+    },
+    {
+     "id": "P8.F3",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Nc7+}: you win a rook (the line goes {m:Nc7+} {m:Kf8@P8.F3} {m:Nxa8@P8.F3}). After it you are winning.",
+     "data": {
+      "baseFen": "r3k3/8/8/1N6/8/8/PPP5/2K5 w - - 0 1",
+      "line": [
+       "Nc7+",
+       "Kf8",
+       "Nxa8"
+      ],
+      "move": "Nc7+",
+      "delta": 5,
+      "side": "white",
+      "rank": 1
+     }
+    },
+    {
+     "id": "P8.F4",
+     "type": "fork",
+     "text": "{m:Nc7+} is a fork: the knight attacks their rook {pc:Ra8} and their king {pc:Ke8} at the same time.",
+     "data": {
+      "baseFen": "r3k3/8/8/1N6/8/8/PPP5/2K5 w - - 0 1",
+      "line": [
+       "Nc7+",
+       "Kf8",
+       "Nxa8"
+      ],
+      "move": "Nc7+",
+      "targets": [
+       {
+        "square": "a8",
+        "role": "rook",
+        "color": "black"
+       },
+       {
+        "square": "e8",
+        "role": "king",
+        "color": "black"
+       }
+      ],
+      "piece": {
+       "square": "c7",
+       "role": "knight",
+       "color": "white"
+      },
+      "side": "white",
+      "delta": 5
+     }
+    },
+    {
+     "id": "P8.F5",
+     "type": "only_move",
+     "text": "{m:Nc7+} is the only good move here: every other move is much worse.",
+     "data": {
+      "move": "Nc7+",
+      "side": "white"
+     }
+    },
+    {
+     "id": "P8.F6",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:Rxa2@P8.F6} and you lose a pawn.",
+     "data": {
+      "baseFen": "r3k3/8/8/1N6/8/8/PPP5/2K5 b - - 0 1",
+      "line": [
+       "Rxa2"
+      ],
+      "move": "Rxa2",
+      "delta": 1,
+      "side": "black"
+     }
+    }
+   ],
+   "findable": {
+    "move": "Nc7+",
+    "reason": "forcing"
+   },
+   "threat": {
+    "move": "Rxa2",
+    "line": [
+     "Rxa2"
+    ],
+    "text": "Their threat: if you do nothing about it, they play {m:Rxa2@P8.F6} and you lose a pawn.",
+    "factId": "P8.F6",
+    "delta": 1
+   }
+  }
+ }
+]

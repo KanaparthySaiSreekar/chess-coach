@@ -1,0 +1,9 @@
+[
+  { "line": "1.e4", "why": "{m:e4} puts a pawn in the centre.", "idea": "" },
+  { "line": "1.e4 e5 2.Nf3", "why": "{m:Nf3} develops your knight and attacks the pawn on {sq:e5}.", "idea": "Their move {m:e5} puts a pawn in the centre too." },
+  { "line": "1.e4 e5 2.Nf3 Nc6 3.Bb5", "why": "{m:Bb5} develops your bishop.", "idea": "Their move {m:Nc6} develops their knight and protects the pawn on {sq:e5}." },
+  { "line": "1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4", "why": "{m:Ba4} saves your attacked bishop.", "idea": "Their move {m:a6} attacks your bishop on {sq:b5}." },
+  { "line": "1.e4 e5 2.Nf3 d6 3.d4", "why": "{m:d4} puts a pawn in the centre and attacks the pawn on {sq:e5}.", "idea": "Their move {m:d6} protects the pawn on {sq:e5}." },
+  { "line": "1.e4 c5 2.Nf3", "why": "{m:Nf3} develops your knight.", "idea": "" },
+  { "line": "1.e4 c5 2.Nf3 d6 3.d4", "why": "{m:d4} puts a pawn in the centre.", "idea": "" }
+]

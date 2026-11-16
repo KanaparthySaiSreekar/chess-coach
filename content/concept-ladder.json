@@ -1,0 +1,37 @@
+{
+  "about": "The concept ladder (feature H11; docs/LEARNING.md §5): which chess ideas the coach names at each vocabulary level. 'use' is the column of the table in LEARNING: used constantly at about 500, introduced simply, or deferred. 'from' is the lowest vocabulary level (the setting coach.vocabulary: core, intro, all) at which the coach may use the word; below it the validator refuses the word unless the owner asked about it, and tells the coach to say the plain version instead. 'words' are regular expressions (case does not matter).",
+  "concepts": [
+    { "id": "hanging-piece", "name": "hanging or undefended piece", "use": "constantly", "from": "core", "plain": "a piece nothing protects" },
+    { "id": "counting", "name": "counting attackers and defenders", "use": "constantly", "from": "core", "plain": "how many pieces attack a square and how many protect it" },
+    { "id": "cct", "name": "checks, captures, threats", "use": "constantly", "from": "core", "plain": "the forcing moves to look at first" },
+    { "id": "their-threat", "name": "the opponent's threat", "use": "constantly", "from": "core", "plain": "what their last move wants to do next" },
+    { "id": "piece-values", "name": "piece values and trades", "use": "constantly", "from": "core", "plain": "what each piece is worth, and whether a swap is fair" },
+    { "id": "basic-mates", "name": "back-rank and queen mates", "use": "constantly", "from": "core", "plain": "checkmate on the last rank; checkmate with the queen next to the king" },
+    { "id": "fork", "name": "fork", "use": "constantly", "from": "core", "plain": "one piece attacking two things at once" },
+    { "id": "pin", "name": "pin", "use": "constantly", "from": "core", "plain": "a piece that cannot move without exposing something more valuable behind it" },
+    { "id": "skewer", "name": "skewer", "use": "constantly", "from": "core", "plain": "an attack on a valuable piece that must move, exposing the piece behind it" },
+
+    { "id": "opening-principles", "name": "opening principles", "use": "introduce", "from": "core", "plain": "develop the pieces, control the centre, castle" },
+    { "id": "king-safety", "name": "king safety", "use": "introduce", "from": "core", "plain": "how exposed the king is" },
+    { "id": "idle-piece", "name": "the piece that is doing nothing", "use": "introduce", "from": "core", "plain": "which of your pieces is not taking part yet" },
+    { "id": "activity", "name": "active and passive pieces", "use": "introduce", "from": "core", "plain": "a piece with many good squares against one with few" },
+    { "id": "trade-when-ahead", "name": "trade when ahead", "use": "introduce", "from": "core", "plain": "swap pieces when you have more material" },
+
+    { "id": "outpost", "name": "outpost", "use": "defer", "from": "intro", "words": ["\\boutposts?\\b"], "plain": "a square for your piece that their pawns can never attack" },
+    { "id": "isolated-pawn", "name": "isolated pawn", "use": "defer", "from": "intro", "words": ["\\bisolated (?:queen'?s? )?pawn\\b"], "plain": "a pawn with no pawn of its own on the files beside it" },
+    { "id": "good-bad-bishop", "name": "good and bad bishop", "use": "defer", "from": "intro", "words": ["\\b(?:good|bad) bishop\\b"], "plain": "a bishop that is, or is not, blocked by its own pawns" },
+    { "id": "pawn-structure", "name": "pawn structure", "use": "defer", "from": "intro", "words": ["\\bpawn (?:structure|majority|chain|break)s?\\b"], "plain": "how the pawns are arranged, and what that lets each side do" },
+    { "id": "space", "name": "space advantage", "use": "defer", "from": "intro", "words": ["\\bspace advantage\\b"], "plain": "more room for your pieces to move" },
+    { "id": "intermezzo", "name": "intermezzo", "use": "defer", "from": "intro", "words": ["\\bintermezzo\\b"], "plain": "an in-between move, played before the expected recapture" },
+    { "id": "fianchetto", "name": "fianchetto", "use": "defer", "from": "intro", "words": ["\\bfianchetto\\b"], "plain": "a bishop developed to the long diagonal, behind the knight's pawn" },
+    { "id": "opposite-bishops", "name": "opposite-coloured bishops", "use": "defer", "from": "intro", "words": ["\\bopposite-colou?red bishops\\b"], "plain": "each side has one bishop, and they move on different colours" },
+
+    { "id": "prophylaxis", "name": "prophylaxis", "use": "defer", "from": "all", "words": ["\\bprophyla\\w+"], "plain": "a move that stops their plan before it starts" },
+    { "id": "minority-attack", "name": "minority attack", "use": "defer", "from": "all", "words": ["\\bminority attack\\b"], "plain": "pushing fewer pawns against more of theirs to make a weakness" },
+    { "id": "isolani", "name": "isolani", "use": "defer", "from": "all", "words": ["\\bisolani\\b"], "plain": "a queen's pawn with no pawns of its own beside it" },
+    { "id": "imbalances", "name": "imbalances", "use": "defer", "from": "all", "words": ["\\bimbalances?\\b"], "plain": "the ways the two sides' positions differ" },
+    { "id": "zugzwang", "name": "zugzwang", "use": "defer", "from": "all", "words": ["\\bzugzwang\\b"], "plain": "a position where every move makes things worse" },
+    { "id": "zwischenzug", "name": "zwischenzug", "use": "defer", "from": "all", "words": ["\\bzwischenzug\\b"], "plain": "an in-between move, played before the expected recapture" },
+    { "id": "weak-colour-complex", "name": "weak colour complex", "use": "defer", "from": "all", "words": ["\\bweak (?:colou?r|square) complex\\b"], "plain": "a group of squares of one colour that cannot be defended" }
+  ]
+}

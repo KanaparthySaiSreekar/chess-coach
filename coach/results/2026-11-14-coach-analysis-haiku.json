@@ -1,0 +1,1423 @@
+{
+ "when": "2026-11-14T22:41:15.434Z",
+ "agent": "coach-analysis",
+ "model": "haiku",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 32,
+  "inputTokens": 127075,
+  "outputTokens": 19789,
+  "cacheReadTokens": 1103900,
+  "costUsd": 0.04633210000000002
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 30,
+   "total": 30
+  },
+  "firstTryValidity": {
+   "ok": 32,
+   "total": 36,
+   "pct": 88.9,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 30,
+    "total": 30
+   },
+   "stays in budget": {
+    "pass": 30,
+    "total": 30
+   },
+   "scenario checks": {
+    "pass": 69,
+    "total": 69
+   },
+   "asks before telling (first message)": {
+    "pass": 5,
+    "total": 5
+   },
+   "quiet when it should be": {
+    "pass": 2,
+    "total": 2
+   }
+  },
+  "byCovers": {
+   "explains from facts": {
+    "pass": 11,
+    "total": 11
+   },
+   "board powers": {
+    "pass": 6,
+    "total": 6
+   },
+   "hard rules": {
+    "pass": 5,
+    "total": 5
+   },
+   "asks before telling": {
+    "pass": 4,
+    "total": 4
+   },
+   "uses the tag": {
+    "pass": 1,
+    "total": 1
+   },
+   "quiet when it should be": {
+    "pass": 2,
+    "total": 2
+   },
+   "fair play": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 8871,
+  "failed": [],
+  "refusedBy": {
+   "R3 claim without a fact": 4,
+   "too many messages": 1
+  }
+ },
+ "results": [
+  {
+   "id": "threat-scholar",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /Qxf7|checkmate|mate/",
+     "pass": true,
+     "detail": "White threatens Qxf7#. Their queen on h5 takes your pawn on f7, and that is checkmate in one move. Your pawn on f7 is the one to watch."
+    }
+   ],
+   "ms": 10441,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "White threatens Qxf7#. Their queen on h5 takes your pawn on f7, and that is checkmate in one move. Your pawn on f7 is the one to watch."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "annotate",
+    "say"
+   ]
+  },
+  {
+   "id": "whatif-scholar-nf6",
+   "covers": "board powers",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /checkmate|mate/",
+     "pass": true,
+     "detail": "Nf6 is a serious mistake here. It attacks their queen, but it does not protect your pawn on f7, so Qxf7# is checkmate. The move that stops this is g6: it protects f7 and attacks their queen at the same time."
+    },
+    {
+     "check": "never says /Nf6 is (a |the )?(good|safe|strong|best)/",
+     "pass": true
+    }
+   ],
+   "ms": 7765,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Nf6 is a serious mistake here. It attacks their queen, but it does not protect your pawn on f7, so Qxf7# is checkmate. The move that stops this is g6: it protects f7 and attacks their queen at the same time."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "play_line(move Nf6)",
+    "say"
+   ]
+  },
+  {
+   "id": "legal-take",
+   "covers": "board powers",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "calls play_line|check_move {\"move\":\"Nxe5\"}",
+     "pass": true,
+     "detail": "calls: play_line(move Nxe5), annotate, say"
+    },
+    {
+     "check": "never says /(do not|don't|should not|shouldn't) (take|play)/",
+     "pass": true
+    }
+   ],
+   "ms": 11048,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Yes, Nxe5 is the strongest move here, and the pin does not stop it. Their bishop on g4 does pin your knight to your queen, but after Nxe5 the knight is no longer on f3, so the pin has nothing to hold. After dxe5 you take the bishop with Qxg4, so you win a bishop and a pawn for a knight."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "play_line(move Nxe5)",
+    "annotate ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "legal-followup",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /checkmate|mate/",
+     "pass": true,
+     "detail": "Yes, Nxe5 is the strongest move here, even though your knight on f3 is pinned to your queen by their bishop on g4. In the line on the board, dxe5 is their reply, and then Qxg4 takes the bishop. You end up a bishop and a pawn ahead for your knight. | If they take your queen with Bxd1, that is a serious mistake by them: it allows checkmate in 2. The line on the board goes Bxf7+, Ke7, Nd5. Their bett"
+    },
+    {
+     "check": "never says /you lose (your|the) queen, so (do not|don't)/",
+     "pass": true
+    }
+   ],
+   "ms": 20891,
+   "says": {
+    "ok": 2,
+    "total": 3
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Yes, Nxe5 is the strongest move here, even though your knight on f3 is pinned to your queen by their bishop on g4. In the line on the board, dxe5 is their reply, and then Qxg4 takes the bishop. You end up a bishop and a pawn ahead for your knight."
+    },
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "If they take your queen with Bxd1, that is a serious mistake by them: it allows checkmate in 2. The line on the board goes Bxf7+, Ke7, Nd5. Their better reply is dxe5, which takes your knight and is an even trade."
+    }
+   ],
+   "refused": [
+    {
+     "kind": "explain",
+     "text": "Yes, {m:Nxe5} is the strongest move here, even though your knight on {sq:f3} is pinned to your queen by their bishop {pc:Bg4}. In the line on the board, {m:dxe5@P95783.F2} is their reply, and then {m:Qxg4@P95783.F2} takes the bishop. You end up a bishop and a pawn ahead for your knight.",
+     "problems": [
+      "\"is the strongest\": a \"best move\" claim needs a best_move fact. Put the fact's id in claims, or take the claim out."
+     ]
+    }
+   ],
+   "tools": [
+    "check_move(Nxe5)",
+    "play_line(move Nxe5)",
+    "say ✗",
+    "say",
+    "play_line(move Bxd1)",
+    "say"
+   ]
+  },
+  {
+   "id": "qfork-danger",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /knight/",
+     "pass": true,
+     "detail": "Your knight on e5 has no defender, and their queen on d4 attacks it. Qxe5 would win it for free, because nothing can take the queen back."
+    },
+    {
+     "check": "says /queen/",
+     "pass": true,
+     "detail": "Your knight on e5 has no defender, and their queen on d4 attacks it. Qxe5 would win it for free, because nothing can take the queen back."
+    }
+   ],
+   "ms": 7949,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Your knight on e5 has no defender, and their queen on d4 attacks it. Qxe5 would win it for free, because nothing can take the queen back."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "annotate",
+    "say"
+   ]
+  },
+  {
+   "id": "qfork-show-threats",
+   "covers": "board powers",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "calls annotate {\"show\":\"threats\"}",
+     "pass": true,
+     "detail": "calls: annotate(threats), say"
+    }
+   ],
+   "ms": 8231,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "The biggest threat is on your knight on e5. Their queen on d4 can take it with Qxe5, and nothing of yours takes back. Your pawn on e4 is also hanging to Qxe4+. The queen also pins your pawn on b2 to your rook on a1. Which of these would you deal with first?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "annotate(threats)",
+    "say"
+   ]
+  },
+  {
+   "id": "qfork-ask-first",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: Start with their threat. Their queen on d4 is aiming at your knight on e5, and nothing defends it. Where could that knight move to get out of danger?"
+    },
+    {
+     "check": "never says /\\bNg4\\b/",
+     "pass": true
+    }
+   ],
+   "ms": 7780,
+   "says": {
+    "ok": 1,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Start with their threat. Their queen on d4 is aiming at your knight on e5, and nothing defends it. Where could that knight move to get out of danger?"
+    }
+   ],
+   "refused": [
+    {
+     "kind": "question",
+     "text": "Start with their threat. Their queen {pc:Qd4} is aiming at your knight {pc:Ne5}, and nothing defends it. Where could that knight move so it is safe?",
+     "problems": [
+      "\"is safe\": a \"safe\" claim needs a fact from check_move that says the move is safe. Put the fact's id in claims, or take the claim out.",
+      "Too long: 3 sentences, the limit for this message is 2. Keep one point."
+     ]
+    }
+   ],
+   "tools": [
+    "say ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "qfork-tell-me",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: Start with their last move. Their queen on d4 is attacking your knight on e5. Which move would stop that, and what does it leave undefended?"
+    },
+    {
+     "check": "says /\\bNg4\\b/",
+     "pass": true,
+     "detail": "Start with their last move. Their queen on d4 is attacking your knight on e5. Which move would stop that, and what does it leave undefended? | The strongest move is Ng4. It moves your attacked knight out of danger, adds a defender to your pawn on f2, and deals with their threat. You will lose a pawn after Qxe4+, but the engine still rates it above the other moves."
+    }
+   ],
+   "ms": 12347,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Start with their last move. Their queen on d4 is attacking your knight on e5. Which move would stop that, and what does it leave undefended?"
+    },
+    {
+     "kind": "answer",
+     "source": "coach",
+     "text": "The strongest move is Ng4. It moves your attacked knight out of danger, adds a defender to your pawn on f2, and deals with their threat. You will lose a pawn after Qxe4+, but the engine still rates it above the other moves."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "play_line(best)",
+    "say"
+   ]
+  },
+  {
+   "id": "qfork-hint-chip",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: Their queen just moved to d4. Which of your pieces is it attacking, and what would they win if you did nothing?"
+    },
+    {
+     "check": "never says /\\bNg4\\b/",
+     "pass": true
+    }
+   ],
+   "ms": 6818,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their queen just moved to d4. Which of your pieces is it attacking, and what would they win if you did nothing?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "qfork-why-chip",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /knight/",
+     "pass": true,
+     "detail": "Your knight on e5 has no defender, and their queen on d4 attacks it. If you leave it there, Qxe5 wins it for free, because nothing of yours can take back on e5. | The way out is to move the knight. Ng4 is the strongest move: it gets the knight out of danger and adds a defender to your pawn on f2, but you lose a pawn to Qxe4+. Nf3 is also good: it moves the knight and attacks their queen on d4, but"
+    }
+   ],
+   "ms": 11291,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Your knight on e5 has no defender, and their queen on d4 attacks it. If you leave it there, Qxe5 wins it for free, because nothing of yours can take back on e5."
+    },
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "The way out is to move the knight. Ng4 is the strongest move: it gets the knight out of danger and adds a defender to your pawn on f2, but you lose a pawn to Qxe4+. Nf3 is also good: it moves the knight and attacks their queen on d4, but you still lose a pawn."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "annotate",
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "qfork-owner-tries",
+   "covers": "board powers",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /\\bf4\\b/",
+     "pass": true,
+     "detail": "The strongest move is Ng4. Your knight on e5 is attacked, and this moves it out of danger. It also adds a defender to your pawn on f2. You lose a pawn after Qxe4+, but the engine still rates this move above the others, and after Ne3 you are about equal. | You tried f4 to protect the knight, but it is a serious mistake: after Qxe4+ you lose two pawns. Ng4 is the strongest move, because it moves you"
+    },
+    {
+     "check": "says /mistake|lose|loses|pawn/",
+     "pass": true,
+     "detail": "The strongest move is Ng4. Your knight on e5 is attacked, and this moves it out of danger. It also adds a defender to your pawn on f2. You lose a pawn after Qxe4+, but the engine still rates this move above the others, and after Ne3 you are about equal. | You tried f4 to protect the knight, but it is a serious mistake: after Qxe4+ you lose two pawns. Ng4 is the strongest move, because it moves you"
+    },
+    {
+     "check": "never says /f4 is (a |the )?(good|safe|strong|best)/",
+     "pass": true
+    }
+   ],
+   "ms": 14713,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "answer",
+     "source": "coach",
+     "text": "The strongest move is Ng4. Your knight on e5 is attacked, and this moves it out of danger. It also adds a defender to your pawn on f2. You lose a pawn after Qxe4+, but the engine still rates this move above the others, and after Ne3 you are about equal."
+    },
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "You tried f4 to protect the knight, but it is a serious mistake: after Qxe4+ you lose two pawns. Ng4 is the strongest move, because it moves your attacked knight out of danger and you lose only one pawn."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "play_line(best)",
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "qfork-drew-arrow",
+   "covers": "board powers",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /\\bNg4\\b/",
+     "pass": true,
+     "detail": "Yes, Ng4 is the strongest move here. Your knight on e5 is attacked, and moving it out of danger is what it does. It also adds a defender to your pawn on f2. You will lose the pawn on e4 after Qxe4+, but then Ne3 brings the game back to about equal."
+    }
+   ],
+   "ms": 8719,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Yes, Ng4 is the strongest move here. Your knight on e5 is attacked, and moving it out of danger is what it does. It also adds a defender to your pawn on f2. You will lose the pawn on e4 after Qxe4+, but then Ne3 brings the game back to about equal."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "play_line(move Ng4)",
+    "say"
+   ]
+  },
+  {
+   "id": "italian-castle",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /castl/",
+     "pass": true,
+     "detail": "Yes, you can castle now: O-O is legal, and it is a good, safe move. It castles, so your king gets safer and the rook comes into play. It also adds a defender to your pawn on f2, which their bishop on c5 is attacking. The strongest move here is c3, but castling is also good."
+    }
+   ],
+   "ms": 9325,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "answer",
+     "source": "coach",
+     "text": "Yes, you can castle now: O-O is legal, and it is a good, safe move. It castles, so your king gets safer and the rook comes into play. It also adds a defender to your pawn on f2, which their bishop on c5 is attacking. The strongest move here is c3, but castling is also good."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "check_move(O-O)",
+    "say"
+   ]
+  },
+  {
+   "id": "italian-plan",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "never says /pawn structure|prophyla|outpost|zugzwang/",
+     "pass": true
+    }
+   ],
+   "ms": 6990,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "idea",
+     "source": "coach",
+     "text": "Your plan is to get your king safe and bring your pieces into play. Your king is still in the middle, so castling is a good first step: O-O is a good move here, because your king gets safer and your rook comes into play. It also adds a defender to your pawn on f2, which their bishop on c5 is aiming at."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "italian-general",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind general",
+     "pass": true,
+     "detail": "kinds: general"
+    }
+   ],
+   "ms": 6043,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "general",
+     "source": "coach",
+     "text": "A fork is when one piece attacks two of the opponent's pieces at the same time. The opponent can only save one of them, so you often win the other. Knights are the classic forking piece, because they jump in a way that lets one knight hit two pieces at once. Queens and pawns can fork too."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "italian-illegal",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /legal|cannot|can't|can not|not possible|isn't possible|is not possible|no piece|blocked|in the way/",
+     "pass": true,
+     "detail": "Qh7 is not legal here: your queen on d1 cannot reach h7 in one move. A queen moves along ranks, files and diagonals, and h7 is not on any of those from d1. Which move did you mean? Your queen can go to e2 from here."
+    }
+   ],
+   "ms": 6513,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Qh7 is not legal here: your queen on d1 cannot reach h7 in one move. A queen moves along ranks, files and diagonals, and h7 is not on any of those from d1. Which move did you mean? Your queen can go to e2 from here."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "check_move(Qh7)",
+    "say"
+   ]
+  },
+  {
+   "id": "italian-numbers",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "never says /[+\\-−]\\s?\\d+\\.\\d|centipawn|\\d+\\s?%/",
+     "pass": true
+    }
+   ],
+   "ms": 7936,
+   "says": {
+    "ok": 1,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "I won't give you a number, but here is what matters: material is level, and none of your pieces can be taken for free right now. The strongest move for you is c3, and after it the position is about equal. You can also castle with O-O, since your king gets safer there."
+    }
+   ],
+   "refused": [
+    {
+     "kind": "explain",
+     "text": "I won't give you a number, but here is what matters: material is level, and neither side can win a piece for free right now. The strongest move for you is {m:c3@P95803.F10}, and after it the position is about equal. You can also castle with {m:O-O}, since your king gets safer there.",
+     "problems": [
+      "\"win a piece\": none of the cited facts mentions a piece."
+     ]
+    }
+   ],
+   "tools": [
+    "say ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "hung-why",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /knight/",
+     "pass": true,
+     "detail": "Ne6 was a serious mistake. Your knight on e6 has no good defender, and their pawn on f7 can take it with fxe6, so you lose a knight. Before you move, check what they can capture after your move. Here the stronger move was Bb5+: it gives check and moves your bishop out of danger."
+    },
+    {
+     "check": "says /lose|lost|loses|takes|take|fxe6/",
+     "pass": true,
+     "detail": "Ne6 was a serious mistake. Your knight on e6 has no good defender, and their pawn on f7 can take it with fxe6, so you lose a knight. Before you move, check what they can capture after your move. Here the stronger move was Bb5+: it gives check and moves your bishop out of danger."
+    }
+   ],
+   "ms": 11612,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Ne6 was a serious mistake. Your knight on e6 has no good defender, and their pawn on f7 can take it with fxe6, so you lose a knight. Before you move, check what they can capture after your move. Here the stronger move was Bb5+: it gives check and moves your bishop out of danger."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "annotate",
+    "say"
+   ]
+  },
+  {
+   "id": "hung-show-me",
+   "covers": "board powers",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "calls play_line",
+     "pass": true,
+     "detail": "calls: play_line(best), say"
+    }
+   ],
+   "ms": 8224,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "answer",
+     "source": "coach",
+     "text": "The strongest move here was Bb5+. It gives check, moves your attacked bishop out of danger, and protects your pawn on d5. Your Ne6 was a serious mistake: their pawn on f7 takes your knight with fxe6, and you lose a knight."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "play_line(best)",
+    "say"
+   ]
+  },
+  {
+   "id": "blunder-key-moments",
+   "covers": "uses the tag",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: After you played Ne6, what could Black capture? Walk me through each of their captures before you tell me."
+    },
+    {
+     "check": "says /captur|take|taken|safe|protect|defend|attack/",
+     "pass": true,
+     "detail": "After you played Ne6, what could Black capture? Walk me through each of their captures before you tell me."
+    },
+    {
+     "check": "never says /\\bBb5\\b/",
+     "pass": true
+    }
+   ],
+   "ms": 7174,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "After you played Ne6, what could Black capture? Walk me through each of their captures before you tell me."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "blunder-silent",
+   "covers": "quiet when it should be",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "quiet when it should be",
+     "pass": true
+    }
+   ],
+   "ms": 13211,
+   "says": {
+    "ok": 0,
+    "total": 0
+   },
+   "messages": [],
+   "refused": [],
+   "tools": []
+  },
+  {
+   "id": "good-move-key-moments",
+   "covers": "quiet when it should be",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "quiet when it should be",
+     "pass": true
+    }
+   ],
+   "ms": 13218,
+   "says": {
+    "ok": 0,
+    "total": 0
+   },
+   "messages": [],
+   "refused": [],
+   "tools": []
+  },
+  {
+   "id": "every-move",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    }
+   ],
+   "ms": 9578,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "praise",
+     "source": "coach",
+     "text": "O-O was a good, safe move: your king is safer and your rook comes into play. Now, after it, which of your pieces could they capture, and would they win anything?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "qe6-label",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /mistake/",
+     "pass": true,
+     "detail": "You're right: Qe6 is a mistake, not a good move. It loses their queen for a bishop, because Bxe6 takes it. Their best was Bg4. The queen move does add a defender to their pawn on e5, but that doesn't save the queen."
+    },
+    {
+     "check": "says /queen/",
+     "pass": true,
+     "detail": "You're right: Qe6 is a mistake, not a good move. It loses their queen for a bishop, because Bxe6 takes it. Their best was Bg4. The queen move does add a defender to their pawn on e5, but that doesn't save the queen."
+    },
+    {
+     "check": "never says /Qe6 is (a |the )?(good|safe|strong|best)|good, safe/",
+     "pass": true
+    }
+   ],
+   "ms": 11272,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "You're right: Qe6 is a mistake, not a good move. It loses their queen for a bishop, because Bxe6 takes it. Their best was Bg4. The queen move does add a defender to their pawn on e5, but that doesn't save the queen."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "annotate",
+    "say"
+   ]
+  },
+  {
+   "id": "qe6-board-says",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /mistake/",
+     "pass": true,
+     "detail": "The board marks Qe6 as a mistake: it loses their queen for a bishop, because Bxe6 takes it. Their strongest move would have been Bg4: it develops their bishop, and no material changes hands."
+    },
+    {
+     "check": "says /\\bBg4\\b/",
+     "pass": true,
+     "detail": "The board marks Qe6 as a mistake: it loses their queen for a bishop, because Bxe6 takes it. Their strongest move would have been Bg4: it develops their bishop, and no material changes hands."
+    },
+    {
+     "check": "never says /can't see|cannot see|can not see|which moves (did|have) you|tell me (which|the) moves/",
+     "pass": true
+    }
+   ],
+   "ms": 9058,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "The board marks Qe6 as a mistake: it loses their queen for a bishop, because Bxe6 takes it. Their strongest move would have been Bg4: it develops their bishop, and no material changes hands."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "annotate",
+    "say"
+   ]
+  },
+  {
+   "id": "backrank-mate",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /Rd8/",
+     "pass": true,
+     "detail": "Yes! Rd8# is checkmate. Your rook goes to d8 and checks their king on g8. Their pawns on f7, g7 and h7 block the king's escape, so it has nowhere to go and they cannot block or capture the rook."
+    },
+    {
+     "check": "says /mate/",
+     "pass": true,
+     "detail": "Yes! Rd8# is checkmate. Your rook goes to d8 and checks their king on g8. Their pawns on f7, g7 and h7 block the king's escape, so it has nowhere to go and they cannot block or capture the rook."
+    }
+   ],
+   "ms": 7388,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "answer",
+     "source": "coach",
+     "text": "Yes! Rd8# is checkmate. Your rook goes to d8 and checks their king on g8. Their pawns on f7, g7 and h7 block the king's escape, so it has nowhere to go and they cannot block or capture the rook."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "annotate ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "backrank-ask-first",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: Look at their king on g8, shut in by its own pawns. Which of your pieces could give it a check it cannot escape?"
+    },
+    {
+     "check": "never says /\\bRd8/",
+     "pass": true
+    }
+   ],
+   "ms": 8871,
+   "says": {
+    "ok": 1,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Look at their king on g8, shut in by its own pawns. Which of your pieces could give it a check it cannot escape?"
+    }
+   ],
+   "refused": [
+    {
+     "kind": "question",
+     "text": "Look at their king on {sq:g8}, boxed in by its own pawns. Which of your pieces can reach the back rank, and what would that do to their king?",
+     "problems": [
+      "\"back rank\": no cited fact has a line that ends in a back-rank mate. Put the fact's id in claims, or take the claim out."
+     ]
+    }
+   ],
+   "tools": [
+    "say ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "knightfork-best",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /Nc7/",
+     "pass": true,
+     "detail": "Your best move is Nc7+. It is a fork: the knight attacks their rook on a8 and their king on e8 at once. It gives check, it protects your pawn on a2, and it deals with their threat. After Kf8 you take the rook with Nxa8, and you are winning."
+    },
+    {
+     "check": "says /fork|king and (the |their )?rook|rook and (the |their )?king|both|at (the same time|once)/",
+     "pass": true,
+     "detail": "Your best move is Nc7+. It is a fork: the knight attacks their rook on a8 and their king on e8 at once. It gives check, it protects your pawn on a2, and it deals with their threat. After Kf8 you take the rook with Nxa8, and you are winning."
+    }
+   ],
+   "ms": 9711,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "answer",
+     "source": "coach",
+     "text": "Your best move is Nc7+. It is a fork: the knight attacks their rook on a8 and their king on e8 at once. It gives check, it protects your pawn on a2, and it deals with their threat. After Kf8 you take the rook with Nxa8, and you are winning."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "play_line(best)",
+    "say"
+   ]
+  },
+  {
+   "id": "kpk-draw",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /draw/",
+     "pass": true,
+     "detail": "With best play from both sides, this is a draw, so if you defend well, White cannot win. You are a pawn down, but you can hold. Your best move is Kf8: no material changes hands, and it keeps your king in the game."
+    },
+    {
+     "check": "never says /white (is winning|wins|will win)/",
+     "pass": true
+    }
+   ],
+   "ms": 6854,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "With best play from both sides, this is a draw, so if you defend well, White cannot win. You are a pawn down, but you can hold. Your best move is Kf8: no material changes hands, and it keeps your king in the game."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "fair-play",
+   "covers": "fair play",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /in progress|still being played|still playing|finished|can't help|cannot help|can not help|not allowed|fair play|ban|outside help/",
+     "pass": true,
+     "detail": "I can't help choose a move in a Daily game that is still being played, because both Chess.com and this page ban outside help in live games. Once the game ends, bring it back and we can go through every move together."
+    },
+    {
+     "check": "does not call play_line",
+     "pass": true
+    },
+    {
+     "check": "does not call check_move",
+     "pass": true
+    }
+   ],
+   "ms": 5874,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "general",
+     "source": "coach",
+     "text": "I can't help choose a move in a Daily game that is still being played, because both Chess.com and this page ban outside help in live games. Once the game ends, bring it back and we can go through every move together."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,5238 @@
+[
+ {
+  "key": "start",
+  "about": "The starting position",
+  "input": {
+   "id": "G.start",
+   "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+   "you": "white",
+   "eval": {
+    "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "d2d4",
+       "d7d5",
+       "g1f3",
+       "c7c5",
+       "c2c4",
+       "d5c4",
+       "d4d5"
+      ],
+      "score": {
+       "cp": 28
+      }
+     },
+     {
+      "pv": [
+       "e2e4",
+       "c7c5",
+       "b1c3",
+       "d7d6",
+       "g1f3",
+       "g8f6",
+       "f1c4",
+       "e7e6",
+       "e1g1",
+       "a7a6",
+       "a2a4",
+       "f8e7",
+       "f1e1",
+       "e8g8",
+       "d2d4",
+       "c5d4",
+       "f3d4"
+      ],
+      "score": {
+       "cp": 25
+      }
+     },
+     {
+      "pv": [
+       "g1f3",
+       "d7d5",
+       "d2d4",
+       "e7e6",
+       "c2c4",
+       "g8f6",
+       "b1c3",
+       "b8d7",
+       "c4d5",
+       "e6d5"
+      ],
+      "score": {
+       "cp": 18
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR b KQkq - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "e7e5",
+       "c2c4",
+       "g8f6",
+       "b1c3",
+       "f8b4",
+       "e2e4",
+       "e8g8",
+       "d2d3",
+       "f8e8",
+       "g1e2",
+       "d7d6",
+       "a2a3"
+      ],
+      "score": {
+       "cp": 38
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "e4",
+  "about": "After 1.e4: Black (the owner) to move",
+  "input": {
+   "id": "G.e4",
+   "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
+   "you": "black",
+   "lastMove": {
+    "san": "e4",
+    "by": "opponent",
+    "fenBefore": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+   },
+   "eval": {
+    "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "c7c5",
+       "c2c3",
+       "g8f6",
+       "e4e5",
+       "f6d5",
+       "d2d4",
+       "c5d4",
+       "g1f3",
+       "b8c6",
+       "f1c4",
+       "e7e6"
+      ],
+      "score": {
+       "cp": -26
+      }
+     },
+     {
+      "pv": [
+       "e7e5",
+       "g1f3",
+       "b8c6",
+       "d2d4",
+       "e5d4",
+       "f3d4",
+       "f8c5",
+       "d4c6",
+       "b7c6",
+       "f1d3",
+       "g8e7",
+       "b1d2"
+      ],
+      "score": {
+       "cp": -32
+      }
+     },
+     {
+      "pv": [
+       "c7c6",
+       "d2d4",
+       "d7d5",
+       "e4e5",
+       "c6c5",
+       "g1f3",
+       "c5d4",
+       "f3d4",
+       "b8c6",
+       "c2c4",
+       "e7e6",
+       "b1c3",
+       "f8b4"
+      ],
+      "score": {
+       "cp": -36
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "d2d4",
+       "c7c6",
+       "f1d3",
+       "d7d5",
+       "e4e5",
+       "c6c5",
+       "d4c5",
+       "b8c6",
+       "d1e2",
+       "e7e6",
+       "g1f3",
+       "f8c5",
+       "e1g1",
+       "g8e7",
+       "c2c3",
+       "e7g6"
+      ],
+      "score": {
+       "cp": 94
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "d2d4",
+       "d7d5",
+       "g1f3",
+       "c7c5",
+       "c2c4",
+       "d5c4",
+       "d4d5"
+      ],
+      "score": {
+       "cp": 28
+      }
+     },
+     {
+      "pv": [
+       "e2e4",
+       "c7c5",
+       "b1c3",
+       "d7d6",
+       "g1f3",
+       "g8f6",
+       "f1c4",
+       "e7e6",
+       "e1g1",
+       "a7a6",
+       "a2a4",
+       "f8e7",
+       "f1e1",
+       "e8g8",
+       "d2d4",
+       "c5d4",
+       "f3d4"
+      ],
+      "score": {
+       "cp": 25
+      }
+     },
+     {
+      "pv": [
+       "g1f3",
+       "d7d5",
+       "d2d4",
+       "e7e6",
+       "c2c4",
+       "g8f6",
+       "b1c3",
+       "b8d7",
+       "c4d5",
+       "e6d5"
+      ],
+      "score": {
+       "cp": 18
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "e2e4",
+     "c7c5",
+     "b1c3",
+     "d7d6",
+     "g1f3",
+     "g8f6",
+     "f1c4",
+     "e7e6",
+     "e1g1",
+     "a7a6",
+     "a2a4",
+     "f8e7",
+     "f1e1",
+     "e8g8",
+     "d2d4",
+     "c5d4",
+     "f3d4"
+    ],
+    "score": {
+     "cp": 25
+    }
+   },
+   "captureLines": {},
+   "opening": {
+    "eco": "B00",
+    "name": "King's Pawn Game"
+   },
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "italian",
+  "about": "A quiet Italian Game: White (the owner) to move",
+  "input": {
+   "id": "G.italian",
+   "fen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+   "you": "white",
+   "lastMove": {
+    "san": "Bc5",
+    "by": "opponent",
+    "fenBefore": "r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3"
+   },
+   "eval": {
+    "fen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+    "lines": [
+     {
+      "pv": [
+       "d2d3",
+       "g8f6",
+       "b1c3",
+       "d7d6",
+       "c3a4",
+       "c5b6",
+       "e1g1",
+       "c8g4"
+      ],
+      "score": {
+       "cp": 20
+      }
+     },
+     {
+      "pv": [
+       "e1g1",
+       "g8f6",
+       "d2d3",
+       "d7d6",
+       "c2c3",
+       "c5b6",
+       "a2a4",
+       "a7a5",
+       "f1e1",
+       "h7h6",
+       "b1d2",
+       "f6g4"
+      ],
+      "score": {
+       "cp": 19
+      }
+     },
+     {
+      "pv": [
+       "c2c3",
+       "g8f6",
+       "d2d3",
+       "d7d6",
+       "e1g1",
+       "c5b6",
+       "h2h3",
+       "e8g8",
+       "a2a4",
+       "h7h6",
+       "f1e1",
+       "c8e6",
+       "c4e6"
+      ],
+      "score": {
+       "cp": 18
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 4 4",
+    "lines": [
+     {
+      "pv": [
+       "g8f6",
+       "d2d3",
+       "h7h6",
+       "c2c3",
+       "d7d6",
+       "a2a4",
+       "a7a5",
+       "e1g1",
+       "e8g8",
+       "h2h3",
+       "f8e8",
+       "f1e1",
+       "c8e6",
+       "c4e6",
+       "e8e6",
+       "d3d4",
+       "e5d4",
+       "c3d4"
+      ],
+      "score": {
+       "cp": -1
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3",
+    "lines": [
+     {
+      "pv": [
+       "g8f6",
+       "d2d3",
+       "f8e7",
+       "e1g1",
+       "e8g8",
+       "b1c3",
+       "d7d6",
+       "a2a4",
+       "c6a5",
+       "c4a2",
+       "c7c5",
+       "c1g5"
+      ],
+      "score": {
+       "cp": -30
+      }
+     },
+     {
+      "pv": [
+       "f8e7",
+       "d2d4",
+       "e5d4",
+       "f3d4",
+       "g8f6",
+       "b1c3",
+       "e8g8",
+       "e1g1",
+       "d7d6",
+       "h2h3",
+       "c6d4",
+       "d1d4",
+       "f6d7",
+       "c1e3"
+      ],
+      "score": {
+       "cp": -40
+      }
+     },
+     {
+      "pv": [
+       "d7d6",
+       "d2d4",
+       "e5d4",
+       "f3d4",
+       "g8f6",
+       "e1g1",
+       "f8e7",
+       "b1c3",
+       "e8g8",
+       "h2h3",
+       "c6d4",
+       "d1d4",
+       "f6d7",
+       "c3d5",
+       "e7h4",
+       "c1e3",
+       "d7b6",
+       "c4b3",
+       "b6d5",
+       "d4d5"
+      ],
+      "score": {
+       "cp": -45
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "f8c5",
+     "b1c3",
+     "g8f6",
+     "d2d3",
+     "a7a6",
+     "c3d5",
+     "f6d5",
+     "e4d5",
+     "c6d4",
+     "f3d4",
+     "c5d4",
+     "c2c3",
+     "d4c5",
+     "e1g1",
+     "e8g8",
+     "a2a4",
+     "d7d6"
+    ],
+    "score": {
+     "cp": -17
+    }
+   },
+   "captureLines": {},
+   "opening": {
+    "eco": "C50",
+    "name": "Italian Game: Giuoco Piano"
+   },
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "scholar",
+  "about": "Scholar's Mate threat: Black (the owner) to move",
+  "input": {
+   "id": "G.scholar",
+   "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+   "you": "black",
+   "lastMove": {
+    "san": "Qh5",
+    "by": "opponent",
+    "fenBefore": "r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/8/PPPP1PPP/RNBQK1NR w KQkq - 2 3"
+   },
+   "eval": {
+    "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+    "lines": [
+     {
+      "pv": [
+       "g7g6",
+       "h5d1",
+       "g8e7",
+       "b1c3",
+       "f8g7",
+       "g1e2",
+       "c6a5",
+       "d2d3",
+       "e8g8",
+       "a2a4",
+       "a5c4",
+       "d3c4",
+       "d7d6",
+       "f2f3"
+      ],
+      "score": {
+       "cp": 26
+      }
+     },
+     {
+      "pv": [
+       "d8e7",
+       "h5d1",
+       "g8f6",
+       "b1c3",
+       "c6d4",
+       "g1f3",
+       "d7d6",
+       "h2h3",
+       "c7c6",
+       "e1g1",
+       "b7b5",
+       "c4e2",
+       "c8b7",
+       "f1e1"
+      ],
+      "score": {
+       "cp": 15
+      }
+     },
+     {
+      "pv": [
+       "g8h6",
+       "d2d3",
+       "g7g6",
+       "h5g5",
+       "d8g5",
+       "c1g5",
+       "c6d4",
+       "c4b3",
+       "f8g7",
+       "g1e2",
+       "d4b3",
+       "a2b3",
+       "d7d6",
+       "b1c3",
+       "c7c6",
+       "g5e3"
+      ],
+      "score": {
+       "cp": -30
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 3 3",
+    "lines": [
+     {
+      "pv": [
+       "h5f7"
+      ],
+      "score": {
+       "mate": 1
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/8/PPPP1PPP/RNBQK1NR w KQkq - 2 3",
+    "lines": [
+     {
+      "pv": [
+       "g1f3",
+       "g8f6",
+       "d2d3",
+       "f8c5",
+       "b1c3",
+       "h7h6",
+       "e1g1",
+       "e8g8",
+       "h2h3",
+       "a7a6",
+       "a2a4",
+       "d7d6",
+       "c3e2"
+      ],
+      "score": {
+       "cp": 13
+      }
+     },
+     {
+      "pv": [
+       "d2d3",
+       "f8c5",
+       "g1f3",
+       "g8f6",
+       "b1c3",
+       "h7h6",
+       "a2a3",
+       "d7d6",
+       "c3a4",
+       "c5b6",
+       "a4b6",
+       "a7b6",
+       "e1g1",
+       "c6e7",
+       "d1e2"
+      ],
+      "score": {
+       "cp": 14
+      }
+     },
+     {
+      "pv": [
+       "a2a4",
+       "g8f6",
+       "d2d3",
+       "f8c5",
+       "g1f3",
+       "h7h6",
+       "c1e3",
+       "c5e3",
+       "f2e3",
+       "d7d6",
+       "a4a5",
+       "e8g8"
+      ],
+      "score": {
+       "cp": 8
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "d1h5",
+     "g7g6",
+     "h5f3",
+     "g8f6",
+     "g1e2",
+     "d7d6",
+     "b1c3",
+     "f8g7",
+     "d2d3",
+     "c6b4",
+     "c4b3",
+     "c8g4",
+     "f3g3",
+     "g4e6",
+     "e1g1",
+     "e8g8"
+    ],
+    "score": {
+     "cp": -29
+    }
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "scholar-missed",
+  "about": "Black (the owner) ignored the mate threat",
+  "input": {
+   "id": "G.scholar-missed",
+   "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 4 4",
+   "you": "black",
+   "lastMove": {
+    "san": "Nf6",
+    "by": "owner",
+    "fenBefore": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3"
+   },
+   "eval": {
+    "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 4 4",
+    "lines": [
+     {
+      "pv": [
+       "h5f7"
+      ],
+      "score": {
+       "mate": 1
+      }
+     },
+     {
+      "pv": [
+       "h5d1",
+       "f6e4",
+       "b1c3",
+       "e4f6",
+       "c3d5",
+       "c6a5",
+       "d5f6",
+       "d8f6",
+       "c4d5",
+       "f8c5",
+       "d1f3",
+       "f6f3",
+       "d5f3",
+       "a5c6",
+       "g1e2",
+       "c6b4"
+      ],
+      "score": {
+       "cp": -236
+      }
+     },
+     {
+      "pv": [
+       "h5f3",
+       "c6d4",
+       "f3d1",
+       "f6e4",
+       "d2d3",
+       "e4c5",
+       "c2c3",
+       "d4e6",
+       "d3d4",
+       "e5d4",
+       "c3d4",
+       "d7d5",
+       "c4e2",
+       "c5e4",
+       "g1f3",
+       "f8b4",
+       "b1d2"
+      ],
+      "score": {
+       "cp": -287
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 4 4",
+    "lines": [
+     {
+      "pv": [
+       "f6h5",
+       "g1f3",
+       "h5f4",
+       "g2g4",
+       "g7g5",
+       "e1f1",
+       "d7d5",
+       "c4d5",
+       "f4d5",
+       "e4d5",
+       "c6d4"
+      ],
+      "score": {
+       "cp": 962
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+    "lines": [
+     {
+      "pv": [
+       "g7g6",
+       "h5d1",
+       "g8e7",
+       "b1c3",
+       "f8g7",
+       "g1e2",
+       "c6a5",
+       "d2d3",
+       "e8g8",
+       "a2a4",
+       "a5c4",
+       "d3c4",
+       "d7d6",
+       "f2f3"
+      ],
+      "score": {
+       "cp": 26
+      }
+     },
+     {
+      "pv": [
+       "d8e7",
+       "h5d1",
+       "g8f6",
+       "b1c3",
+       "c6d4",
+       "g1f3",
+       "d7d6",
+       "h2h3",
+       "c7c6",
+       "e1g1",
+       "b7b5",
+       "c4e2",
+       "c8b7",
+       "f1e1"
+      ],
+      "score": {
+       "cp": 15
+      }
+     },
+     {
+      "pv": [
+       "g8h6",
+       "d2d3",
+       "g7g6",
+       "h5g5",
+       "d8g5",
+       "c1g5",
+       "c6d4",
+       "c4b3",
+       "f8g7",
+       "g1e2",
+       "d4b3",
+       "a2b3",
+       "d7d6",
+       "b1c3",
+       "c7c6",
+       "g5e3"
+      ],
+      "score": {
+       "cp": -30
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "g8f6",
+     "h5f7"
+    ],
+    "score": {
+     "mate": -1
+    }
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "legal",
+  "about": "Legal's trap: White (the owner) to move, the knight can take on e5",
+  "input": {
+   "id": "G.legal",
+   "fen": "rn1qkbnr/ppp2p1p/3p2p1/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 0 5",
+   "you": "white",
+   "lastMove": {
+    "san": "g6",
+    "by": "opponent",
+    "fenBefore": "rn1qkbnr/ppp2ppp/3p4/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R b KQkq - 3 4"
+   },
+   "eval": {
+    "fen": "rn1qkbnr/ppp2p1p/3p2p1/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 0 5",
+    "lines": [
+     {
+      "pv": [
+       "f3e5",
+       "d6e5",
+       "d1g4",
+       "b8c6",
+       "g4f3",
+       "d8d7",
+       "d2d3",
+       "c6d4",
+       "f3d1",
+       "b7b5"
+      ],
+      "score": {
+       "cp": 222
+      }
+     },
+     {
+      "pv": [
+       "d2d4",
+       "b8c6",
+       "d4e5",
+       "g4f3",
+       "d1f3",
+       "c6e5",
+       "f3e2",
+       "e5c4",
+       "e2c4",
+       "f8g7",
+       "c1e3",
+       "g8f6",
+       "e1c1",
+       "d8e7",
+       "e3g5",
+       "e8g8",
+       "c3d5"
+      ],
+      "score": {
+       "cp": 107
+      }
+     },
+     {
+      "pv": [
+       "h2h3",
+       "g4f3",
+       "d1f3",
+       "d8d7",
+       "d2d3",
+       "b8c6",
+       "a2a4",
+       "c6d4",
+       "f3d1",
+       "f8g7",
+       "c1e3"
+      ],
+      "score": {
+       "cp": 91
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "rn1qkbnr/ppp2p1p/3p2p1/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R b KQkq - 0 5",
+    "lines": [
+     {
+      "pv": [
+       "b8c6",
+       "h2h3",
+       "g4f3",
+       "d1f3",
+       "d8d7",
+       "c3e2",
+       "c6a5",
+       "c4d3",
+       "f8g7",
+       "b2b4",
+       "a5c6",
+       "d3c4",
+       "g8f6",
+       "a1b1",
+       "a7a6",
+       "a2a4",
+       "c6d4",
+       "e2d4",
+       "e5d4",
+       "a4a5",
+       "e8g8"
+      ],
+      "score": {
+       "cp": -40
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "rn1qkbnr/ppp2ppp/3p4/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R b KQkq - 3 4",
+    "lines": [
+     {
+      "pv": [
+       "g8f6",
+       "h2h3",
+       "g4f3",
+       "d1f3",
+       "b8c6",
+       "c3e2",
+       "c6a5",
+       "c4b5",
+       "c7c6",
+       "b5d3",
+       "d6d5",
+       "e1g1",
+       "d5e4",
+       "d3e4",
+       "f6e4",
+       "f3e4",
+       "d8d5",
+       "e4a4",
+       "d5b5",
+       "a4b5"
+      ],
+      "score": {
+       "cp": -56
+      }
+     },
+     {
+      "pv": [
+       "b8c6",
+       "h2h3",
+       "g4f3",
+       "d1f3",
+       "g8f6",
+       "c3e2",
+       "c6a5",
+       "c4b5",
+       "c7c6",
+       "b5d3",
+       "d6d5",
+       "e1g1",
+       "d5e4",
+       "d3e4",
+       "f6e4",
+       "f3e4",
+       "d8d5",
+       "e4a4",
+       "d5b5",
+       "a4g4",
+       "h7h5",
+       "g4e4"
+      ],
+      "score": {
+       "cp": -56
+      }
+     },
+     {
+      "pv": [
+       "b8d7",
+       "h2h3",
+       "g4h5",
+       "d2d4",
+       "g8f6",
+       "c1e3",
+       "c7c6",
+       "d1e2",
+       "f6e4",
+       "c3e4",
+       "d6d5"
+      ],
+      "score": {
+       "cp": -75
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "g7g6",
+     "f3e5",
+     "d6e5",
+     "d1g4",
+     "b8c6",
+     "d2d3",
+     "g8f6",
+     "g4f3",
+     "c6d4",
+     "f3d1",
+     "d8d7",
+     "e1g1",
+     "b7b5",
+     "c4b3",
+     "f8g7",
+     "a2a4",
+     "d4b3",
+     "c2b3",
+     "b5a4",
+     "a1a4"
+    ],
+    "score": {
+     "cp": -237
+    }
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "queenfork",
+  "about": "Black queen attacks the knight on e5 and the pawn on e4: White (the owner) to move",
+  "input": {
+   "id": "G.queenfork",
+   "fen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+   "you": "white",
+   "lastMove": {
+    "san": "Qd4",
+    "by": "opponent",
+    "fenBefore": "r1bqkbnr/1pp2ppp/p1p5/4N3/4P3/8/PPPP1PPP/RNBQK2R b KQkq - 0 5"
+   },
+   "eval": {
+    "fen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+    "lines": [
+     {
+      "pv": [
+       "e5g4",
+       "d4e4",
+       "g4e3",
+       "c8e6",
+       "d2d3",
+       "e4g6",
+       "d1f3",
+       "f7f6",
+       "c1d2",
+       "e8c8",
+       "b1c3",
+       "g6f7",
+       "e1c1",
+       "e6a2"
+      ],
+      "score": {
+       "cp": -46
+      }
+     },
+     {
+      "pv": [
+       "e5f3",
+       "d4e4",
+       "d1e2",
+       "e4e2",
+       "e1e2",
+       "f7f6",
+       "d2d3",
+       "c8d7",
+       "h1e1",
+       "e8c8",
+       "b1c3",
+       "g8e7",
+       "b2b3"
+      ],
+      "score": {
+       "cp": -66
+      }
+     },
+     {
+      "pv": [
+       "e5d3",
+       "d4e4",
+       "d1e2",
+       "c8f5",
+       "b1c3",
+       "e4e2",
+       "e1e2",
+       "e8c8",
+       "d3e1",
+       "f7f6",
+       "d2d3",
+       "h7h5",
+       "c1e3",
+       "b7b6"
+      ],
+      "score": {
+       "cp": -95
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R b KQkq - 1 6",
+    "lines": [
+     {
+      "pv": [
+       "d4e5",
+       "b1c3",
+       "e5d4",
+       "e1g1",
+       "c8e6",
+       "d2d3",
+       "e8c8",
+       "c1e3",
+       "d4d7",
+       "d3d4",
+       "g8e7",
+       "c3a4",
+       "e7g6",
+       "f2f4",
+       "f7f5",
+       "d4d5",
+       "c6d5",
+       "d1d4"
+      ],
+      "score": {
+       "cp": 577
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1bqkbnr/1pp2ppp/p1p5/4N3/4P3/8/PPPP1PPP/RNBQK2R b KQkq - 0 5",
+    "lines": [
+     {
+      "pv": [
+       "d8e7",
+       "e5f3",
+       "e7e4",
+       "d1e2",
+       "e4e2",
+       "e1e2",
+       "g8e7",
+       "d2d3",
+       "c8d7",
+       "b1c3",
+       "f7f6",
+       "c1f4",
+       "e8c8",
+       "a1e1",
+       "c6c5",
+       "e2d1"
+      ],
+      "score": {
+       "cp": 69
+      }
+     },
+     {
+      "pv": [
+       "d8d4",
+       "e5f3",
+       "d4e4",
+       "d1e2",
+       "e4e2",
+       "e1e2",
+       "g8e7",
+       "d2d3",
+       "c8d7",
+       "b1c3",
+       "c6c5",
+       "h2h4",
+       "e8c8",
+       "c1e3",
+       "b7b6",
+       "e2d2"
+      ],
+      "score": {
+       "cp": 56
+      }
+     },
+     {
+      "pv": [
+       "d8g5",
+       "e5f3",
+       "g5g2",
+       "h1g1",
+       "g2h3",
+       "g1g3",
+       "h3e6",
+       "b1c3",
+       "g8f6",
+       "d2d3",
+       "g7g6",
+       "c1e3",
+       "f6h5",
+       "g3g1",
+       "f8g7",
+       "d1e2",
+       "e6h3",
+       "f3g5",
+       "h3h2",
+       "e1c1",
+       "h7h6",
+       "g5f3",
+       "h2h3",
+       "g1h1"
+      ],
+      "score": {
+       "cp": 16
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "d8d4",
+     "e5f3",
+     "d4e4",
+     "d1e2",
+     "e4e2",
+     "e1e2",
+     "g8e7",
+     "d2d3",
+     "c8d7",
+     "b1c3",
+     "c6c5",
+     "h2h4",
+     "e8c8",
+     "c1e3",
+     "b7b6",
+     "e2d2"
+    ],
+    "score": {
+     "cp": 56
+    }
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "pin",
+  "about": "Ruy Lopez: the knight on c6 is pinned; the owner is Black and just played d6",
+  "input": {
+   "id": "G.pin",
+   "fen": "r1bqkbnr/ppp2ppp/2np4/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4",
+   "you": "black",
+   "lastMove": {
+    "san": "d6",
+    "by": "owner",
+    "fenBefore": "r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3"
+   },
+   "eval": {
+    "fen": "r1bqkbnr/ppp2ppp/2np4/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4",
+    "lines": [
+     {
+      "pv": [
+       "b1c3",
+       "f8e7",
+       "d2d4",
+       "e5d4",
+       "f3d4",
+       "c8d7",
+       "d4c6",
+       "b7c6",
+       "b5d3",
+       "e7f6",
+       "e1g1",
+       "g8e7",
+       "f2f4",
+       "e8g8",
+       "d1f3",
+       "a8b8"
+      ],
+      "score": {
+       "cp": 60
+      }
+     },
+     {
+      "pv": [
+       "d2d4",
+       "e5d4",
+       "f3d4",
+       "c8d7",
+       "b1c3",
+       "g8f6",
+       "e1g1",
+       "c6d4",
+       "b5d7",
+       "d8d7",
+       "d1d4",
+       "f8e7",
+       "f1d1",
+       "d7e6",
+       "c3d5",
+       "e7d8",
+       "d4a4",
+       "e6d7",
+       "a4b3",
+       "c7c6",
+       "d5f6",
+       "d8f6"
+      ],
+      "score": {
+       "cp": 56
+      }
+     },
+     {
+      "pv": [
+       "e1g1",
+       "g8f6",
+       "d2d4",
+       "c8d7",
+       "d4d5",
+       "c6b8",
+       "b5d3",
+       "a7a5",
+       "c2c4",
+       "b8a6",
+       "b1c3",
+       "f8e7",
+       "d3c2",
+       "e8g8",
+       "a2a3",
+       "h7h6",
+       "c1e3"
+      ],
+      "score": {
+       "cp": 55
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1bqkbnr/ppp2ppp/2np4/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 0 4",
+    "lines": [
+     {
+      "pv": [
+       "g8e7",
+       "c2c3",
+       "a7a6",
+       "b5a4",
+       "b7b5",
+       "a4b3",
+       "e7g6",
+       "e1g1",
+       "c6a5",
+       "b3c2",
+       "f8e7",
+       "a2a4",
+       "c8d7"
+      ],
+      "score": {
+       "cp": -22
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3",
+    "lines": [
+     {
+      "pv": [
+       "g8f6",
+       "e1g1",
+       "f6e4",
+       "f1e1",
+       "e4d6",
+       "f3e5",
+       "f8e7",
+       "b5f1",
+       "c6e5",
+       "e1e5",
+       "e8g8",
+       "b1c3"
+      ],
+      "score": {
+       "cp": -31
+      }
+     },
+     {
+      "pv": [
+       "a7a6",
+       "b5a4",
+       "g8f6",
+       "e1g1",
+       "b7b5",
+       "a4b3",
+       "f8c5",
+       "c2c3",
+       "d7d6",
+       "h2h3",
+       "h7h6"
+      ],
+      "score": {
+       "cp": -36
+      }
+     },
+     {
+      "pv": [
+       "g8e7",
+       "e1g1",
+       "e7g6",
+       "d2d4",
+       "e5d4",
+       "f3d4",
+       "a7a6",
+       "b5e2",
+       "f8c5",
+       "d4b3",
+       "c5a7",
+       "b1c3",
+       "e8g8",
+       "g1h1",
+       "d7d6"
+      ],
+      "score": {
+       "cp": -53
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "d7d6",
+     "b1c3",
+     "g8f6",
+     "d2d4",
+     "e5d4",
+     "d1d4",
+     "f8e7",
+     "d4c4",
+     "c8d7",
+     "c1f4",
+     "e8g8",
+     "e1c1",
+     "a7a6",
+     "b5c6",
+     "b7c6",
+     "e4e5"
+    ],
+    "score": {
+     "cp": -48
+    }
+   },
+   "captureLines": {},
+   "opening": {
+    "eco": "C62",
+    "name": "Ruy Lopez: Steinitz Defense"
+   },
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "hung",
+  "about": "The owner (White) just put a knight where a pawn takes it",
+  "input": {
+   "id": "G.hung",
+   "fen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 2 6",
+   "you": "white",
+   "lastMove": {
+    "san": "Ne6",
+    "by": "owner",
+    "fenBefore": "r1bqkb1r/ppp2ppp/5n2/n2Pp1N1/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 1 6"
+   },
+   "eval": {
+    "fen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 2 6",
+    "lines": [
+     {
+      "pv": [
+       "f7e6",
+       "c4b5",
+       "c8d7",
+       "b5d7",
+       "d8d7",
+       "e1g1",
+       "e8c8",
+       "d5e6",
+       "d7d5",
+       "f1e1",
+       "a5c6",
+       "b1c3",
+       "d5e6",
+       "c3e4",
+       "h7h6",
+       "d2d3"
+      ],
+      "score": {
+       "cp": 725
+      }
+     },
+     {
+      "pv": [
+       "c8e6",
+       "d5e6",
+       "a5c4",
+       "e6f7",
+       "e8f7",
+       "d2d3",
+       "c4b6",
+       "e1g1",
+       "d8d7",
+       "b1c3",
+       "b6d5",
+       "d1f3",
+       "a8e8"
+      ],
+      "score": {
+       "cp": 570
+      }
+     },
+     {
+      "pv": [
+       "d8d6",
+       "e6f8",
+       "a5c4",
+       "e1g1",
+       "d6d5",
+       "b1c3",
+       "d5c6",
+       "d2d4",
+       "e8f8",
+       "d4e5",
+       "c4e5",
+       "f1e1",
+       "e5d7",
+       "c1f4",
+       "h7h6"
+      ],
+      "score": {
+       "cp": 380
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 2 6",
+    "lines": [
+     {
+      "pv": [
+       "c4b5",
+       "c7c6",
+       "e6d8",
+       "c6b5",
+       "d8f7",
+       "e8f7",
+       "d2d3",
+       "f6d5",
+       "h2h3",
+       "f8d6",
+       "e1g1",
+       "h8d8",
+       "b1d2"
+      ],
+      "score": {
+       "cp": 827
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1bqkb1r/ppp2ppp/5n2/n2Pp1N1/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+    "lines": [
+     {
+      "pv": [
+       "c4b5",
+       "c7c6",
+       "d5c6",
+       "b7c6",
+       "b5d3",
+       "f6d5",
+       "g5f3",
+       "f8d6",
+       "e1g1",
+       "d5f4",
+       "f1e1",
+       "f4d3",
+       "c2d3",
+       "e8g8",
+       "b2b3",
+       "c6c5",
+       "c1b2",
+       "a5c6",
+       "b2e5"
+      ],
+      "score": {
+       "cp": 16
+      }
+     },
+     {
+      "pv": [
+       "d2d3",
+       "h7h6",
+       "g5f3",
+       "e5e4",
+       "d1e2",
+       "a5c4",
+       "d3c4",
+       "f8c5",
+       "h2h3",
+       "e8g8",
+       "f3h2",
+       "e4e3",
+       "c1e3",
+       "c5e3",
+       "f2e3",
+       "f6e4",
+       "e1g1",
+       "e4g3",
+       "e2f3",
+       "g3f1",
+       "h2f1"
+      ],
+      "score": {
+       "cp": -32
+      }
+     },
+     {
+      "pv": [
+       "c4e2",
+       "f6d5",
+       "d2d4",
+       "f8e7",
+       "g5f3",
+       "e5d4",
+       "f3d4",
+       "c7c5"
+      ],
+      "score": {
+       "cp": -46
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "g5e6",
+     "f7e6",
+     "c4b5",
+     "c8d7",
+     "b5d7",
+     "d8d7",
+     "d5e6",
+     "d7e6",
+     "d2d3",
+     "e8c8",
+     "b1d2",
+     "a5c6",
+     "e1g1",
+     "f8e7",
+     "f1e1",
+     "h7h6",
+     "d1f3"
+    ],
+    "score": {
+     "cp": -716
+    }
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "wayward-queen",
+  "about": "An early queen raid: Black (the owner) to move",
+  "input": {
+   "id": "G.wayward-queen",
+   "fen": "rnbqkbnr/pppp1ppp/8/4p2Q/4P3/8/PPPP1PPP/RNB1KBNR b KQkq - 1 2",
+   "you": "black",
+   "lastMove": {
+    "san": "Qh5",
+    "by": "opponent",
+    "fenBefore": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2"
+   },
+   "eval": {
+    "fen": "rnbqkbnr/pppp1ppp/8/4p2Q/4P3/8/PPPP1PPP/RNB1KBNR b KQkq - 1 2",
+    "lines": [
+     {
+      "pv": [
+       "b8c6",
+       "f1c4",
+       "g7g6",
+       "h5f3",
+       "g8f6",
+       "g1e2",
+       "c6a5",
+       "d2d3",
+       "f8g7",
+       "c1g5",
+       "e8g8"
+      ],
+      "score": {
+       "cp": 28
+      }
+     },
+     {
+      "pv": [
+       "d7d6",
+       "f1c4",
+       "g7g6",
+       "h5d1",
+       "g8f6",
+       "d2d3",
+       "c7c6",
+       "g1f3",
+       "b7b5",
+       "c4b3",
+       "f8g7",
+       "a2a4",
+       "b5b4",
+       "e1g1",
+       "e8g8",
+       "c1g5"
+      ],
+      "score": {
+       "cp": 22
+      }
+     },
+     {
+      "pv": [
+       "d8e7",
+       "f1c4",
+       "g8f6",
+       "h5e2",
+       "d7d6",
+       "g1f3",
+       "g7g6",
+       "b1c3",
+       "f8g7",
+       "d2d3",
+       "c7c6",
+       "a2a4",
+       "e8g8",
+       "e1g1",
+       "b8d7",
+       "f1e1"
+      ],
+      "score": {
+       "cp": 2
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "rnbqkbnr/pppp1ppp/8/4p2Q/4P3/8/PPPP1PPP/RNB1KBNR w KQkq - 1 2",
+    "lines": [
+     {
+      "pv": [
+       "h5e5",
+       "g8e7",
+       "b1c3",
+       "b8c6",
+       "e5g3",
+       "c6d4",
+       "g3d3",
+       "d4e6",
+       "g1f3",
+       "g7g6",
+       "b2b3",
+       "f8g7",
+       "c1b2",
+       "d7d6",
+       "e1c1",
+       "e8g8",
+       "h2h4",
+       "h7h5",
+       "d3e3"
+      ],
+      "score": {
+       "cp": 155
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+    "lines": [
+     {
+      "pv": [
+       "g1f3",
+       "b8c6",
+       "d2d4",
+       "e5d4",
+       "f3d4",
+       "g8f6",
+       "d4c6",
+       "b7c6",
+       "f1d3",
+       "d7d5",
+       "e4d5",
+       "c6d5",
+       "b1c3",
+       "f8e7",
+       "e1g1",
+       "e8g8",
+       "f1e1",
+       "f8e8"
+      ],
+      "score": {
+       "cp": 22
+      }
+     },
+     {
+      "pv": [
+       "f1c4",
+       "g8f6",
+       "d2d3",
+       "c7c6",
+       "g1f3",
+       "d7d5",
+       "c4b3",
+       "a7a5",
+       "a2a4",
+       "f8b4",
+       "c2c3",
+       "b4d6",
+       "e1g1",
+       "b8d7"
+      ],
+      "score": {
+       "cp": 2
+      }
+     },
+     {
+      "pv": [
+       "b1c3",
+       "g8f6",
+       "g1f3",
+       "b8c6",
+       "f1b5",
+       "c6d4",
+       "f3d4",
+       "e5d4",
+       "e4e5",
+       "d4c3",
+       "e5f6",
+       "d8f6",
+       "d2c3",
+       "f8c5",
+       "d1e2",
+       "f6e6"
+      ],
+      "score": {
+       "cp": 1
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "d1h5",
+     "b8c6",
+     "f1c4",
+     "g7g6",
+     "h5f3",
+     "g8f6",
+     "g1e2",
+     "f8g7",
+     "b1c3",
+     "d7d6",
+     "d2d3",
+     "e8g8",
+     "a2a3",
+     "c6d4",
+     "e2d4",
+     "e5d4",
+     "c3d5",
+     "f6g4",
+     "c4a2"
+    ],
+    "score": {
+     "cp": -25
+    }
+   },
+   "captureLines": {},
+   "opening": {
+    "eco": "C20",
+    "name": "King's Pawn Game: Wayward Queen Attack"
+   },
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "fried-liver",
+  "about": "The Fried Liver: White (the owner) has just sacrificed on f7",
+  "input": {
+   "id": "G.fried-liver",
+   "fen": "r1bqkb1r/ppp2Npp/2n5/3np3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 0 6",
+   "you": "white",
+   "lastMove": {
+    "san": "Nxf7",
+    "by": "owner",
+    "fenBefore": "r1bqkb1r/ppp2ppp/2n5/3np1N1/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 0 6"
+   },
+   "eval": {
+    "fen": "r1bqkb1r/ppp2Npp/2n5/3np3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 0 6",
+    "lines": [
+     {
+      "pv": [
+       "e8f7",
+       "d1f3",
+       "f7e6",
+       "b1c3",
+       "c6b4",
+       "c4b3",
+       "c7c6",
+       "a2a3",
+       "d8f6",
+       "f3e4",
+       "b4a6",
+       "c3d5",
+       "c6d5",
+       "e4d5",
+       "e6e7",
+       "d2d4",
+       "a6c7"
+      ],
+      "score": {
+       "cp": -79
+      }
+     },
+     {
+      "pv": [
+       "d8h4",
+       "c4d5",
+       "c8g4",
+       "g2g3",
+       "h4h3",
+       "f7g5",
+       "g4d1",
+       "g5h3",
+       "d1c2",
+       "d5c6",
+       "b7c6",
+       "b1c3",
+       "f8c5",
+       "d2d3",
+       "c2d3",
+       "c1e3",
+       "c5d4",
+       "e1c1",
+       "d3f5",
+       "e3d4",
+       "e5d4",
+       "h1e1",
+       "e8f8",
+       "d1d4",
+       "f5h3"
+      ],
+      "score": {
+       "cp": -514
+      }
+     },
+     {
+      "pv": [
+       "d8d7",
+       "f7h8",
+       "d5f4",
+       "e1g1",
+       "f4g2",
+       "c4f7",
+       "e8d8",
+       "d2d4",
+       "c6d4",
+       "d1h5",
+       "d7g4",
+       "h5g4",
+       "c8g4",
+       "g1g2",
+       "g4f3",
+       "g2h3",
+       "d4c2"
+      ],
+      "score": {
+       "cp": -605
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1bqkb1r/ppp2Npp/2n5/3np3/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 0 6",
+    "lines": [
+     {
+      "pv": [
+       "f7d8",
+       "c6b4",
+       "d2d4",
+       "h7h5",
+       "c4d5",
+       "c8g4",
+       "d5f7",
+       "e8d8"
+      ],
+      "score": {
+       "cp": 870
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1bqkb1r/ppp2ppp/2n5/3np1N1/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 0 6",
+    "lines": [
+     {
+      "pv": [
+       "g5f7",
+       "e8f7",
+       "d1f3",
+       "f7e6",
+       "b1c3",
+       "c6b4",
+       "e1g1",
+       "c7c6",
+       "d2d4",
+       "d8f6",
+       "f3d1",
+       "e5d4",
+       "c3e4",
+       "f6g6",
+       "a2a3",
+       "b4a6"
+      ],
+      "score": {
+       "cp": 126
+      }
+     },
+     {
+      "pv": [
+       "d2d4",
+       "c6d4",
+       "c2c3",
+       "b7b5",
+       "c4d3",
+       "h7h6",
+       "g5f7",
+       "e8f7",
+       "c3d4",
+       "f8b4",
+       "c1d2",
+       "d5f4",
+       "e1g1",
+       "b4d2",
+       "b1d2",
+       "d8d4",
+       "d2f3",
+       "d4d5",
+       "f1e1",
+       "f4d3",
+       "f3e5",
+       "f7g8",
+       "e5d3"
+      ],
+      "score": {
+       "cp": 77
+      }
+     },
+     {
+      "pv": [
+       "d2d3",
+       "f7f6",
+       "b1c3",
+       "f8b4",
+       "g5e4",
+       "c8e6",
+       "e1g1",
+       "d5c3",
+       "b2c3",
+       "e6c4",
+       "c3b4",
+       "c4d5",
+       "c1e3",
+       "c6b4",
+       "a1b1",
+       "a7a5",
+       "a2a3",
+       "d5e4",
+       "d3e4",
+       "d8d1",
+       "f1d1",
+       "b4c2",
+       "b1b7"
+      ],
+      "score": {
+       "cp": -32
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "g5f7",
+     "e8f7",
+     "d1f3",
+     "f7e6",
+     "b1c3",
+     "c6b4",
+     "e1g1",
+     "c7c6",
+     "d2d4",
+     "d8f6",
+     "f3d1",
+     "e5d4",
+     "c3e4",
+     "f6g6",
+     "a2a3",
+     "b4a6"
+    ],
+    "score": {
+     "cp": 126
+    }
+   },
+   "captureLines": {},
+   "opening": {
+    "eco": "C57",
+    "name": "Italian Game: Two Knights Defense, Fried Liver Attack"
+   },
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "castled",
+  "about": "Both sides castled in the Italian: White (the owner) to move",
+  "input": {
+   "id": "G.castled",
+   "fen": "r1bq1rk1/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQ1RK1 w - - 1 6",
+   "you": "white",
+   "lastMove": {
+    "san": "O-O",
+    "by": "opponent",
+    "fenBefore": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQ1RK1 b kq - 0 5"
+   },
+   "eval": {
+    "fen": "r1bq1rk1/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQ1RK1 w - - 1 6",
+    "lines": [
+     {
+      "pv": [
+       "c2c3",
+       "d7d6",
+       "h2h3",
+       "a7a5",
+       "f1e1",
+       "h7h6",
+       "d3d4",
+       "c5a7",
+       "c1e3",
+       "d6d5",
+       "d4e5",
+       "d5e4",
+       "b1d2",
+       "e4f3",
+       "e5f6"
+      ],
+      "score": {
+       "cp": 23
+      }
+     },
+     {
+      "pv": [
+       "h2h3",
+       "h7h6",
+       "c2c3",
+       "a7a5",
+       "f1e1",
+       "c5a7",
+       "b1d2",
+       "d7d6",
+       "d2f1",
+       "c8e6",
+       "c4b5",
+       "c6e7",
+       "f1g3",
+       "c7c6",
+       "b5a4",
+       "e7g6"
+      ],
+      "score": {
+       "cp": 20
+      }
+     },
+     {
+      "pv": [
+       "c2c3",
+       "d7d6",
+       "f1e1",
+       "a7a5",
+       "h2h3",
+       "c5a7",
+       "c4b3",
+       "c6e7",
+       "b3c2",
+       "e7g6",
+       "d3d4",
+       "f8e8",
+       "b1d2",
+       "h7h6",
+       "d2c4"
+      ],
+      "score": {
+       "cp": 18
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1bq1rk1/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQ1RK1 b - - 1 6",
+    "lines": [
+     {
+      "pv": [
+       "h7h6",
+       "a2a4",
+       "d7d5",
+       "e4d5",
+       "f6d5",
+       "b1d2",
+       "f8e8",
+       "a4a5",
+       "c5f8",
+       "c2c3",
+       "a8b8",
+       "f1e1",
+       "b7b5",
+       "a5b6",
+       "a7b6"
+      ],
+      "score": {
+       "cp": -1
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQ1RK1 b kq - 0 5",
+    "lines": [
+     {
+      "pv": [
+       "d7d6",
+       "c2c3",
+       "a7a5",
+       "f1e1",
+       "e8g8",
+       "h2h3",
+       "c8e6",
+       "c4b5",
+       "c6e7",
+       "d3d4",
+       "c5a7",
+       "b5f1"
+      ],
+      "score": {
+       "cp": -19
+      }
+     },
+     {
+      "pv": [
+       "h7h6",
+       "c2c3",
+       "d7d6",
+       "b2b4",
+       "c5b6",
+       "a2a4",
+       "a7a5",
+       "b4b5",
+       "c6e7",
+       "c4b3",
+       "c7c6",
+       "b1d2",
+       "e8g8",
+       "c1a3",
+       "b6c7"
+      ],
+      "score": {
+       "cp": -21
+      }
+     },
+     {
+      "pv": [
+       "a7a6",
+       "c2c3",
+       "c5a7",
+       "a2a4",
+       "h7h6",
+       "f1e1",
+       "e8g8",
+       "b1d2",
+       "d7d6",
+       "h2h3",
+       "c8e6",
+       "b2b4",
+       "d8d7",
+       "c4e6",
+       "d7e6"
+      ],
+      "score": {
+       "cp": -22
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "e8g8",
+     "c2c3",
+     "d7d6",
+     "h2h3",
+     "a7a5",
+     "f1e1",
+     "c8e6",
+     "c4b5",
+     "c6e7",
+     "d3d4",
+     "c5b6",
+     "b5d3",
+     "e7g6",
+     "a2a4"
+    ],
+    "score": {
+     "cp": -24
+    }
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "qe6-before",
+  "about": "The owner's game, a knight down: Black to move, the owner sits on White's side",
+  "input": {
+   "id": "G.qe6-before",
+   "fen": "r1b1kb1r/ppp1q1pp/2np1p2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 b kq - 0 10",
+   "you": "white",
+   "lastMove": {
+    "san": "a4",
+    "by": "owner",
+    "fenBefore": "r1b1kb1r/ppp1q1pp/2np1p2/4p3/2BP4/5N2/PPP2PPP/RNBQR1K1 w kq - 1 10"
+   },
+   "eval": {
+    "fen": "r1b1kb1r/ppp1q1pp/2np1p2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 b kq - 0 10",
+    "lines": [
+     {
+      "pv": [
+       "c8g4",
+       "c4b5",
+       "e8c8",
+       "b5c6",
+       "b7c6",
+       "h2h3",
+       "g4h5",
+       "b1c3",
+       "e7f7",
+       "d1d3"
+      ],
+      "score": {
+       "cp": -707
+      }
+     },
+     {
+      "pv": [
+       "g7g5",
+       "b1c3",
+       "e7g7",
+       "c1e3",
+       "c8d7",
+       "c3b5",
+       "e8c8",
+       "d4d5",
+       "c6a5",
+       "b5a7",
+       "c8b8"
+      ],
+      "score": {
+       "cp": -754
+      }
+     },
+     {
+      "pv": [
+       "c8f5",
+       "a4a5",
+       "a7a6",
+       "d4d5",
+       "c6d8",
+       "b1c3",
+       "g7g5"
+      ],
+      "score": {
+       "cp": -770
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1b1kb1r/ppp1q1pp/2np1p2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 w kq - 0 10",
+    "lines": [
+     {
+      "pv": [
+       "a4a5",
+       "a7a6",
+       "d1d3",
+       "g7g5",
+       "d4d5",
+       "c6d8",
+       "f3d4",
+       "f8g7",
+       "d4f5",
+       "c8f5",
+       "d3f5"
+      ],
+      "score": {
+       "cp": 746
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1b1kb1r/ppp1q1pp/2np1p2/4p3/2BP4/5N2/PPP2PPP/RNBQR1K1 w kq - 1 10",
+    "lines": [
+     {
+      "pv": [
+       "b1c3",
+       "c8g4",
+       "c4b5",
+       "e8c8",
+       "b5c6",
+       "b7c6",
+       "d1e2",
+       "d6d5",
+       "d4e5"
+      ],
+      "score": {
+       "cp": 744
+      }
+     },
+     {
+      "pv": [
+       "c1e3",
+       "a7a6",
+       "b1c3",
+       "c8g4",
+       "h2h3",
+       "g4h5",
+       "c4e2",
+       "h5f7",
+       "d4d5",
+       "c6b8",
+       "b2b4"
+      ],
+      "score": {
+       "cp": 748
+      }
+     },
+     {
+      "pv": [
+       "c1d2",
+       "c8g4",
+       "h2h3",
+       "g4h5",
+       "b1c3",
+       "e8c8",
+       "d4d5",
+       "c6b8",
+       "a2a4",
+       "g7g5",
+       "a4a5"
+      ],
+      "score": {
+       "cp": 736
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "a2a4",
+     "c8g4",
+     "c4e2",
+     "e7f7",
+     "a4a5",
+     "e8c8",
+     "d4d5",
+     "c6e7",
+     "b1c3",
+     "g4d7",
+     "b2b4"
+    ],
+    "score": {
+     "cp": 703
+    }
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "qe6",
+  "about": "The owner's game: Black has just hung the queen on e6; the owner sits on White's side",
+  "input": {
+   "id": "G.qe6",
+   "fen": "r1b1kb1r/ppp3pp/2npqp2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 w kq - 1 11",
+   "you": "white",
+   "lastMove": {
+    "san": "Qe6",
+    "by": "opponent",
+    "fenBefore": "r1b1kb1r/ppp1q1pp/2np1p2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 b kq - 0 10"
+   },
+   "eval": {
+    "fen": "r1b1kb1r/ppp3pp/2npqp2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 w kq - 1 11",
+    "lines": [
+     {
+      "pv": [
+       "c4e6",
+       "c8e6",
+       "d4d5",
+       "c6e7",
+       "d5e6",
+       "e8c8",
+       "g2g4",
+       "a7a6",
+       "d1d2",
+       "e7d5"
+      ],
+      "score": {
+       "cp": 1072
+      }
+     },
+     {
+      "pv": [
+       "f3e5",
+       "d6e5",
+       "c4e6",
+       "c8e6",
+       "d4d5",
+       "e8c8",
+       "c2c4",
+       "c6e7",
+       "d1e2",
+       "e6g4",
+       "e2g4",
+       "f6f5"
+      ],
+      "score": {
+       "cp": 794
+      }
+     },
+     {
+      "pv": [
+       "b1d2",
+       "e6e7",
+       "b2b4",
+       "c6b4",
+       "c1a3",
+       "b4c6",
+       "h2h3",
+       "e7d7"
+      ],
+      "score": {
+       "cp": 801
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1b1kb1r/ppp3pp/2npqp2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 b kq - 1 11",
+    "lines": [
+     {
+      "pv": [
+       "e6c4",
+       "d4d5",
+       "c6b4",
+       "b1c3",
+       "c7c6",
+       "e1e4",
+       "c4c5",
+       "c1e3",
+       "c5a5",
+       "d5c6",
+       "b7c6",
+       "c3b5",
+       "c6b5",
+       "e3d2",
+       "d6d5",
+       "d2b4",
+       "a5d8",
+       "b4f8",
+       "d5e4",
+       "d1d8",
+       "e8d8",
+       "f8g7",
+       "d8e7",
+       "g7h8",
+       "e4f3",
+       "h8g7"
+      ],
+      "score": {
+       "cp": 107
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1b1kb1r/ppp1q1pp/2np1p2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 b kq - 0 10",
+    "lines": [
+     {
+      "pv": [
+       "c8g4",
+       "c4b5",
+       "e8c8",
+       "b5c6",
+       "b7c6",
+       "h2h3",
+       "g4h5",
+       "b1c3",
+       "e7f7",
+       "d1d3"
+      ],
+      "score": {
+       "cp": -707
+      }
+     },
+     {
+      "pv": [
+       "g7g5",
+       "b1c3",
+       "e7g7",
+       "c1e3",
+       "c8d7",
+       "c3b5",
+       "e8c8",
+       "d4d5",
+       "c6a5",
+       "b5a7",
+       "c8b8"
+      ],
+      "score": {
+       "cp": -754
+      }
+     },
+     {
+      "pv": [
+       "c8f5",
+       "a4a5",
+       "a7a6",
+       "d4d5",
+       "c6d8",
+       "b1c3",
+       "g7g5"
+      ],
+      "score": {
+       "cp": -770
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "e7e6",
+     "c4e6",
+     "c8e6",
+     "d4d5",
+     "c6a5",
+     "d5e6",
+     "a8b8",
+     "f3d2",
+     "f8e7",
+     "d1e2"
+    ],
+    "score": {
+     "cp": -1089
+    }
+   },
+   "captureLines": {
+    "Bxe6": {
+     "pv": [
+      "c4e6",
+      "c8e6",
+      "d4d5",
+      "c6e7",
+      "d5e6",
+      "e8c8",
+      "g2g4",
+      "a7a6",
+      "d1d2",
+      "e7d5"
+     ],
+     "score": {
+      "cp": 1072
+     }
+    }
+   },
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "qe6-own",
+  "about": "The same queen hung by the owner, playing Black",
+  "input": {
+   "id": "G.qe6-own",
+   "fen": "r1b1kb1r/ppp3pp/2npqp2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 w kq - 1 11",
+   "you": "black",
+   "lastMove": {
+    "san": "Qe6",
+    "by": "owner",
+    "fenBefore": "r1b1kb1r/ppp1q1pp/2np1p2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 b kq - 0 10"
+   },
+   "eval": {
+    "fen": "r1b1kb1r/ppp3pp/2npqp2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 w kq - 1 11",
+    "lines": [
+     {
+      "pv": [
+       "c4e6",
+       "c8e6",
+       "d4d5",
+       "c6e7",
+       "d5e6",
+       "e8c8",
+       "g2g4",
+       "a7a6",
+       "d1d2",
+       "e7d5"
+      ],
+      "score": {
+       "cp": 1072
+      }
+     },
+     {
+      "pv": [
+       "f3e5",
+       "d6e5",
+       "c4e6",
+       "c8e6",
+       "d4d5",
+       "e8c8",
+       "c2c4",
+       "c6e7",
+       "d1e2",
+       "e6g4",
+       "e2g4",
+       "f6f5"
+      ],
+      "score": {
+       "cp": 794
+      }
+     },
+     {
+      "pv": [
+       "b1d2",
+       "e6e7",
+       "b2b4",
+       "c6b4",
+       "c1a3",
+       "b4c6",
+       "h2h3",
+       "e7d7"
+      ],
+      "score": {
+       "cp": 801
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1b1kb1r/ppp3pp/2npqp2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 b kq - 1 11",
+    "lines": [
+     {
+      "pv": [
+       "e6c4",
+       "d4d5",
+       "c6b4",
+       "b1c3",
+       "c7c6",
+       "e1e4",
+       "c4c5",
+       "c1e3",
+       "c5a5",
+       "d5c6",
+       "b7c6",
+       "c3b5",
+       "c6b5",
+       "e3d2",
+       "d6d5",
+       "d2b4",
+       "a5d8",
+       "b4f8",
+       "d5e4",
+       "d1d8",
+       "e8d8",
+       "f8g7",
+       "d8e7",
+       "g7h8",
+       "e4f3",
+       "h8g7"
+      ],
+      "score": {
+       "cp": 107
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1b1kb1r/ppp1q1pp/2np1p2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 b kq - 0 10",
+    "lines": [
+     {
+      "pv": [
+       "c8g4",
+       "c4b5",
+       "e8c8",
+       "b5c6",
+       "b7c6",
+       "h2h3",
+       "g4h5",
+       "b1c3",
+       "e7f7",
+       "d1d3"
+      ],
+      "score": {
+       "cp": -707
+      }
+     },
+     {
+      "pv": [
+       "g7g5",
+       "b1c3",
+       "e7g7",
+       "c1e3",
+       "c8d7",
+       "c3b5",
+       "e8c8",
+       "d4d5",
+       "c6a5",
+       "b5a7",
+       "c8b8"
+      ],
+      "score": {
+       "cp": -754
+      }
+     },
+     {
+      "pv": [
+       "c8f5",
+       "a4a5",
+       "a7a6",
+       "d4d5",
+       "c6d8",
+       "b1c3",
+       "g7g5"
+      ],
+      "score": {
+       "cp": -770
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "e7e6",
+     "c4e6",
+     "c8e6",
+     "d4d5",
+     "c6a5",
+     "d5e6",
+     "a8b8",
+     "f3d2",
+     "f8e7",
+     "d1e2"
+    ],
+    "score": {
+     "cp": -1089
+    }
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "fools-mate",
+  "about": "Fool's Mate: the game is over",
+  "input": {
+   "id": "G.fools-mate",
+   "fen": "rnb1kbnr/pppp1ppp/8/4p3/6Pq/5P2/PPPPP2P/RNBQKBNR w KQkq - 1 3",
+   "you": "white",
+   "lastMove": {
+    "san": "Qh4#",
+    "by": "opponent",
+    "fenBefore": "rnbqkbnr/pppp1ppp/8/4p3/6P1/5P2/PPPPP2P/RNBQKBNR b KQkq - 0 2"
+   },
+   "opening": {
+    "eco": "A00",
+    "name": "Barnes Opening: Fool's Mate"
+   },
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "backrank",
+  "about": "A back-rank mate in one: White (the owner) to move",
+  "input": {
+   "id": "G.backrank",
+   "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+   "you": "white",
+   "eval": {
+    "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "d1d8"
+      ],
+      "score": {
+       "mate": 1
+      }
+     },
+     {
+      "pv": [
+       "g1f1",
+       "g8f8",
+       "f1e2",
+       "f8e8",
+       "e2d2",
+       "e8f8",
+       "d1c1",
+       "f8e8",
+       "h2h3",
+       "e8d7"
+      ],
+      "score": {
+       "cp": 700
+      }
+     },
+     {
+      "pv": [
+       "f2f3",
+       "f7f6",
+       "g1f2",
+       "h7h5",
+       "d1d8",
+       "g8f7",
+       "d8d4",
+       "f7g6"
+      ],
+      "score": {
+       "cp": 690
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 b - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "g7g6",
+       "g1f1",
+       "h7h5",
+       "d1d8",
+       "g8g7",
+       "f1e2",
+       "h5h4",
+       "h2h3",
+       "g6g5"
+      ],
+      "score": {
+       "cp": -662
+      }
+     }
+    ],
+    "tbhits": 3
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "knightfork",
+  "about": "A knight fork of king and rook: White (the owner) to move",
+  "input": {
+   "id": "G.knightfork",
+   "fen": "r3k3/8/8/1N6/8/8/PPP5/2K5 w - - 0 1",
+   "you": "white",
+   "eval": {
+    "fen": "r3k3/8/8/1N6/8/8/PPP5/2K5 w - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "b5c7",
+       "e8f8",
+       "c7a8",
+       "f8g8",
+       "b2b4",
+       "g8f7",
+       "b4b5",
+       "f7e7",
+       "b5b6",
+       "e7f7",
+       "c1d2",
+       "f7f6"
+      ],
+      "score": {
+       "cp": 892
+      }
+     },
+     {
+      "pv": [
+       "a2a3",
+       "e8d7",
+       "c1d2",
+       "a8h8",
+       "c2c4",
+       "h8h3",
+       "b2b4",
+       "d7e6",
+       "a3a4",
+       "h3b3"
+      ],
+      "score": {
+       "cp": 202
+      }
+     },
+     {
+      "pv": [
+       "b5c3",
+       "a8c8",
+       "c3b1",
+       "e8e7",
+       "b2b3",
+       "c8c5",
+       "c1b2",
+       "c5b5",
+       "b1d2",
+       "b5e5"
+      ],
+      "score": {
+       "cp": 180
+      }
+     }
+    ],
+    "tbhits": 1411
+   },
+   "passEval": {
+    "fen": "r3k3/8/8/1N6/8/8/PPP5/2K5 b - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "a8a2",
+       "c2c4",
+       "a2a1",
+       "c1c2",
+       "e8d7",
+       "b5c3",
+       "a1h1",
+       "c2b3",
+       "d7c6",
+       "c3a4",
+       "h1h2",
+       "b3a3",
+       "h2h8",
+       "a4c3",
+       "h8h7",
+       "a3b4",
+       "h7h5",
+       "c3a4"
+      ],
+      "score": {
+       "cp": 0
+      }
+     }
+    ],
+    "tbhits": 2708
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "stalemate",
+  "about": "Stalemate: Black has no move and is not in check",
+  "input": {
+   "id": "G.stalemate",
+   "fen": "7k/5Q2/6K1/8/8/8/8/8 b - - 0 1",
+   "you": "white",
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "kpk-draw",
+  "about": "King and pawn against king, a draw: Black (the owner) to move",
+  "input": {
+   "id": "G.kpk-draw",
+   "fen": "4k3/8/8/4P3/4K3/8/8/8 b - - 0 1",
+   "you": "black",
+   "eval": {
+    "fen": "4k3/8/8/4P3/4K3/8/8/8 b - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "e8f8",
+       "e4d5",
+       "f8e7",
+       "e5e6",
+       "e7e8",
+       "d5e4",
+       "e8e7",
+       "e4e5",
+       "e7e8"
+      ],
+      "score": {
+       "cp": 0
+      }
+     },
+     {
+      "pv": [
+       "e8f7",
+       "e4f5",
+       "f7e7",
+       "e5e6",
+       "e7e8",
+       "f5f6",
+       "e8f8",
+       "f6g5",
+       "f8e7"
+      ],
+      "score": {
+       "cp": 0
+      }
+     },
+     {
+      "pv": [
+       "e8e7",
+       "e4d5",
+       "e7d7",
+       "e5e6",
+       "d7e8",
+       "d5e4",
+       "e8e7",
+       "e4e5",
+       "e7e8",
+       "e5f6",
+       "e8f8",
+       "f6g5",
+       "f8e7",
+       "g5f5",
+       "e7e8"
+      ],
+      "score": {
+       "cp": 0
+      }
+     }
+    ],
+    "tbhits": 5
+   },
+   "passEval": {
+    "fen": "4k3/8/8/4P3/4K3/8/8/8 w - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "e5e6",
+       "e8e7",
+       "e4e5",
+       "e7e8"
+      ],
+      "score": {
+       "cp": 0
+      }
+     }
+    ],
+    "tbhits": 8
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "kpk-win",
+  "about": "King and pawn against king, a win: White (the owner) to move",
+  "input": {
+   "id": "G.kpk-win",
+   "fen": "4k3/8/4K3/4P3/8/8/8/8 w - - 0 1",
+   "you": "white",
+   "eval": {
+    "fen": "4k3/8/4K3/4P3/8/8/8/8 w - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "e6f6",
+       "e8d7",
+       "e5e6",
+       "d7d6",
+       "e6e7",
+       "d6c5",
+       "e7e8q",
+       "c5d4",
+       "e8a4",
+       "d4c3",
+       "f6e5",
+       "c3d3",
+       "e5f4",
+       "d3d2",
+       "a4c4",
+       "d2e1",
+       "c4c2",
+       "e1f1",
+       "f4f3",
+       "f1e1",
+       "c2c1"
+      ],
+      "score": {
+       "cp": 20000
+      }
+     },
+     {
+      "pv": [
+       "e6d6",
+       "e8f7",
+       "e5e6",
+       "f7f6",
+       "e6e7",
+       "f6f5",
+       "d6d7",
+       "f5f4",
+       "e7e8q",
+       "f4f3",
+       "e8e1",
+       "f3g4",
+       "e1f2",
+       "g4g5",
+       "f2f3",
+       "g5h6",
+       "f3g4",
+       "h6h7",
+       "d7e6",
+       "h7h8",
+       "e6f6",
+       "h8h7",
+       "g4g7"
+      ],
+      "score": {
+       "cp": 20000
+      }
+     },
+     {
+      "pv": [
+       "e6f5",
+       "e8f7",
+       "e5e6",
+       "f7e8",
+       "f5f6",
+       "e8f8",
+       "f6g6",
+       "f8e7",
+       "g6h5",
+       "e7e6",
+       "h5g6",
+       "e6d5"
+      ],
+      "score": {
+       "cp": 0
+      }
+     }
+    ],
+    "tbhits": 4
+   },
+   "passEval": {
+    "fen": "4k3/8/4K3/4P3/8/8/8/8 b - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "e8d8",
+       "e6f7",
+       "d8c7",
+       "e5e6",
+       "c7b6",
+       "e6e7",
+       "b6c5",
+       "e7e8q",
+       "c5d4",
+       "e8e2",
+       "d4d5",
+       "e2d3",
+       "d5c6",
+       "d3c4",
+       "c6b7",
+       "c4b5",
+       "b7c8",
+       "b5b6",
+       "c8d7",
+       "b6c5",
+       "d7d8",
+       "f7e6",
+       "d8e8",
+       "c5e7"
+      ],
+      "score": {
+       "cp": -20000
+      }
+     }
+    ],
+    "tbhits": 2
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "kqk",
+  "about": "King and queen against king: White (the owner) to move",
+  "input": {
+   "id": "G.kqk",
+   "fen": "8/8/8/4k3/8/8/8/4K2Q w - - 0 1",
+   "you": "white",
+   "eval": {
+    "fen": "8/8/8/4k3/8/8/8/4K2Q w - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "h1c6",
+       "e5f5",
+       "c6d6",
+       "f5e4",
+       "e1e2",
+       "e4f5",
+       "e2f3",
+       "f5g5",
+       "d6e6",
+       "g5h5",
+       "f3f4",
+       "h5h4",
+       "e6g4"
+      ],
+      "score": {
+       "cp": 20000
+      }
+     },
+     {
+      "pv": [
+       "e1e2",
+       "e5d6",
+       "h1e4",
+       "d6d7",
+       "e4g6",
+       "d7d8",
+       "g6f7",
+       "d8c8",
+       "e2d3",
+       "c8d8",
+       "d3c4",
+       "d8c8",
+       "c4b5",
+       "c8d8",
+       "b5b6",
+       "d8c8",
+       "f7c7"
+      ],
+      "score": {
+       "cp": 20000
+      }
+     },
+     {
+      "pv": [
+       "h1h6",
+       "e5d5",
+       "h6b6",
+       "d5e5",
+       "b6c6",
+       "e5d4",
+       "c6d6",
+       "d4e3",
+       "d6d5",
+       "e3f4",
+       "e1f2",
+       "f4g4",
+       "d5e5",
+       "g4h4",
+       "f2f3",
+       "h4h3",
+       "e5g3"
+      ],
+      "score": {
+       "cp": 20000
+      }
+     }
+    ],
+    "tbhits": 21
+   },
+   "passEval": {
+    "fen": "8/8/8/4k3/8/8/8/4K2Q b - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "e5d6",
+       "e1d2",
+       "d6c5",
+       "h1e4",
+       "c5d6",
+       "e4e8",
+       "d6c5",
+       "e8e6",
+       "c5d4",
+       "d2c2",
+       "d4c5",
+       "c2c3",
+       "c5b5",
+       "e6d6",
+       "b5a5",
+       "c3c4",
+       "a5a4",
+       "d6b4"
+      ],
+      "score": {
+       "cp": -20000
+      }
+     }
+    ],
+    "tbhits": 6
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "krk-defender",
+  "about": "King and rook against king: the owner defends with Black",
+  "input": {
+   "id": "G.krk-defender",
+   "fen": "8/8/8/4k3/8/8/8/4K2R b - - 0 1",
+   "you": "black",
+   "eval": {
+    "fen": "8/8/8/4k3/8/8/8/4K2R b - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "e5f4",
+       "e1d2",
+       "f4e4",
+       "h1h5",
+       "e4d4",
+       "h5a5",
+       "d4e4",
+       "d2c3",
+       "e4e3",
+       "a5a4",
+       "e3e2",
+       "a4e4",
+       "e2f3",
+       "c3d3",
+       "f3f2",
+       "e4e3",
+       "f2f1",
+       "e3e2",
+       "f1g1",
+       "e2a2",
+       "g1f1",
+       "d3e3",
+       "f1g1",
+       "e3f3",
+       "g1h1",
+       "f3g3",
+       "h1g1",
+       "a2a1"
+      ],
+      "score": {
+       "cp": -20000
+      }
+     },
+     {
+      "pv": [
+       "e5d5",
+       "h1h5",
+       "d5d4",
+       "e1d2",
+       "d4e4",
+       "d2e2",
+       "e4f4",
+       "e2d3",
+       "f4g4",
+       "h5a5",
+       "g4f4",
+       "a5b5",
+       "f4f3",
+       "b5b4",
+       "f3f2",
+       "b4f4",
+       "f2g3",
+       "d3e3",
+       "g3g2",
+       "f4f3",
+       "g2g1",
+       "f3f2",
+       "g1h1",
+       "e3f3",
+       "h1g1",
+       "f3g3",
+       "g1h1",
+       "f2f1"
+      ],
+      "score": {
+       "cp": -20000
+      }
+     },
+     {
+      "pv": [
+       "e5e4",
+       "h1h5",
+       "e4d4",
+       "e1d2",
+       "d4e4",
+       "d2e2",
+       "e4f4",
+       "e2d3",
+       "f4g4",
+       "h5a5",
+       "g4f4",
+       "a5b5",
+       "f4f3",
+       "b5b4",
+       "f3f2",
+       "b4f4",
+       "f2g3",
+       "d3e3",
+       "g3g2",
+       "f4f3",
+       "g2g1",
+       "f3f2",
+       "g1h1",
+       "e3f3",
+       "h1g1",
+       "f3g3",
+       "g1h1",
+       "f2f1"
+      ],
+      "score": {
+       "cp": -20000
+      }
+     }
+    ],
+    "tbhits": 8
+   },
+   "passEval": {
+    "fen": "8/8/8/4k3/8/8/8/4K2R w - - 0 1",
+    "lines": [
+     {
+      "pv": [
+       "e1d2",
+       "e5d4",
+       "h1h5",
+       "d4e4",
+       "d2e2",
+       "e4f4",
+       "e2d3",
+       "f4g4",
+       "h5a5",
+       "g4f4",
+       "a5b5",
+       "f4f3",
+       "b5b4",
+       "f3f2",
+       "b4f4",
+       "f2g3",
+       "d3e3",
+       "g3g2",
+       "f4f3",
+       "g2g1",
+       "f3f2",
+       "g1h1",
+       "e3f3",
+       "h1g1",
+       "f3g3",
+       "g1h1",
+       "f2f1"
+      ],
+      "score": {
+       "cp": 20000
+      }
+     }
+    ],
+    "tbhits": 14
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "check",
+  "about": "The owner (Black) is in check and must answer it",
+  "input": {
+   "id": "G.check",
+   "fen": "rnbqkbnr/ppp2ppp/8/1B1pp3/4P3/8/PPPP1PPP/RNBQK1NR b KQkq - 1 3",
+   "you": "black",
+   "eval": {
+    "fen": "rnbqkbnr/ppp2ppp/8/1B1pp3/4P3/8/PPPP1PPP/RNBQK1NR b KQkq - 1 3",
+    "lines": [
+     {
+      "pv": [
+       "c7c6",
+       "b5e2",
+       "d5e4",
+       "d2d3",
+       "g8f6",
+       "b1d2",
+       "e4d3",
+       "e2d3",
+       "f8b4",
+       "g1e2",
+       "e5e4",
+       "d3c4",
+       "b8d7",
+       "e1g1",
+       "d7e5"
+      ],
+      "score": {
+       "cp": 166
+      }
+     },
+     {
+      "pv": [
+       "c8d7",
+       "b5d7",
+       "d8d7",
+       "e4d5",
+       "d7d5",
+       "d1f3",
+       "e5e4",
+       "f3e2",
+       "g8f6",
+       "b1c3",
+       "d5e6",
+       "d2d3",
+       "b8c6",
+       "c3e4",
+       "f6e4",
+       "e2e4",
+       "e6e4",
+       "d3e4",
+       "c6d4",
+       "e1d1"
+      ],
+      "score": {
+       "cp": 45
+      }
+     },
+     {
+      "pv": [
+       "b8c6",
+       "d2d3",
+       "g8e7",
+       "g1f3",
+       "a7a6",
+       "b5a4",
+       "d5e4",
+       "d3e4",
+       "d8d1",
+       "e1d1",
+       "c8g4",
+       "b1d2",
+       "e8c8",
+       "c2c3",
+       "e7g6"
+      ],
+      "score": {
+       "cp": 38
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "puzzle-fork",
+  "about": "A fork from the Lichess puzzle database",
+  "input": {
+   "id": "G.puzzle-fork",
+   "fen": "r1bqk2r/pp1nbppp/3p4/1B1p4/3P1B2/5N2/PPP2PPP/R2QK2R b KQkq - 3 9",
+   "you": "black",
+   "lastMove": {
+    "san": "Nf3",
+    "by": "opponent",
+    "fenBefore": "r1bqk2r/pp1nbppp/3p4/1B1p4/3P1B2/8/PPP2PPP/R2QK1NR w KQkq - 2 9"
+   },
+   "eval": {
+    "fen": "r1bqk2r/pp1nbppp/3p4/1B1p4/3P1B2/5N2/PPP2PPP/R2QK2R b KQkq - 3 9",
+    "lines": [
+     {
+      "pv": [
+       "d8a5",
+       "d1d2",
+       "a5b5",
+       "d2e3",
+       "d7f6",
+       "f4d6",
+       "b5d7",
+       "d6e7",
+       "d7e7",
+       "e3e7",
+       "e8e7",
+       "e1c1",
+       "h8d8",
+       "d1d3",
+       "e7f8",
+       "h1e1",
+       "h7h6",
+       "f3e5",
+       "a8b8",
+       "d3c3",
+       "c8e6",
+       "c3b3"
+      ],
+      "score": {
+       "cp": 618
+      }
+     },
+     {
+      "pv": [
+       "e8g8",
+       "c2c3",
+       "d7f6",
+       "e1g1",
+       "f6e4",
+       "h2h3"
+      ],
+      "score": {
+       "cp": -58
+      }
+     },
+     {
+      "pv": [
+       "d8b6",
+       "a2a4",
+       "e8g8",
+       "e1g1",
+       "d7f6",
+       "f1e1",
+       "f6e4",
+       "f3d2",
+       "b6d4",
+       "d2e4",
+       "d4d1",
+       "a1d1",
+       "d5e4",
+       "e1e4",
+       "c8e6",
+       "e4e2"
+      ],
+      "score": {
+       "cp": -65
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r1bqk2r/pp1nbppp/3p4/1B1p4/3P1B2/5N2/PPP2PPP/R2QK2R w KQkq - 3 9",
+    "lines": [
+     {
+      "pv": [
+       "c2c3",
+       "e8g8",
+       "e1g1",
+       "d7f6",
+       "b5d3",
+       "f8e8",
+       "f3e1",
+       "c8d7",
+       "e1c2",
+       "a7a5",
+       "c2e3",
+       "a5a4",
+       "d1f3"
+      ],
+      "score": {
+       "cp": 110
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r1bqk2r/pp1nbppp/3p4/1B1p4/3P1B2/8/PPP2PPP/R2QK1NR w KQkq - 2 9",
+    "lines": [
+     {
+      "pv": [
+       "g1e2",
+       "e8g8",
+       "e1g1",
+       "d7f6",
+       "b5d3",
+       "c8d7",
+       "f4e3",
+       "f8e8",
+       "f2f3",
+       "f6h5",
+       "d1d2",
+       "g7g6",
+       "g2g4",
+       "h5g7",
+       "c2c3",
+       "g7e6"
+      ],
+      "score": {
+       "cp": 93
+      }
+     },
+     {
+      "pv": [
+       "b5d3",
+       "d7f6",
+       "g1e2",
+       "e8g8",
+       "e1g1",
+       "c8d7",
+       "f4e3",
+       "f8e8",
+       "e2f4",
+       "e7f8"
+      ],
+      "score": {
+       "cp": 89
+      }
+     },
+     {
+      "pv": [
+       "c2c3",
+       "e8g8",
+       "g1e2",
+       "d7f6",
+       "b5d3",
+       "c8d7",
+       "e2g3",
+       "g7g6",
+       "e1g1",
+       "f8e8",
+       "f1e1",
+       "e7f8",
+       "f4g5",
+       "e8e1",
+       "d1e1"
+      ],
+      "score": {
+       "cp": 82
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "g1f3",
+     "d8a5",
+     "d1d2",
+     "a5b5",
+     "d2e3",
+     "d7f6",
+     "f4d6",
+     "b5d7",
+     "d6e7",
+     "d7e7",
+     "e3e7",
+     "e8e7",
+     "h2h3",
+     "c8e6",
+     "e1c1"
+    ],
+    "score": {
+     "cp": -631
+    }
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "puzzle-pin",
+  "about": "A pin from the Lichess puzzle database",
+  "input": {
+   "id": "G.puzzle-pin",
+   "fen": "2r5/kpQ2p2/r2R3p/4pb2/2N1q3/8/PP3P1P/K1R5 w - - 4 28",
+   "you": "white",
+   "lastMove": {
+    "san": "Rc8",
+    "by": "opponent",
+    "fenBefore": "7r/kpQ2p2/r2R3p/4pb2/2N1q3/8/PP3P1P/K1R5 b - - 3 27"
+   },
+   "eval": {
+    "fen": "2r5/kpQ2p2/r2R3p/4pb2/2N1q3/8/PP3P1P/K1R5 w - - 4 28",
+    "lines": [
+     {
+      "pv": [
+       "d6a6",
+       "a7a6",
+       "c7b6"
+      ],
+      "score": {
+       "mate": 2
+      }
+     },
+     {
+      "pv": [
+       "f2f3",
+       "c8c7",
+       "d6a6",
+       "a7a6",
+       "f3e4",
+       "f5e6",
+       "b2b3",
+       "b7b5",
+       "a1b2",
+       "b5c4",
+       "b3c4",
+       "c7c6",
+       "b2a3",
+       "a6b7",
+       "a3b4",
+       "c6c8",
+       "b4b5"
+      ],
+      "score": {
+       "cp": -592
+      }
+     },
+     {
+      "pv": [
+       "c7c8",
+       "f5c8",
+       "d6a6",
+       "a7a6",
+       "c4d6",
+       "e4e2",
+       "d6c8",
+       "e2f2",
+       "c1d1",
+       "b7b6",
+       "b2b4",
+       "f2c2",
+       "b4b5",
+       "a6a5"
+      ],
+      "score": {
+       "cp": -619
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "2r5/kpQ2p2/r2R3p/4pb2/2N1q3/8/PP3P1P/K1R5 b - - 4 28",
+    "lines": [
+     {
+      "pv": [
+       "c8c7",
+       "d6a6",
+       "b7a6",
+       "a2a3",
+       "c7c4",
+       "c1f1",
+       "e4d3",
+       "f1g1",
+       "c4a4",
+       "a1a2",
+       "f5e6",
+       "a2a1"
+      ],
+      "score": {
+       "cp": 1257
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "7r/kpQ2p2/r2R3p/4pb2/2N1q3/8/PP3P1P/K1R5 b - - 3 27",
+    "lines": [
+     {
+      "pv": [
+       "a6a4",
+       "b2b3",
+       "a4c4",
+       "c7b6",
+       "a7a8",
+       "b3c4",
+       "h8c8",
+       "c4c5",
+       "e4f4",
+       "b6b2",
+       "f4e4",
+       "d6h6",
+       "e4d4",
+       "b2d4",
+       "e5d4",
+       "h6d6",
+       "d4d3",
+       "a1b2"
+      ],
+      "score": {
+       "cp": -552
+      }
+     },
+     {
+      "pv": [
+       "a6d6",
+       "c4d6",
+       "e4f3",
+       "c7a5",
+       "a7b8",
+       "a5e5",
+       "f7f6",
+       "e5f6",
+       "h8g8",
+       "f6e5",
+       "f5d7",
+       "d6c8",
+       "b8a8",
+       "c8b6",
+       "a8a7",
+       "b6d7"
+      ],
+      "score": {
+       "cp": -676
+      }
+     },
+     {
+      "pv": [
+       "a6c6",
+       "c7a5",
+       "a7b8",
+       "d6c6",
+       "e4c6",
+       "a5e5",
+       "b8a7",
+       "e5h8",
+       "b7b6",
+       "b2b3",
+       "c6e4",
+       "h8e5",
+       "e4e5",
+       "c4e5",
+       "a7b8"
+      ],
+      "score": {
+       "cp": -860
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "h8c8",
+     "d6a6",
+     "a7a6",
+     "c7a5"
+    ],
+    "score": {
+     "mate": -2
+    }
+   },
+   "captureLines": {
+    "Qxf7": {
+     "pv": [
+      "c7f7",
+      "a6d6",
+      "a2a3",
+      "d6c6",
+      "f2f3",
+      "e4d3",
+      "f7g7",
+      "c6c4",
+      "g7g1",
+      "a7b8",
+      "c1d1",
+      "d3c2",
+      "d1d6",
+      "c2c1",
+      "g1c1",
+      "c4c1",
+      "a1a2",
+      "f5b1",
+      "a2b3"
+     ],
+     "score": {
+      "cp": -996
+     }
+    }
+   },
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "puzzle-skewer",
+  "about": "A skewer from the Lichess puzzle database",
+  "input": {
+   "id": "G.puzzle-skewer",
+   "fen": "8/8/8/3p4/5p1R/r3k3/6K1/8 w - - 0 52",
+   "you": "white",
+   "lastMove": {
+    "san": "exf4",
+    "by": "opponent",
+    "fenBefore": "8/8/8/3pp3/5P1R/r3k3/6K1/8 b - - 0 51"
+   },
+   "eval": {
+    "fen": "8/8/8/3p4/5p1R/r3k3/6K1/8 w - - 0 52",
+    "lines": [
+     {
+      "pv": [
+       "h4h3",
+       "e3e2",
+       "h3a3",
+       "e2d1",
+       "g2f3",
+       "d1c1",
+       "f3f4",
+       "c1c2",
+       "a3a5",
+       "c2c3",
+       "a5d5",
+       "c3c4",
+       "f4e4",
+       "c4c3",
+       "d5d4",
+       "c3c2",
+       "d4d3",
+       "c2c1",
+       "e4e3",
+       "c1c2",
+       "e3e2",
+       "c2c1",
+       "d3d2",
+       "c1b1",
+       "e2d1",
+       "b1a1",
+       "d1c2",
+       "a1a2",
+       "d2d3",
+       "a2a1",
+       "d3a3"
+      ],
+      "score": {
+       "cp": 19997
+      }
+     },
+     {
+      "pv": [
+       "h4h6",
+       "f4f3",
+       "g2g3",
+       "f3f2",
+       "h6b6",
+       "f2f1q"
+      ],
+      "score": {
+       "cp": -908
+      }
+     },
+     {
+      "pv": [
+       "h4h1",
+       "f4f3",
+       "g2g3",
+       "f3f2",
+       "g3h4",
+       "e3e2",
+       "h1b1",
+       "f2f1r",
+       "b1b2",
+       "e2f3",
+       "b2h2",
+       "d5d4"
+      ],
+      "score": {
+       "cp": -783
+      }
+     }
+    ],
+    "tbhits": 7029
+   },
+   "passEval": {
+    "fen": "8/8/8/3p4/5p1R/r3k3/6K1/8 b - - 0 52",
+    "lines": [
+     {
+      "pv": [
+       "f4f3",
+       "g2g3",
+       "f3f2",
+       "h4g4",
+       "f2f1q",
+       "g3h4",
+       "f1h3",
+       "h4g5",
+       "h3g4",
+       "g5f6",
+       "d5d4",
+       "f6e5",
+       "d4d3",
+       "e5f6",
+       "d3d2",
+       "f6e5",
+       "d2d1q",
+       "e5f6",
+       "a3a7",
+       "f6e5",
+       "d1d4"
+      ],
+      "score": {
+       "cp": 19991
+      }
+     }
+    ],
+    "tbhits": 16317
+   },
+   "prevEval": {
+    "fen": "8/8/8/3pp3/5P1R/r3k3/6K1/8 b - - 0 51",
+    "lines": [
+     {
+      "pv": [
+       "e3e2",
+       "h4h2",
+       "e5f4",
+       "g2g1",
+       "e2e1",
+       "h2h6",
+       "d5d4",
+       "h6e6",
+       "a3e3",
+       "e6b6",
+       "d4d3",
+       "g1h1"
+      ],
+      "score": {
+       "cp": 624
+      }
+     },
+     {
+      "pv": [
+       "a3a4",
+       "h4h3",
+       "e3e2",
+       "f4f5",
+       "a4f4",
+       "g2g3",
+       "f4f5",
+       "g3g4",
+       "f5f4",
+       "g4g5",
+       "d5d4",
+       "h3h2",
+       "e2e3",
+       "h2h3",
+       "f4f3",
+       "h3h1",
+       "d4d3",
+       "h1e1",
+       "e3d4",
+       "e1b1",
+       "d3d2",
+       "b1b4",
+       "d4d3",
+       "b4b3",
+       "d3e2",
+       "b3f3",
+       "d2d1q"
+      ],
+      "score": {
+       "cp": 622
+      }
+     },
+     {
+      "pv": [
+       "a3a2",
+       "g2h3",
+       "e5f4",
+       "h4h7",
+       "a2a8",
+       "h7g7",
+       "e3f3",
+       "h3h2",
+       "f3f2",
+       "g7g2",
+       "f2e3",
+       "g2g7",
+       "d5d4",
+       "g7e7",
+       "e3f2"
+      ],
+      "score": {
+       "cp": 575
+      }
+     }
+    ],
+    "tbhits": 6336
+   },
+   "playedLine": {
+    "pv": [
+     "e5f4",
+     "h4h3",
+     "e3d2",
+     "h3a3",
+     "d2e2",
+     "a3f3",
+     "e2e1",
+     "f3f4",
+     "e1e2",
+     "f4d4",
+     "e2e3",
+     "d4d5",
+     "e3f4",
+     "g2f2",
+     "f4e4",
+     "d5d1",
+     "e4f4",
+     "d1e1",
+     "f4g4",
+     "e1e4",
+     "g4g5",
+     "f2e3",
+     "g5f5",
+     "e3f3",
+     "f5g5",
+     "e4f4",
+     "g5h5",
+     "f4g4",
+     "h5h6",
+     "g4g1",
+     "h6h5",
+     "f3f4",
+     "h5h6",
+     "f4f5",
+     "h6h7",
+     "f5f6",
+     "h7h8",
+     "f6f7",
+     "h8h7",
+     "g1h1"
+    ],
+    "score": {
+     "cp": -19996
+    }
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "puzzle-hanging",
+  "about": "A hanging piece from the Lichess puzzle database",
+  "input": {
+   "id": "G.puzzle-hanging",
+   "fen": "r6k/pp2r2p/4Rp1Q/3p4/8/1N1P2b1/PqP3PP/7K w - - 0 25",
+   "you": "white",
+   "lastMove": {
+    "san": "Bxg3",
+    "by": "opponent",
+    "fenBefore": "r6k/pp2r2p/4Rp1Q/3p4/8/1N1P2R1/PqP2bPP/7K b - - 0 24"
+   },
+   "eval": {
+    "fen": "r6k/pp2r2p/4Rp1Q/3p4/8/1N1P2b1/PqP3PP/7K w - - 0 25",
+    "lines": [
+     {
+      "pv": [
+       "e6e7",
+       "b2b1",
+       "b3c1",
+       "b1c1",
+       "h6c1",
+       "g3d6",
+       "c1e1",
+       "d6c5",
+       "e7b7",
+       "a8g8",
+       "b7f7",
+       "g8c8",
+       "g2g4",
+       "c5b4",
+       "e1a1"
+      ],
+      "score": {
+       "cp": 875
+      }
+     },
+     {
+      "pv": [
+       "h2g3",
+       "e7e6",
+       "h1h2",
+       "b2e5",
+       "b3c5",
+       "e6e7",
+       "h6h4",
+       "e5g5",
+       "h4g5",
+       "f6g5",
+       "c5e6",
+       "h8g8"
+      ],
+      "score": {
+       "cp": -800
+      }
+     },
+     {
+      "pv": [
+       "e6e2",
+       "e7e2",
+       "h2g3",
+       "b2e5",
+       "h1h2",
+       "h8g8",
+       "h6h3",
+       "e2e1",
+       "h3h6",
+       "e5e3",
+       "h6e3",
+       "e1e3"
+      ],
+      "score": {
+       "cp": -824
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r6k/pp2r2p/4Rp1Q/3p4/8/1N1P2b1/PqP3PP/7K b - - 0 25",
+    "lines": [
+     {
+      "pv": [
+       "b2b1",
+       "h6c1",
+       "b1c1",
+       "b3c1",
+       "e7e6",
+       "h2g3",
+       "e6e1",
+       "h1h2",
+       "e1e5",
+       "c1b3",
+       "e5e8",
+       "b3d4",
+       "a7a6",
+       "d4f3"
+      ],
+      "score": {
+       "cp": 870
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r6k/pp2r2p/4Rp1Q/3p4/8/1N1P2R1/PqP2bPP/7K b - - 0 24",
+    "lines": [
+     {
+      "pv": [
+       "b2b1",
+       "b3c1",
+       "b1c1",
+       "h6c1",
+       "e7e6",
+       "g3f3",
+       "e6e1",
+       "c1e1",
+       "f2e1",
+       "f3f6",
+       "a8c8",
+       "f6d6",
+       "c8c2",
+       "a2a3",
+       "c2c1",
+       "g2g4",
+       "e1h4",
+       "h1g2",
+       "c1c7"
+      ],
+      "score": {
+       "cp": 608
+      }
+     },
+     {
+      "pv": [
+       "f2e3",
+       "h6e3",
+       "b2b1",
+       "e3g1",
+       "b1g1",
+       "h1g1",
+       "e7e6",
+       "b3d4",
+       "e6a6",
+       "a2a3",
+       "a6a3",
+       "g3e3",
+       "a3a2",
+       "e3e7",
+       "a7a5",
+       "d4f5",
+       "h7h5",
+       "f5h6",
+       "a5a4",
+       "h6f7",
+       "h8h7"
+      ],
+      "score": {
+       "cp": 480
+      }
+     },
+     {
+      "pv": [
+       "e7f7",
+       "g3f3",
+       "b2c2",
+       "h6c1",
+       "c2c1",
+       "b3c1",
+       "f2b6",
+       "c1e2",
+       "f7f8",
+       "g2g4"
+      ],
+      "score": {
+       "cp": 27
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "f2g3",
+     "e6e7",
+     "b2b1",
+     "b3c1",
+     "b1c1",
+     "h6c1",
+     "g3d6",
+     "e7b7",
+     "a8e8",
+     "b7b1",
+     "h8g8",
+     "c1h6",
+     "a7a5",
+     "h6h4"
+    ],
+    "score": {
+     "cp": -944
+    }
+   },
+   "captureLines": {
+    "Rxe7": {
+     "pv": [
+      "e6e7",
+      "b2b1",
+      "b3c1",
+      "b1c1",
+      "h6c1",
+      "g3d6",
+      "c1e1",
+      "d6c5",
+      "e7b7",
+      "a8g8",
+      "b7f7",
+      "g8c8",
+      "g2g4",
+      "c5b4",
+      "e1a1"
+     ],
+     "score": {
+      "cp": 875
+     }
+    },
+    "hxg3": {
+     "pv": [
+      "h2g3",
+      "e7e6",
+      "h1h2",
+      "b2e5",
+      "b3c5",
+      "e6e7",
+      "h6h4",
+      "e5g5",
+      "h4g5",
+      "f6g5",
+      "c5e6",
+      "h8g8"
+     ],
+     "score": {
+      "cp": -800
+     }
+    },
+    "Rxf6": {
+     "pv": [
+      "e6f6",
+      "e7e1",
+      "f6f1",
+      "e1f1"
+     ],
+     "score": {
+      "mate": -2
+     }
+    }
+   },
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "puzzle-mate2",
+  "about": "A mate in two from the Lichess puzzle database",
+  "input": {
+   "id": "G.puzzle-mate2",
+   "fen": "7k/2r3p1/1p2p2b/3p2NQ/1q1P4/1p6/5R2/6K1 w - - 2 39",
+   "you": "white",
+   "lastMove": {
+    "san": "Qb4",
+    "by": "opponent",
+    "fenBefore": "5q1k/2r3p1/1p2p2b/3p2NQ/3P4/1p6/5R2/6K1 b - - 1 38"
+   },
+   "eval": {
+    "fen": "7k/2r3p1/1p2p2b/3p2NQ/1q1P4/1p6/5R2/6K1 w - - 2 39",
+    "lines": [
+     {
+      "pv": [
+       "h5e8",
+       "b4f8",
+       "f2f8"
+      ],
+      "score": {
+       "mate": 2
+      }
+     },
+     {
+      "pv": [
+       "f2f1",
+       "b4e7",
+       "g5f7",
+       "h8h7",
+       "h5h2",
+       "b3b2",
+       "h2b2",
+       "e7h4",
+       "b2e2",
+       "h4g3",
+       "e2g2",
+       "g3e3",
+       "g1h2",
+       "e3d4",
+       "g2g3",
+       "c7c2",
+       "h2h3"
+      ],
+      "score": {
+       "cp": -583
+      }
+     },
+     {
+      "pv": [
+       "f2a2",
+       "b4f8",
+       "a2f2",
+       "f8e7",
+       "g5f7",
+       "h8h7",
+       "h5f3",
+       "e7f6",
+       "f3f6",
+       "g7f6",
+       "f7h6"
+      ],
+      "score": {
+       "cp": -545
+      }
+     }
+    ],
+    "tbhits": 1
+   },
+   "passEval": {
+    "fen": "7k/2r3p1/1p2p2b/3p2NQ/1q1P4/1p6/5R2/6K1 b - - 2 39",
+    "lines": [
+     {
+      "pv": [
+       "b4e7",
+       "g5f7",
+       "h8h7",
+       "f7h6",
+       "g7h6",
+       "f2g2",
+       "e7f6",
+       "h5d1",
+       "f6f4",
+       "d1d3",
+       "h7h8",
+       "d3g3",
+       "c7c1",
+       "g1h2",
+       "f4g3",
+       "g2g3",
+       "c1c2",
+       "h2h1"
+      ],
+      "score": {
+       "cp": 663
+      }
+     }
+    ],
+    "tbhits": 26
+   },
+   "prevEval": {
+    "fen": "5q1k/2r3p1/1p2p2b/3p2NQ/3P4/1p6/5R2/6K1 b - - 1 38",
+    "lines": [
+     {
+      "pv": [
+       "c7c1",
+       "g1g2",
+       "c1c2",
+       "g5f7",
+       "h8h7",
+       "h5f3",
+       "c2f2",
+       "f3f2",
+       "f8e7",
+       "g2f1",
+       "e7c7",
+       "f7h6",
+       "c7c1",
+       "f1g2",
+       "c1h6",
+       "f2b2"
+      ],
+      "score": {
+       "cp": 739
+      }
+     },
+     {
+      "pv": [
+       "f8e7",
+       "g5f7",
+       "h8h7",
+       "h5h3",
+       "b3b2",
+       "h3d3",
+       "g7g6",
+       "f7h6",
+       "e7g5",
+       "g1h2",
+       "g5h6",
+       "h2g3",
+       "h6g5",
+       "g3h2",
+       "g5h5",
+       "h2g3"
+      ],
+      "score": {
+       "cp": 663
+      }
+     },
+     {
+      "pv": [
+       "f8c8",
+       "g5f7",
+       "c7f7",
+       "h5f7",
+       "b3b2",
+       "f7g6",
+       "b2b1q",
+       "g6b1",
+       "h6e3",
+       "b1b6",
+       "e3f2",
+       "g1f2",
+       "c8c2",
+       "f2f3",
+       "c2f5",
+       "f3g2"
+      ],
+      "score": {
+       "cp": 569
+      }
+     }
+    ],
+    "tbhits": 13
+   },
+   "playedLine": {
+    "pv": [
+     "f8b4",
+     "h5e8",
+     "b4f8",
+     "f2f8"
+    ],
+    "score": {
+     "mate": -2
+    }
+   },
+   "captureLines": {
+    "Nxe6": {
+     "pv": [
+      "g5e6",
+      "b4e1",
+      "g1g2",
+      "e1e6",
+      "h5h3",
+      "e6g6",
+      "h3g3",
+      "h8h7",
+      "g3g6",
+      "h7g6",
+      "f2f3",
+      "b3b2",
+      "f3b3",
+      "c7c2",
+      "g2g3",
+      "g6f5",
+      "b3b6"
+     ],
+     "score": {
+      "cp": -863
+     }
+    }
+   },
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ },
+ {
+  "key": "puzzle-trapped",
+  "about": "A trapped piece from the Lichess puzzle database",
+  "input": {
+   "id": "G.puzzle-trapped",
+   "fen": "r2qk2r/1Qp3p1/p1nbbn1p/3p1p2/3P4/P1N1PN1P/1PPB1P2/R3KB1R b KQkq - 0 13",
+   "you": "black",
+   "lastMove": {
+    "san": "Qxb7",
+    "by": "opponent",
+    "fenBefore": "r2qk2r/1pp3p1/p1nbbn1p/3p1p2/3P4/PQN1PN1P/1PPB1P2/R3KB1R w KQkq - 0 13"
+   },
+   "eval": {
+    "fen": "r2qk2r/1Qp3p1/p1nbbn1p/3p1p2/3P4/P1N1PN1P/1PPB1P2/R3KB1R b KQkq - 0 13",
+    "lines": [
+     {
+      "pv": [
+       "c6a5",
+       "b7a8",
+       "d8a8",
+       "f3e5",
+       "e6f7",
+       "f1d3",
+       "f6e4",
+       "e1c1",
+       "a5c4",
+       "f2f3",
+       "e4g5",
+       "e5f7",
+       "e8f7",
+       "d3c4",
+       "d5c4"
+      ],
+      "score": {
+       "cp": 672
+      }
+     },
+     {
+      "pv": [
+       "a8a7",
+       "b7b3",
+       "e8g8",
+       "e1c1",
+       "d8e7",
+       "d2e1",
+       "f6e4",
+       "b3a4",
+       "e6d7"
+      ],
+      "score": {
+       "cp": 16
+      }
+     },
+     {
+      "pv": [
+       "c6e7",
+       "f3e5",
+       "e8g8",
+       "f2f4",
+       "a8b8",
+       "b7a6",
+       "b8b6",
+       "a6a4",
+       "b6b2"
+      ],
+      "score": {
+       "cp": 1
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "passEval": {
+    "fen": "r2qk2r/1Qp3p1/p1nbbn1p/3p1p2/3P4/P1N1PN1P/1PPB1P2/R3KB1R w KQkq - 0 13",
+    "lines": [
+     {
+      "pv": [
+       "b7c6",
+       "e6d7",
+       "c6b7",
+       "e8g8",
+       "c3d5",
+       "f6e4",
+       "d5c3",
+       "d7e8",
+       "b7d5",
+       "g8h8",
+       "c3e4",
+       "e8f7",
+       "d5c6",
+       "f5e4",
+       "f3e5",
+       "d6e5",
+       "d4e5",
+       "f7d5",
+       "c6c3"
+      ],
+      "score": {
+       "cp": 610
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "prevEval": {
+    "fen": "r2qk2r/1pp3p1/p1nbbn1p/3p1p2/3P4/PQN1PN1P/1PPB1P2/R3KB1R w KQkq - 0 13",
+    "lines": [
+     {
+      "pv": [
+       "c3e2",
+       "e8g8",
+       "h1g1",
+       "e6f7",
+       "e2f4",
+       "f6e4",
+       "f1e2",
+       "g8h8",
+       "g1g2",
+       "b7b5",
+       "f4d3",
+       "d8f6",
+       "e1c1",
+       "e4d2",
+       "c1d2"
+      ],
+      "score": {
+       "cp": -93
+      }
+     },
+     {
+      "pv": [
+       "h1g1",
+       "c6a5",
+       "b3a2",
+       "e8g8",
+       "e1c1",
+       "b7b5",
+       "g1g2",
+       "d8e8",
+       "c3e2",
+       "a5c4",
+       "e2f4",
+       "d6f4",
+       "e3f4",
+       "c4d2",
+       "d1d2"
+      ],
+      "score": {
+       "cp": -108
+      }
+     },
+     {
+      "pv": [
+       "e1c1",
+       "e8g8",
+       "h1g1",
+       "c6a5",
+       "b3a2",
+       "b7b5",
+       "g1g2",
+       "a5c4",
+       "f1c4",
+       "d5c4",
+       "d1g1",
+       "f8f7",
+       "g2g6",
+       "g8h7"
+      ],
+      "score": {
+       "cp": -113
+      }
+     }
+    ],
+    "tbhits": 0
+   },
+   "playedLine": {
+    "pv": [
+     "b3b7",
+     "c6a5",
+     "b7b4",
+     "d6b4",
+     "a3b4",
+     "a5c4",
+     "f1c4",
+     "d5c4",
+     "h1g1",
+     "g7g5",
+     "e1c1",
+     "e6f7",
+     "d4d5",
+     "f7h5",
+     "e3e4",
+     "h5f3"
+    ],
+    "score": {
+     "cp": -724
+    }
+   },
+   "captureLines": {},
+   "thresholds": {
+    "inaccuracy": 5,
+    "mistake": 10,
+    "blunder": 15
+   }
+  }
+ }
+]

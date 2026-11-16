@@ -1,0 +1,39 @@
+{
+  "name": "chess-coach",
+  "version": "0.1.0",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=26"
+  },
+  "scripts": {
+    "dev": "node tools/dev.mjs",
+    "server": "node packages/server/src/index.ts",
+    "web": "npm run dev -w @chess-coach/web",
+    "build": "npm run build -w @chess-coach/web",
+    "start": "node packages/server/src/index.ts --serve-web",
+    "test": "vitest run",
+    "test:engine": "vitest run --config vitest.engine.config.ts",
+    "test:page": "npm run build && vitest run --config vitest.page.config.ts",
+    "test:coach": "node tools/coach-harness.ts",
+    "content:validate": "node tools/content.ts",
+    "content:build": "node tools/build-repertoire.ts",
+    "content:install": "node tools/content-install.ts",
+    "typecheck": "tsc -p packages/core && tsc -p packages/server && tsc -p packages/web",
+    "lint": "oxlint",
+    "check:docs": "node tools/check-docs.mjs",
+    "check": "npm run typecheck && npm run lint && npm run check:docs && npm test",
+    "prepare": "node tools/install-hooks.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "oxlint": "^1.93.0",
+    "playwright": "^1.65.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}

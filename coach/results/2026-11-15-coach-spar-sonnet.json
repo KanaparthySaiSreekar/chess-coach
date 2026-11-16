@@ -1,0 +1,589 @@
+{
+ "when": "2026-11-15T06:36:10.309Z",
+ "agent": "coach-spar",
+ "model": "sonnet",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 21,
+  "inputTokens": 40591,
+  "outputTokens": 4681,
+  "cacheReadTokens": 426760,
+  "costUsd": 0.251626
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 10,
+   "total": 10
+  },
+  "firstTryValidity": {
+   "ok": 21,
+   "total": 23,
+   "pct": 91.3,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 10,
+    "total": 10
+   },
+   "stays in budget": {
+    "pass": 10,
+    "total": 10
+   },
+   "scenario checks": {
+    "pass": 24,
+    "total": 24
+   },
+   "asks before telling (first message)": {
+    "pass": 1,
+    "total": 1
+   },
+   "quiet when it should be": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "byCovers": {
+   "uses the tag": {
+    "pass": 3,
+    "total": 3
+   },
+   "asks before telling": {
+    "pass": 3,
+    "total": 3
+   },
+   "quiet when it should be": {
+    "pass": 1,
+    "total": 1
+   },
+   "stop rules": {
+    "pass": 1,
+    "total": 1
+   },
+   "hard rules": {
+    "pass": 1,
+    "total": 1
+   },
+   "explains from facts": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 19676,
+  "failed": [],
+  "refusedBy": {
+   "R3 claim without a fact": 2
+  }
+ },
+ "results": [
+  {
+   "id": "start-focus",
+   "covers": "uses the tag",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is idea or question",
+     "pass": true,
+     "detail": "it was idea: One habit for this game: after every move Pip makes, stop and ask what it threatens before you move. Make that your first step each turn."
+    },
+    {
+     "check": "never says /\\b(?:play|try|consider|go for|start with)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)/",
+     "pass": true
+    }
+   ],
+   "ms": 8155,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "idea",
+     "source": "coach",
+     "text": "One habit for this game: after every move Pip makes, stop and ask what it threatens before you move. Make that your first step each turn."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "turn-routine",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind question",
+     "pass": true,
+     "detail": "kinds: idea, question"
+    },
+    {
+     "check": "never says /\\b(?:play|try|consider|go for)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)/",
+     "pass": true
+    }
+   ],
+   "ms": 14405,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "idea",
+     "source": "coach",
+     "text": "Good luck against Pip! One habit for this game: after every move they make, stop and ask what it threatens before you move."
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their e5 put a pawn in the centre, and nothing of yours is under threat. What checks, captures or threats do you have, and which pieces could you bring into the game?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "every-move",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind question",
+     "pass": true,
+     "detail": "kinds: idea, question, question"
+    },
+    {
+     "check": "never says /\\b(?:play|try|consider|go for)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)/",
+     "pass": true
+    }
+   ],
+   "ms": 20243,
+   "says": {
+    "ok": 3,
+    "total": 3
+   },
+   "messages": [
+    {
+     "kind": "idea",
+     "source": "coach",
+     "text": "Good luck against Pip! This game, before every move, ask yourself: what does their last move threaten? Make it a habit."
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their e5 put a pawn in the centre. Does it threaten anything of yours right now?"
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their Nc6 now protects the pawn on e5. Which two moves are you choosing between?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "silent",
+   "covers": "quiet when it should be",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "quiet when it should be",
+     "pass": true
+    }
+   ],
+   "ms": 19121,
+   "says": {
+    "ok": 0,
+    "total": 0
+   },
+   "messages": [],
+   "refused": [],
+   "tools": []
+  },
+  {
+   "id": "blunder-asks",
+   "covers": "uses the tag",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind question",
+     "pass": true,
+     "detail": "kinds: idea, question"
+    },
+    {
+     "check": "never says /\\b(?:play|try|consider|go for)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)/",
+     "pass": true
+    }
+   ],
+   "ms": 24476,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "idea",
+     "source": "coach",
+     "text": "Good luck in this game! Before each move, ask yourself: what does their last move threaten? Then check what they could capture after your move."
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Look at your queen's square before you moved it. Which of their pieces could capture it there?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "ask-question",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind question",
+     "pass": true,
+     "detail": "kinds: idea, question"
+    },
+    {
+     "check": "never says /\\b(?:play|try|consider|go for)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)/",
+     "pass": true
+    }
+   ],
+   "ms": 19676,
+   "says": {
+    "ok": 2,
+    "total": 3
+   },
+   "messages": [
+    {
+     "kind": "idea",
+     "source": "coach",
+     "text": "One habit for this game: before each move, look at their last move and ask what it is trying to do. Then check what they could capture after your move."
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their e5 put a pawn in the centre. Can they take anything of yours for free right now? And which of your pieces haven't moved yet?"
+    }
+   ],
+   "refused": [
+    {
+     "kind": "idea",
+     "text": "One habit for this game: before each move, look at their last move and ask, \"What does it threaten?\" Then check what they could capture after your move.",
+     "problems": [
+      "\"threaten\": a threat claim needs a threat, attack or hangs fact. Put the fact's id in claims, or take the claim out."
+     ]
+    }
+   ],
+   "tools": [
+    "say ✗",
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "ask-twice",
+   "covers": "stop rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind nudge",
+     "pass": true,
+     "detail": "kinds: idea, question, nudge"
+    },
+    {
+     "check": "never says /\\b(?:play|try|consider|go for)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)/",
+     "pass": true
+    }
+   ],
+   "ms": 24650,
+   "says": {
+    "ok": 3,
+    "total": 3
+   },
+   "messages": [
+    {
+     "kind": "idea",
+     "source": "coach",
+     "text": "Good luck in this game! Before each move, ask yourself one thing: what does their last move threaten?"
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their e5 put a pawn in the centre. Can they take anything of yours for free right now? What would you like your pieces to be doing in the opening?"
+    },
+    {
+     "kind": "nudge",
+     "source": "coach",
+     "text": "Nothing of yours can be taken right now, and nothing of theirs hangs either. So look at your back row: your knight on b1, bishop on c1, bishop on f1 and knight on g1 haven't moved yet, and that is what is stopping you from castling."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "never-suggests",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "never says /\\b(?:play|try|consider|go for|you should|you could)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O|castl)/",
+     "pass": true
+    },
+    {
+     "check": "never says /\\b(?:bot|it|they) (?:thinks?|wants?|is planning|plans)\\b/",
+     "pass": true
+    }
+   ],
+   "ms": 33974,
+   "says": {
+    "ok": 5,
+    "total": 6
+   },
+   "messages": [
+    {
+     "kind": "idea",
+     "source": "coach",
+     "text": "Good luck against Pip! Your one focus this game: before every move, look at their last move and ask what it is trying to do. Then check what they could capture after your move."
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their e5 put a pawn in the centre, and nothing of yours is in danger. Do you have any checks, captures or threats, and which pieces still need developing?"
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their Nc6 protects the pawn on e5. Which two moves are you choosing between, and what could they capture after each one?"
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their Bc5 now looks at your pawn on f2. Is that pawn safe, and what is guarding it?"
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Look at your pawn on f2: their bishop attacks it. Count the attackers and defenders there. What happens if they take it?"
+    }
+   ],
+   "refused": [
+    {
+     "kind": "idea",
+     "text": "Good luck against Pip! Your one focus this game: before every move, ask yourself, \"What did their last move threaten?\" Then check what they could capture after your move.",
+     "problems": [
+      "\"threaten\": a threat claim needs a threat, attack or hangs fact. Put the fact's id in claims, or take the claim out."
+     ]
+    }
+   ],
+   "tools": [
+    "say ✗",
+    "say",
+    "say",
+    "say",
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "end-summary",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "a message of kind summary",
+     "pass": true,
+     "detail": "kinds: idea, summary"
+    },
+    {
+     "check": "says /review|go through/",
+     "pass": true,
+     "detail": "Good luck in this game! Before each move, ask yourself: what does their last move threaten? Then check what they could capture after your move. | You resigned after just one move each, with no takebacks and no help asked. Early positions are rarely lost, so next time stay in and practise the routine. Go through it with me in the review."
+    }
+   ],
+   "ms": 18342,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "idea",
+     "source": "coach",
+     "text": "Good luck in this game! Before each move, ask yourself: what does their last move threaten? Then check what they could capture after your move."
+    },
+    {
+     "kind": "summary",
+     "source": "coach",
+     "text": "You resigned after just one move each, with no takebacks and no help asked. Early positions are rarely lost, so next time stay in and practise the routine. Go through it with me in the review."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "mini-goal",
+   "covers": "uses the tag",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /pawn/",
+     "pass": true,
+     "detail": "Your goal this game: take every pawn before one becomes a queen. Before each move, ask yourself: what is their last move trying to do?"
+    }
+   ],
+   "ms": 8141,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "idea",
+     "source": "coach",
+     "text": "Your goal this game: take every pawn before one becomes a queen. Before each move, ask yourself: what is their last move trying to do?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  }
+ ]
+}

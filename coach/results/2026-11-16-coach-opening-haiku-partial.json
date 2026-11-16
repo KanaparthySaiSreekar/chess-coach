@@ -1,0 +1,157 @@
+{
+ "when": "2026-11-16T15:34:07.574Z",
+ "agent": "coach-opening",
+ "model": "haiku",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 2,
+  "inputTokens": 15599,
+  "outputTokens": 1157,
+  "cacheReadTokens": 45398,
+  "costUsd": 0.00415128
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 2,
+   "total": 2
+  },
+  "firstTryValidity": {
+   "ok": 2,
+   "total": 3,
+   "pct": 66.7,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 2,
+    "total": 2
+   },
+   "stays in budget": {
+    "pass": 2,
+    "total": 2
+   },
+   "scenario checks": {
+    "pass": 6,
+    "total": 6
+   }
+  },
+  "byCovers": {
+   "explains from facts": {
+    "pass": 1,
+    "total": 1
+   },
+   "asks before telling": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 8838,
+  "failed": [],
+  "refusedBy": {
+   "R3 claim without a fact": 1
+  }
+ },
+ "results": [
+  {
+   "id": "ask-walk-why",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /nf3|knight/",
+     "pass": true,
+     "detail": "Nf3 is the strongest move here, and no material changes hands. It attacks their pawn on e5, and it develops your knight."
+    },
+    {
+     "check": "never says /\\b(bc4|d4|nc3|instead)\\b/",
+     "pass": true
+    }
+   ],
+   "ms": 8838,
+   "says": {
+    "ok": 1,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Nf3 is the strongest move here, and no material changes hands. It attacks their pawn on e5, and it develops your knight."
+    }
+   ],
+   "refused": [
+    {
+     "kind": "explain",
+     "text": "{m:Nf3} is the strongest move here, and no material changes hands. It attacks their pawn on {sq:e5}, and it develops your knight off the back rank.",
+     "problems": [
+      "\"back rank\": no cited fact has a line that ends in a back-rank mate. Put the fact's id in claims, or take the claim out."
+     ]
+    }
+   ],
+   "tools": [
+    "say ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "ask-while-recalling",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "never says /\\bnf3\\b|knight to f3|\\bf3\\b/",
+     "pass": true
+    }
+   ],
+   "ms": 6323,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their last move e5 put a pawn in the centre. Which of your undeveloped pieces could you bring out to challenge it?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+  "about": "Mini-games with few pieces (feature F6; PLAN WP 7.6): one idea at a time, played against a bot. Each has a start position, the side the owner plays, and a goal checked by code after every move.",
+  "games": [
+    {
+      "id": "pawn-war",
+      "name": "Pawn war",
+      "idea": "Pawn races: count the moves to the last rank, and use your king",
+      "about": "Kings and pawns only. The first to make a queen wins.",
+      "fen": "4k3/pppppppp/8/8/8/8/PPPPPPPP/4K3 w - - 0 1",
+      "you": "white",
+      "goal": { "kind": "promote" }
+    },
+    {
+      "id": "queen-vs-pawns",
+      "name": "Queen against pawns",
+      "idea": "A queen stops pawns from in front and from the side; take the free ones first",
+      "about": "Your queen against eight pawns. Win them all before one of them becomes a queen.",
+      "fen": "4k3/pppppppp/8/8/8/8/8/3QK3 w - - 0 1",
+      "you": "white",
+      "goal": { "kind": "stop" }
+    },
+    {
+      "id": "two-rook-mate",
+      "name": "Two-rook mate",
+      "idea": "The ladder: one rook holds a rank, the other gives check on the next",
+      "about": "Checkmate their king with your two rooks, within twenty moves.",
+      "fen": "4k3/8/8/8/8/8/8/R3K2R w - - 0 1",
+      "you": "white",
+      "goal": { "kind": "mate", "within": 20 }
+    },
+    {
+      "id": "rook-mate",
+      "name": "King and rook mate",
+      "idea": "Push their king to the edge with your rook, and bring your own king up to help",
+      "about": "Checkmate with a king and a rook, within forty moves.",
+      "fen": "4k3/8/8/8/8/8/8/R3K3 w - - 0 1",
+      "you": "white",
+      "goal": { "kind": "mate", "within": 40 }
+    }
+  ]
+}

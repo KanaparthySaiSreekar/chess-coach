@@ -1,0 +1,33 @@
+{
+  "when": "2026-11-14T17:21:00.940Z",
+  "compared": {
+    "examples": 9,
+    "lines": 30,
+    "moves": 188,
+    "diagrams": 8,
+    "diagramSquares": 512
+  },
+  "differences": [
+    {
+      "example": "example-19",
+      "bookPage": 31,
+      "what": "line length",
+      "where": "main, move 17",
+      "a": "9. Kt-Q5",
+      "b": "(line ends)"
+    }
+  ],
+  "byKind": {
+    "line length": 1
+  },
+  "checksOnA": [
+    "p.27 example-17 [main] \"7. B-Kt5\": the diagram differs from the position reached by the moves on 1 square: d1: printed q, replayed Q",
+    "p.31 example-19 [b] \"6... Kt-B3\": more than one legal move fits this (Nc6, Nf6)",
+    "p.33 example-21 [c] \"1... B-R5\": no legal move fits this"
+  ],
+  "checksOnB": [
+    "p.27 example-17 [main] \"7. B-Kt5\": the diagram differs from the position reached by the moves on 1 square: d1: printed q, replayed Q",
+    "p.31 example-19 [b] \"6... Kt-B3\": more than one legal move fits this (Nc6, Nf6)",
+    "p.33 example-21 [c] \"1... B-R5\": no legal move fits this"
+  ]
+}

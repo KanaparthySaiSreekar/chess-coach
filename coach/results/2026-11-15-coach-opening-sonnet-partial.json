@@ -1,0 +1,151 @@
+{
+ "when": "2026-11-15T09:15:29.490Z",
+ "agent": "coach-opening",
+ "model": "sonnet",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 2,
+  "inputTokens": 12317,
+  "outputTokens": 639,
+  "cacheReadTokens": 34764,
+  "costUsd": 0.0591184
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 2,
+   "total": 2
+  },
+  "firstTryValidity": {
+   "ok": 2,
+   "total": 2,
+   "pct": 100,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 2,
+    "total": 2
+   },
+   "stays in budget": {
+    "pass": 2,
+    "total": 2
+   },
+   "scenario checks": {
+    "pass": 5,
+    "total": 5
+   },
+   "asks before telling (first message)": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "byCovers": {
+   "explains from facts": {
+    "pass": 1,
+    "total": 1
+   },
+   "uses the tag": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 12168,
+  "failed": [],
+  "refusedBy": {}
+ },
+ "results": [
+  {
+   "id": "trap-miss",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /mate|checkmate/",
+     "pass": true,
+     "detail": "Your repertoire plays g6 here: it protects your pawn on f7 and attacks their queen on h5. Nf6 hits the queen too, but it allows Qxf7#, which is checkmate."
+    },
+    {
+     "check": "says /g6|f7/",
+     "pass": true,
+     "detail": "Your repertoire plays g6 here: it protects your pawn on f7 and attacks their queen on h5. Nf6 hits the queen too, but it allows Qxf7#, which is checkmate."
+    }
+   ],
+   "ms": 10614,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Your repertoire plays g6 here: it protects your pawn on f7 and attacks their queen on h5. Nf6 hits the queen too, but it allows Qxf7#, which is checkmate."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "trap-why",
+   "covers": "uses the tag",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is praise or explain",
+     "pass": true,
+     "detail": "it was praise: Yes, that is the trap: they hope for Nf6, so their queen can take on f7 with checkmate. You had the idea, and g6 stops it by protecting f7 and attacking their queen."
+    },
+    {
+     "check": "never says /\bnot (quite|really)\b/",
+     "pass": true
+    }
+   ],
+   "ms": 12168,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "praise",
+     "source": "coach",
+     "text": "Yes, that is the trap: they hope for Nf6, so their queen can take on f7 with checkmate. You had the idea, and g6 stops it by protecting f7 and attacking their queen."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  }
+ ]
+}

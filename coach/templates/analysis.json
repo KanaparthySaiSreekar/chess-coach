@@ -1,0 +1,13 @@
+{
+  "about": "The scripted fallback's own sentences for the analysis board (COACH §7, feature A11): what is said when the coach is off, down, or was refused twice. Everything about the position itself comes from the fact packet, word for word; these are only the questions and nudges of the hint ladder. {role} and {square} are filled from a fact; {square} becomes a square the owner can click.",
+  "over": "The game is over.",
+  "hint.question.threat": "What does their last move attack? Look at what they could capture or check next.",
+  "hint.question.loose": "Is any of their pieces unprotected?",
+  "hint.question.routine": "Run the routine: what are your checks, captures and threats here?",
+  "hint.nudge.piece": "Look at the {role} on {square}.",
+  "hint.nudge.danger": "One of your pieces or pawns is in danger. Check every capture they have.",
+  "hint.nudge.improve": "Look for a move that attacks something or improves your worst-placed piece.",
+  "hint.arrow": "The arrow shows where to look.",
+  "hint.captures": "Check each of their captures in turn.",
+  "quiet": "No piece can be taken for free and there is no immediate threat."
+}

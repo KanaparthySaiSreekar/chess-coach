@@ -1,0 +1,127 @@
+[
+  {
+    "id": "miss-asks",
+    "about": "A wrong move in a puzzle from the owner's games: one question about the routine, never the move",
+    "covers": "asks before telling",
+    "side": "white",
+    "puzzle": { "fen": "1r4k1/5ppp/8/8/8/8/3R1PPP/3R2K1 b - - 0 1", "setup": "Ra8", "solution": ["Rd8+", "Rxd8", "Rxd8#"], "themes": ["backRankMate", "mateIn2"] },
+    "steps": [{ "pmove": "h2h3" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "firstIs", "kinds": ["question", "nudge"] },
+      { "type": "never", "pattern": "d8" }
+    ]
+  },
+  {
+    "id": "miss-own-move",
+    "about": "Another wrong move: the coach may name the move tried, from the engine's verdict, and asks",
+    "covers": "explains from facts",
+    "side": "white",
+    "puzzle": { "fen": "1r4k1/5ppp/8/8/8/8/3R1PPP/3R2K1 b - - 0 1", "setup": "Ra8", "solution": ["Rd8+", "Rxd8", "Rxd8#"], "themes": ["backRankMate", "mateIn2"] },
+    "steps": [{ "pmove": "g2g3" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "firstIs", "kinds": ["question", "nudge"] },
+      { "type": "never", "pattern": "d8" }
+    ]
+  },
+  {
+    "id": "ask-question",
+    "about": "\"Ask the coach\" before any try: the first rung, a question",
+    "covers": "asks before telling",
+    "side": "white",
+    "puzzle": { "fen": "1r4k1/5ppp/8/8/8/8/3R1PPP/3R2K1 b - - 0 1", "setup": "Ra8", "solution": ["Rd8+", "Rxd8", "Rxd8#"], "themes": ["backRankMate", "mateIn2"] },
+    "steps": [{ "puzzle": "ask" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "firstIs", "kinds": ["question"] },
+      { "type": "never", "pattern": "d8" }
+    ]
+  },
+  {
+    "id": "ask-twice",
+    "about": "Asked twice: a question, then a nudge, still without the move",
+    "covers": "stop rules",
+    "side": "white",
+    "puzzle": { "fen": "1r4k1/5ppp/8/8/8/8/3R1PPP/3R2K1 b - - 0 1", "setup": "Ra8", "solution": ["Rd8+", "Rxd8", "Rxd8#"], "themes": ["backRankMate", "mateIn2"] },
+    "steps": [{ "puzzle": "ask" }, { "puzzle": "ask" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "nudge" },
+      { "type": "never", "pattern": "d8" }
+    ]
+  },
+  {
+    "id": "shown-explains",
+    "about": "The answer shown: one explanation of the first move and the idea, from the solution's fact",
+    "covers": "explains from facts",
+    "side": "white",
+    "puzzle": { "fen": "1r4k1/5ppp/8/8/8/8/3R1PPP/3R2K1 b - - 0 1", "setup": "Ra8", "solution": ["Rd8+", "Rxd8", "Rxd8#"], "themes": ["backRankMate", "mateIn2"] },
+    "steps": [{ "puzzle": "show" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "explain" },
+      { "type": "says", "pattern": "back.?rank|last rank|checkmate|mate" }
+    ]
+  },
+  {
+    "id": "example-new-idea",
+    "about": "A new idea (a fork), shown as a worked example: the coach explains how it works",
+    "covers": "explains from facts",
+    "side": "white",
+    "puzzle": { "fen": "r3k3/8/8/3N4/8/8/8/4K3 w - - 0 1", "solution": ["Nc7+", "Kd7", "Nxa8"], "themes": ["fork"] },
+    "steps": [{ "puzzle": "example" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "explain" },
+      { "type": "says", "pattern": "fork|two (?:things|pieces)|both" }
+    ]
+  },
+  {
+    "id": "mixed-ask-hides",
+    "about": "A mixed set: asked for help, the coach asks about the routine and does not name the idea",
+    "covers": "hard rules",
+    "side": "white",
+    "puzzle": { "fen": "r3k3/8/8/3N4/8/8/8/4K3 w - - 0 1", "solution": ["Nc7+", "Kd7", "Nxa8"], "themes": ["fork"], "set": "mixed" },
+    "steps": [{ "puzzle": "ask" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "firstIs", "kinds": ["question", "nudge"] },
+      { "type": "never", "pattern": "fork" },
+      { "type": "never", "pattern": "c7" }
+    ]
+  },
+  {
+    "id": "mixed-miss-hides",
+    "about": "A mixed set: a wrong move, and still nothing that names the idea or the move",
+    "covers": "hard rules",
+    "side": "white",
+    "puzzle": { "fen": "r3k3/8/8/3N4/8/8/8/4K3 w - - 0 1", "solution": ["Nc7+", "Kd7", "Nxa8"], "themes": ["fork"], "set": "mixed" },
+    "steps": [{ "pmove": "e1e2" }],
+    "checks": [
+      { "type": "never", "pattern": "fork" },
+      { "type": "never", "pattern": "c7" }
+    ]
+  },
+  {
+    "id": "solved-quiet",
+    "about": "Solved alone at the first try: correct means quiet",
+    "covers": "quiet when it should be",
+    "side": "white",
+    "puzzle": { "fen": "1r4k1/5ppp/8/8/8/8/3R1PPP/3R2K1 b - - 0 1", "setup": "Ra8", "solution": ["Rd8+", "Rxd8", "Rxd8#"], "themes": ["backRankMate", "mateIn2"] },
+    "steps": [{ "pmove": "d2d8" }, { "pmove": "d1d8" }],
+    "checks": [{ "type": "silent" }]
+  },
+  {
+    "id": "end-of-sitting",
+    "about": "The last puzzle of the sitting: a short summary of what went well and when the puzzles come back",
+    "covers": "explains from facts",
+    "side": "white",
+    "puzzle": { "fen": "1r4k1/5ppp/8/8/8/8/3R1PPP/3R2K1 b - - 0 1", "setup": "Ra8", "solution": ["Rd8+", "Rxd8", "Rxd8#"], "themes": ["backRankMate", "mateIn2"] },
+    "steps": [{ "puzzle": "show" }, { "puzzle": "next" }],
+    "checks": [
+      { "type": "someKind", "kind": "summary" },
+      { "type": "says", "pattern": "tomorrow|come(?:s)? back|again" }
+    ]
+  }
+]

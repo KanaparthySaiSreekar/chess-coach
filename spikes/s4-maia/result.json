@@ -1,0 +1,168 @@
+{
+  "when": "2026-11-14T16:09:47.711Z",
+  "settings": {
+    "MATCH_GAMES": 200,
+    "PROFILE_GAMES": 60,
+    "TIMING_REQUESTS": 300,
+    "NODES": 150000,
+    "MAX_PLIES": 400
+  },
+  "onAcPower": true,
+  "speed": [
+    {
+      "model": "5m",
+      "device": "cpu",
+      "loadMs": 1780,
+      "firstRequestMs": 15.4,
+      "requests": 300,
+      "medianMs": 20.3,
+      "p95Ms": 30.8,
+      "maxMs": 34.9
+    },
+    {
+      "model": "23m",
+      "device": "cpu",
+      "loadMs": 1752,
+      "firstRequestMs": 29.3,
+      "requests": 300,
+      "medianMs": 37.3,
+      "p95Ms": 48.5,
+      "maxMs": 55.3
+    },
+    {
+      "model": "5m",
+      "device": "cuda",
+      "loadMs": 1715,
+      "firstRequestMs": 238.3,
+      "requests": 300,
+      "medianMs": 23.2,
+      "p95Ms": 36.8,
+      "maxMs": 44.4
+    },
+    {
+      "model": "23m",
+      "device": "cuda",
+      "loadMs": 1854,
+      "firstRequestMs": 240.2,
+      "requests": 300,
+      "medianMs": 24.1,
+      "p95Ms": 35.7,
+      "maxMs": 43.3
+    }
+  ],
+  "match": {
+    "games": 200,
+    "stronger": {
+      "wins": 147,
+      "draws": 34,
+      "losses": 19,
+      "scorePct": 82
+    },
+    "expectedScorePctForA600PointGap": 96.9,
+    "impliedRatingGap": 263,
+    "endings": {
+      "stalemate": 20,
+      "checkmate": 166,
+      "repetition": 10,
+      "insufficient material": 4
+    },
+    "averagePlies": 66,
+    "illegalMovesFromMaia": 0,
+    "seconds": 114
+  },
+  "profile": {
+    "600": {
+      "games": 60,
+      "averagePlies": 81,
+      "endings": {
+        "stalemate": 11,
+        "checkmate": 46,
+        "insufficient material": 2,
+        "repetition": 1
+      },
+      "moves": 4869,
+      "liveMoves": 1593,
+      "blundersPer100LiveMoves": {
+        "all": 34.8,
+        "opening": 26.4,
+        "middlegame": 58.9,
+        "endgame": 30.9
+      },
+      "blundersPerGamePerSide": 4.62,
+      "lichessStyleBlundersPer100Moves": 12.4,
+      "freeMaterialTakenPct": 55.4,
+      "freeMaterialChances": 1679,
+      "freePieceTakenPct": 63.8,
+      "freePieceChances": 724,
+      "gamesDecidedByAnOpeningBlunderPct": 80,
+      "seconds": 110
+    },
+    "1000": {
+      "games": 60,
+      "averagePlies": 82,
+      "endings": {
+        "checkmate": 57,
+        "insufficient material": 1,
+        "stalemate": 1,
+        "fifty moves": 1
+      },
+      "moves": 4896,
+      "liveMoves": 2106,
+      "blundersPer100LiveMoves": {
+        "all": 23.9,
+        "opening": 14.6,
+        "middlegame": 35.1,
+        "endgame": 28.6
+      },
+      "blundersPerGamePerSide": 4.2,
+      "lichessStyleBlundersPer100Moves": 8.6,
+      "freeMaterialTakenPct": 59.5,
+      "freeMaterialChances": 1442,
+      "freePieceTakenPct": 73.9,
+      "freePieceChances": 517,
+      "gamesDecidedByAnOpeningBlunderPct": 43.3,
+      "seconds": 133
+    },
+    "1500": {
+      "games": 60,
+      "averagePlies": 94,
+      "endings": {
+        "checkmate": 52,
+        "stalemate": 4,
+        "insufficient material": 1,
+        "repetition": 3
+      },
+      "moves": 5613,
+      "liveMoves": 2920,
+      "blundersPer100LiveMoves": {
+        "all": 15.1,
+        "opening": 7,
+        "middlegame": 22.6,
+        "endgame": 16.7
+      },
+      "blundersPerGamePerSide": 3.68,
+      "lichessStyleBlundersPer100Moves": 6.4,
+      "freeMaterialTakenPct": 66.8,
+      "freeMaterialChances": 1330,
+      "freePieceTakenPct": 80.8,
+      "freePieceChances": 489,
+      "gamesDecidedByAnOpeningBlunderPct": 25,
+      "seconds": 140
+    }
+  },
+  "published": {
+    "600": {
+      "openingBlundersPer100LiveMoves": 32.1,
+      "endgameBlundersPer100LiveMoves": 33.6,
+      "freeMaterialTakenPct": 62,
+      "lostInTheOpeningPct": 19.7
+    },
+    "1000": {
+      "openingBlundersPer100LiveMoves": 17.5,
+      "endgameBlundersPer100LiveMoves": 22,
+      "freeMaterialTakenPct": 77,
+      "lostInTheOpeningPct": 10.8
+    },
+    "source": "chessstats.gg/stats/lichess-rating-guide (Lichess rapid; blunder = a loss of 150 centipawns or more on a live move; method not public)"
+  }
+}

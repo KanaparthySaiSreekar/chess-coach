@@ -1,0 +1,470 @@
+{
+ "when": "2026-11-15T08:49:06.846Z",
+ "agent": "coach-opening",
+ "model": "sonnet",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 7,
+  "inputTokens": 28095,
+  "outputTokens": 2055,
+  "cacheReadTokens": 121354,
+  "costUsd": 0.14500939999999998
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 10,
+   "total": 10
+  },
+  "firstTryValidity": {
+   "ok": 7,
+   "total": 7,
+   "pct": 100,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 10,
+    "total": 10
+   },
+   "stays in budget": {
+    "pass": 10,
+    "total": 10
+   },
+   "scenario checks": {
+    "pass": 21,
+    "total": 21
+   },
+   "asks before telling (first message)": {
+    "pass": 1,
+    "total": 1
+   },
+   "quiet when it should be": {
+    "pass": 3,
+    "total": 3
+   }
+  },
+  "byCovers": {
+   "explains from facts": {
+    "pass": 5,
+    "total": 5
+   },
+   "hard rules": {
+    "pass": 1,
+    "total": 1
+   },
+   "uses the tag": {
+    "pass": 1,
+    "total": 1
+   },
+   "quiet when it should be": {
+    "pass": 3,
+    "total": 3
+   }
+  },
+  "medianMs": 9179,
+  "failed": [],
+  "refusedBy": {}
+ },
+ "results": [
+  {
+   "id": "miss-explains",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /nf3|knight/",
+     "pass": true,
+     "detail": "Your repertoire plays Nf3 here: it develops your knight and attacks the pawn on e5. Your Nc3 is a good, safe move too, since it develops your knight, but it doesn't attack anything."
+    },
+    {
+     "check": "never says /\\b(wrong|bad move|blunder)\\b/",
+     "pass": true
+    }
+   ],
+   "ms": 8907,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Your repertoire plays Nf3 here: it develops your knight and attacks the pawn on e5. Your Nc3 is a good, safe move too, since it develops your knight, but it doesn't attack anything."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "miss-no-words",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /d4|centre|center|e5/",
+     "pass": true,
+     "detail": "Your repertoire plays d4 here: it attacks their pawn on e5 and puts a pawn in the centre. Your Bc4 is a good, safe move too, since it develops your bishop, but the repertoire goes for the centre first."
+    },
+    {
+     "check": "never says /%|\\+\\d|centipawn/",
+     "pass": true
+    }
+   ],
+   "ms": 8217,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Your repertoire plays d4 here: it attacks their pawn on e5 and puts a pawn in the centre. Your Bc4 is a good, safe move too, since it develops your bishop, but the repertoire goes for the centre first."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "miss-stays-inside",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /ba4|bishop/",
+     "pass": true,
+     "detail": "Your repertoire plays Ba4 here: their move a6 attacks your bishop, and Ba4 moves it out of danger. Your Bxc6 was a good, safe move too, an even trade, but the repertoire keeps the bishop instead."
+    },
+    {
+     "check": "never says /you could (also )?play|try playing|another option|better (is|was)|consider playing/",
+     "pass": true
+    }
+   ],
+   "ms": 8829,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Your repertoire plays Ba4 here: their move a6 attacks your bishop, and Ba4 moves it out of danger. Your Bxc6 was a good, safe move too, an even trade, but the repertoire keeps the bishop instead."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "why-right",
+   "covers": "uses the tag",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is praise or explain",
+     "pass": true,
+     "detail": "it was praise: Yes, you had both parts: Nf3 brings your knight out and attacks their pawn on e5."
+    },
+    {
+     "check": "never says /\\bnot (quite|really)\\b|\\bmissed\\b/",
+     "pass": true
+    }
+   ],
+   "ms": 12014,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "praise",
+     "source": "coach",
+     "text": "Yes, you had both parts: Nf3 brings your knight out and attacks their pawn on e5."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "why-wrong",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /knight|e5|develop/",
+     "pass": true,
+     "detail": "Not quite: Nf3 is about developing your knight and attacking the pawn on e5, rather than protecting your king. Getting pieces out is the first step toward castling later."
+    }
+   ],
+   "ms": 12348,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Not quite: Nf3 is about developing your knight and attacking the pawn on e5, rather than protecting your king. Getting pieces out is the first step toward castling later."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "why-blank",
+   "covers": "quiet when it should be",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "quiet when it should be",
+     "pass": true
+    }
+   ],
+   "ms": 9179,
+   "says": {
+    "ok": 0,
+    "total": 0
+   },
+   "messages": [],
+   "refused": [],
+   "tools": []
+  },
+  {
+   "id": "right-quiet",
+   "covers": "quiet when it should be",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "quiet when it should be",
+     "pass": true
+    }
+   ],
+   "ms": 6003,
+   "says": {
+    "ok": 0,
+    "total": 0
+   },
+   "messages": [],
+   "refused": [],
+   "tools": []
+  },
+  {
+   "id": "new-with-words",
+   "covers": "quiet when it should be",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "quiet when it should be",
+     "pass": true
+    }
+   ],
+   "ms": 15190,
+   "says": {
+    "ok": 0,
+    "total": 0
+   },
+   "messages": [],
+   "refused": [],
+   "tools": []
+  },
+  {
+   "id": "new-no-words",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /d4|centre|center|e5/",
+     "pass": true,
+     "detail": "d4 attacks their pawn on e5 and puts a pawn in the centre. Their last move d6 was a safe move that protects that pawn."
+    }
+   ],
+   "ms": 6018,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "d4 attacks their pawn on e5 and puts a pawn in the centre. Their last move d6 was a safe move that protects that pawn."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "black-miss",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /d5|centre|center/",
+     "pass": true,
+     "detail": "Your repertoire plays d5 here: it puts a pawn in the centre. Your Nf6 was a strong move too: it develops your knight, but the repertoire simply goes another way."
+    },
+    {
+     "check": "never says /\\b(wrong|bad move|blunder)\\b/",
+     "pass": true
+    }
+   ],
+   "ms": 9462,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Your repertoire plays d5 here: it puts a pawn in the centre. Your Nf6 was a strong move too: it develops your knight, but the repertoire simply goes another way."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  }
+ ]
+}

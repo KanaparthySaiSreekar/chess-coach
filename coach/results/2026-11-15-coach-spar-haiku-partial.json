@@ -1,0 +1,116 @@
+{
+ "when": "2026-11-15T06:23:52.722Z",
+ "agent": "coach-spar",
+ "model": "haiku",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 2,
+  "inputTokens": 3146,
+  "outputTokens": 962,
+  "cacheReadTokens": 47310,
+  "costUsd": 0.0015823000000000002
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 1,
+   "total": 1
+  },
+  "firstTryValidity": {
+   "ok": 2,
+   "total": 3,
+   "pct": 66.7,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 1,
+    "total": 1
+   },
+   "stays in budget": {
+    "pass": 1,
+    "total": 1
+   },
+   "scenario checks": {
+    "pass": 3,
+    "total": 3
+   }
+  },
+  "byCovers": {
+   "uses the tag": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 24706,
+  "failed": [],
+  "refusedBy": {
+   "R3 claim without a fact": 2
+  }
+ },
+ "results": [
+  {
+   "id": "blunder-asks",
+   "covers": "uses the tag",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind question",
+     "pass": true,
+     "detail": "kinds: idea, question"
+    },
+    {
+     "check": "never says /\\b(?:play|try|consider|go for)\\s+(?:\\{m:|[KQRBN][a-h]|[a-h][1-8]|O-O)/",
+     "pass": true
+    }
+   ],
+   "ms": 24706,
+   "says": {
+    "ok": 2,
+    "total": 3
+   },
+   "messages": [
+    {
+     "kind": "idea",
+     "source": "coach",
+     "text": "Your focus for this game: before each move, ask what their last move does. Then check what they could capture after your move."
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their Bxg4 just took your queen. Before you moved, what checks, captures or attacks did they have?"
+    }
+   ],
+   "refused": [
+    {
+     "kind": "idea",
+     "text": "Your focus for this game: before each move, ask what their last move threatens. Check their captures and threats before you move.",
+     "problems": [
+      "\"threatens\": a threat claim needs a threat, attack or hangs fact. Put the fact's id in claims, or take the claim out.",
+      "\"threats\": a threat claim needs a threat, attack or hangs fact. Put the fact's id in claims, or take the claim out."
+     ]
+    }
+   ],
+   "tools": [
+    "say ✗",
+    "say",
+    "say"
+   ]
+  }
+ ]
+}

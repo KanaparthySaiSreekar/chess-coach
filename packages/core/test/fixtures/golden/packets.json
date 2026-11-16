@@ -1,0 +1,3343 @@
+{
+ "start": {
+  "forCoach": {
+   "id": "G.start",
+   "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 1,
+   "yourPieces": "Ke1 Qd1 Ra1 Rh1 Nb1 Bc1 Bf1 Ng1 Pa2 Pb2 Pc2 Pd2 Pe2 Pf2 Pg2 Ph2",
+   "theirPieces": "Ke8 Qd8 Ra8 Rh8 Nb8 Bc8 Bf8 Ng8 Pa7 Pb7 Pc7 Pd7 Pe7 Pf7 Pg7 Ph7",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": []
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": []
+   },
+   "findable": "d4",
+   "facts": [
+    {
+     "id": "G.start.F1",
+     "type": "material",
+     "text": "Material is level."
+    },
+    {
+     "id": "G.start.F2",
+     "type": "castling",
+     "text": "You cannot castle kingside yet: your bishop {pc:Bf1} and your knight {pc:Ng1} are in the way."
+    },
+    {
+     "id": "G.start.F3",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your knight {pc:Nb1}, your bishop {pc:Bc1} and your queen {pc:Qd1} are in the way."
+    },
+    {
+     "id": "G.start.F4",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their bishop {pc:Bf8} and their knight {pc:Ng8} are in the way."
+    },
+    {
+     "id": "G.start.F5",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their knight {pc:Nb8}, their bishop {pc:Bc8} and their queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.start.F6",
+     "type": "best_move",
+     "text": "Your strongest move is {m:d4}: no material changes hands. After it you are about equal. Why: it puts a pawn in the centre."
+    },
+    {
+     "id": "G.start.F7",
+     "type": "good_move",
+     "text": "{m:e4} is also a good move for you: no material changes hands. Why: it puts a pawn in the centre."
+    },
+    {
+     "id": "G.start.F8",
+     "type": "good_move",
+     "text": "{m:Nf3} is also a good move for you: no material changes hands. Why: it develops your knight."
+    },
+    {
+     "id": "G.start.F9",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.start.F10",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    }
+   ]
+  },
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "e4": {
+  "forCoach": {
+   "id": "G.e4",
+   "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
+   "toMove": "you",
+   "youAre": "black",
+   "moveNumber": 1,
+   "lastMove": "e4 (their move)",
+   "yourPieces": "Ke8 Qd8 Ra8 Rh8 Nb8 Bc8 Bf8 Ng8 Pa7 Pb7 Pc7 Pd7 Pe7 Pf7 Pg7 Ph7",
+   "theirPieces": "Ke1 Qd1 Ra1 Rh1 Nb1 Bc1 Bf1 Ng1 Pa2 Pb2 Pc2 Pd2 Pe4 Pf2 Pg2 Ph2",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": [
+     "d5",
+     "Nf6"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": []
+   },
+   "lastMoveVerdict": {
+    "fact": "G.e4.F12"
+   },
+   "findable": "c5",
+   "facts": [
+    {
+     "id": "G.e4.F1",
+     "type": "material",
+     "text": "Material is level."
+    },
+    {
+     "id": "G.e4.F2",
+     "type": "opening",
+     "text": "This position is from the opening called King's Pawn Game."
+    },
+    {
+     "id": "G.e4.F3",
+     "type": "castling",
+     "text": "You cannot castle kingside yet: your bishop {pc:Bf8} and your knight {pc:Ng8} are in the way."
+    },
+    {
+     "id": "G.e4.F4",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your knight {pc:Nb8}, your bishop {pc:Bc8} and your queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.e4.F5",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their bishop {pc:Bf1} and their knight {pc:Ng1} are in the way."
+    },
+    {
+     "id": "G.e4.F6",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their knight {pc:Nb1}, their bishop {pc:Bc1} and their queen {pc:Qd1} are in the way."
+    },
+    {
+     "id": "G.e4.F7",
+     "type": "best_move",
+     "text": "Your strongest move is {m:c5}: no material changes hands. After it you are about equal."
+    },
+    {
+     "id": "G.e4.F8",
+     "type": "good_move",
+     "text": "{m:e5} is also a good move for you: no material changes hands. Why: it puts a pawn in the centre."
+    },
+    {
+     "id": "G.e4.F9",
+     "type": "good_move",
+     "text": "{m:c6} is also a good move for you: no material changes hands."
+    },
+    {
+     "id": "G.e4.F10",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.e4.F11",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.e4.F12",
+     "type": "safe",
+     "text": "Their last move {m:e4@G.e4.F12} was a good, safe move for them: no material changes hands. Why: it puts a pawn in the centre."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "e4",
+   "by": "opponent",
+   "cls": "ok"
+  },
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "italian": {
+  "forCoach": {
+   "id": "G.italian",
+   "fen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 4,
+   "lastMove": "Bc5 (their move)",
+   "yourPieces": "Ke1 Qd1 Ra1 Rh1 Nb1 Bc1 Bc4 Nf3 Pa2 Pb2 Pc2 Pd2 Pe4 Pf2 Pg2 Ph2",
+   "theirPieces": "Ke8 Qd8 Ra8 Rh8 Bc5 Nc6 Bc8 Ng8 Pa7 Pb7 Pc7 Pd7 Pe5 Pf7 Pg7 Ph7",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Bxf7+"
+    ],
+    "captures": [
+     "Nxe5",
+     "Bxf7+"
+    ],
+    "threats": []
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Bxf2+"
+    ],
+    "captures": [
+     "Bxf2+"
+    ],
+    "threats": [
+     "Na5",
+     "Nf6"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.italian.F15"
+   },
+   "findable": "d3",
+   "facts": [
+    {
+     "id": "G.italian.F1",
+     "type": "material",
+     "text": "Material is level."
+    },
+    {
+     "id": "G.italian.F2",
+     "type": "opening",
+     "text": "This position is from the opening called Italian Game: Giuoco Piano."
+    },
+    {
+     "id": "G.italian.F3",
+     "type": "attack",
+     "text": "Their pawn {pc:Pe5} is attacked by your knight {pc:Nf3}; it is defended by their knight {pc:Nc6}, so taking it does not win material."
+    },
+    {
+     "id": "G.italian.F4",
+     "type": "attack",
+     "text": "Their pawn {pc:Pf7} is attacked by your bishop {pc:Bc4}; it is defended by their king {pc:Ke8}, so taking it does not win material."
+    },
+    {
+     "id": "G.italian.F5",
+     "type": "attack",
+     "text": "Your pawn {pc:Pf2} is attacked by their bishop {pc:Bc5}; it is defended by your king {pc:Ke1}, so taking it does not win material."
+    },
+    {
+     "id": "G.italian.F6",
+     "type": "castling",
+     "text": "You can castle kingside right now with {m:O-O}."
+    },
+    {
+     "id": "G.italian.F7",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your knight {pc:Nb1}, your bishop {pc:Bc1} and your queen {pc:Qd1} are in the way."
+    },
+    {
+     "id": "G.italian.F8",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their knight {pc:Ng8} is in the way."
+    },
+    {
+     "id": "G.italian.F9",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their bishop {pc:Bc8} and their queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.italian.F10",
+     "type": "best_move",
+     "text": "Your strongest move is {m:d3}: no material changes hands. After it you are about equal."
+    },
+    {
+     "id": "G.italian.F11",
+     "type": "good_move",
+     "text": "{m:O-O} is also a good move for you: no material changes hands. Why: it castles: your king gets safer and the rook comes into play; it adds a defender to your pawn on {sq:f2}."
+    },
+    {
+     "id": "G.italian.F12",
+     "type": "good_move",
+     "text": "{m:c3} is also a good move for you: no material changes hands."
+    },
+    {
+     "id": "G.italian.F13",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.italian.F14",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.italian.F15",
+     "type": "safe",
+     "text": "Their last move {m:Bc5@G.italian.F15} was a good, safe move for them: no material changes hands. Why: it develops their bishop."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "Bc5",
+   "by": "opponent",
+   "cls": "ok"
+  },
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "scholar": {
+  "forCoach": {
+   "id": "G.scholar",
+   "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+   "toMove": "you",
+   "youAre": "black",
+   "moveNumber": 3,
+   "lastMove": "Qh5 (their move)",
+   "yourPieces": "Ke8 Qd8 Ra8 Rh8 Nc6 Bc8 Bf8 Ng8 Pa7 Pb7 Pc7 Pd7 Pe5 Pf7 Pg7 Ph7",
+   "theirPieces": "Ke1 Qh5 Ra1 Rh1 Nb1 Bc1 Bc4 Ng1 Pa2 Pb2 Pc2 Pd2 Pe4 Pf2 Pg2 Ph2",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": [
+     "Nb4",
+     "Nd4",
+     "Na5",
+     "g6",
+     "Nf6"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Bxf7+",
+     "Qxe5+"
+    ],
+    "captures": [
+     "Bxf7+",
+     "Qxe5+",
+     "Qxf7#",
+     "Qxh7"
+    ],
+    "threats": [
+     "Nf3"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.scholar.F15"
+   },
+   "findable": "g6",
+   "facts": [
+    {
+     "id": "G.scholar.F1",
+     "type": "material",
+     "text": "Material is level."
+    },
+    {
+     "id": "G.scholar.F2",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pf7} is not defended well enough: {m:Bxf7+@G.scholar.F2} wins material for them in the trade on {sq:f7} if you leave it there."
+    },
+    {
+     "id": "G.scholar.F3",
+     "type": "attack",
+     "text": "Your pawn {pc:Pe5} is attacked by their queen {pc:Qh5}; it is defended by your knight {pc:Nc6}, so taking it does not win material."
+    },
+    {
+     "id": "G.scholar.F4",
+     "type": "attack",
+     "text": "Your pawn {pc:Ph7} is attacked by their queen {pc:Qh5}; it is defended by your rook {pc:Rh8}, so taking it does not win material."
+    },
+    {
+     "id": "G.scholar.F5",
+     "type": "pin",
+     "text": "Your pawn {pc:Pf7} is pinned by their queen {pc:Qh5}: it cannot move away without exposing the king."
+    },
+    {
+     "id": "G.scholar.F6",
+     "type": "pin",
+     "text": "Your pawn {pc:Ph7} is pinned to your rook {pc:Rh8} by their queen {pc:Qh5}: it may move, but then their queen {pc:Qh5} can take the rook. Whether moving it is still good is for the engine to say."
+    },
+    {
+     "id": "G.scholar.F7",
+     "type": "castling",
+     "text": "You cannot castle kingside yet: your bishop {pc:Bf8} and your knight {pc:Ng8} are in the way."
+    },
+    {
+     "id": "G.scholar.F8",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your bishop {pc:Bc8} and your queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.scholar.F9",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their knight {pc:Ng1} is in the way."
+    },
+    {
+     "id": "G.scholar.F10",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their knight {pc:Nb1} and their bishop {pc:Bc1} are in the way."
+    },
+    {
+     "id": "G.scholar.F11",
+     "type": "best_move",
+     "text": "Your strongest move is {m:g6}: no material changes hands. After it you are about equal. Why: it protects your pawn on {sq:f7}; it deals with their threat; it attacks their queen on {sq:h5}."
+    },
+    {
+     "id": "G.scholar.F12",
+     "type": "good_move",
+     "text": "{m:Qe7} is also a good move for you: no material changes hands. Why: it protects your pawn on {sq:f7}; it deals with their threat."
+    },
+    {
+     "id": "G.scholar.F13",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:Qxf7#@G.scholar.F13} and it is checkmate in 1."
+    },
+    {
+     "id": "G.scholar.F14",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.scholar.F15",
+     "type": "safe",
+     "text": "Their last move {m:Qh5@G.scholar.F15} was a good, safe move for them: no material changes hands. Why: it attacks your pawn on {sq:f7}."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "Qh5",
+   "by": "opponent",
+   "cls": "ok"
+  },
+  "hanging": {
+   "mine": [
+    {
+     "square": "f7",
+     "role": "pawn",
+     "color": "black"
+    }
+   ],
+   "theirs": []
+  }
+ },
+ "scholar-missed": {
+  "forCoach": {
+   "id": "G.scholar-missed",
+   "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 4 4",
+   "toMove": "them",
+   "youAre": "black",
+   "moveNumber": 4,
+   "lastMove": "Nf6 (your move)",
+   "yourPieces": "Ke8 Qd8 Ra8 Rh8 Nc6 Bc8 Nf6 Bf8 Pa7 Pb7 Pc7 Pd7 Pe5 Pf7 Pg7 Ph7",
+   "theirPieces": "Ke1 Qh5 Ra1 Rh1 Nb1 Bc1 Bc4 Ng1 Pa2 Pb2 Pc2 Pd2 Pe4 Pf2 Pg2 Ph2",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "Nxh5",
+     "Nxe4"
+    ],
+    "threats": [
+     "Nb4",
+     "Nd4",
+     "Na5",
+     "d5"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Bxf7+",
+     "Qxe5+"
+    ],
+    "captures": [
+     "Bxf7+",
+     "Qxe5+",
+     "Qxf7#",
+     "Qxh7"
+    ],
+    "threats": [
+     "Nf3"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.scholar-missed.F17",
+    "strongerMoveFact": "G.scholar-missed.F18"
+   },
+   "skippedStep": "missed_threat",
+   "findable": "Qxf7#",
+   "facts": [
+    {
+     "id": "G.scholar-missed.F1",
+     "type": "material",
+     "text": "Material is level."
+    },
+    {
+     "id": "G.scholar-missed.F2",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pf7} is not defended well enough: {m:Bxf7+} wins material for them in the trade on {sq:f7}."
+    },
+    {
+     "id": "G.scholar-missed.F3",
+     "type": "attack",
+     "text": "Your pawn {pc:Pe5} is attacked by their queen {pc:Qh5}; it is defended by your knight {pc:Nc6}, so taking it does not win material."
+    },
+    {
+     "id": "G.scholar-missed.F4",
+     "type": "attack",
+     "text": "Your pawn {pc:Ph7} is attacked by their queen {pc:Qh5}; it is defended by your knight {pc:Nf6} and your rook {pc:Rh8}, so taking it does not win material."
+    },
+    {
+     "id": "G.scholar-missed.F5",
+     "type": "hangs",
+     "text": "Their queen {pc:Qh5} is hanging: if they leave it there, you can take it with {m:Nxh5@G.scholar-missed.F5} and nothing takes back."
+    },
+    {
+     "id": "G.scholar-missed.F6",
+     "type": "hangs",
+     "text": "Their pawn {pc:Pe4} is hanging: if they leave it there, you can take it with {m:Nxe4@G.scholar-missed.F6} and nothing takes back."
+    },
+    {
+     "id": "G.scholar-missed.F7",
+     "type": "pin",
+     "text": "Your pawn {pc:Pf7} is pinned by their queen {pc:Qh5}: it cannot move away without exposing the king."
+    },
+    {
+     "id": "G.scholar-missed.F8",
+     "type": "pin",
+     "text": "Your pawn {pc:Ph7} is pinned to your rook {pc:Rh8} by their queen {pc:Qh5}: it may move, but then their queen {pc:Qh5} can take the rook. Whether moving it is still good is for the engine to say."
+    },
+    {
+     "id": "G.scholar-missed.F9",
+     "type": "castling",
+     "text": "You cannot castle kingside yet: your bishop {pc:Bf8} is in the way."
+    },
+    {
+     "id": "G.scholar-missed.F10",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your bishop {pc:Bc8} and your queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.scholar-missed.F11",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their knight {pc:Ng1} is in the way."
+    },
+    {
+     "id": "G.scholar-missed.F12",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their knight {pc:Nb1} and their bishop {pc:Bc1} are in the way."
+    },
+    {
+     "id": "G.scholar-missed.F13",
+     "type": "mate_in",
+     "text": "They have checkmate in one move: {m:Qxf7#}."
+    },
+    {
+     "id": "G.scholar-missed.F15",
+     "type": "only_move",
+     "text": "{m:Qxf7#} is the only good move here: every other move is much worse."
+    },
+    {
+     "id": "G.scholar-missed.F16",
+     "type": "threat",
+     "text": "Your threat: if they do nothing about it, you play {m:Nxh5@G.scholar-missed.F16} and you win a queen."
+    },
+    {
+     "id": "G.scholar-missed.F17",
+     "type": "graded",
+     "text": "Your last move {m:Nf6@G.scholar-missed.F17} was a serious mistake: it allows checkmate in 1, starting with {m:Qxf7#@G.scholar-missed.F17}. What it does manage: it adds a defender to your pawn on {sq:h7}; it attacks their queen on {sq:h5}."
+    },
+    {
+     "id": "G.scholar-missed.F18",
+     "type": "best_move",
+     "text": "The strongest move would have been {m:g6@G.scholar-missed.F18}: no material changes hands. Why: it protects your pawn on {sq:f7}; it attacks their queen on {sq:h5}."
+    }
+   ]
+  },
+  "graded": {
+   "san": "Nf6",
+   "cls": "blunder",
+   "isBest": false,
+   "best": "g6",
+   "lost": "it allows checkmate in 1"
+  },
+  "lastVerdict": {
+   "san": "Nf6",
+   "by": "owner",
+   "cls": "blunder"
+  },
+  "skippedStep": "missed_threat",
+  "hanging": {
+   "mine": [
+    {
+     "square": "f7",
+     "role": "pawn",
+     "color": "black"
+    }
+   ],
+   "theirs": [
+    {
+     "square": "h5",
+     "role": "queen",
+     "color": "white"
+    },
+    {
+     "square": "e4",
+     "role": "pawn",
+     "color": "white"
+    }
+   ]
+  }
+ },
+ "legal": {
+  "forCoach": {
+   "id": "G.legal",
+   "fen": "rn1qkbnr/ppp2p1p/3p2p1/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 0 5",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 5,
+   "lastMove": "g6 (their move)",
+   "yourPieces": "Ke1 Qd1 Ra1 Rh1 Bc1 Nc3 Bc4 Nf3 Pa2 Pb2 Pc2 Pd2 Pe4 Pf2 Pg2 Ph2",
+   "theirPieces": "Ke8 Qd8 Ra8 Rh8 Nb8 Bf8 Bg4 Ng8 Pa7 Pb7 Pc7 Pd6 Pe5 Pf7 Pg6 Ph7",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Bb5+",
+     "Bxf7+"
+    ],
+    "captures": [
+     "Nxe5",
+     "Bxf7+"
+    ],
+    "threats": [
+     "d4",
+     "h3",
+     "Ng1",
+     "Bd5"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "Bxf3"
+    ],
+    "threats": [
+     "Be6"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.legal.F13",
+    "strongerMoveFact": "G.legal.F14"
+   },
+   "findable": "Nxe5",
+   "facts": [
+    {
+     "id": "G.legal.F1",
+     "type": "material",
+     "text": "Material is level."
+    },
+    {
+     "id": "G.legal.F2",
+     "type": "attack",
+     "text": "Their pawn {pc:Pe5} is attacked by your knight {pc:Nf3}; it is defended by their pawn {pc:Pd6}, so taking it does not win material."
+    },
+    {
+     "id": "G.legal.F3",
+     "type": "attack",
+     "text": "Their pawn {pc:Pf7} is attacked by your bishop {pc:Bc4}; it is defended by their king {pc:Ke8}, so taking it does not win material."
+    },
+    {
+     "id": "G.legal.F4",
+     "type": "attack",
+     "text": "Your knight {pc:Nf3} is attacked by their bishop {pc:Bg4}; it is defended by your pawn {pc:Pg2} and your queen {pc:Qd1}, so taking it does not win material."
+    },
+    {
+     "id": "G.legal.F5",
+     "type": "pin",
+     "text": "Your knight {pc:Nf3} is pinned to your queen {pc:Qd1} by their bishop {pc:Bg4}: it may move, but then their bishop {pc:Bg4} can take the queen. Whether moving it is still good is for the engine to say."
+    },
+    {
+     "id": "G.legal.F6",
+     "type": "castling",
+     "text": "You can castle kingside right now with {m:O-O}."
+    },
+    {
+     "id": "G.legal.F7",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your bishop {pc:Bc1} and your queen {pc:Qd1} are in the way."
+    },
+    {
+     "id": "G.legal.F8",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their bishop {pc:Bf8} and their knight {pc:Ng8} are in the way."
+    },
+    {
+     "id": "G.legal.F9",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their knight {pc:Nb8} and their queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.legal.F10",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Nxe5}: you win a bishop and a pawn for a knight (the line goes {m:Nxe5} {m:dxe5@G.legal.F10} {m:Qxg4@G.legal.F10}). After it you are a bit better. Why: it takes their pawn on {sq:e5}."
+    },
+    {
+     "id": "G.legal.F11",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.legal.F12",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.legal.F13",
+     "type": "loses_material",
+     "text": "Their last move {m:g6@G.legal.F13} was a serious mistake by them: you win a bishop and a pawn for a knight after {m:Nxe5@G.legal.F13}."
+    },
+    {
+     "id": "G.legal.F14",
+     "type": "best_move",
+     "text": "Their strongest move would have been {m:Nf6@G.legal.F14}: no material changes hands. Why: it develops their knight."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "g6",
+   "by": "opponent",
+   "cls": "blunder"
+  },
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "queenfork": {
+  "forCoach": {
+   "id": "G.queenfork",
+   "fen": "r1b1kbnr/1pp2ppp/p1p5/4N3/3qP3/8/PPPP1PPP/RNBQK2R w KQkq - 1 6",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 6,
+   "lastMove": "Qd4 (their move)",
+   "yourPieces": "Ke1 Qd1 Ra1 Rh1 Nb1 Bc1 Ne5 Pa2 Pb2 Pc2 Pd2 Pe4 Pf2 Pg2 Ph2",
+   "theirPieces": "Ke8 Qd4 Ra8 Rh8 Bc8 Bf8 Ng8 Pa6 Pb7 Pc6 Pc7 Pf7 Pg7 Ph7",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "Nxc6",
+     "Nxf7"
+    ],
+    "threats": [
+     "Qf3",
+     "Qh5",
+     "c3",
+     "Nf3"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Qxd2+",
+     "Qxf2+",
+     "Qe3+",
+     "Qxe4+"
+    ],
+    "captures": [
+     "Qxe5",
+     "Qxb2",
+     "Qxd2+",
+     "Qxf2+",
+     "Qxe4+"
+    ],
+    "threats": [
+     "Bc5"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.queenfork.F19"
+   },
+   "findable": "Ng4",
+   "facts": [
+    {
+     "id": "G.queenfork.F1",
+     "type": "material",
+     "text": "You have a knight and a pawn for a bishop: you are ahead in material."
+    },
+    {
+     "id": "G.queenfork.F2",
+     "type": "attack",
+     "text": "Their pawn {pc:Pc6} is attacked by your knight {pc:Ne5}; it is defended by their pawn {pc:Pb7}, so taking it does not win material."
+    },
+    {
+     "id": "G.queenfork.F3",
+     "type": "attack",
+     "text": "Their pawn {pc:Pf7} is attacked by your knight {pc:Ne5}; it is defended by their king {pc:Ke8}, so taking it does not win material."
+    },
+    {
+     "id": "G.queenfork.F4",
+     "type": "hangs",
+     "text": "Your knight {pc:Ne5} is hanging: if you leave it there, their queen {pc:Qd4} can take it with {m:Qxe5@G.queenfork.F4} and nothing takes back."
+    },
+    {
+     "id": "G.queenfork.F5",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pe4} is hanging: if you leave it there, their queen {pc:Qd4} can take it with {m:Qxe4+@G.queenfork.F5} and nothing takes back."
+    },
+    {
+     "id": "G.queenfork.F6",
+     "type": "attack",
+     "text": "Your pawn {pc:Pb2} is attacked by their queen {pc:Qd4}; it is defended by your bishop {pc:Bc1}, so taking it does not win material."
+    },
+    {
+     "id": "G.queenfork.F7",
+     "type": "attack",
+     "text": "Your pawn {pc:Pd2} is attacked by their queen {pc:Qd4}; it is defended by your knight {pc:Nb1}, your bishop {pc:Bc1}, your queen {pc:Qd1} and your king {pc:Ke1}, so taking it does not win material."
+    },
+    {
+     "id": "G.queenfork.F8",
+     "type": "attack",
+     "text": "Your pawn {pc:Pf2} is attacked by their queen {pc:Qd4}; it is defended by your king {pc:Ke1}, so taking it does not win material."
+    },
+    {
+     "id": "G.queenfork.F9",
+     "type": "pin",
+     "text": "Your pawn {pc:Pb2} is pinned to your rook {pc:Ra1} by their queen {pc:Qd4}: it may move, but then their queen {pc:Qd4} can take the rook. Whether moving it is still good is for the engine to say."
+    },
+    {
+     "id": "G.queenfork.F10",
+     "type": "castling",
+     "text": "You can castle kingside right now with {m:O-O}."
+    },
+    {
+     "id": "G.queenfork.F11",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your knight {pc:Nb1}, your bishop {pc:Bc1} and your queen {pc:Qd1} are in the way."
+    },
+    {
+     "id": "G.queenfork.F12",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their bishop {pc:Bf8} and their knight {pc:Ng8} are in the way."
+    },
+    {
+     "id": "G.queenfork.F13",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their bishop {pc:Bc8} is in the way."
+    },
+    {
+     "id": "G.queenfork.F14",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Ng4}: you lose a pawn (the line goes {m:Ng4} {m:Qxe4+@G.queenfork.F14} {m:Ne3@G.queenfork.F14}). After it you are about equal. Why: it moves your attacked knight out of danger; it adds a defender to your pawn on {sq:f2}; it deals with their threat."
+    },
+    {
+     "id": "G.queenfork.F15",
+     "type": "good_move",
+     "text": "{m:Nf3} is also a good move for you: you lose a pawn. Why: it moves your attacked knight out of danger; it adds a defender to your pawn on {sq:d2}; it deals with their threat; it attacks their queen on {sq:d4}."
+    },
+    {
+     "id": "G.queenfork.F16",
+     "type": "good_move",
+     "text": "{m:Nd3} is also a good move for you: you lose a pawn. Why: it moves your attacked knight out of danger; it adds a defender to your pawn on {sq:b2}; it deals with their threat."
+    },
+    {
+     "id": "G.queenfork.F17",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:Qxe5@G.queenfork.F17} and you lose a knight."
+    },
+    {
+     "id": "G.queenfork.F18",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.queenfork.F19",
+     "type": "safe",
+     "text": "Their last move {m:Qd4@G.queenfork.F19} was a good, safe move for them: no material changes hands. Why: it attacks your knight on {sq:e5}."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "Qd4",
+   "by": "opponent",
+   "cls": "ok"
+  },
+  "hanging": {
+   "mine": [
+    {
+     "square": "e5",
+     "role": "knight",
+     "color": "white"
+    },
+    {
+     "square": "e4",
+     "role": "pawn",
+     "color": "white"
+    }
+   ],
+   "theirs": []
+  }
+ },
+ "pin": {
+  "forCoach": {
+   "id": "G.pin",
+   "fen": "r1bqkbnr/ppp2ppp/2np4/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4",
+   "toMove": "them",
+   "youAre": "black",
+   "moveNumber": 4,
+   "lastMove": "d6 (your move)",
+   "yourPieces": "Ke8 Qd8 Ra8 Rh8 Nc6 Bc8 Bf8 Ng8 Pa7 Pb7 Pc7 Pd6 Pe5 Pf7 Pg7 Ph7",
+   "theirPieces": "Ke1 Qd1 Ra1 Rh1 Nb1 Bb5 Bc1 Nf3 Pa2 Pb2 Pc2 Pd2 Pe4 Pf2 Pg2 Ph2",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": [
+     "d5",
+     "a6",
+     "f5",
+     "Nf6"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Bxc6+"
+    ],
+    "captures": [
+     "Bxc6+",
+     "Nxe5"
+    ],
+    "threats": [
+     "d4"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.pin.F15"
+   },
+   "findable": "Nc3",
+   "facts": [
+    {
+     "id": "G.pin.F1",
+     "type": "material",
+     "text": "Material is level."
+    },
+    {
+     "id": "G.pin.F2",
+     "type": "opening",
+     "text": "This position is from the opening called Ruy Lopez: Steinitz Defense."
+    },
+    {
+     "id": "G.pin.F3",
+     "type": "attack",
+     "text": "Your knight {pc:Nc6} is attacked by their bishop {pc:Bb5}; it is defended by your pawn {pc:Pb7}, so taking it does not win material."
+    },
+    {
+     "id": "G.pin.F4",
+     "type": "attack",
+     "text": "Your pawn {pc:Pe5} is attacked by their knight {pc:Nf3}; it is defended by your pawn {pc:Pd6} and your knight {pc:Nc6}, so taking it does not win material."
+    },
+    {
+     "id": "G.pin.F5",
+     "type": "pin",
+     "text": "Your knight {pc:Nc6} is pinned by their bishop {pc:Bb5}: it cannot move away without exposing the king."
+    },
+    {
+     "id": "G.pin.F6",
+     "type": "castling",
+     "text": "You cannot castle kingside yet: your bishop {pc:Bf8} and your knight {pc:Ng8} are in the way."
+    },
+    {
+     "id": "G.pin.F7",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your bishop {pc:Bc8} and your queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.pin.F8",
+     "type": "castling",
+     "text": "They can castle kingside right now with {m:O-O}."
+    },
+    {
+     "id": "G.pin.F9",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their knight {pc:Nb1}, their bishop {pc:Bc1} and their queen {pc:Qd1} are in the way."
+    },
+    {
+     "id": "G.pin.F10",
+     "type": "best_move",
+     "text": "Their strongest move is {m:Nc3}: no material changes hands. After it you are about equal. Why: it develops their knight."
+    },
+    {
+     "id": "G.pin.F11",
+     "type": "good_move",
+     "text": "{m:d4} is also a good move for them: pieces are traded evenly. Why: it attacks your pawn on {sq:e5}; it puts a pawn in the centre."
+    },
+    {
+     "id": "G.pin.F12",
+     "type": "good_move",
+     "text": "{m:O-O} is also a good move for them: no material changes hands. Why: it castles: their king gets safer and the rook comes into play."
+    },
+    {
+     "id": "G.pin.F13",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.pin.F14",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.pin.F15",
+     "type": "graded",
+     "text": "Your last move {m:d6@G.pin.F15} was a good, safe move: no material changes hands. Why: it adds a defender to your pawn on {sq:e5}."
+    }
+   ]
+  },
+  "graded": {
+   "san": "d6",
+   "cls": "ok",
+   "isBest": false,
+   "best": "Nf6"
+  },
+  "lastVerdict": {
+   "san": "d6",
+   "by": "owner",
+   "cls": "ok"
+  },
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "hung": {
+  "forCoach": {
+   "id": "G.hung",
+   "fen": "r1bqkb1r/ppp2ppp/4Nn2/n2Pp3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 2 6",
+   "toMove": "them",
+   "youAre": "white",
+   "moveNumber": 6,
+   "lastMove": "Ne6 (your move)",
+   "yourPieces": "Ke1 Qd1 Ra1 Rh1 Nb1 Bc1 Bc4 Ne6 Pa2 Pb2 Pc2 Pd2 Pd5 Pf2 Pg2 Ph2",
+   "theirPieces": "Ke8 Qd8 Ra8 Rh8 Na5 Bc8 Nf6 Bf8 Pa7 Pb7 Pc7 Pe5 Pf7 Pg7 Ph7",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Bb5+",
+     "Nxc7+",
+     "Nxg7+"
+    ],
+    "captures": [
+     "Nxd8",
+     "Nxf8",
+     "Nxc7+",
+     "Nxg7+"
+    ],
+    "threats": [
+     "Qe2",
+     "d4",
+     "f4"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "fxe6",
+     "Nxc4",
+     "Bxe6",
+     "Nxd5",
+     "Qxd5"
+    ],
+    "threats": [
+     "Qd6",
+     "Qe7",
+     "Ke7"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.hung.F16",
+    "strongerMoveFact": "G.hung.F17"
+   },
+   "skippedStep": "no_safety_check",
+   "findable": "fxe6",
+   "facts": [
+    {
+     "id": "G.hung.F1",
+     "type": "material",
+     "text": "You are up a pawn."
+    },
+    {
+     "id": "G.hung.F2",
+     "type": "hangs",
+     "text": "Your bishop {pc:Bc4} is hanging: their knight {pc:Na5} can take it with {m:Nxc4} and nothing takes back."
+    },
+    {
+     "id": "G.hung.F3",
+     "type": "hangs",
+     "text": "Your knight {pc:Ne6} is not defended well enough: {m:fxe6} wins material for them in the trade on {sq:e6}."
+    },
+    {
+     "id": "G.hung.F4",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pd5} is not defended well enough: {m:Nxd5} wins material for them in the trade on {sq:d5}."
+    },
+    {
+     "id": "G.hung.F5",
+     "type": "hangs",
+     "text": "Their queen {pc:Qd8} is not defended well enough: {m:Nxd8@G.hung.F5} wins material for you in the trade on {sq:d8} if they leave it there."
+    },
+    {
+     "id": "G.hung.F6",
+     "type": "attack",
+     "text": "Their bishop {pc:Bf8} is attacked by your knight {pc:Ne6}; it is defended by their rook {pc:Rh8} and their king {pc:Ke8}, so taking it does not win material."
+    },
+    {
+     "id": "G.hung.F7",
+     "type": "attack",
+     "text": "Their pawn {pc:Pc7} is attacked by your knight {pc:Ne6}; it is defended by their queen {pc:Qd8}, so taking it does not win material."
+    },
+    {
+     "id": "G.hung.F8",
+     "type": "attack",
+     "text": "Their pawn {pc:Pg7} is attacked by your knight {pc:Ne6}; it is defended by their bishop {pc:Bf8}, so taking it does not win material."
+    },
+    {
+     "id": "G.hung.F9",
+     "type": "castling",
+     "text": "You can castle kingside on your next move."
+    },
+    {
+     "id": "G.hung.F10",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your knight {pc:Nb1}, your bishop {pc:Bc1} and your queen {pc:Qd1} are in the way."
+    },
+    {
+     "id": "G.hung.F11",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their bishop {pc:Bf8} is in the way."
+    },
+    {
+     "id": "G.hung.F12",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their bishop {pc:Bc8} and their queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.hung.F13",
+     "type": "best_move",
+     "text": "Their strongest move is {m:fxe6}: you lose a knight (the line goes {m:fxe6} {m:Bb5+@G.hung.F13} {m:Bd7@G.hung.F13} {m:Bxd7+@G.hung.F13}). After it you are losing. Why: it takes your knight on {sq:e6}; it protects their queen on {sq:d8}."
+    },
+    {
+     "id": "G.hung.F14",
+     "type": "good_move",
+     "text": "{m:Bxe6} is also a good move for them: you lose a knight. Why: it takes your knight on {sq:e6}; it protects their queen on {sq:d8}."
+    },
+    {
+     "id": "G.hung.F15",
+     "type": "threat",
+     "text": "Your threat: if they do nothing about it, you play {m:Bb5+@G.hung.F15} and you win a queen and a pawn for a bishop and a knight."
+    },
+    {
+     "id": "G.hung.F16",
+     "type": "graded",
+     "text": "Your last move {m:Ne6@G.hung.F16} was a serious mistake: you lose a knight after {m:fxe6@G.hung.F16}."
+    },
+    {
+     "id": "G.hung.F17",
+     "type": "best_move",
+     "text": "The strongest move would have been {m:Bb5+@G.hung.F17}: pieces are traded evenly. Why: it gives check; it moves your attacked bishop out of danger; it protects your pawn on {sq:d5}."
+    }
+   ]
+  },
+  "graded": {
+   "san": "Ne6",
+   "cls": "blunder",
+   "isBest": false,
+   "best": "Bb5+",
+   "lost": "you lose a knight"
+  },
+  "lastVerdict": {
+   "san": "Ne6",
+   "by": "owner",
+   "cls": "blunder"
+  },
+  "skippedStep": "no_safety_check",
+  "hanging": {
+   "mine": [
+    {
+     "square": "c4",
+     "role": "bishop",
+     "color": "white"
+    },
+    {
+     "square": "e6",
+     "role": "knight",
+     "color": "white"
+    },
+    {
+     "square": "d5",
+     "role": "pawn",
+     "color": "white"
+    }
+   ],
+   "theirs": [
+    {
+     "square": "d8",
+     "role": "queen",
+     "color": "black"
+    }
+   ]
+  }
+ },
+ "wayward-queen": {
+  "forCoach": {
+   "id": "G.wayward-queen",
+   "fen": "rnbqkbnr/pppp1ppp/8/4p2Q/4P3/8/PPPP1PPP/RNB1KBNR b KQkq - 1 2",
+   "toMove": "you",
+   "youAre": "black",
+   "moveNumber": 2,
+   "lastMove": "Qh5 (their move)",
+   "yourPieces": "Ke8 Qd8 Ra8 Rh8 Nb8 Bc8 Bf8 Ng8 Pa7 Pb7 Pc7 Pd7 Pe5 Pf7 Pg7 Ph7",
+   "theirPieces": "Ke1 Qh5 Ra1 Rh1 Nb1 Bc1 Bf1 Ng1 Pa2 Pb2 Pc2 Pd2 Pe4 Pf2 Pg2 Ph2",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": [
+     "d5",
+     "g6",
+     "Nf6"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Qxe5+",
+     "Qxf7+"
+    ],
+    "captures": [
+     "Qxe5+",
+     "Qxf7+",
+     "Qxh7"
+    ],
+    "threats": [
+     "Bc4"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.wayward-queen.F17"
+   },
+   "findable": "Nc6",
+   "facts": [
+    {
+     "id": "G.wayward-queen.F1",
+     "type": "material",
+     "text": "Material is level."
+    },
+    {
+     "id": "G.wayward-queen.F2",
+     "type": "opening",
+     "text": "This position is from the opening called King's Pawn Game: Wayward Queen Attack."
+    },
+    {
+     "id": "G.wayward-queen.F3",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pe5} is hanging: if you leave it there, their queen {pc:Qh5} can take it with {m:Qxe5+@G.wayward-queen.F3} and nothing takes back."
+    },
+    {
+     "id": "G.wayward-queen.F4",
+     "type": "attack",
+     "text": "Your pawn {pc:Pf7} is attacked by their queen {pc:Qh5}; it is defended by your king {pc:Ke8}, so taking it does not win material."
+    },
+    {
+     "id": "G.wayward-queen.F5",
+     "type": "attack",
+     "text": "Your pawn {pc:Ph7} is attacked by their queen {pc:Qh5}; it is defended by your rook {pc:Rh8}, so taking it does not win material."
+    },
+    {
+     "id": "G.wayward-queen.F6",
+     "type": "pin",
+     "text": "Your pawn {pc:Pf7} is pinned by their queen {pc:Qh5}: it cannot move away without exposing the king."
+    },
+    {
+     "id": "G.wayward-queen.F7",
+     "type": "pin",
+     "text": "Your pawn {pc:Ph7} is pinned to your rook {pc:Rh8} by their queen {pc:Qh5}: it may move, but then their queen {pc:Qh5} can take the rook. Whether moving it is still good is for the engine to say."
+    },
+    {
+     "id": "G.wayward-queen.F8",
+     "type": "castling",
+     "text": "You cannot castle kingside yet: your bishop {pc:Bf8} and your knight {pc:Ng8} are in the way."
+    },
+    {
+     "id": "G.wayward-queen.F9",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your knight {pc:Nb8}, your bishop {pc:Bc8} and your queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.wayward-queen.F10",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their bishop {pc:Bf1} and their knight {pc:Ng1} are in the way."
+    },
+    {
+     "id": "G.wayward-queen.F11",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their knight {pc:Nb1} and their bishop {pc:Bc1} are in the way."
+    },
+    {
+     "id": "G.wayward-queen.F12",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Nc6}: no material changes hands. After it you are about equal. Why: it protects your pawn on {sq:e5}; it deals with their threat; it develops your knight."
+    },
+    {
+     "id": "G.wayward-queen.F13",
+     "type": "good_move",
+     "text": "{m:d6} is also a good move for you: no material changes hands. Why: it protects your pawn on {sq:e5}; it deals with their threat."
+    },
+    {
+     "id": "G.wayward-queen.F14",
+     "type": "good_move",
+     "text": "{m:Qe7} is also a good move for you: no material changes hands. Why: it protects your pawn on {sq:e5}; it deals with their threat."
+    },
+    {
+     "id": "G.wayward-queen.F15",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:Qxe5+@G.wayward-queen.F15} and you lose a pawn."
+    },
+    {
+     "id": "G.wayward-queen.F16",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.wayward-queen.F17",
+     "type": "safe",
+     "text": "Their last move {m:Qh5@G.wayward-queen.F17} was a good, safe move for them: no material changes hands. Why: it attacks your pawn on {sq:e5}."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "Qh5",
+   "by": "opponent",
+   "cls": "ok"
+  },
+  "hanging": {
+   "mine": [
+    {
+     "square": "e5",
+     "role": "pawn",
+     "color": "black"
+    }
+   ],
+   "theirs": []
+  }
+ },
+ "fried-liver": {
+  "forCoach": {
+   "id": "G.fried-liver",
+   "fen": "r1bqkb1r/ppp2Npp/2n5/3np3/2B5/8/PPPP1PPP/RNBQK2R b KQkq - 0 6",
+   "toMove": "them",
+   "youAre": "white",
+   "moveNumber": 6,
+   "lastMove": "Nxf7 (your move)",
+   "yourPieces": "Ke1 Qd1 Ra1 Rh1 Nb1 Bc1 Bc4 Nf7 Pa2 Pb2 Pc2 Pd2 Pf2 Pg2 Ph2",
+   "theirPieces": "Ke8 Qd8 Ra8 Rh8 Nc6 Bc8 Nd5 Bf8 Pa7 Pb7 Pc7 Pe5 Pg7 Ph7",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Nd6+"
+    ],
+    "captures": [
+     "Nxd8",
+     "Nxh8",
+     "Bxd5",
+     "Nxe5"
+    ],
+    "threats": [
+     "Nc3",
+     "Qe2",
+     "Qf3",
+     "Qh5",
+     "Bb5"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "Kxf7"
+    ],
+    "threats": [
+     "Nf4",
+     "Nb6",
+     "Na5",
+     "Qh4"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.fried-liver.F15"
+   },
+   "findable": "Kxf7",
+   "facts": [
+    {
+     "id": "G.fried-liver.F1",
+     "type": "material",
+     "text": "You are up a pawn."
+    },
+    {
+     "id": "G.fried-liver.F2",
+     "type": "opening",
+     "text": "This position is from the opening called Italian Game: Two Knights Defense, Fried Liver Attack."
+    },
+    {
+     "id": "G.fried-liver.F3",
+     "type": "hangs",
+     "text": "Your knight {pc:Nf7} is hanging: their king {pc:Ke8} can take it with {m:Kxf7} and nothing takes back."
+    },
+    {
+     "id": "G.fried-liver.F4",
+     "type": "hangs",
+     "text": "Their queen {pc:Qd8} is not defended well enough: {m:Nxd8@G.fried-liver.F4} wins material for you in the trade on {sq:d8} if they leave it there."
+    },
+    {
+     "id": "G.fried-liver.F5",
+     "type": "hangs",
+     "text": "Their rook {pc:Rh8} is hanging: if they leave it there, you can take it with {m:Nxh8@G.fried-liver.F5} and nothing takes back."
+    },
+    {
+     "id": "G.fried-liver.F6",
+     "type": "attack",
+     "text": "Their knight {pc:Nd5} is attacked by your bishop {pc:Bc4}; it is defended by their queen {pc:Qd8}, so taking it does not win material."
+    },
+    {
+     "id": "G.fried-liver.F7",
+     "type": "attack",
+     "text": "Their pawn {pc:Pe5} is attacked by your knight {pc:Nf7}; it is defended by their knight {pc:Nc6}, so taking it does not win material."
+    },
+    {
+     "id": "G.fried-liver.F8",
+     "type": "castling",
+     "text": "You can castle kingside on your next move."
+    },
+    {
+     "id": "G.fried-liver.F9",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your knight {pc:Nb1}, your bishop {pc:Bc1} and your queen {pc:Qd1} are in the way."
+    },
+    {
+     "id": "G.fried-liver.F10",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their bishop {pc:Bf8} is in the way."
+    },
+    {
+     "id": "G.fried-liver.F11",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their bishop {pc:Bc8} and their queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.fried-liver.F12",
+     "type": "best_move",
+     "text": "Their strongest move is {m:Kxf7}: you lose a knight (the line goes {m:Kxf7} {m:Qf3+@G.fried-liver.F12} {m:Ke6@G.fried-liver.F12}). After it you are about equal. Why: it takes your knight on {sq:f7}; it protects their queen on {sq:d8}; it protects their rook on {sq:h8}; it deals with your threat."
+    },
+    {
+     "id": "G.fried-liver.F13",
+     "type": "only_move",
+     "text": "{m:Kxf7} is the only good move here: every other move is much worse."
+    },
+    {
+     "id": "G.fried-liver.F14",
+     "type": "threat",
+     "text": "Your threat: if they do nothing about it, you play {m:Nxd8@G.fried-liver.F14} and you win a queen."
+    },
+    {
+     "id": "G.fried-liver.F15",
+     "type": "graded",
+     "text": "Your last move {m:Nxf7@G.fried-liver.F15} was the strongest move here, even though you lose a knight for a pawn after {m:Kxf7@G.fried-liver.F15}: the engine still rates it above the other moves. Why: it takes their pawn on {sq:f7}."
+    }
+   ]
+  },
+  "graded": {
+   "san": "Nxf7",
+   "cls": "ok",
+   "isBest": true,
+   "best": "Nxf7"
+  },
+  "lastVerdict": {
+   "san": "Nxf7",
+   "by": "owner",
+   "cls": "ok"
+  },
+  "hanging": {
+   "mine": [
+    {
+     "square": "f7",
+     "role": "knight",
+     "color": "white"
+    }
+   ],
+   "theirs": [
+    {
+     "square": "d8",
+     "role": "queen",
+     "color": "black"
+    },
+    {
+     "square": "h8",
+     "role": "rook",
+     "color": "black"
+    }
+   ]
+  }
+ },
+ "castled": {
+  "forCoach": {
+   "id": "G.castled",
+   "fen": "r1bq1rk1/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQ1RK1 w - - 1 6",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 6,
+   "lastMove": "O-O (their move)",
+   "yourPieces": "Kg1 Qd1 Ra1 Rf1 Nb1 Bc1 Bc4 Nf3 Pa2 Pb2 Pc2 Pd3 Pe4 Pf2 Pg2 Ph2",
+   "theirPieces": "Kg8 Qd8 Ra8 Rf8 Bc5 Nc6 Bc8 Nf6 Pa7 Pb7 Pc7 Pd7 Pe5 Pf7 Pg7 Ph7",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Bxf7+"
+    ],
+    "captures": [
+     "Nxe5",
+     "Bxf7+"
+    ],
+    "threats": [
+     "Be3"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Bxf2+"
+    ],
+    "captures": [
+     "Bxf2+",
+     "Nxe4"
+    ],
+    "threats": [
+     "d5"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.castled.F13"
+   },
+   "findable": "c3",
+   "facts": [
+    {
+     "id": "G.castled.F1",
+     "type": "material",
+     "text": "Material is level."
+    },
+    {
+     "id": "G.castled.F2",
+     "type": "attack",
+     "text": "Their pawn {pc:Pe5} is attacked by your knight {pc:Nf3}; it is defended by their knight {pc:Nc6}, so taking it does not win material."
+    },
+    {
+     "id": "G.castled.F3",
+     "type": "attack",
+     "text": "Their pawn {pc:Pf7} is attacked by your bishop {pc:Bc4}; it is defended by their rook {pc:Rf8} and their king {pc:Kg8}, so taking it does not win material."
+    },
+    {
+     "id": "G.castled.F4",
+     "type": "attack",
+     "text": "Your pawn {pc:Pf2} is attacked by their bishop {pc:Bc5}; it is defended by your rook {pc:Rf1} and your king {pc:Kg1}, so taking it does not win material."
+    },
+    {
+     "id": "G.castled.F5",
+     "type": "attack",
+     "text": "Your pawn {pc:Pe4} is attacked by their knight {pc:Nf6}; it is defended by your pawn {pc:Pd3}, so taking it does not win material."
+    },
+    {
+     "id": "G.castled.F6",
+     "type": "pin",
+     "text": "Your pawn {pc:Pf2} is pinned by their bishop {pc:Bc5}: it cannot move away without exposing the king."
+    },
+    {
+     "id": "G.castled.F7",
+     "type": "pin",
+     "text": "Their pawn {pc:Pf7} is pinned by your bishop {pc:Bc4}: it cannot move away without exposing the king."
+    },
+    {
+     "id": "G.castled.F8",
+     "type": "best_move",
+     "text": "Your strongest move is {m:c3}: no material changes hands. After it you are about equal."
+    },
+    {
+     "id": "G.castled.F9",
+     "type": "good_move",
+     "text": "{m:h3} is also a good move for you: no material changes hands."
+    },
+    {
+     "id": "G.castled.F10",
+     "type": "good_move",
+     "text": "{m:c3} is also a good move for you: no material changes hands."
+    },
+    {
+     "id": "G.castled.F11",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.castled.F12",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.castled.F13",
+     "type": "safe",
+     "text": "Their last move {m:O-O@G.castled.F13} was a good, safe move for them: no material changes hands. Why: it castles: their king gets safer and the rook comes into play; it adds a defender to their pawn on {sq:f7}."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "O-O",
+   "by": "opponent",
+   "cls": "ok"
+  },
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "qe6-before": {
+  "forCoach": {
+   "id": "G.qe6-before",
+   "fen": "r1b1kb1r/ppp1q1pp/2np1p2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 b kq - 0 10",
+   "toMove": "them",
+   "youAre": "white",
+   "moveNumber": 10,
+   "lastMove": "a4 (your move)",
+   "yourPieces": "Kg1 Qd1 Ra1 Re1 Nb1 Bc1 Bc4 Nf3 Pa4 Pb2 Pc2 Pd4 Pf2 Pg2 Ph2",
+   "theirPieces": "Ke8 Qe7 Ra8 Rh8 Nc6 Bc8 Bf8 Pa7 Pb7 Pc7 Pd6 Pe5 Pf6 Pg7 Ph7",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Bf7+"
+    ],
+    "captures": [
+     "dxe5",
+     "Nxe5",
+     "Rxe5"
+    ],
+    "threats": [
+     "d5"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "exd4",
+     "Nxd4"
+    ],
+    "threats": [
+     "e4",
+     "Na5",
+     "Be6"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.qe6-before.F12"
+   },
+   "findable": "Bg4",
+   "facts": [
+    {
+     "id": "G.qe6-before.F1",
+     "type": "material",
+     "text": "You have a knight for a pawn: you are ahead in material."
+    },
+    {
+     "id": "G.qe6-before.F2",
+     "type": "attack",
+     "text": "Your pawn {pc:Pd4} is attacked by their pawn {pc:Pe5} and their knight {pc:Nc6}; it is defended by your knight {pc:Nf3} and your queen {pc:Qd1}, so taking it does not win material."
+    },
+    {
+     "id": "G.qe6-before.F3",
+     "type": "attack",
+     "text": "Their pawn {pc:Pe5} is attacked by your pawn {pc:Pd4}, your knight {pc:Nf3} and your rook {pc:Re1}; it is defended by their pawn {pc:Pd6}, their pawn {pc:Pf6}, their knight {pc:Nc6} and their queen {pc:Qe7}, so taking it does not win material."
+    },
+    {
+     "id": "G.qe6-before.F4",
+     "type": "pin",
+     "text": "Their pawn {pc:Pe5} is pinned to their queen {pc:Qe7} by your rook {pc:Re1}: it may move, but then your rook {pc:Re1} can take the queen. Whether moving it is still good is for the engine to say."
+    },
+    {
+     "id": "G.qe6-before.F5",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their bishop {pc:Bf8} is in the way."
+    },
+    {
+     "id": "G.qe6-before.F6",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their bishop {pc:Bc8} is in the way."
+    },
+    {
+     "id": "G.qe6-before.F7",
+     "type": "best_move",
+     "text": "Their strongest move is {m:Bg4}: no material changes hands. After it you are winning. Why: it develops their bishop."
+    },
+    {
+     "id": "G.qe6-before.F8",
+     "type": "good_move",
+     "text": "{m:g5} is also a good move for them: no material changes hands."
+    },
+    {
+     "id": "G.qe6-before.F9",
+     "type": "good_move",
+     "text": "{m:Bf5} is also a good move for them: no material changes hands. Why: it develops their bishop."
+    },
+    {
+     "id": "G.qe6-before.F10",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.qe6-before.F11",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.qe6-before.F12",
+     "type": "graded",
+     "text": "Your last move {m:a4@G.qe6-before.F12} was a good, safe move: no material changes hands."
+    }
+   ]
+  },
+  "graded": {
+   "san": "a4",
+   "cls": "ok",
+   "isBest": false,
+   "best": "Nc3"
+  },
+  "lastVerdict": {
+   "san": "a4",
+   "by": "owner",
+   "cls": "ok"
+  },
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "qe6": {
+  "forCoach": {
+   "id": "G.qe6",
+   "fen": "r1b1kb1r/ppp3pp/2npqp2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 w kq - 1 11",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 11,
+   "lastMove": "Qe6 (their move)",
+   "yourPieces": "Kg1 Qd1 Ra1 Re1 Nb1 Bc1 Bc4 Nf3 Pa4 Pb2 Pc2 Pd4 Pf2 Pg2 Ph2",
+   "theirPieces": "Ke8 Qe6 Ra8 Rh8 Nc6 Bc8 Bf8 Pa7 Pb7 Pc7 Pd6 Pe5 Pf6 Pg7 Ph7",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "Bxe6",
+     "dxe5",
+     "Nxe5",
+     "Rxe5"
+    ],
+    "threats": [
+     "d5"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "Qxc4",
+     "exd4",
+     "Nxd4"
+    ],
+    "threats": [
+     "e4"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.qe6.F13",
+    "strongerMoveFact": "G.qe6.F14"
+   },
+   "findable": "Bxe6",
+   "facts": [
+    {
+     "id": "G.qe6.F1",
+     "type": "material",
+     "text": "You have a knight for a pawn: you are ahead in material."
+    },
+    {
+     "id": "G.qe6.F2",
+     "type": "hangs",
+     "text": "Their queen {pc:Qe6} is not defended well enough: {m:Bxe6} wins material for you in the trade on {sq:e6}."
+    },
+    {
+     "id": "G.qe6.F3",
+     "type": "attack",
+     "text": "Their pawn {pc:Pe5} is attacked by your pawn {pc:Pd4}, your knight {pc:Nf3} and your rook {pc:Re1}; it is defended by their pawn {pc:Pd6}, their pawn {pc:Pf6}, their knight {pc:Nc6} and their queen {pc:Qe6}, so taking it does not win material."
+    },
+    {
+     "id": "G.qe6.F4",
+     "type": "hangs",
+     "text": "Your bishop {pc:Bc4} is hanging: if you leave it there, their queen {pc:Qe6} can take it with {m:Qxc4@G.qe6.F4} and nothing takes back."
+    },
+    {
+     "id": "G.qe6.F5",
+     "type": "attack",
+     "text": "Your pawn {pc:Pd4} is attacked by their pawn {pc:Pe5} and their knight {pc:Nc6}; it is defended by your knight {pc:Nf3} and your queen {pc:Qd1}, so taking it does not win material."
+    },
+    {
+     "id": "G.qe6.F6",
+     "type": "pin",
+     "text": "Their pawn {pc:Pe5} is pinned to their queen {pc:Qe6} by your rook {pc:Re1}: it may move, but then your rook {pc:Re1} can take the queen. Whether moving it is still good is for the engine to say."
+    },
+    {
+     "id": "G.qe6.F7",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their bishop {pc:Bf8} is in the way."
+    },
+    {
+     "id": "G.qe6.F8",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their bishop {pc:Bc8} is in the way."
+    },
+    {
+     "id": "G.qe6.F9",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Bxe6}: you win a queen for a bishop (the line goes {m:Bxe6} {m:Bxe6@G.qe6.F9}). After it you are winning. Why: it takes their queen on {sq:e6}; it deals with their threat."
+    },
+    {
+     "id": "G.qe6.F10",
+     "type": "good_move",
+     "text": "{m:Nxe5} is also a good move for you: you win a queen and a pawn for a bishop and a knight. Why: it takes their pawn on {sq:e5}; it protects your bishop on {sq:c4}; it deals with their threat."
+    },
+    {
+     "id": "G.qe6.F11",
+     "type": "good_move",
+     "text": "{m:Nbd2} is also a good move for you: no material changes hands. Why: it protects your bishop on {sq:c4}; it deals with their threat; it develops your knight."
+    },
+    {
+     "id": "G.qe6.F12",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:Qxc4@G.qe6.F12} and you lose a bishop."
+    },
+    {
+     "id": "G.qe6.F13",
+     "type": "loses_material",
+     "text": "Their last move {m:Qe6@G.qe6.F13} was a mistake by them: you win a queen for a bishop after {m:Bxe6@G.qe6.F13}. They were already losing before it, so the winning chances hardly change, but the material still goes. What it does manage: it adds a defender to their pawn on {sq:e5}."
+    },
+    {
+     "id": "G.qe6.F14",
+     "type": "best_move",
+     "text": "Their strongest move would have been {m:Bg4@G.qe6.F14}: no material changes hands. Why: it develops their bishop."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "Qe6",
+   "by": "opponent",
+   "cls": "mistake"
+  },
+  "hanging": {
+   "mine": [
+    {
+     "square": "c4",
+     "role": "bishop",
+     "color": "white"
+    }
+   ],
+   "theirs": [
+    {
+     "square": "e6",
+     "role": "queen",
+     "color": "black"
+    }
+   ]
+  }
+ },
+ "qe6-own": {
+  "forCoach": {
+   "id": "G.qe6-own",
+   "fen": "r1b1kb1r/ppp3pp/2npqp2/4p3/P1BP4/5N2/1PP2PPP/RNBQR1K1 w kq - 1 11",
+   "toMove": "them",
+   "youAre": "black",
+   "moveNumber": 11,
+   "lastMove": "Qe6 (your move)",
+   "yourPieces": "Ke8 Qe6 Ra8 Rh8 Nc6 Bc8 Bf8 Pa7 Pb7 Pc7 Pd6 Pe5 Pf6 Pg7 Ph7",
+   "theirPieces": "Kg1 Qd1 Ra1 Re1 Nb1 Bc1 Bc4 Nf3 Pa4 Pb2 Pc2 Pd4 Pf2 Pg2 Ph2",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "Qxc4",
+     "exd4",
+     "Nxd4"
+    ],
+    "threats": [
+     "e4"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "Bxe6",
+     "dxe5",
+     "Nxe5",
+     "Rxe5"
+    ],
+    "threats": [
+     "d5"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.qe6-own.F13",
+    "strongerMoveFact": "G.qe6-own.F14"
+   },
+   "skippedStep": "no_safety_check",
+   "findable": "Bxe6",
+   "facts": [
+    {
+     "id": "G.qe6-own.F1",
+     "type": "material",
+     "text": "You have a pawn for a knight: you are behind in material."
+    },
+    {
+     "id": "G.qe6-own.F2",
+     "type": "hangs",
+     "text": "Your queen {pc:Qe6} is not defended well enough: {m:Bxe6} wins material for them in the trade on {sq:e6}."
+    },
+    {
+     "id": "G.qe6-own.F3",
+     "type": "attack",
+     "text": "Your pawn {pc:Pe5} is attacked by their pawn {pc:Pd4}, their knight {pc:Nf3} and their rook {pc:Re1}; it is defended by your pawn {pc:Pd6}, your pawn {pc:Pf6}, your knight {pc:Nc6} and your queen {pc:Qe6}, so taking it does not win material."
+    },
+    {
+     "id": "G.qe6-own.F4",
+     "type": "hangs",
+     "text": "Their bishop {pc:Bc4} is hanging: if they leave it there, you can take it with {m:Qxc4@G.qe6-own.F4} and nothing takes back."
+    },
+    {
+     "id": "G.qe6-own.F5",
+     "type": "attack",
+     "text": "Their pawn {pc:Pd4} is attacked by your pawn {pc:Pe5} and your knight {pc:Nc6}; it is defended by their knight {pc:Nf3} and their queen {pc:Qd1}, so taking it does not win material."
+    },
+    {
+     "id": "G.qe6-own.F6",
+     "type": "pin",
+     "text": "Your pawn {pc:Pe5} is pinned to your queen {pc:Qe6} by their rook {pc:Re1}: it may move, but then their rook {pc:Re1} can take the queen. Whether moving it is still good is for the engine to say."
+    },
+    {
+     "id": "G.qe6-own.F7",
+     "type": "castling",
+     "text": "You cannot castle kingside yet: your bishop {pc:Bf8} is in the way."
+    },
+    {
+     "id": "G.qe6-own.F8",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your bishop {pc:Bc8} is in the way."
+    },
+    {
+     "id": "G.qe6-own.F9",
+     "type": "best_move",
+     "text": "Their strongest move is {m:Bxe6}: you lose a queen for a bishop (the line goes {m:Bxe6} {m:Bxe6@G.qe6-own.F9}). After it you are losing. Why: it takes your queen on {sq:e6}; it deals with your threat."
+    },
+    {
+     "id": "G.qe6-own.F10",
+     "type": "good_move",
+     "text": "{m:Nxe5} is also a good move for them: you lose a queen and a pawn for a bishop and a knight. Why: it takes your pawn on {sq:e5}; it protects their bishop on {sq:c4}; it deals with your threat."
+    },
+    {
+     "id": "G.qe6-own.F11",
+     "type": "good_move",
+     "text": "{m:Nbd2} is also a good move for them: no material changes hands. Why: it protects their bishop on {sq:c4}; it deals with your threat; it develops their knight."
+    },
+    {
+     "id": "G.qe6-own.F12",
+     "type": "threat",
+     "text": "Your threat: if they do nothing about it, you play {m:Qxc4@G.qe6-own.F12} and you win a bishop."
+    },
+    {
+     "id": "G.qe6-own.F13",
+     "type": "graded",
+     "text": "Your last move {m:Qe6@G.qe6-own.F13} was a mistake: you lose a queen for a bishop after {m:Bxe6@G.qe6-own.F13}. You were already losing before it, so the winning chances hardly change, but the material still goes. What it does manage: it adds a defender to your pawn on {sq:e5}."
+    },
+    {
+     "id": "G.qe6-own.F14",
+     "type": "best_move",
+     "text": "The strongest move would have been {m:Bg4@G.qe6-own.F14}: no material changes hands. Why: it develops your bishop."
+    }
+   ]
+  },
+  "graded": {
+   "san": "Qe6",
+   "cls": "mistake",
+   "isBest": false,
+   "best": "Bg4",
+   "lost": "you lose a queen for a bishop"
+  },
+  "lastVerdict": {
+   "san": "Qe6",
+   "by": "owner",
+   "cls": "mistake"
+  },
+  "skippedStep": "no_safety_check",
+  "hanging": {
+   "mine": [
+    {
+     "square": "e6",
+     "role": "queen",
+     "color": "black"
+    }
+   ],
+   "theirs": [
+    {
+     "square": "c4",
+     "role": "bishop",
+     "color": "white"
+    }
+   ]
+  }
+ },
+ "fools-mate": {
+  "forCoach": {
+   "id": "G.fools-mate",
+   "fen": "rnb1kbnr/pppp1ppp/8/4p3/6Pq/5P2/PPPPP2P/RNBQKBNR w KQkq - 1 3",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 3,
+   "lastMove": "Qh4# (their move)",
+   "over": "checkmate",
+   "yourPieces": "Ke1 Qd1 Ra1 Rh1 Nb1 Bc1 Bf1 Ng1 Pa2 Pb2 Pc2 Pd2 Pe2 Pf3 Pg4 Ph2",
+   "theirPieces": "Ke8 Qh4 Ra8 Rh8 Nb8 Bc8 Bf8 Ng8 Pa7 Pb7 Pc7 Pd7 Pe5 Pf7 Pg7 Ph7",
+   "facts": [
+    {
+     "id": "G.fools-mate.F1",
+     "type": "game_over",
+     "text": "You have been checkmated."
+    }
+   ]
+  },
+  "over": "checkmate",
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "backrank": {
+  "forCoach": {
+   "id": "G.backrank",
+   "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 1,
+   "yourPieces": "Kg1 Rd1 Pf2 Pg2 Ph2",
+   "theirPieces": "Kg8 Pf7 Pg7 Ph7",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": []
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": []
+   },
+   "findable": "Rd8#",
+   "facts": [
+    {
+     "id": "G.backrank.F1",
+     "type": "material",
+     "text": "You are up a rook."
+    },
+    {
+     "id": "G.backrank.F2",
+     "type": "mate_in",
+     "text": "You have checkmate in one move: {m:Rd8#}."
+    },
+    {
+     "id": "G.backrank.F4",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.backrank.F5",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    }
+   ]
+  },
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "knightfork": {
+  "forCoach": {
+   "id": "G.knightfork",
+   "fen": "r3k3/8/8/1N6/8/8/PPP5/2K5 w - - 0 1",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 1,
+   "yourPieces": "Kc1 Nb5 Pa2 Pb2 Pc2",
+   "theirPieces": "Ke8 Ra8",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Nd6+",
+     "Nc7+"
+    ],
+    "captures": [],
+    "threats": []
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "Rxa2"
+    ],
+    "threats": [
+     "Ra5",
+     "Rb8"
+    ]
+   },
+   "findable": "Nc7+",
+   "facts": [
+    {
+     "id": "G.knightfork.F1",
+     "type": "material",
+     "text": "You have a knight and 3 pawns for a rook: you are ahead in material."
+    },
+    {
+     "id": "G.knightfork.F2",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pa2} is hanging: if you leave it there, their rook {pc:Ra8} can take it with {m:Rxa2@G.knightfork.F2} and nothing takes back."
+    },
+    {
+     "id": "G.knightfork.F3",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Nc7+}: you win a rook (the line goes {m:Nc7+} {m:Kf8@G.knightfork.F3} {m:Nxa8@G.knightfork.F3}). After it you are winning. Why: it gives check; it protects your pawn on {sq:a2}; it deals with their threat."
+    },
+    {
+     "id": "G.knightfork.F4",
+     "type": "fork",
+     "text": "{m:Nc7+} is a fork: the knight attacks their rook {pc:Ra8} and their king {pc:Ke8} at the same time."
+    },
+    {
+     "id": "G.knightfork.F5",
+     "type": "only_move",
+     "text": "{m:Nc7+} is the only good move here: every other move is much worse."
+    },
+    {
+     "id": "G.knightfork.F6",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:Rxa2@G.knightfork.F6} and you lose a pawn."
+    },
+    {
+     "id": "G.knightfork.F7",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    }
+   ]
+  },
+  "hanging": {
+   "mine": [
+    {
+     "square": "a2",
+     "role": "pawn",
+     "color": "white"
+    }
+   ],
+   "theirs": []
+  }
+ },
+ "stalemate": {
+  "forCoach": {
+   "id": "G.stalemate",
+   "fen": "7k/5Q2/6K1/8/8/8/8/8 b - - 0 1",
+   "toMove": "them",
+   "youAre": "white",
+   "moveNumber": 1,
+   "over": "stalemate",
+   "yourPieces": "Kg6 Qf7",
+   "theirPieces": "Kh8",
+   "facts": [
+    {
+     "id": "G.stalemate.F1",
+     "type": "game_over",
+     "text": "It is stalemate: the side to move has no legal move and is not in check, so the game is a draw."
+    }
+   ]
+  },
+  "over": "stalemate",
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "kpk-draw": {
+  "forCoach": {
+   "id": "G.kpk-draw",
+   "fen": "4k3/8/8/4P3/4K3/8/8/8 b - - 0 1",
+   "toMove": "you",
+   "youAre": "black",
+   "moveNumber": 1,
+   "yourPieces": "Ke8",
+   "theirPieces": "Ke4 Pe5",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": []
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": []
+   },
+   "withBestPlay": "draw",
+   "findable": "Kf8",
+   "facts": [
+    {
+     "id": "G.kpk-draw.F1",
+     "type": "material",
+     "text": "You are down a pawn."
+    },
+    {
+     "id": "G.kpk-draw.F2",
+     "type": "tablebase",
+     "text": "With best play from both sides, this position is a draw. That is exact: the endgame tablebase knows the result of every position with five pieces or fewer."
+    },
+    {
+     "id": "G.kpk-draw.F3",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Kf8}: no material changes hands. After it you are about equal."
+    },
+    {
+     "id": "G.kpk-draw.F4",
+     "type": "good_move",
+     "text": "{m:Kf7} is also a good move for you: no material changes hands."
+    },
+    {
+     "id": "G.kpk-draw.F5",
+     "type": "good_move",
+     "text": "{m:Ke7} is also a good move for you: no material changes hands."
+    },
+    {
+     "id": "G.kpk-draw.F6",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.kpk-draw.F7",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    }
+   ]
+  },
+  "tablebase": "draw",
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "kpk-win": {
+  "forCoach": {
+   "id": "G.kpk-win",
+   "fen": "4k3/8/4K3/4P3/8/8/8/8 w - - 0 1",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 1,
+   "yourPieces": "Ke6 Pe5",
+   "theirPieces": "Ke8",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": []
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": []
+   },
+   "withBestPlay": "you win",
+   "findable": "Kf6",
+   "facts": [
+    {
+     "id": "G.kpk-win.F1",
+     "type": "material",
+     "text": "You are up a pawn."
+    },
+    {
+     "id": "G.kpk-win.F2",
+     "type": "tablebase",
+     "text": "With best play from both sides, you win this position. That is exact: the endgame tablebase knows the result of every position with five pieces or fewer."
+    },
+    {
+     "id": "G.kpk-win.F3",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Kf6}: you come out well ahead in material after a pawn promotes (the line goes {m:Kf6} {m:Kd7@G.kpk-win.F3} {m:e6+@G.kpk-win.F3} {m:Kd6@G.kpk-win.F3}). After it you are winning."
+    },
+    {
+     "id": "G.kpk-win.F4",
+     "type": "good_move",
+     "text": "{m:Kd6} is also a good move for you: no material changes hands."
+    },
+    {
+     "id": "G.kpk-win.F5",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.kpk-win.F6",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    }
+   ]
+  },
+  "tablebase": "you win",
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "kqk": {
+  "forCoach": {
+   "id": "G.kqk",
+   "fen": "8/8/8/4k3/8/8/8/4K2Q w - - 0 1",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 1,
+   "yourPieces": "Ke1 Qh1",
+   "theirPieces": "Ke5",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Qh2+",
+     "Qe4+",
+     "Qd5+",
+     "Qh5+",
+     "Qh8+"
+    ],
+    "captures": [],
+    "threats": []
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": []
+   },
+   "withBestPlay": "you win",
+   "findable": "Qc6",
+   "facts": [
+    {
+     "id": "G.kqk.F1",
+     "type": "material",
+     "text": "You are up a queen."
+    },
+    {
+     "id": "G.kqk.F2",
+     "type": "tablebase",
+     "text": "With best play from both sides, you win this position. That is exact: the endgame tablebase knows the result of every position with five pieces or fewer."
+    },
+    {
+     "id": "G.kqk.F3",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Qc6}: no material changes hands. After it you are winning."
+    },
+    {
+     "id": "G.kqk.F4",
+     "type": "good_move",
+     "text": "{m:Ke2} is also a good move for you: no material changes hands."
+    },
+    {
+     "id": "G.kqk.F5",
+     "type": "good_move",
+     "text": "{m:Qh6} is also a good move for you: no material changes hands."
+    },
+    {
+     "id": "G.kqk.F6",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.kqk.F7",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    }
+   ]
+  },
+  "tablebase": "you win",
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "krk-defender": {
+  "forCoach": {
+   "id": "G.krk-defender",
+   "fen": "8/8/8/4k3/8/8/8/4K2R b - - 0 1",
+   "toMove": "you",
+   "youAre": "black",
+   "moveNumber": 1,
+   "yourPieces": "Ke5",
+   "theirPieces": "Ke1 Rh1",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": []
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Rh5+"
+    ],
+    "captures": [],
+    "threats": []
+   },
+   "withBestPlay": "you lose",
+   "findable": "Kf4",
+   "facts": [
+    {
+     "id": "G.krk-defender.F1",
+     "type": "material",
+     "text": "You are down a rook."
+    },
+    {
+     "id": "G.krk-defender.F2",
+     "type": "tablebase",
+     "text": "With best play from both sides, you lose this position. That is exact: the endgame tablebase knows the result of every position with five pieces or fewer."
+    },
+    {
+     "id": "G.krk-defender.F3",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Kf4}: no material changes hands. After it you are losing."
+    },
+    {
+     "id": "G.krk-defender.F4",
+     "type": "good_move",
+     "text": "{m:Kd5} is also a good move for you: no material changes hands."
+    },
+    {
+     "id": "G.krk-defender.F5",
+     "type": "good_move",
+     "text": "{m:Ke4} is also a good move for you: no material changes hands."
+    },
+    {
+     "id": "G.krk-defender.F6",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.krk-defender.F7",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    }
+   ]
+  },
+  "tablebase": "you lose",
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "check": {
+  "forCoach": {
+   "id": "G.check",
+   "fen": "rnbqkbnr/ppp2ppp/8/1B1pp3/4P3/8/PPPP1PPP/RNBQK1NR b KQkq - 1 3",
+   "toMove": "you",
+   "youAre": "black",
+   "moveNumber": 3,
+   "yourPieces": "Ke8 Qd8 Ra8 Rh8 Nb8 Bc8 Bf8 Ng8 Pa7 Pb7 Pc7 Pd5 Pe5 Pf7 Pg7 Ph7",
+   "theirPieces": "Ke1 Qd1 Ra1 Rh1 Nb1 Bb5 Bc1 Ng1 Pa2 Pb2 Pc2 Pd2 Pe4 Pf2 Pg2 Ph2",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [],
+    "threats": [
+     "c6",
+     "Nc6",
+     "Nd7",
+     "Bd7",
+     "Ke7"
+    ]
+   },
+   "findable": "c6",
+   "facts": [
+    {
+     "id": "G.check.F1",
+     "type": "material",
+     "text": "Material is level."
+    },
+    {
+     "id": "G.check.F2",
+     "type": "check",
+     "text": "You are in check from their bishop {pc:Bb5}."
+    },
+    {
+     "id": "G.check.F3",
+     "type": "castling",
+     "text": "You cannot castle kingside yet: your bishop {pc:Bf8} and your knight {pc:Ng8} are in the way."
+    },
+    {
+     "id": "G.check.F4",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your knight {pc:Nb8}, your bishop {pc:Bc8} and your queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.check.F5",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their knight {pc:Ng1} is in the way."
+    },
+    {
+     "id": "G.check.F6",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their knight {pc:Nb1}, their bishop {pc:Bc1} and their queen {pc:Qd1} are in the way."
+    },
+    {
+     "id": "G.check.F7",
+     "type": "best_move",
+     "text": "Your strongest move is {m:c6}: no material changes hands. After it you are a bit better. Why: it gets you out of check; it adds a defender to your pawn on {sq:d5}; it attacks their bishop on {sq:b5}."
+    },
+    {
+     "id": "G.check.F8",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    }
+   ]
+  },
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "puzzle-fork": {
+  "forCoach": {
+   "id": "G.puzzle-fork",
+   "fen": "r1bqk2r/pp1nbppp/3p4/1B1p4/3P1B2/5N2/PPP2PPP/R2QK2R b KQkq - 3 9",
+   "toMove": "you",
+   "youAre": "black",
+   "moveNumber": 9,
+   "lastMove": "Nf3 (their move)",
+   "yourPieces": "Ke8 Qd8 Ra8 Rh8 Bc8 Nd7 Be7 Pa7 Pb7 Pd5 Pd6 Pf7 Pg7 Ph7",
+   "theirPieces": "Ke1 Qd1 Ra1 Rh1 Bb5 Nf3 Bf4 Pa2 Pb2 Pc2 Pd4 Pf2 Pg2 Ph2",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Qa5+"
+    ],
+    "captures": [],
+    "threats": [
+     "a6",
+     "g5",
+     "Qb6"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Bxd7+"
+    ],
+    "captures": [
+     "Bxd7+",
+     "Bxd6"
+    ],
+    "threats": [
+     "Qe2",
+     "c4"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.puzzle-fork.F14",
+    "strongerMoveFact": "G.puzzle-fork.F15"
+   },
+   "findable": "Qa5+",
+   "facts": [
+    {
+     "id": "G.puzzle-fork.F1",
+     "type": "material",
+     "text": "Material is level."
+    },
+    {
+     "id": "G.puzzle-fork.F2",
+     "type": "attack",
+     "text": "Your knight {pc:Nd7} is attacked by their bishop {pc:Bb5}; it is defended by your bishop {pc:Bc8}, your queen {pc:Qd8} and your king {pc:Ke8}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-fork.F3",
+     "type": "attack",
+     "text": "Your pawn {pc:Pd6} is attacked by their bishop {pc:Bf4}; it is defended by your bishop {pc:Be7}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-fork.F4",
+     "type": "pin",
+     "text": "Your knight {pc:Nd7} is pinned by their bishop {pc:Bb5}: it cannot move away without exposing the king."
+    },
+    {
+     "id": "G.puzzle-fork.F5",
+     "type": "castling",
+     "text": "You can castle kingside right now with {m:O-O}."
+    },
+    {
+     "id": "G.puzzle-fork.F6",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your bishop {pc:Bc8} and your queen {pc:Qd8} are in the way."
+    },
+    {
+     "id": "G.puzzle-fork.F7",
+     "type": "castling",
+     "text": "They can castle kingside on their next move."
+    },
+    {
+     "id": "G.puzzle-fork.F8",
+     "type": "castling",
+     "text": "They cannot castle queenside yet: their queen {pc:Qd1} is in the way."
+    },
+    {
+     "id": "G.puzzle-fork.F9",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Qa5+}: you win a bishop (the line goes {m:Qa5+} {m:Qd2@G.puzzle-fork.F9} {m:Qxb5@G.puzzle-fork.F9}). After it you are winning. Why: it gives check."
+    },
+    {
+     "id": "G.puzzle-fork.F10",
+     "type": "fork",
+     "text": "{m:Qa5+} is a fork: the queen attacks their king {pc:Ke1} and their bishop {pc:Bb5} at the same time."
+    },
+    {
+     "id": "G.puzzle-fork.F11",
+     "type": "only_move",
+     "text": "{m:Qa5+} is the only good move here: every other move is much worse."
+    },
+    {
+     "id": "G.puzzle-fork.F12",
+     "type": "quiet",
+     "text": "None of your pieces can be taken for free right now, and they have no immediate threat."
+    },
+    {
+     "id": "G.puzzle-fork.F13",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.puzzle-fork.F14",
+     "type": "loses_material",
+     "text": "Their last move {m:Nf3@G.puzzle-fork.F14} was a serious mistake by them: you win a bishop after {m:Qa5+@G.puzzle-fork.F14}."
+    },
+    {
+     "id": "G.puzzle-fork.F15",
+     "type": "best_move",
+     "text": "Their strongest move would have been {m:Ne2@G.puzzle-fork.F15}: no material changes hands. Why: it develops their knight."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "Nf3",
+   "by": "opponent",
+   "cls": "blunder"
+  },
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "puzzle-pin": {
+  "forCoach": {
+   "id": "G.puzzle-pin",
+   "fen": "2r5/kpQ2p2/r2R3p/4pb2/2N1q3/8/PP3P1P/K1R5 w - - 4 28",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 28,
+   "lastMove": "Rc8 (their move)",
+   "yourPieces": "Ka1 Qc7 Rc1 Rd6 Nc4 Pa2 Pb2 Pf2 Ph2",
+   "theirPieces": "Ka7 Qe4 Ra6 Rc8 Bf5 Pb7 Pe5 Pf7 Ph6",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Rxa6+",
+     "Qc5+",
+     "Qb6+",
+     "Qxb7+",
+     "Qb8+"
+    ],
+    "captures": [
+     "Rxa6+",
+     "Qxc8",
+     "Nxe5",
+     "Rxh6",
+     "Qxb7+",
+     "Qxf7"
+    ],
+    "threats": [
+     "Nd2",
+     "Nb6",
+     "Rdd1",
+     "Rd2",
+     "Rb6",
+     "Rd8",
+     "Qe7"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Qb1+",
+     "Rxa2+"
+    ],
+    "captures": [
+     "Rxc7",
+     "Rxd6",
+     "Qxc4",
+     "Rxa2+"
+    ],
+    "threats": [
+     "Qe2",
+     "Qg2",
+     "Qf3",
+     "Qf4",
+     "Qh4",
+     "Be6",
+     "Ra4",
+     "Rc6"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.puzzle-pin.F18",
+    "strongerMoveFact": "G.puzzle-pin.F19"
+   },
+   "findable": "Rxa6+",
+   "facts": [
+    {
+     "id": "G.puzzle-pin.F1",
+     "type": "material",
+     "text": "You have a knight for a bishop: material is about level."
+    },
+    {
+     "id": "G.puzzle-pin.F2",
+     "type": "attack",
+     "text": "Their pawn {pc:Pf7} looks free to take with {m:Qxf7}, but taking it is a mistake here."
+    },
+    {
+     "id": "G.puzzle-pin.F3",
+     "type": "attack",
+     "text": "Their rook {pc:Ra6} is attacked by your rook {pc:Rd6}; it is defended by their pawn {pc:Pb7} and their king {pc:Ka7}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-pin.F4",
+     "type": "attack",
+     "text": "Their pawn {pc:Pe5} is attacked by your knight {pc:Nc4}; it is defended by their queen {pc:Qe4}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-pin.F5",
+     "type": "attack",
+     "text": "Their rook {pc:Rc8} is attacked by your queen {pc:Qc7}; it is defended by their bishop {pc:Bf5}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-pin.F6",
+     "type": "attack",
+     "text": "Their pawn {pc:Ph6} is attacked by your rook {pc:Rd6}; it has no defender, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-pin.F7",
+     "type": "attack",
+     "text": "Their pawn {pc:Pb7} is attacked by your queen {pc:Qc7}; it is defended by their queen {pc:Qe4} and their king {pc:Ka7}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-pin.F8",
+     "type": "hangs",
+     "text": "Your queen {pc:Qc7} is hanging: if you leave it there, their rook {pc:Rc8} can take it with {m:Rxc7@G.puzzle-pin.F8} and nothing takes back."
+    },
+    {
+     "id": "G.puzzle-pin.F9",
+     "type": "attack",
+     "text": "Your rook {pc:Rd6} is attacked by their rook {pc:Ra6}; it is defended by your knight {pc:Nc4} and your queen {pc:Qc7}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-pin.F10",
+     "type": "attack",
+     "text": "Your pawn {pc:Pa2} is attacked by their rook {pc:Ra6}; it is defended by your king {pc:Ka1}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-pin.F11",
+     "type": "attack",
+     "text": "Your knight {pc:Nc4} is attacked by their queen {pc:Qe4}; it is defended by your rook {pc:Rc1} and your queen {pc:Qc7}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-pin.F12",
+     "type": "pin",
+     "text": "Your pawn {pc:Pa2} is pinned by their rook {pc:Ra6}: it cannot move away without exposing the king."
+    },
+    {
+     "id": "G.puzzle-pin.F13",
+     "type": "pin",
+     "text": "Their pawn {pc:Pb7} is pinned by your queen {pc:Qc7}: it cannot move away without exposing the king."
+    },
+    {
+     "id": "G.puzzle-pin.F14",
+     "type": "mate_in",
+     "text": "Your strongest move is {m:Rxa6+}: it forces checkmate in 2. Why: it gives check; it takes their rook on {sq:a6}; it protects your queen on {sq:c7}; it deals with their threat."
+    },
+    {
+     "id": "G.puzzle-pin.F15",
+     "type": "only_move",
+     "text": "{m:Rxa6+} is the only good move here: every other move is much worse."
+    },
+    {
+     "id": "G.puzzle-pin.F16",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:Rxc7@G.puzzle-pin.F16} and you lose a queen."
+    },
+    {
+     "id": "G.puzzle-pin.F17",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.puzzle-pin.F18",
+     "type": "unsafe",
+     "text": "Their last move {m:Rc8@G.puzzle-pin.F18} was a serious mistake by them: it allows checkmate in 2, starting with {m:Rxa6+@G.puzzle-pin.F18}. What it does manage: it attacks your queen on {sq:c7}."
+    },
+    {
+     "id": "G.puzzle-pin.F19",
+     "type": "best_move",
+     "text": "Their strongest move would have been {m:Ra4@G.puzzle-pin.F19}: you win a rook for a knight."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "Rc8",
+   "by": "opponent",
+   "cls": "blunder"
+  },
+  "hanging": {
+   "mine": [
+    {
+     "square": "c7",
+     "role": "queen",
+     "color": "white"
+    }
+   ],
+   "theirs": []
+  }
+ },
+ "puzzle-skewer": {
+  "forCoach": {
+   "id": "G.puzzle-skewer",
+   "fen": "8/8/8/3p4/5p1R/r3k3/6K1/8 w - - 0 52",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 52,
+   "lastMove": "exf4 (their move)",
+   "yourPieces": "Kg2 Rh4",
+   "theirPieces": "Ke3 Ra3 Pd5 Pf4",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Rh3+"
+    ],
+    "captures": [
+     "Rxf4"
+    ],
+    "threats": [
+     "Rh5"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Ra2+",
+     "f3+"
+    ],
+    "captures": [],
+    "threats": []
+   },
+   "lastMoveVerdict": {
+    "fact": "G.puzzle-skewer.F7",
+    "strongerMoveFact": "G.puzzle-skewer.F8"
+   },
+   "findable": "Rh3+",
+   "facts": [
+    {
+     "id": "G.puzzle-skewer.F1",
+     "type": "material",
+     "text": "You are down two pawns."
+    },
+    {
+     "id": "G.puzzle-skewer.F2",
+     "type": "attack",
+     "text": "Their pawn {pc:Pf4} is attacked by your rook {pc:Rh4}; it is defended by their king {pc:Ke3}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-skewer.F3",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Rh3+}: you win a rook (the line goes {m:Rh3+} {m:Ke2@G.puzzle-skewer.F3} {m:Rxa3@G.puzzle-skewer.F3}). After it you are winning. Why: it gives check."
+    },
+    {
+     "id": "G.puzzle-skewer.F4",
+     "type": "only_move",
+     "text": "{m:Rh3+} is the only good move here: every other move is much worse."
+    },
+    {
+     "id": "G.puzzle-skewer.F5",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:f3+@G.puzzle-skewer.F5} and you come out well ahead in material after a pawn promotes."
+    },
+    {
+     "id": "G.puzzle-skewer.F6",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.puzzle-skewer.F7",
+     "type": "loses_material",
+     "text": "Their last move {m:exf4@G.puzzle-skewer.F7} was a serious mistake by them: you win a rook for a pawn after {m:Rh3+@G.puzzle-skewer.F7}. What it does manage: it takes your pawn on {sq:f4}; it moves their attacked pawn out of danger."
+    },
+    {
+     "id": "G.puzzle-skewer.F8",
+     "type": "best_move",
+     "text": "Their strongest move would have been {m:Ke2@G.puzzle-skewer.F8}: no material changes hands."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "exf4",
+   "by": "opponent",
+   "cls": "blunder"
+  },
+  "hanging": {
+   "mine": [],
+   "theirs": []
+  }
+ },
+ "puzzle-hanging": {
+  "forCoach": {
+   "id": "G.puzzle-hanging",
+   "fen": "r6k/pp2r2p/4Rp1Q/3p4/8/1N1P2b1/PqP3PP/7K w - - 0 25",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 25,
+   "lastMove": "Bxg3 (their move)",
+   "yourPieces": "Kh1 Qh6 Re6 Nb3 Pa2 Pc2 Pd3 Pg2 Ph2",
+   "theirPieces": "Kh8 Qb2 Ra8 Re7 Bg3 Pa7 Pb7 Pd5 Pf6 Ph7",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Qxf6+",
+     "Qg7+",
+     "Qxh7+",
+     "Qf8+"
+    ],
+    "captures": [
+     "Rxe7",
+     "hxg3",
+     "Rxf6",
+     "Qxf6+",
+     "Qxh7+"
+    ],
+    "threats": [
+     "c4",
+     "Qc1",
+     "Qh5"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Qa1+",
+     "Qb1+",
+     "Qc1+"
+    ],
+    "captures": [
+     "Rxe6",
+     "Qxb3",
+     "Bxh2",
+     "Qxa2",
+     "Qxc2"
+    ],
+    "threats": []
+   },
+   "lastMoveVerdict": {
+    "fact": "G.puzzle-hanging.F15",
+    "strongerMoveFact": "G.puzzle-hanging.F16"
+   },
+   "findable": "Rxe7",
+   "facts": [
+    {
+     "id": "G.puzzle-hanging.F1",
+     "type": "material",
+     "text": "You have a knight for a rook and a bishop: you are behind in material."
+    },
+    {
+     "id": "G.puzzle-hanging.F2",
+     "type": "hangs",
+     "text": "Their rook {pc:Re7} is hanging: you can take it with {m:Rxe7} and nothing takes back."
+    },
+    {
+     "id": "G.puzzle-hanging.F3",
+     "type": "attack",
+     "text": "Their bishop {pc:Bg3} looks free to take with {m:hxg3}, but taking it is a mistake here."
+    },
+    {
+     "id": "G.puzzle-hanging.F4",
+     "type": "attack",
+     "text": "Their pawn {pc:Pf6} looks free to take with {m:Rxf6}, but taking it is a mistake here."
+    },
+    {
+     "id": "G.puzzle-hanging.F5",
+     "type": "attack",
+     "text": "Their pawn {pc:Ph7} is attacked by your queen {pc:Qh6}; it is defended by their rook {pc:Re7} and their king {pc:Kh8}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-hanging.F6",
+     "type": "hangs",
+     "text": "Your rook {pc:Re6} is hanging: if you leave it there, their rook {pc:Re7} can take it with {m:Rxe6@G.puzzle-hanging.F6} and nothing takes back."
+    },
+    {
+     "id": "G.puzzle-hanging.F7",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pa2} is hanging: if you leave it there, their queen {pc:Qb2} can take it with {m:Qxa2@G.puzzle-hanging.F7} and nothing takes back."
+    },
+    {
+     "id": "G.puzzle-hanging.F8",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pc2} is hanging: if you leave it there, their queen {pc:Qb2} can take it with {m:Qxc2@G.puzzle-hanging.F8} and nothing takes back."
+    },
+    {
+     "id": "G.puzzle-hanging.F9",
+     "type": "attack",
+     "text": "Your pawn {pc:Ph2} is attacked by their bishop {pc:Bg3}; it is defended by your queen {pc:Qh6} and your king {pc:Kh1}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-hanging.F10",
+     "type": "attack",
+     "text": "Your knight {pc:Nb3} is attacked by their queen {pc:Qb2}; it is defended by your pawn {pc:Pa2} and your pawn {pc:Pc2}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-hanging.F11",
+     "type": "pin",
+     "text": "Their pawn {pc:Ph7} is pinned by your queen {pc:Qh6}: it cannot move away without exposing the king."
+    },
+    {
+     "id": "G.puzzle-hanging.F12",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Rxe7}: you win a queen and a rook for a knight (the line goes {m:Rxe7} {m:Qb1+@G.puzzle-hanging.F12} {m:Nc1@G.puzzle-hanging.F12} {m:Qxc1+@G.puzzle-hanging.F12}). After it you are winning. Why: it takes their rook on {sq:e7}; it moves your attacked rook out of danger; it attacks their pawn on {sq:b7}."
+    },
+    {
+     "id": "G.puzzle-hanging.F13",
+     "type": "only_move",
+     "text": "{m:Rxe7} is the only good move here: every other move is much worse."
+    },
+    {
+     "id": "G.puzzle-hanging.F14",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:Qb1+@G.puzzle-hanging.F14} and you lose a rook for a bishop."
+    },
+    {
+     "id": "G.puzzle-hanging.F15",
+     "type": "loses_material",
+     "text": "Their last move {m:Bxg3@G.puzzle-hanging.F15} was a serious mistake by them: you win a queen for a knight after {m:Rxe7@G.puzzle-hanging.F15}. What it does manage: it takes your rook on {sq:g3}."
+    },
+    {
+     "id": "G.puzzle-hanging.F16",
+     "type": "best_move",
+     "text": "Their strongest move would have been {m:Qb1+@G.puzzle-hanging.F16}: you win a queen for a rook and a knight. Why: it gives check; it protects their rook on {sq:e7}; it protects their pawn on {sq:f6}."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "Bxg3",
+   "by": "opponent",
+   "cls": "blunder"
+  },
+  "hanging": {
+   "mine": [
+    {
+     "square": "e6",
+     "role": "rook",
+     "color": "white"
+    },
+    {
+     "square": "a2",
+     "role": "pawn",
+     "color": "white"
+    },
+    {
+     "square": "c2",
+     "role": "pawn",
+     "color": "white"
+    }
+   ],
+   "theirs": [
+    {
+     "square": "e7",
+     "role": "rook",
+     "color": "black"
+    }
+   ]
+  }
+ },
+ "puzzle-mate2": {
+  "forCoach": {
+   "id": "G.puzzle-mate2",
+   "fen": "7k/2r3p1/1p2p2b/3p2NQ/1q1P4/1p6/5R2/6K1 w - - 2 39",
+   "toMove": "you",
+   "youAre": "white",
+   "moveNumber": 39,
+   "lastMove": "Qb4 (their move)",
+   "yourPieces": "Kg1 Qh5 Rf2 Ng5 Pd4",
+   "theirPieces": "Kh8 Qb4 Rc7 Bh6 Pb3 Pb6 Pd5 Pe6 Pg7",
+   "yourChecksCapturesThreats": {
+    "checks": [
+     "Rf8+",
+     "Nf7+",
+     "Qxh6+",
+     "Qe8+"
+    ],
+    "captures": [
+     "Qxh6+",
+     "Nxe6"
+    ],
+    "threats": [
+     "Rf7",
+     "Qh2"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Qe1+",
+     "Rc1+"
+    ],
+    "captures": [
+     "Qxd4"
+    ],
+    "threats": [
+     "Qe7"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.puzzle-mate2.F10",
+    "strongerMoveFact": "G.puzzle-mate2.F11"
+   },
+   "findable": "Qe8+",
+   "facts": [
+    {
+     "id": "G.puzzle-mate2.F1",
+     "type": "material",
+     "text": "You have a knight for a bishop and 4 pawns: you are behind in material."
+    },
+    {
+     "id": "G.puzzle-mate2.F2",
+     "type": "attack",
+     "text": "Their pawn {pc:Pe6} looks free to take with {m:Nxe6}, but taking it is a mistake here."
+    },
+    {
+     "id": "G.puzzle-mate2.F3",
+     "type": "attack",
+     "text": "Their bishop {pc:Bh6} is attacked by your queen {pc:Qh5}; it is defended by their pawn {pc:Pg7}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-mate2.F4",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pd4} is hanging: if you leave it there, their queen {pc:Qb4} can take it with {m:Qxd4@G.puzzle-mate2.F4} and nothing takes back."
+    },
+    {
+     "id": "G.puzzle-mate2.F5",
+     "type": "pin",
+     "text": "Their bishop {pc:Bh6} is pinned by your queen {pc:Qh5}: it cannot move away without exposing the king."
+    },
+    {
+     "id": "G.puzzle-mate2.F6",
+     "type": "mate_in",
+     "text": "Your strongest move is {m:Qe8+}: it forces checkmate in 2. Why: it gives check; it protects your pawn on {sq:d4}."
+    },
+    {
+     "id": "G.puzzle-mate2.F7",
+     "type": "fork",
+     "text": "{m:Qe8+} is a fork: the queen attacks their pawn {pc:Pe6} and their king {pc:Kh8} at the same time."
+    },
+    {
+     "id": "G.puzzle-mate2.F8",
+     "type": "only_move",
+     "text": "{m:Qe8+} is the only good move here: every other move is much worse."
+    },
+    {
+     "id": "G.puzzle-mate2.F9",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.puzzle-mate2.F10",
+     "type": "unsafe",
+     "text": "Their last move {m:Qb4@G.puzzle-mate2.F10} was a serious mistake by them: it allows checkmate in 2, starting with {m:Qe8+@G.puzzle-mate2.F10}. What it does manage: it moves their attacked queen out of danger; it attacks your pawn on {sq:d4}."
+    },
+    {
+     "id": "G.puzzle-mate2.F11",
+     "type": "best_move",
+     "text": "Their strongest move would have been {m:Rc1+@G.puzzle-mate2.F11}: no material changes hands. Why: it gives check; it protects their queen on {sq:f8}; it protects their pawn on {sq:e6}."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "Qb4",
+   "by": "opponent",
+   "cls": "blunder"
+  },
+  "hanging": {
+   "mine": [
+    {
+     "square": "d4",
+     "role": "pawn",
+     "color": "white"
+    }
+   ],
+   "theirs": []
+  }
+ },
+ "puzzle-trapped": {
+  "forCoach": {
+   "id": "G.puzzle-trapped",
+   "fen": "r2qk2r/1Qp3p1/p1nbbn1p/3p1p2/3P4/P1N1PN1P/1PPB1P2/R3KB1R b KQkq - 0 13",
+   "toMove": "you",
+   "youAre": "black",
+   "moveNumber": 13,
+   "lastMove": "Qxb7 (their move)",
+   "yourPieces": "Ke8 Qd8 Ra8 Rh8 Nc6 Bd6 Be6 Nf6 Pa6 Pc7 Pd5 Pf5 Pg7 Ph6",
+   "theirPieces": "Ke1 Qb7 Ra1 Rh1 Nc3 Bd2 Bf1 Nf3 Pa3 Pb2 Pc2 Pd4 Pe3 Pf2 Ph3",
+   "yourChecksCapturesThreats": {
+    "checks": [],
+    "captures": [
+     "Nxd4",
+     "Bxa3"
+    ],
+    "threats": [
+     "Na5",
+     "Bc8",
+     "Ra7",
+     "Rb8",
+     "Qb8",
+     "Qc8"
+    ]
+   },
+   "theirChecksCapturesThreats": {
+    "checks": [
+     "Qxc6+"
+    ],
+    "captures": [
+     "Qxa8",
+     "Qxc6+",
+     "Bxa6",
+     "Nxd5",
+     "Qxa6",
+     "Qxc7"
+    ],
+    "threats": [
+     "Rg1"
+    ]
+   },
+   "lastMoveVerdict": {
+    "fact": "G.puzzle-trapped.F17",
+    "strongerMoveFact": "G.puzzle-trapped.F18"
+   },
+   "findable": "Na5",
+   "facts": [
+    {
+     "id": "G.puzzle-trapped.F1",
+     "type": "material",
+     "text": "You are down a pawn."
+    },
+    {
+     "id": "G.puzzle-trapped.F2",
+     "type": "attack",
+     "text": "Their pawn {pc:Pa3} is attacked by your bishop {pc:Bd6}; it is defended by their pawn {pc:Pb2} and their rook {pc:Ra1}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-trapped.F3",
+     "type": "attack",
+     "text": "Their pawn {pc:Pd4} is attacked by your knight {pc:Nc6}; it is defended by their pawn {pc:Pe3} and their knight {pc:Nf3}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-trapped.F4",
+     "type": "hangs",
+     "text": "Your knight {pc:Nc6} is hanging: if you leave it there, their queen {pc:Qb7} can take it with {m:Qxc6+@G.puzzle-trapped.F4} and nothing takes back."
+    },
+    {
+     "id": "G.puzzle-trapped.F5",
+     "type": "hangs",
+     "text": "Your pawn {pc:Pa6} is not defended well enough: {m:Bxa6@G.puzzle-trapped.F5} wins material for them in the trade on {sq:a6} if you leave it there."
+    },
+    {
+     "id": "G.puzzle-trapped.F6",
+     "type": "attack",
+     "text": "Your pawn {pc:Pd5} is attacked by their knight {pc:Nc3}; it is defended by your knight {pc:Nf6} and your bishop {pc:Be6}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-trapped.F7",
+     "type": "attack",
+     "text": "Your rook {pc:Ra8} is attacked by their queen {pc:Qb7}; it is defended by your queen {pc:Qd8}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-trapped.F8",
+     "type": "attack",
+     "text": "Your pawn {pc:Pc7} is attacked by their queen {pc:Qb7}; it is defended by your bishop {pc:Bd6} and your queen {pc:Qd8}, so taking it does not win material."
+    },
+    {
+     "id": "G.puzzle-trapped.F9",
+     "type": "castling",
+     "text": "You can castle kingside right now with {m:O-O}."
+    },
+    {
+     "id": "G.puzzle-trapped.F10",
+     "type": "castling",
+     "text": "You cannot castle queenside yet: your queen {pc:Qd8} is in the way."
+    },
+    {
+     "id": "G.puzzle-trapped.F11",
+     "type": "castling",
+     "text": "They cannot castle kingside yet: their bishop {pc:Bf1} is in the way."
+    },
+    {
+     "id": "G.puzzle-trapped.F12",
+     "type": "castling",
+     "text": "They can castle queenside on their next move."
+    },
+    {
+     "id": "G.puzzle-trapped.F13",
+     "type": "best_move",
+     "text": "Your strongest move is {m:Na5}: you win a queen for a rook (the line goes {m:Na5} {m:Qxa8@G.puzzle-trapped.F13} {m:Qxa8@G.puzzle-trapped.F13}). After it you are winning. Why: it moves your attacked knight out of danger; it deals with their threat; it attacks their queen on {sq:b7}."
+    },
+    {
+     "id": "G.puzzle-trapped.F14",
+     "type": "only_move",
+     "text": "{m:Na5} is the only good move here: every other move is much worse."
+    },
+    {
+     "id": "G.puzzle-trapped.F15",
+     "type": "threat",
+     "text": "Their threat: if you do nothing about it, they play {m:Qxc6+@G.puzzle-trapped.F15} and you lose a knight."
+    },
+    {
+     "id": "G.puzzle-trapped.F16",
+     "type": "quiet",
+     "text": "None of their pieces can be taken for free right now."
+    },
+    {
+     "id": "G.puzzle-trapped.F17",
+     "type": "unsafe",
+     "text": "Their last move {m:Qxb7@G.puzzle-trapped.F17} was a serious mistake by them: it gives up their advantage. What it does manage: it takes your pawn on {sq:b7}; it attacks your knight on {sq:c6}."
+    },
+    {
+     "id": "G.puzzle-trapped.F18",
+     "type": "best_move",
+     "text": "Their strongest move would have been {m:Ne2@G.puzzle-trapped.F18}: no material changes hands. Why: it adds a defender to their pawn on {sq:d4}."
+    }
+   ]
+  },
+  "lastVerdict": {
+   "san": "Qxb7",
+   "by": "opponent",
+   "cls": "blunder"
+  },
+  "hanging": {
+   "mine": [
+    {
+     "square": "c6",
+     "role": "knight",
+     "color": "black"
+    },
+    {
+     "square": "a6",
+     "role": "pawn",
+     "color": "black"
+    }
+   ],
+   "theirs": []
+  }
+ }
+}

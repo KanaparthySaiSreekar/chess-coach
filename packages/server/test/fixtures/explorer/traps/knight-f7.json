@@ -1,0 +1,145 @@
+{
+ "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p1N1/2B1P3/8/PPPP1PPP/RNBQK2R b KQkq - 5 4",
+ "answer": {
+  "white": 1387472,
+  "draws": 79220,
+  "black": 834316,
+  "moves": [
+   {
+    "uci": "d7d5",
+    "san": "d5",
+    "averageRating": 1059,
+    "white": 708546,
+    "draws": 43423,
+    "black": 523809,
+    "game": null,
+    "opening": {
+     "eco": "C57",
+     "name": "Italian Game: Two Knights Defense, Knight Attack, Normal Variation"
+    }
+   },
+   {
+    "uci": "d8e7",
+    "san": "Qe7",
+    "averageRating": 1011,
+    "white": 188989,
+    "draws": 12685,
+    "black": 97518,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "f8c5",
+    "san": "Bc5",
+    "averageRating": 1013,
+    "white": 139881,
+    "draws": 7091,
+    "black": 85958,
+    "game": null,
+    "opening": {
+     "eco": "C57",
+     "name": "Italian Game: Two Knights Defense, Traxler Counterattack"
+    }
+   },
+   {
+    "uci": "f6e4",
+    "san": "Nxe4",
+    "averageRating": 996,
+    "white": 75041,
+    "draws": 4050,
+    "black": 51631,
+    "game": null,
+    "opening": {
+     "eco": "C57",
+     "name": "Italian Game: Two Knights Defense, Ponziani-Steinitz Gambit"
+    }
+   },
+   {
+    "uci": "h7h6",
+    "san": "h6",
+    "averageRating": 966,
+    "white": 74797,
+    "draws": 3135,
+    "black": 17459,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "h8g8",
+    "san": "Rg8",
+    "averageRating": 991,
+    "white": 56261,
+    "draws": 3047,
+    "black": 19936,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "d7d6",
+    "san": "d6",
+    "averageRating": 985,
+    "white": 28065,
+    "draws": 1267,
+    "black": 7854,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "f8e7",
+    "san": "Be7",
+    "averageRating": 1001,
+    "white": 24793,
+    "draws": 579,
+    "black": 2458,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "f8b4",
+    "san": "Bb4",
+    "averageRating": 915,
+    "white": 22178,
+    "draws": 929,
+    "black": 4351,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "f6g4",
+    "san": "Ng4",
+    "averageRating": 977,
+    "white": 10539,
+    "draws": 475,
+    "black": 6566,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "c6a5",
+    "san": "Na5",
+    "averageRating": 982,
+    "white": 11744,
+    "draws": 621,
+    "black": 4092,
+    "game": null,
+    "opening": null
+   },
+   {
+    "uci": "c6d4",
+    "san": "Nd4",
+    "averageRating": 974,
+    "white": 10373,
+    "draws": 477,
+    "black": 3239,
+    "game": null,
+    "opening": null
+   }
+  ],
+  "recentGames": [],
+  "topGames": [],
+  "opening": {
+   "eco": "C57",
+   "name": "Italian Game: Two Knights Defense, Knight Attack"
+  }
+ }
+}

@@ -1,0 +1,531 @@
+{
+ "when": "2026-11-15T05:39:02.191Z",
+ "agent": "coach-drill",
+ "model": "sonnet",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 11,
+  "inputTokens": 30879,
+  "outputTokens": 3612,
+  "cacheReadTokens": 227759,
+  "costUsd": 0.1823079
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 10,
+   "total": 10
+  },
+  "firstTryValidity": {
+   "ok": 11,
+   "total": 13,
+   "pct": 84.6,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 10,
+    "total": 10
+   },
+   "stays in budget": {
+    "pass": 10,
+    "total": 10
+   },
+   "scenario checks": {
+    "pass": 22,
+    "total": 22
+   },
+   "asks before telling (first message)": {
+    "pass": 4,
+    "total": 4
+   },
+   "quiet when it should be": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "byCovers": {
+   "asks before telling": {
+    "pass": 2,
+    "total": 2
+   },
+   "explains from facts": {
+    "pass": 4,
+    "total": 4
+   },
+   "stop rules": {
+    "pass": 1,
+    "total": 1
+   },
+   "hard rules": {
+    "pass": 2,
+    "total": 2
+   },
+   "quiet when it should be": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 8536,
+  "failed": [],
+  "refusedBy": {
+   "R3 claim without a fact": 2
+  }
+ },
+ "results": [
+  {
+   "id": "miss-asks",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: h3 is an inaccuracy: it misses a forced checkmate. What are all your checks here, and where could their king go after each one?"
+    },
+    {
+     "check": "never says /d8/",
+     "pass": true
+    }
+   ],
+   "ms": 8227,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "h3 is an inaccuracy: it misses a forced checkmate. What are all your checks here, and where could their king go after each one?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "miss-own-move",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: g3 is an inaccuracy, because it misses something much stronger. Look at their king: what squares can it step to, and what are all your checks?"
+    },
+    {
+     "check": "never says /d8/",
+     "pass": true
+    }
+   ],
+   "ms": 8536,
+   "says": {
+    "ok": 1,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "g3 is an inaccuracy, because it misses something much stronger. Look at their king: what squares can it step to, and what are all your checks?"
+    }
+   ],
+   "refused": [
+    {
+     "kind": "question",
+     "text": "{m:g3} is an inaccuracy: it misses a forced checkmate in 2. Look at their king: how many squares can it step to, and what are all your checks?",
+     "problems": [
+      "\"mate in 2\": the cited facts do not show a mate in 2."
+     ]
+    }
+   ],
+   "tools": [
+    "say ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "ask-question",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question",
+     "pass": true,
+     "detail": "it was question: Start with your checks: which of your pieces can give check right now? Then look at their king: if you check it, does it have anywhere to go?"
+    },
+    {
+     "check": "never says /d8/",
+     "pass": true
+    }
+   ],
+   "ms": 6950,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Start with your checks: which of your pieces can give check right now? Then look at their king: if you check it, does it have anywhere to go?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "ask-twice",
+   "covers": "stop rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind nudge",
+     "pass": true,
+     "detail": "kinds: question, nudge"
+    },
+    {
+     "check": "never says /d8/",
+     "pass": true
+    }
+   ],
+   "ms": 11553,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Start with your checks: which of your pieces can give check right now? Then look at their king: if it is attacked, where could it go?"
+    },
+    {
+     "kind": "nudge",
+     "source": "coach",
+     "text": "Look at their king on g8: it is boxed in by its own pawns on f7, g7 and h7. Their rook is also far away on a8. What could you do on that back row?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "shown-explains",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /back.?rank|last rank|checkmate|mate/",
+     "pass": true,
+     "detail": "Rd8+ is the strongest move: it gives check, and it forces checkmate in 2. After Rxd8 Rxd8, their king is stuck behind its own pawns. That's a back-rank mate. When their king is shut in by its pawns, check every check on the last rank first."
+    }
+   ],
+   "ms": 6319,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Rd8+ is the strongest move: it gives check, and it forces checkmate in 2. After Rxd8 Rxd8, their king is stuck behind its own pawns. That's a back-rank mate. When their king is shut in by its pawns, check every check on the last rank first."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "example-new-idea",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /fork|two (?:things|pieces)|both/",
+     "pass": true,
+     "detail": "Nc7+ is the strongest move: it gives check, and you win a rook. This is a fork: one piece attacks two things at once, here the king and the rook on a8. The king must move, then Nxa8 takes the rook. To spot it next time, look at your checks first and ask what else the checking piece attacks."
+    }
+   ],
+   "ms": 6607,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Nc7+ is the strongest move: it gives check, and you win a rook. This is a fork: one piece attacks two things at once, here the king and the rook on a8. The king must move, then Nxa8 takes the rook. To spot it next time, look at your checks first and ask what else the checking piece attacks."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "mixed-ask-hides",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: You're behind in material, so look for something forcing. What are all your checks here, and after each one, what does their king have to do?"
+    },
+    {
+     "check": "never says /fork/",
+     "pass": true
+    },
+    {
+     "check": "never says /c7/",
+     "pass": true
+    }
+   ],
+   "ms": 10034,
+   "says": {
+    "ok": 1,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "You're behind in material, so look for something forcing. What are all your checks here, and after each one, what does their king have to do?"
+    }
+   ],
+   "refused": [
+    {
+     "kind": "question",
+     "text": "You're behind in material, so look for something forcing. What are all your checks here, and after each one, what does their king have to do?",
+     "problems": [
+      "\"You're behind\": a claim about who is ahead needs a material, best_move or line fact. Put the fact's id in claims, or take the claim out."
+     ]
+    }
+   ],
+   "tools": [
+    "say ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "mixed-miss-hides",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "never says /fork/",
+     "pass": true
+    },
+    {
+     "check": "never says /c7/",
+     "pass": true
+    }
+   ],
+   "ms": 6134,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Ke2 is safe, but it doesn't use what you have. What are all your checks here, and what could each one attack?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "solved-quiet",
+   "covers": "quiet when it should be",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "quiet when it should be",
+     "pass": true
+    }
+   ],
+   "ms": 12004,
+   "says": {
+    "ok": 0,
+    "total": 0
+   },
+   "messages": [],
+   "refused": [],
+   "tools": []
+  },
+  {
+   "id": "end-of-sitting",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "a message of kind summary",
+     "pass": true,
+     "detail": "kinds: explain, summary"
+    },
+    {
+     "check": "says /tomorrow|come(?:s)? back|again/",
+     "pass": true,
+     "detail": "Rd8+ is the strongest move: it gives check and forces checkmate in 2. Their king is shut in behind its own pawns, so after Rxd8 you play Rxd8. That's a back-rank mate. Next time, when their king is boxed in by its pawns, look at every check on the last rank first. | You met a back-rank mate today, and you looked at the full line once it was shown. That puzzle comes back tomorrow, so you can try to"
+    }
+   ],
+   "ms": 10583,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Rd8+ is the strongest move: it gives check and forces checkmate in 2. Their king is shut in behind its own pawns, so after Rxd8 you play Rxd8. That's a back-rank mate. Next time, when their king is boxed in by its pawns, look at every check on the last rank first."
+    },
+    {
+     "kind": "summary",
+     "source": "coach",
+     "text": "You met a back-rank mate today, and you looked at the full line once it was shown. That puzzle comes back tomorrow, so you can try to find it yourself."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say"
+   ]
+  }
+ ]
+}

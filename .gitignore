@@ -1,0 +1,18 @@
+# The owner's private data: games, progress, and purchased course files.
+# Course files are copyrighted and must never be committed (see CLAUDE.md, "Hard rules").
+data/
+courses/
+
+# Secrets and local config
+.env
+.env.*
+
+# OS / editor clutter
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo

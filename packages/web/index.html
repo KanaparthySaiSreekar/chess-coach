@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <title>Chess Coach</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23b58863'/><text x='50' y='76' text-anchor='middle' font-size='72' fill='white'>♞</text></svg>" />
+    <script>
+      // Light or dark before the first paint (the setting itself arrives a moment later, from the server).
+      (function () {
+        var want = 'auto';
+        try {
+          want = localStorage.getItem('cc.appearance') || 'auto';
+        } catch (e) {}
+        var dark = want === 'dark' || (want !== 'light' && !matchMedia('(prefers-color-scheme: light)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

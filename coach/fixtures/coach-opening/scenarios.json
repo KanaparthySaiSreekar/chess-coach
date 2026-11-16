@@ -1,0 +1,486 @@
+[
+  {
+    "id": "miss-explains",
+    "about": "A card due again, the owner plays another move: the coach says why the repertoire move is played, from the facts",
+    "covers": "explains from facts",
+    "side": "white",
+    "opening": {
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 *",
+      "words": [
+        {
+          "line": "1.e4 e5 2.Nf3",
+          "why": "{m:Nf3} develops your knight and attacks the pawn on {sq:e5}.",
+          "idea": "Their move {m:e5} puts a pawn in the centre too."
+        }
+      ],
+      "card": 1,
+      "due": true
+    },
+    "steps": [
+      {
+        "omove": "b1c3"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "someKind",
+        "kind": "explain"
+      },
+      {
+        "type": "says",
+        "pattern": "nf3|knight"
+      },
+      {
+        "type": "never",
+        "pattern": "\\b(wrong|bad move|blunder)\\b"
+      }
+    ]
+  },
+  {
+    "id": "miss-no-words",
+    "about": "A miss on a card with no words written: the purpose of the move still comes from the facts",
+    "covers": "explains from facts",
+    "side": "white",
+    "opening": {
+      "pgn": "1. e4 e5 2. Nf3 d6 3. d4 *",
+      "card": 2,
+      "due": true
+    },
+    "steps": [
+      {
+        "omove": "f1c4"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "says",
+        "pattern": "d4|centre|center|e5"
+      },
+      {
+        "type": "never",
+        "pattern": "%|\\+\\d|centipawn"
+      }
+    ]
+  },
+  {
+    "id": "miss-stays-inside",
+    "about": "A miss with a good move of the owner's own: the coach explains the repertoire move and offers no other line",
+    "covers": "hard rules",
+    "side": "white",
+    "opening": {
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 *",
+      "words": [
+        {
+          "line": "1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4",
+          "why": "{m:Ba4} saves your attacked bishop.",
+          "idea": "Their move {m:a6} attacks your bishop on {sq:b5}."
+        }
+      ],
+      "card": 3,
+      "due": true
+    },
+    "steps": [
+      {
+        "omove": "b5c6"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "says",
+        "pattern": "ba4|bishop"
+      },
+      {
+        "type": "never",
+        "pattern": "you could (also )?play|try playing|another option|better (is|was)|consider playing"
+      }
+    ]
+  },
+  {
+    "id": "why-right",
+    "about": "The why check: the owner's words have the idea, in their own words: the coach says so",
+    "covers": "uses the tag",
+    "side": "white",
+    "settings": {
+      "openings.whyEvery": 1
+    },
+    "opening": {
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 *",
+      "words": [
+        {
+          "line": "1.e4 e5 2.Nf3",
+          "why": "{m:Nf3} develops your knight and attacks the pawn on {sq:e5}.",
+          "idea": "Their move {m:e5} puts a pawn in the centre too."
+        }
+      ],
+      "card": 1,
+      "due": true
+    },
+    "steps": [
+      {
+        "omove": "g1f3"
+      },
+      {
+        "owhy": "it gets my knight out and it goes after their e5 pawn"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "firstIs",
+        "kinds": [
+          "praise",
+          "explain"
+        ]
+      },
+      {
+        "type": "never",
+        "pattern": "\\bnot (quite|really)\\b|\\bmissed\\b"
+      }
+    ]
+  },
+  {
+    "id": "why-wrong",
+    "about": "The why check: the owner's words miss the idea: the coach gives the reason, gently, from the facts",
+    "covers": "explains from facts",
+    "side": "white",
+    "settings": {
+      "openings.whyEvery": 1
+    },
+    "opening": {
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 *",
+      "words": [
+        {
+          "line": "1.e4 e5 2.Nf3",
+          "why": "{m:Nf3} develops your knight and attacks the pawn on {sq:e5}.",
+          "idea": "Their move {m:e5} puts a pawn in the centre too."
+        }
+      ],
+      "card": 1,
+      "due": true
+    },
+    "steps": [
+      {
+        "omove": "g1f3"
+      },
+      {
+        "owhy": "to protect my king"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "someKind",
+        "kind": "explain"
+      },
+      {
+        "type": "says",
+        "pattern": "knight|e5|develop"
+      }
+    ]
+  },
+  {
+    "id": "why-blank",
+    "about": "The why check, the owner just asks to see the reason (no words): nothing for the coach to judge",
+    "covers": "quiet when it should be",
+    "side": "white",
+    "settings": {
+      "openings.whyEvery": 1
+    },
+    "opening": {
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 *",
+      "words": [
+        {
+          "line": "1.e4 e5 2.Nf3",
+          "why": "{m:Nf3} develops your knight and attacks the pawn on {sq:e5}."
+        }
+      ],
+      "card": 1,
+      "due": true
+    },
+    "steps": [
+      {
+        "omove": "g1f3"
+      },
+      {
+        "owhy": ""
+      },
+      {
+        "oknown": true
+      }
+    ],
+    "checks": [
+      {
+        "type": "silent"
+      }
+    ]
+  },
+  {
+    "id": "right-quiet",
+    "about": "A card due again, the right move, no why check this time: the coach stays quiet",
+    "covers": "quiet when it should be",
+    "side": "white",
+    "settings": {
+      "openings.whyEvery": 0
+    },
+    "opening": {
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 *",
+      "words": [
+        {
+          "line": "1.e4 e5 2.Nf3",
+          "why": "{m:Nf3} develops your knight and attacks the pawn on {sq:e5}."
+        }
+      ],
+      "card": 1,
+      "due": true
+    },
+    "steps": [
+      {
+        "omove": "g1f3"
+      }
+    ],
+    "checks": [
+      {
+        "type": "silent"
+      }
+    ]
+  },
+  {
+    "id": "new-with-words",
+    "about": "A new card with its words written: the page shows them, the coach adds nothing",
+    "covers": "quiet when it should be",
+    "side": "white",
+    "opening": {
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 *",
+      "words": [
+        {
+          "line": "1.e4 e5 2.Nf3",
+          "why": "{m:Nf3} develops your knight and attacks the pawn on {sq:e5}.",
+          "idea": "Their move {m:e5} puts a pawn in the centre too."
+        }
+      ],
+      "card": 1
+    },
+    "steps": [
+      {
+        "oshow": true
+      },
+      {
+        "wait": 3000
+      },
+      {
+        "omove": "g1f3"
+      }
+    ],
+    "checks": [
+      {
+        "type": "silent"
+      }
+    ]
+  },
+  {
+    "id": "new-no-words",
+    "about": "A new card with no words written: the coach gives the move's purpose from the facts (D4)",
+    "covers": "explains from facts",
+    "side": "white",
+    "opening": {
+      "pgn": "1. e4 e5 2. Nf3 d6 3. d4 *",
+      "card": 2
+    },
+    "steps": [
+      {
+        "oshow": true
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "someKind",
+        "kind": "explain"
+      },
+      {
+        "type": "says",
+        "pattern": "d4|centre|center|e5"
+      }
+    ]
+  },
+  {
+    "id": "black-miss",
+    "about": "A Black repertoire: a miss after 1.d4, the reason for the repertoire move from the facts",
+    "covers": "explains from facts",
+    "side": "black",
+    "opening": {
+      "pgn": "[Orientation \"black\"]\n\n1. d4 d5 2. c4 e6 *",
+      "words": [
+        {
+          "line": "1.d4 d5",
+          "why": "{m:d5} puts a pawn in the centre."
+        }
+      ],
+      "card": 0,
+      "due": true
+    },
+    "steps": [
+      {
+        "omove": "g8f6"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "says",
+        "pattern": "d5|centre|center"
+      },
+      {
+        "type": "never",
+        "pattern": "\\b(wrong|bad move|blunder)\\b"
+      }
+    ]
+  },
+  {
+    "id": "trap-miss",
+    "about": "A trap card (Scholar's Mate), the owner plays the move they hoped for: the coach says what it would cost and why the defence stops it",
+    "covers": "explains from facts",
+    "side": "black",
+    "opening": {
+      "pgn": "",
+      "card": 0,
+      "due": true,
+      "trap": "scholar-bc4-qh5"
+    },
+    "steps": [
+      {
+        "omove": "g8f6"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "says",
+        "pattern": "mate|checkmate"
+      },
+      {
+        "type": "says",
+        "pattern": "g6|f7"
+      }
+    ]
+  },
+  {
+    "id": "trap-why",
+    "about": "A trap card, the why check asks what they hoped for: the owner names it in their own words and the coach says so",
+    "covers": "uses the tag",
+    "side": "black",
+    "settings": {
+      "openings.whyEvery": 1
+    },
+    "opening": {
+      "pgn": "",
+      "card": 0,
+      "due": true,
+      "trap": "scholar-bc4-qh5"
+    },
+    "steps": [
+      {
+        "omove": "g7g6"
+      },
+      {
+        "owhy": "they wanted me to play Nf6 so their queen could mate me on f7"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "firstIs",
+        "kinds": [
+          "praise",
+          "explain"
+        ]
+      },
+      {
+        "type": "never",
+        "pattern": "\bnot (quite|really)\b"
+      }
+    ]
+  },
+  {
+    "id": "ask-walk-why",
+    "about": "On the Repertoire view the owner walks to 1.e4 e5 and asks why the repertoire move is played: the coach answers beside the walk, from the facts, and names no other move for them",
+    "covers": "explains from facts",
+    "side": "white",
+    "opening": {
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 *",
+      "card": 0,
+      "due": false
+    },
+    "steps": [
+      {
+        "owalk": "e2e4 e7e5"
+      },
+      {
+        "ask": "Why is this move played?"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "someKind",
+        "kind": "explain"
+      },
+      {
+        "type": "says",
+        "pattern": "nf3|knight"
+      },
+      {
+        "type": "never",
+        "pattern": "\\b(bc4|d4|nc3|instead)\\b"
+      }
+    ]
+  },
+  {
+    "id": "ask-while-recalling",
+    "about": "A card due again; before playing, the owner asks the coach what to play: it answers about the position or asks a question, and never names the repertoire move",
+    "covers": "asks before telling",
+    "side": "white",
+    "opening": {
+      "pgn": "1. e4 e5 2. Nf3 Nc6 3. Bb5 *",
+      "card": 1,
+      "due": true
+    },
+    "steps": [
+      {
+        "ask": "What do I play here?"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "never",
+        "pattern": "\\bnf3\\b|knight to f3|\\bf3\\b"
+      }
+    ]
+  }
+]

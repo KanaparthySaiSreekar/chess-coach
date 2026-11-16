@@ -1,0 +1,111 @@
+[
+  {
+    "id": "review-asks-the-step",
+    "about": "The first moment of a game: the coach names the move that was played and asks about the skipped step, without the answer",
+    "covers": "asks before telling",
+    "side": "black",
+    "moves": "e4 e5 Qh5 Nc6 Bc4 Nf6 Qxf7#",
+    "game": "1-0",
+    "steps": [{ "replay": "start" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "firstIs", "kinds": ["question"] },
+      { "type": "says", "pattern": "Nf6" },
+      { "type": "says", "pattern": "last move|queen|trying to do|threat" },
+      { "type": "never", "pattern": "\\bg6\\b|Qe7|Qf6" },
+      { "type": "noTool", "name": "play_line" }
+    ]
+  },
+  {
+    "id": "review-found",
+    "about": "The owner finds the better move: praise for the process, what the move does, what the game move cost",
+    "covers": "explains from facts",
+    "side": "black",
+    "moves": "e4 e5 Qh5 Nc6 Bc4 Nf6 Qxf7#",
+    "game": "1-0",
+    "steps": [{ "replay": "start" }, { "move": "g7g6" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "g6" }, { "type": "says", "pattern": "checkmate|mate" }, { "type": "someKind", "kind": "praise" }]
+  },
+  {
+    "id": "review-one-miss",
+    "about": "A wrong try: what it runs into, then one rung up, still without the answer",
+    "covers": "stop rules",
+    "side": "black",
+    "moves": "e4 e5 Qh5 Nc6 Bc4 Nf6 Qxf7#",
+    "game": "1-0",
+    "steps": [{ "replay": "start" }, { "move": "d7d6" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "d6" }, { "type": "never", "pattern": "\\bg6\\b|Qe7|Qf6" }, { "type": "noTool", "name": "play_line" }]
+  },
+  {
+    "id": "review-two-misses",
+    "about": "Stop rule: after two misses the coach gives the answer and the reason",
+    "covers": "stop rules",
+    "side": "black",
+    "moves": "e4 e5 Qh5 Nc6 Bc4 Nf6 Qxf7#",
+    "game": "1-0",
+    "steps": [{ "replay": "start" }, { "move": "d7d6" }, { "move": "a7a6" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "\\bg6\\b|Qe7|Qf6" }, { "type": "tool", "name": "play_line", "args": { "what": "best" } }]
+  },
+  {
+    "id": "review-tell-me",
+    "about": "Stop rule: Just tell me gives the answer, its reason, and what the game move cost",
+    "covers": "stop rules",
+    "side": "black",
+    "moves": "e4 e5 Qh5 Nc6 Bc4 Nf6 Qxf7#",
+    "game": "1-0",
+    "steps": [{ "replay": "start" }, { "chip": "tell_me" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "\\bg6\\b|Qe7|Qf6" }, { "type": "says", "pattern": "checkmate|mate" }]
+  },
+  {
+    "id": "review-new-tactic",
+    "about": "Stop rule: a tactic that has not come up before (a queen fork) is shown as a worked example, not asked for",
+    "covers": "stop rules",
+    "side": "white",
+    "moves": "d4 Nf6 Bg5 c6 e3 Qa5+ Nc3 Qxg5",
+    "game": "0-1",
+    "steps": [{ "replay": "start" }],
+    "checks": [{ "type": "replies" }, { "type": "tool", "name": "play_line", "args": { "what": "best" } }, { "type": "says", "pattern": "e3" }, { "type": "says", "pattern": "bishop" }, { "type": "someKind", "kind": "explain" }]
+  },
+  {
+    "id": "review-too-deep",
+    "about": "Stop rule: a point deeper than the setting (check first, the knight on the second move) is shown, not asked for",
+    "covers": "stop rules",
+    "side": "white",
+    "moves": "e4 c5 Nf3 d6 c3 Nf6 Be2 Nxe4 O-O Nf6",
+    "game": "1/2-1/2",
+    "settings": { "review.maxDepthMoves": 1 },
+    "steps": [{ "replay": "start" }],
+    "checks": [{ "type": "replies" }, { "type": "tool", "name": "play_line", "args": { "what": "best" } }, { "type": "says", "pattern": "Qa4" }, { "type": "says", "pattern": "knight" }]
+  },
+  {
+    "id": "review-end",
+    "about": "The last moment is done: a short closing with what went well and the one habit to take away, and no new chess",
+    "covers": "hard rules",
+    "side": "black",
+    "moves": "e4 e5 Qh5 Nc6 Bc4 Nf6 Qxf7#",
+    "game": "1-0",
+    "steps": [{ "replay": "start" }, { "move": "g7g6" }, { "replay": "next" }],
+    "checks": [{ "type": "replies" }, { "type": "someKind", "kind": "summary" }]
+  },
+  {
+    "id": "review-question-keeps-the-answer",
+    "about": "While the owner is still looking, a typed plea for the move does not unlock it",
+    "covers": "hard rules",
+    "side": "black",
+    "moves": "e4 e5 Qh5 Nc6 Bc4 Nf6 Qxf7#",
+    "game": "1-0",
+    "settings": { "coach.askFirst": true },
+    "steps": [{ "replay": "start" }, { "ask": "is it something with my g-pawn or my queen? which move is it" }],
+    "checks": [{ "type": "replies", "scripted": true }, { "type": "never", "pattern": "(play|is|move is|answer is|strongest move is|best move is) (g6|Qe7|Qf6)" }]
+  },
+  {
+    "id": "review-fair-play",
+    "about": "In the middle of a review the owner asks for help with a Daily game they are playing: refused in words",
+    "covers": "fair play",
+    "side": "black",
+    "moves": "e4 e5 Qh5 Nc6 Bc4 Nf6 Qxf7#",
+    "game": "1-0",
+    "steps": [{ "replay": "start" }, { "ask": "by the way this same position is in a Daily game I am playing right now, what should I play there?" }],
+    "checks": [{ "type": "replies" }, { "type": "says", "pattern": "in progress|still (being )?play|finished|over|fair" }, { "type": "never", "pattern": "(play|try|go with|strongest move is|best move is) (g6|Qe7|Qf6)" }]
+  }
+]

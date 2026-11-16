@@ -1,0 +1,133 @@
+[
+  {
+    "id": "stalemate-slip",
+    "about": "The queen takes their king's last square without check: stalemate. The coach says why, from the game-over fact, and ties it to the idea",
+    "covers": "explains from facts",
+    "side": "white",
+    "endgame": { "position": "qm-corner" },
+    "steps": [{ "emove": "c5c7" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "explain" },
+      { "type": "says", "pattern": "stalemate" },
+      { "type": "never", "pattern": "%|centipawn|\\+\\d|0\\.00" }
+    ]
+  },
+  {
+    "id": "square-slip",
+    "about": "Defending the square of the pawn, the king steps the wrong way: the coach says the pawn can no longer be caught, from the facts",
+    "covers": "explains from facts",
+    "side": "black",
+    "endgame": { "position": "sq-catch" },
+    "steps": [{ "emove": "f6g5" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "explain" },
+      { "type": "says", "pattern": "pawn|square|catch|ke6|ke5|ke7" },
+      { "type": "never", "pattern": "%|centipawn|\\+\\d|0\\.00" }
+    ]
+  },
+  {
+    "id": "opposition-slip",
+    "about": "Holding with the opposition, the king steps aside: the coach explains from the verdicts on the slip and on the move that held",
+    "covers": "explains from facts",
+    "side": "black",
+    "endgame": { "position": "op-hold" },
+    "steps": [{ "emove": "e8d8" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "explain" },
+      { "type": "says", "pattern": "ke7|king|pawn|in front|face" },
+      { "type": "never", "pattern": "%|centipawn|\\+\\d|0\\.00" }
+    ]
+  },
+  {
+    "id": "hung-queen",
+    "about": "A queen check next to their king throws the win away: the coach says the queen is lost, from the move's verdict",
+    "covers": "explains from facts",
+    "side": "white",
+    "endgame": { "position": "qm-centre" },
+    "steps": [{ "emove": "d1d4" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "explain" },
+      { "type": "says", "pattern": "queen" },
+      { "type": "never", "pattern": "%|centipawn|\\+\\d|0\\.00" }
+    ]
+  },
+  {
+    "id": "mate-praise",
+    "about": "Mate in the corner: one short word of praise about the process, not about talent",
+    "covers": "quiet when it should be",
+    "side": "white",
+    "endgame": { "position": "qm-corner" },
+    "steps": [{ "emove": "c5c8" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "praise" },
+      { "type": "never", "pattern": "talent|genius|natural|gifted" }
+    ]
+  },
+  {
+    "id": "rook-mate-praise",
+    "about": "The rook mate with the kings facing each other: a word of praise",
+    "covers": "quiet when it should be",
+    "side": "white",
+    "endgame": { "position": "rm-edge" },
+    "steps": [{ "emove": "h1h8" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "someKind", "kind": "praise" },
+      { "type": "never", "pattern": "talent|genius|natural|gifted" }
+    ]
+  },
+  {
+    "id": "quiet-good-move",
+    "about": "A good move in the queen mate: nobody is woken, the coach says nothing",
+    "covers": "quiet when it should be",
+    "side": "white",
+    "endgame": { "position": "qm-centre" },
+    "steps": [{ "emove": "d1d3" }],
+    "checks": [{ "type": "silent" }]
+  },
+  {
+    "id": "ask-question",
+    "about": "The owner asks for help at the start of the queen mate: a question about the idea, no move named",
+    "covers": "asks before telling",
+    "side": "white",
+    "endgame": { "position": "qm-centre" },
+    "steps": [{ "endgame": "ask" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "firstIs", "kinds": ["question"] },
+      { "type": "never", "pattern": "\\b[KQ]x?[a-h][1-8]" }
+    ]
+  },
+  {
+    "id": "ask-twice-nudge",
+    "about": "Asked twice with the kings far apart: a question, then a nudge, and still no move named",
+    "covers": "asks before telling",
+    "side": "white",
+    "endgame": { "position": "qm-far" },
+    "steps": [{ "endgame": "ask" }, { "endgame": "ask" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "firstIs", "kinds": ["question"] },
+      { "type": "someKind", "kind": "nudge" },
+      { "type": "never", "pattern": "\\b[KQ]x?[a-h][1-8]" }
+    ]
+  },
+  {
+    "id": "ask-hold-draw",
+    "about": "Holding the draw with the opposition, the owner asks: a question about where the king belongs, never the move",
+    "covers": "hard rules",
+    "side": "black",
+    "endgame": { "position": "op-hold" },
+    "steps": [{ "endgame": "ask" }],
+    "checks": [
+      { "type": "replies" },
+      { "type": "firstIs", "kinds": ["question"] },
+      { "type": "never", "pattern": "\\bK[a-h][1-8]|the answer" }
+    ]
+  }
+]

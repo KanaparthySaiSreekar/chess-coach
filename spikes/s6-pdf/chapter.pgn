@@ -1,0 +1,110 @@
+[Event "1. Some Simple Mates: example-1"]
+[Site "book page 3"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "7k/8/8/8/8/8/8/R6K w - - 0 1"]
+
+1. Ra7 Kg8 2. Kg2 { The combined action of King and Rook is needed to arrive at a position in which mate can be forced. The general principle for a beginner to follow is to keep his King as much as possible on the same rank, or, as in this case, file, as the opposing King. When, in this case, the King has been brought to the sixth rank, it is better to place it, not on the same file, but on the one next to it towards the centre. } Kf8 3. Kf3 Ke8 4. Ke4 Kd8 5. Kd5 Kc8 ( 5... Ke8 6. Kd6 Kf8 { (the Black King will ultimately be forced to move in front of the White King and be mated by R — R 8) } 7. Ke6 Kg8 8. Kf6 Kh8 9. Kg6 Kg8 10. Ra8# ) 6. Kd6 { Not K — B 6, because then the Black King will go back to Q 1 and it will take much longer to mate. If now the King moves back to Q 1, R — R 8 mates at once. } ( 6. Kc6 Kd8 ) 6... Kb8 ( 6... Kd8 7. Ra8# ) 7. Rc7 Ka8 8. Kc6 Kb8 9. Kb6 Ka8 10. Rc8# { It has taken exactly ten moves to mate from the original position. On move 5 Black could have played K — K 1, and, according to principle, White would have continued } *
+
+
+[Event "1. Some Simple Mates: example-2"]
+[Site "book page 5"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/8/8/4k3/8/8/8/4K2R w K - 0 1"]
+
+1. Ke2 Kd5 2. Ke3 { As the Rook has not yet come into play, it is better to advance the King straight into the centre of the board, not in front, but to one side of the other King. Should now the Black King move to K 4, the Rook drives it back by R — R 5 ch. On the other hand, if 2...K — B 5 instead, then also 3 R — R 5. } Kc4 ( 2... Ke5 3. Rh5+ ) 3. Rh5 { If now 3...K — Kt 5, there follows 4 K — Q 3; but if instead 3...K — B 6; then 4 R — R 4, keeping the King confined to as few squares as possible. } Kc3 ( 3... Kb4 4. Kd3 ) 4. Rh4 { Now the ending may continue: } Kc2 5. Rc4+ Kb3 6. Kd3 Kb2 7. Rb4+ Ka3 8. Kc3 Ka2 { It should be noticed how often the White King has moved next to the Rook, not only to defend it, but also to reduce the mobility of the opposing King. Now White mates in three moves thus: } 9. Ra4+ Kb1 *
+
+
+[Event "1. Some Simple Mates: example-3"]
+[Site "book page 6"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "7k/8/8/8/8/8/8/2B1KB2 w - - 0 1"]
+
+1. Bd3 Kg7 2. Bg5 Kf7 3. Bf5 { and already the Black King is confined to a few squares. If the Black King, in the original position, had been in the centre of the board, or away from the last row, White should have advanced his King, and then, with the aid of his Bishops, restricted the Black King's movements to as few squares as possible. We might now continue: } Kg7 4. Kf2 { In this ending the Black King must not only be driven to the edge of the board, but he must also be forced into a corner, and, before a mate can be given, the White King must be brought to the sixth rank and, at the same time, in one of the last two files; in this case either K R 6, K Kt 6, K B 7, K B 8, and as K R 6 and K Kt 6 are the nearest squares, it is to either of these squares that the King ought to go. } Kf7 5. Kg3 Kg7 6. Kh4 Kf7 7. Kh5 Kg7 8. Bg6 Kg8 9. Kh6 Kf8 { White must now mark time and move one of the Bishops, so as to force the Black King to go back; } 10. Bh5 Kg8 11. Be7 Kh8 { Now the White Bishop must take up a position from which it can give check next move along the White diagonal, when the Black King moves back to Kt 1. } 12. Bg4 Kg8 13. Be6+ Kh8 14. Bf6# { It has taken fourteen moves to force the mate and, in any position, it should be done in under thirty. In all endings of this kind, care must be taken not to drift into a stale mate. In this particular ending one should remember that the King must not only be driven to the edge of the board, but also into a corner. In all such endings, however, it is immaterial whether the King is forced on to the last rank, or to an outside file, e.g. K R 5 or Q R 4, K 1 or Q 8. } *
+
+
+[Event "1. Some Simple Mates: example-4"]
+[Site "book page 8"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "8/8/8/4k3/8/8/8/4K2Q w - - 0 1"]
+
+1. Qc6 Kd4 2. Kd2 { Already the Black King has only one available square } Ke5 3. Ke3 Kf5 4. Qd6 Kg5 { (Should Black play K — Kt 5, then Q — Kt 6 ch) } ( 4... Kg4 5. Qg6+ ) 5. Qe6 Kh4 { (if K — R 4, K — B 4 and mate next move) } ( 5... Kh5 6. Kf4 { and mate next move } ) 6. Qg6 Kh3 7. Kf3 *
+
+
+[Event "6. General Strategy of the Opening: example-17"]
+[Site "book page 26"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+
+1. e4 e5 2. Nf3 { This is both an attacking and a developing move. Black can now either reply with the identical move or play } Nc6 { This developing move at the same time defends the King's Pawn. } ( 2... Nf6 ) 3. Nc3 Nf6 { These moves are of a purely developing nature. } 4. Bb5 { It is generally advisable not to bring this Bishop out until one Knight is out, preferably the King's Knight. The Bishop could also have been played to B 4, but it is advisable whenever possible to combine development and attack. } ( 4. Bc4 ) 4... Bb4 { Black replies in the same manner, threatening a possible exchange of Bishop for Knight with Kt × P to follow. } 5. O-O { an indirect way of preventing 5...B × Kt, which more experience or study will show to be bad. At the same time the Rook is brought into action in the centre, a very important point. } O-O { Black follows the same line of reasoning. } ( 5... Bxc3 ) 6. d3 d6 { These moves have a two-fold object, viz.: to protect the King's Pawn and to open the diagonal for the development of the Queen's Bishop. } 7. Bg5 { A very powerful move, which brings us to the middle-game stage, as there is already in view a combination to win quickly by Kt — Q 5. This threat makes it impossible for Black to continue the same course. (There is a long analysis showing that Black should lose if he also plays B — Kt 5.) He is now forced to play 7...B × Kt, as experience has shown, thus bringing up to notice three things. } Bxc3 { First, the complete development of the opening has taken only seven moves. (This varies up to ten or twelve moves in some very exceptional cases. As a rule, eight should be enough.) Second, Black has been compelled to exchange a Bishop for a Knight, but as a compensation he has isolated White's Q R P and doubled a Pawn. (This, at such an early stage of the game, is rather an advantage for White, as the Pawn is doubled towards the centre of the board.) Third, White by the exchange brings up a Pawn to control the square Q 4, puts Black on the defensive, as experience will show, and thus keeps the initiative, an unquestionable advantage.¹ [Footnote: ¹ The value of the initiative is explained in section 20, p. 77.] The strategical principles expounded above are the same for all the openings, only their tactical application varies according to the circumstances. Before proceeding further I wish to lay stress on the following point which the student should bear in mind. Before development has been completed no piece should be moved more than once, unless it is essential in order to obtain either material advantage or to secure freedom of action. The beginner would do well to remember this, as well as what has already been stated: viz., bring out the Knights before bringing out the Bishops. } ( 7... Bg4 ) *
+
+
+[Event "7. Control of the Centre: example-18"]
+[Site "book page 29"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+
+1. e4 e5 2. Nf3 d6 { A timid move. Black assumes a defensive attitude at once. On principle the move is wrong. In the openings, whenever possible, pieces should be moved in preference to Pawns. } 3. d4 { White takes the offensive immediately and strives to control the centre so as to have ample room to deploy his forces. } Nd7 { Black does not wish to relinquish the centre and also prefers the text move to Kt — Q B 3, which would be the more natural square for the Kt. But on principle the move is wrong, because it blocks the action of the Queen's Bishop, and instead of facilitating the action of Black's pieces, tends, on the contrary, to cramp them. } ( 3... Nc6 ) 4. Bc4 h6 { Black is forced to pay the penalty of his previous move. Such a move on Black's part condemns by itself any form of opening that makes it necessary. White threatened Kt — Kt 5 and Black could not stop it with 4...B — K 2, because of 5 P × P, Kt × P (if 5...P × P, 6 Q — Q 5); 6 Kt × Kt, P × Kt; 7 Q — R 5, and White wins a Pawn and has besides a perfectly safe position. } ( 4... Be7 5. dxe5 Nxe5 ( 5... dxe5 6. Qd5 ) 6. Nxe5 dxe5 7. Qh5 ) 5. Nc3 Ngf6 6. Be3 Be7 7. Qe2 { It should be noticed that White does not Castle yet. The reason is that he wants to deploy his forces first, and through the last move force Black to play P — Q B 3 to make room for the Queen as White threatens R — Q 1, to be followed by P × P. Black's other alternatives would finally force him to play P × P, thus abandoning the centre to White. } c6 8. Rd1 Qc7 9. O-O { With this last move White completes his development, while Black is evidently somewhat hampered. A simple examination will suffice to show that White's position is unassailable. There are no weak spots in his armour, and his pieces are ready for any manœuvre that he may wish to carry out in order to begin the attack on the enemy's position. The student should carefully study this example. It will show him that it is sometimes convenient to delay Castling. I have given the moves as they come to my mind without following any standard book on openings. Whether the moves given by me agree or not with the standard works, I do not know, but at the present stage of this book it is not convenient to enter into discussions of mere technicalities which the student will be able to understand when he has become more proficient. } *
+
+
+[Event "7. Control of the Centre: example-19"]
+[Site "book page 31"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+
+1. e4 e5 2. Nf3 d6 3. d4 Bg4 { A bad move, which violates one of the principles set down, according to which at least one Knight should be developed before the Bishops are brought out, and also because it exchanges a Bishop for a Knight, which in the opening is generally bad, unless there is some compensation. } 4. dxe5 Bxf3 { 4...P × P loses a Pawn. } ( 4... dxe5 ) 5. Qxf3 dxe5 6. Bc4 Qf6 { If Kt — B 3; Q — Q Kt 3 wins a Pawn. } 7. Qb3 b6 8. Nc3 c6 { To prevent Kt — Q 5. Black, however, has no pieces out except his Queen, and White, with a Bishop and a Knight already developed, has a chance of obtaining an advantage quickly by playing Kt — Q 5 anyway. The student is left to work out the many variations arising from this position. } 9. Nd5 { These examples will show the practical application of the principles previously enunciated. The student is warned against playing Pawns in preference to pieces at the beginning of the game, especially P — K R 3 and P — Q R 3, which are moves very commonly indulged in by beginners. } *
+
+
+[Event "8. Traps: example-20"]
+[Site "book page 33"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "r2qkbnr/ppp2pp1/2np3p/4p3/2BPP1b1/2N2N2/PPP2PPP/R1BQK2R w KQkq - 0 1"]
+
+1. dxe5 Nxe5 { Black should have recaptured with the Pawn. } ( 1... dxe5 ) 2. Nxe5 Bxd1 3. Bxf7+ Ke7 4. Nd5# *
+
+
+[Event "8. Traps: example-21"]
+[Site "book page 33"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "*"]
+[SetUp "1"]
+[FEN "rn1qkbnr/ppp1pppp/8/8/2B3b1/2N2N2/PPPP1PPP/R1BQK2R b KQkq - 0 1"]
+
+1... Nf6 ( 1... e6 ) 2. Bxf7+ { Kt — K 5 would also give White the advantage, the threat being of course if B × Q; 2 B × P mate. Nor does B — R 5 help matters, because of 2 Q × B, 1... B — K 3 leaves Black with the inferior position. But White's move in the text secures an immediate material advantage, and the beginner at any rate should never miss such an opportunity for the sake of a speculative advantage in position. } ( 2. Ne5 Bxd1 ( 2... Be6 ) 3. Bxf7# ) 2... Kxf7 3. Ne5+ *
+
