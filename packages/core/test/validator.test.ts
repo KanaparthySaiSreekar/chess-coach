@@ -270,6 +270,21 @@ describe('what the playbook harness showed (2026-11-14)', () => {
     expect(rules('Their last move was {m:Bc5}.')).toContain('R2');
   });
 
+  it('a move written as a check is that check, not a quiet move with the same letters on the board in front of the owner', () => {
+    // found by gate V3 on Black's repertoire: White's 11.Nxe7+ is answered by 11...Nxe7, so "Nxe7" is also legal on the owner's board
+    const line = 'd4 Nf6 c4 g6 Nc3 Bg7 e4 d6 f3 O-O Be3 c5 dxc5 dxc5 Qxd8 Rxd8 Bxc5 Nc6 Nd5 Nd7 Nxe7+'.split(' ');
+    const p = playLine(START_FEN, line);
+    if (!p.ok) throw new Error('setup');
+    const c = { fen: p.fens.at(-1)!, you: 'black' as const, lastMove: { san: 'Nxe7+', baseFen: p.fens.at(-2)! } };
+    const v = validateSay({ kind: 'question', text: 'Their move {m:Nxe7+} gives check. What can take the knight?', claims: [] }, ctx(c));
+    expect(v.tokens).toMatchObject([{ kind: 'move', san: 'Nxe7+', baseFen: p.fens.at(-2)! }]);
+    expect(v.problems.map((x) => x.message).join(' ')).not.toMatch(/no move in it is a check/);
+    // written without the "+", it is the move on the owner's own board, as before
+    expect(validateSay({ kind: 'question', text: 'Can you play {m:Nxe7}?', claims: [] }, ctx(c)).tokens).toMatchObject([{ kind: 'move', san: 'Nxe7', baseFen: p.fens.at(-1)! }]);
+    // and a check that is not one is still refused
+    expect(rules('{m:Nxe7#} wins.', c)).toContain('R2');
+  });
+
   it('a move that is the subject of "wins" or "loses" must agree with the verdict of its fact', () => {
     const before = playLine(START_FEN, 'e4 e5 Qh5 Nc6 Bc4'.split(' '));
     if (!before.ok) throw new Error('setup');

@@ -75,8 +75,8 @@ side (a game is matched with the one it stayed in longest). **The coach sits bes
 it sees the position the owner walks to, or the practice card, and answers any question there (`opening_question`; on a card being
 recalled it never names the move). **Black's opening is chosen too (Q18, 2026-11-17): the Accelerated Dragon against 1.e4,
 the King's Indian setup against everything else** (D102; `content/repertoires/kid-accelerated-dragon.json`, 45 chapters, the
-outline drawn up by Claude from the owner's choices; built 2026-11-17: 648 lines, none quarantined, waiting for the owner's
-approval; Q32). Every move says where it comes from and every word who wrote it (D13). The coach is also beside the safety,
+outline drawn up by Claude from the owner's choices; built 2026-11-17: 648 lines, none quarantined, its words written from the
+facts for 948 of 1,103 positions, waiting for the owner's approval; Q32). Every move says where it comes from and every word who wrote it (D13). The coach is also beside the safety,
 threat and won-game drills (D105). The code is on `main`, pushed to a private GitHub repository (D103).
 
 ## Run it

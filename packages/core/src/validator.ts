@@ -307,6 +307,12 @@ export function validateSay(msg: { kind: SayKind; text: string; claims?: string[
   const text = msg.kind === 'general' ? softenSquares(msg.text ?? '') : softenMoves(softenSquares(msg.text ?? ''), placeable);
 
   // the move that led here, as a token of its own
+  // a move written with "+" or "#" is that check or mate: {m:Nxe7+} is not the quiet Nxe7 that the other side can
+  // also play from the board in front of the owner (their 11.Nxe7+ answered by 11...Nxe7). Written bare, either fits.
+  const suffixFits = (written: string, san: string): boolean => {
+    const w = /[+#]$/.exec(written.replace(/[!?]+$/, ''))?.[0];
+    return !w || san.endsWith(w) || (w === '+' && san.endsWith('#'));
+  };
   const lastMoveToken = (raw: string, body: string): Extract<ResolvedToken, { kind: 'move' }> | null => {
     const lm = ctx.lastMove;
     if (!lm || !sameMoveText(lm.san, body)) return null;
@@ -314,6 +320,7 @@ export function validateSay(msg: { kind: SayKind; text: string; claims?: string[
     const move = p ? anyToMove(p, lm.san) : null;
     if (!p || !move) return null;
     const info = describeMove(p, move);
+    if (!suffixFits(body, info.san)) return null;
     return { kind: 'move', raw, san: info.san, baseFen: lm.baseFen, fenAfter: info.fenAfter, from: info.from, to: info.to };
   };
 
@@ -366,6 +373,7 @@ export function validateSay(msg: { kind: SayKind; text: string; claims?: string[
             const move = p ? anyToMove(p, body) : null;
             if (p && move) {
               const info = describeMove(p, move);
+              if (!suffixFits(body, info.san)) continue;
               resolved = { kind: 'move', raw, san: info.san, baseFen: f, fenAfter: info.fenAfter, from: info.from, to: info.to, factId: fact.id };
               tokenMoves.add(norm(info.san));
               moveByRaw.set(raw, info.san);
@@ -388,6 +396,7 @@ export function validateSay(msg: { kind: SayKind; text: string; claims?: string[
           const move = anyToMove(boards[bi]!, body);
           if (!move) continue;
           const info = describeMove(boards[bi]!, move);
+          if (!suffixFits(body, info.san)) continue;
           resolved = { kind: 'move', raw, san: info.san, baseFen: boardFens[bi]!, fenAfter: info.fenAfter, from: info.from, to: info.to };
           tokenMoves.add(norm(info.san));
           moveByRaw.set(raw, info.san);
@@ -401,6 +410,7 @@ export function validateSay(msg: { kind: SayKind; text: string; claims?: string[
             const move = p2 ? anyToMove(p2, body) : null;
             if (!p2 || !move) continue;
             const info = describeMove(p2, move);
+            if (!suffixFits(body, info.san)) continue;
             resolved = { kind: 'move', raw, san: info.san, baseFen: f, fenAfter: info.fenAfter, from: info.from, to: info.to, factId: fact.id };
             tokenMoves.add(norm(info.san));
             moveByRaw.set(raw, info.san);
