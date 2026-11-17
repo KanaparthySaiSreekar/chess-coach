@@ -16,6 +16,11 @@ export type OutlineFile = {
   name: string;
   colour: Color;
   about?: string;
+  /**
+   * Who drew up the chapter list (D13): the owner (their list, say a course's chapter headings) or
+   * Claude (from the owner's choices). Either way every move in it is checked against the book.
+   */
+  listBy?: 'owner' | 'claude';
   chapters: { moves: string; name?: string; with?: string }[];
 };
 
@@ -35,6 +40,8 @@ export type Outline = {
   id: string;
   name: string;
   colour: Color;
+  /** who drew up the chapter list (D13) */
+  listBy?: 'owner' | 'claude';
   chapters: OutlineChapter[];
   /** my move in each position the chapters name one for (position key → move) */
   mine: Map<string, { uci: string; san: string }>;
@@ -118,7 +125,7 @@ export function readOutline(raw: unknown): { ok: true; outline: Outline } | { ok
   }
   return {
     ok: true,
-    outline: { id: f.id!, name: f.name!.trim(), colour, chapters, mine: new Map([...mine].map(([k, v]) => [k, { uci: v.uci, san: v.san }])), forced, onPath },
+    outline: { id: f.id!, name: f.name!.trim(), colour, listBy: f.listBy === 'owner' || f.listBy === 'claude' ? f.listBy : undefined, chapters, mine: new Map([...mine].map(([k, v]) => [k, { uci: v.uci, san: v.san }])), forced, onPath },
   };
 }
 

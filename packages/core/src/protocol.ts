@@ -7,6 +7,7 @@ import type { PuzzleMove, Rung } from './puzzle.ts';
 import type { ExplorerSource, ExplorerTable } from './explorer.ts';
 import type { LineResult } from './repgames.ts';
 import type { BrowserPosition } from './repbrowser.ts';
+import type { WordsBy } from './repertoire.ts';
 import type { EndgameGoal, RandomStart } from './endgame.ts';
 import type { GameSummary } from './games.ts';
 import type { Gauge, Judged } from './labels.ts';
@@ -100,6 +101,21 @@ export type CoachMessage = {
 };
 
 export type CoachState = 'off' | 'starting' | 'ready' | 'thinking' | 'retrying' | 'error';
+
+/**
+ * The computer's load for the top bar (I18): CPU use since the last sample (%), memory in use and in
+ * all (bytes), this app's own memory, the Stockfish engines running and their memory, and the NVIDIA
+ * GPU when there is one (use %, its memory in bytes, °C, watts).
+ */
+export type SystemView = {
+  at: string;
+  cpu: number;
+  cores: number;
+  ram: { used: number; total: number };
+  app: { memory: number };
+  engines?: { count: number; memory: number };
+  gpu?: { name?: string; util: number; memUsed: number; memTotal: number; temp?: number; power?: number };
+};
 export type CoachStatus = {
   state: CoachState;
   model?: string;
@@ -279,10 +295,16 @@ export type RepBrowserView = {
     waiting: number;
     quarantined: number;
     positions: Record<string, BrowserPosition & { shares?: Record<string, number>; gap?: { covered: number; missing: { san: string; share: number }[] }; book?: Record<string, number> }>;
-    /** its chapters in teaching order (D11): the moves to where each starts, and how its lines stand */
-    chapters?: { name: string; moves: string[]; lines: number; live: number; waiting: number }[];
+    /** its chapters in teaching order (D11): the moves to where each starts, and how its lines stand; `added`: a chapter the masters' games added (not the outline's) */
+    chapters?: { name: string; moves: string[]; lines: number; live: number; waiting: number; added?: boolean }[];
     /** built from the book: the rule every move passed (D10) */
     book?: { minGames: number };
+    /**
+     * Where it comes from (D13), for the page to say: built from the book around an outline (whose
+     * chapter list is the owner's or was drawn up by Claude from the owner's choices), imported, or
+     * made by the starter builder (the engine and Maia).
+     */
+    origin?: { kind: 'book' | 'imported' | 'built'; outline?: { by: 'owner' | 'claude'; note?: string } };
   }[];
 };
 
@@ -338,6 +360,8 @@ export type OpeningView = {
   /** its why and the opponent's idea, as written and checked (V3); plain words */
   why?: string;
   idea?: string;
+  /** who wrote them (D13): the app's reasons phrased by code, Claude, or the owner */
+  wordsBy?: WordsBy;
   /** what the opponent replies after it, as the repertoire prepares, with how often players at the owner's level play it when that is known */
   replies?: { san: string; share?: number }[];
   /** the opponent's last move was a mistake to punish */
@@ -781,6 +805,7 @@ export type ServerMsg =
   | { type: 'threat'; view: ThreatView }
   | { type: 'convert'; view: ConvertView }
   | { type: 'opening'; view: OpeningView }
+  | { type: 'system'; view: SystemView }
   | { type: 'repgame'; view: RepGameView | null }
   | { type: 'repstats'; view: RepStatsView | null }
   | { type: 'repbrowser'; view: RepBrowserView }

@@ -63,6 +63,7 @@ import {
   type PrepareRule,
   type ReplySource,
   type RepLine,
+  type WordsBy,
   type VocabularyLevel,
 } from '@chess-coach/core';
 import type { Db } from './db.ts';
@@ -554,7 +555,7 @@ export class RepertoireService {
   }
 
   /** Keep the authored words of positions of mine (by key), then run the repertoire's gates again so V3 checks them. */
-  async setWords(id: number, entries: { key: string; why?: string; idea?: string }[], opts: { full?: boolean } = {}): Promise<{ ok: true; report: RepertoireReport; unknown: string[] } | { ok: false; reason: string }> {
+  async setWords(id: number, entries: { key: string; why?: string; idea?: string }[], opts: { full?: boolean; by?: WordsBy } = {}): Promise<{ ok: true; report: RepertoireReport; unknown: string[] } | { ok: false; reason: string }> {
     if (!this.db.repertoire(id)) return { ok: false, reason: 'There is no such repertoire.' };
     const mine = new Map<string, { fen: string; uci: string; san: string }>();
     for (const item of this.db.repertoireItems<RepLine>(id)) for (const s of lineSteps(item.body).steps) if (s.mine && !mine.has(positionKey(s.fenBefore))) mine.set(positionKey(s.fenBefore), { fen: s.fenBefore, uci: s.uci, san: s.san });
@@ -565,7 +566,10 @@ export class RepertoireService {
         unknown.push(e.key);
         continue;
       }
-      this.db.setRepText(id, e.key, { ...at, why: e.why?.trim() || undefined, idea: e.idea?.trim() || undefined });
+      const why = e.why?.trim() || undefined;
+      const idea = e.idea?.trim() || undefined;
+      // who wrote them (D13): Claude unless the caller says the app's facts or the owner did
+      this.db.setRepText(id, e.key, { ...at, why, idea, by: why || idea ? (opts.by ?? 'claude') : undefined });
     }
     this.db.logEvent('repertoire_words', { id, positions: entries.length - unknown.length });
     // words change only V3: the lines through the positions written are checked again (every gate with `full`)

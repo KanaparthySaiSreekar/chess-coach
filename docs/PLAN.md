@@ -42,12 +42,12 @@ board, bent arrows for knight moves) joined Phase 4 as work package 4.13._
 |---|---|---|
 | 1 | Toolchain | — |
 | 2 | Spikes | — |
-| 3 | Foundation | A1, H1, I1, I2, I7, I9, I13, I14, I15, I16, I17, K1, K7 |
+| 3 | Foundation | A1, H1, I1, I2, I7, I9, I13, I14, I15, I16, I17, I18, K1, K7 |
 | 4 | Coach on the page | A0, A2, A3, A4, A6, A7, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, H2, H3, H4, H9, H11, H13, H14, H15, H16, H17, H18, H19, H20 |
 | 5 | Import and review | B1, B2, B3, B4, B5, B7, B8, B9, B10, G1, G2, G5, G6, H5, H8, H10, H12 |
 | 6 | Puzzles and drills | C1, C2, C3, C4, C5, C6, C7, C8, C9, G7, H6, I4, J2, J3, J6 |
 | 7 | Sparring and bots | A5, A8, A9, F4, F6, F9, H7, I10 |
-| 8 | Repertoire | B6, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, G3, I3, I6, J1, J4, J5, J7 |
+| 8 | Repertoire | B6, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, G3, I3, I6, J1, J4, J5, J7 |
 | 9 | Lessons and curriculum | F1, F2, F5, F7, I5, I8 |
 | 10 | Courses | E1, E2, E3, E4, E5, E6, E7, J8, J9 |
 | 11 | Daily plan and progress | F3, F8, G4, G8, G9, G10, K2, K3, K4, K5, K6 |
@@ -100,7 +100,7 @@ decision.
 
 **Goal:** a working board on localhost with an analysis board and an editor, on the real architecture.
 
-**Features:** A1, H1, I1, I2, I7, I9, I13, I14, I15, I16, I17, K1, K7
+**Features:** A1, H1, I1, I2, I7, I9, I13, I14, I15, I16, I17, I18, K1, K7
 
 **Depends on:** Phases 1–2.
 
@@ -117,6 +117,7 @@ decision.
 | 3.9 Settings page (K1) | Lists every registered setting by group with its *why* | A new setting appears without page changes |
 | 3.10 Menu, reset, icons, quick settings (I13, I14, I15, K7) | The mode picker and one menu wired to every action; "Reset board" (start, or the first position of what is loaded); piece icons in every list of moves; the *View* menu, presets, search, tabs, steppers and reset in the settings page | A preset changes exactly its keys; a reset keeps a set-up position when asked; Playwright: switch modes, reset, toggle from the *View* menu |
 | 3.11 Look and layout (I16) | One set of design tokens (dark and light) and one set of shared controls (`ui.tsx`: popover, menu, segmented control, sheet, step buttons); a toolbar with the mode picker, the *Game* menu, the *View* switches and the settings button; three flat panes; a settings window with the groups down the side; the coach's options behind one button; self-hosted fonts and one icon set; `display.appearance` and `display.coachFont` | Driven in a browser in dark and light at 1440, 1000 and 600 wide; every old action still reachable; text contrast at least 4.5:1; keyboard: Tab stays inside a dialog, arrows move through a menu, Escape closes |
+| 3.12 The computer's load; coordinates outside (I18, I9; built 2026-11-17) | `server/system.ts` samples the CPU (from `os`), the memory, this server, the Stockfish engines (`tasklist`) and the NVIDIA GPU (`nvidia-smi`) every three seconds while a page is open (`display.systemStats`); three meters in the toolbar with the numbers on press; the board's coordinates in a gutter outside the squares | Fast: nvidia-smi's and tasklist's output read, a sample made only while wanted; Playwright: the whole suite with the gutter (squares found from the board, not the frame) |
 
 **Done when**
 
@@ -264,7 +265,7 @@ S4 is still open, so how human the lowest bots are has not been measured; the pa
 
 **Goal:** a validated repertoire the owner can drill, check against real games, and extend.
 
-**Features:** B6, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, G3, I3, I6, J1, J4, J5, J7
+**Features:** B6, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, G3, I3, I6, J1, J4, J5, J7
 
 **Depends on:** Phases 5–6; S5; the owner's opening choices (Q18).
 
@@ -286,6 +287,8 @@ S4 is still open, so how human the lowest bots are has not been measured; the pa
 | 8.14 Drilling a big repertoire (D11) | New cards a few a day in the teaching order; the drill kept to a repertoire or a chapter | New cards in order and per day; one chapter |
 | 8.15 A collection per side (D10) | Several repertoires for one side: a game matched with the one it stayed in longest; a repertoire removed with its cards and words | Fixture games against two White repertoires; removal |
 | 8.16 The Réti (D10, Q18) | The Réti / Nimzo-Larsen built from the book, its words written chapter by chapter, approved by the owner | Its report: every line V1–V7 passed, every move book |
+| 8.18 Grounded or made (D13); the walk redesigned (D9) | Where each repertoire move comes from (`MoveFrom`: the outline, the book, the owner's level, an import, the starter builder) worked out from the stored outline and what the build kept; who wrote each position's words (`WordsBy`, migration 15, `author.ts apply --by`); who drew up an outline's chapter list (`listBy`); the Openings tab's walk rebuilt: the moves walked as steps back, the chapter, the move with its labels, the why with who wrote it, the replies as a table of master games and the owner's level, *Where it comes from* beside the chapters; the coach as a pane of its own | Fast: who wrote the words kept; Playwright: an imported repertoire labelled so, the replies' columns, a step back from the move list |
+| 8.19 Black: the Accelerated Dragon and the King's Indian (D10, Q18) | The owner's choice (Q18 for Black): an outline drawn up by Claude from it (45 chapters, `listBy: claude`), probed against the masters' games first (every move in 25 or more; where the masters' usual move leaves the setup, the setup's move: D97), built from the book like the Réti, its words from the facts; the owner's approval | The probe; the build's report: every line V1–V7 passed, every move book |
 | 8.17 The coach beside the repertoire (D12) | The Openings tab tells the server where the owner has walked; a question there goes to `coach-opening` with that position's facts and the engine's verdict on the repertoire move (`opening_question`); on a card being recalled the move stays hidden and a message naming it is refused; an *Ask the coach* box beside the walk and the card; the scripted fallback when the coach cannot answer | Engine: the walked position asked about, the answer beside the walk; on a card being recalled, naming the move refused; Playwright: asked from the walk, not in the analysis thread; harness: two scenarios |
 
 **Done when**

@@ -36,6 +36,7 @@ import {
   type RepGameView,
   type RepStatsView,
   type GameForRep,
+  type MoveFrom,
   type RepLine,
   repertoireGraph,
   puzzleKey,
@@ -138,6 +139,7 @@ import { ThreatTrainer, threatSlips } from './threat.ts';
 import { ConvertTrainer } from './convert.ts';
 import { SpeedController } from './speed.ts';
 import { StudyService } from './studies.ts';
+import { SystemMonitor } from './system.ts';
 import { NOT_A_THEME, PuzzleDb } from './datasets/puzzle-db.ts';
 import { GameAnalyser, type GameAnalysis } from './review.ts';
 import { BoardSession } from './session.ts';
@@ -312,6 +314,8 @@ export class App {
   private drillFor: number | null = null;
   /** the position the owner walks to on the Openings tab (D12): the coach there sees it and answers about it */
   private openingWalk: { repertoire: number; moves: string[] } | null = null;
+  /** the computer's load for the top bar (I18): sampled only while a page is open and the setting is on */
+  readonly system = new SystemMonitor({ onView: (view) => this.broadcast({ type: 'system', view }), wanted: () => this.clients.size > 0 && this.settings.get<boolean>('display.systemStats') });
   /** clean solves since the last word of praise: "correct → usually silent" */
   private cleanSolves = 0;
   private clients = new Set<Client>();
@@ -803,6 +807,7 @@ export class App {
 
   async stop() {
     this.stopped = true;
+    this.system.stop();
     if (this.deepTimer) clearTimeout(this.deepTimer);
     this.coach.stop('owner');
     this.play.stop();
@@ -818,6 +823,7 @@ export class App {
 
   addClient(client: Client): () => void {
     this.clients.add(client);
+    this.system.start();
     return () => this.clients.delete(client);
   }
 
@@ -990,6 +996,7 @@ export class App {
     client.send({ type: 'opening', view: this.openings.view });
     client.send({ type: 'repstats', view: this.repStats() });
     client.send({ type: 'repbrowser', view: this.repBrowser() });
+    if (this.system.view && this.settings.get<boolean>('display.systemStats')) client.send({ type: 'system', view: this.system.view });
     client.send({ type: 'endgame', view: this.endgames.view });
     client.send({ type: 'speed', view: this.speed.view });
     client.send({ type: 'studies', view: this.studies.view() });
@@ -2937,16 +2944,29 @@ export class App {
         const t = kept ? readExplorer(fen, kept) : null;
         if (t?.games) at.shares = Object.fromEntries(t.rows.map((row) => [row.uci, row.share]));
       }
-      // built from the book: how many of the masters' games played each move (the grounding, shown with the move)
-      const plan = this.db.repertoire(r.id)?.plan as BookPlan | null | undefined;
+      // built from the book: how many of the masters' games played each move (the grounding, shown with the move),
+      // and why each reply is prepared (the book, the owner's level, the outline)
+      const stored = this.db.repertoire(r.id);
+      const plan = stored?.plan as BookPlan | null | undefined;
+      const outline = plan?.kind === 'book' ? outlineFiles(this.outlinesDir).find((o) => o.id === plan.outline.id)?.outline : undefined;
       if (plan?.kind === 'book') {
         for (const [key, p] of this.db.repBook<BuildPosition>(r.id)) {
           const at = positions[key];
-          if (at && p.book) at.book = Object.fromEntries(p.book.moves.map((m) => [m.uci, m.games]));
+          if (!at) continue;
+          if (p.book) at.book = Object.fromEntries(p.book.moves.map((m) => [m.uci, m.games]));
+          for (const reply of at.replies ?? []) {
+            const why = p.required?.find((q) => q.uci === reply.uci)?.why;
+            if (why?.length) reply.from = [...why];
+          }
         }
       }
+      // where each move of mine comes from (D13): the outline's, the masters' past it, or a repertoire with no book behind it
+      const builtBy: MoveFrom = plan?.kind === 'book' ? 'book' : stored?.source.startsWith('generated:') ? 'built' : 'imported';
+      for (const [key, at] of Object.entries(positions)) {
+        if (at.mine) at.mine.from = outline?.mine.get(key)?.uci === at.mine.uci ? 'outline' : builtBy;
+        if (builtBy !== 'book') for (const reply of at.replies ?? []) reply.from = [builtBy];
+      }
       // its chapters, in teaching order: each starts where the outline's chapter does, or where its lines part
-      const outline = plan?.kind === 'book' ? outlineFiles(this.outlinesDir).find((o) => o.id === plan.outline.id)?.outline : undefined;
       const byChapter = new Map<string, { lines: RepLine[]; live: number; waiting: number; order: number }>();
       for (const x of shown) {
         if (!x.body.chapter) continue;
@@ -2961,12 +2981,14 @@ export class App {
         .sort((a, b) => a[1].order - b[1].order)
         .map(([name, c]) => {
           const first = c.lines[0]!;
-          const ply = outline ? chapterOf(first, outline).ply : commonMoves(c.lines);
-          return { name, moves: first.moves.slice(0, Math.max(1, ply)), lines: c.lines.length, live: c.live, waiting: c.waiting };
+          const where = outline ? chapterOf(first, outline) : undefined;
+          const ply = where ? where.ply : commonMoves(c.lines);
+          return { name, moves: first.moves.slice(0, Math.max(1, ply)), lines: c.lines.length, live: c.live, waiting: c.waiting, added: where?.auto || undefined };
         });
       repertoires.push({
         chapters: chapters.length ? chapters : undefined,
         book: plan?.kind === 'book' ? { minGames: plan.minGames } : undefined,
+        origin: { kind: builtBy, outline: outline ? { by: outline.listBy ?? 'owner' } : undefined },
         id: r.id,
         name: r.name,
         colour: r.colour,

@@ -155,6 +155,7 @@ All nine points are agreed. The full behaviour spec is [COACH.md](COACH.md).
 | D10 | **A collection of rich repertoires, each grounded in the book.** A repertoire is built around an outline of the owner's moves (`content/repertoires/`, chapter by chapter): past them, every move of every line, theirs and the owner's, must have been played in the Lichess masters' database (at least 25 games, a setting), the owner's moves are the masters' most played that the engine passes (V2, V7), and the replies are the book's main lines and sidelines plus those common at the owner's level that are book too; about 650 lines, the positions met most often first, up to 12 moves deep. A side can hold several such repertoires; one can be removed. The first: the Réti with the Nimzo-Larsen setup (1.Nf3, 2.b3) for White. | owner | 8 | agreed |
 | D11 | **Chapters.** A repertoire's lines are kept in chapters (the outline's, then the ones the book adds) in a teaching order: browsed, approved, given their words and drilled chapter by chapter; new cards come a few a day (a setting). | owner | 8 | agreed |
 | D12 | **The coach beside the repertoire.** On the Openings tab the coach sees the board in front of the owner, the position they walked to in their repertoire or the practice card, and the owner can ask it anything at any time; it answers from that position's checked facts, and while a card asks for the move it never names it. A move the app has no written reason for is explained by the coach when asked. Built 2026-11-16 (WP 8.17). | owner | 8 | agreed |
+| D13 | **Grounded or made, always said.** What comes from a reference is kept apart from what was made, on the page and in the data: each repertoire move says whether it is the owner's outline move, the masters' choice past it (with its count of master games), a reply players at the owner's level make, an import, or the engine-built starter's; a chapter list says whether it is the owner's or was drawn up by Claude from the owner's choices, and a chapter the book added says so; each move's words say who wrote them (the app's own reasons phrased by code, Claude from the checked facts, or the owner). Built 2026-11-17 (WP 8.18). | owner | 8 | agreed |
 
 Every repertoire line is live only after the validation gates pass ([CONTENT.md](CONTENT.md), group J).
 
@@ -242,7 +243,7 @@ All H rows: source *owner* ("you need to have all the powers") for H1–H10, *re
 | I6 | **Studies:** my own annotated lines in chapters, with arrows; the base for repertoires and courses. Built 2026-11-15: *Game → Studies…* on the analysis board. | Studies | owner | 8 | agreed |
 | I7 | **Game library** with PGN import and export. | Library, import | owner | 3 | agreed |
 | I8 | **Tablebase lookup** for positions with few pieces. | Tablebase | owner | 9 | agreed |
-| I9 | **Board preferences:** themes, piece sets, sounds, coordinates, click or drag. | Preferences | owner | 3 | agreed |
+| I9 | **Board preferences:** themes, piece sets, sounds, coordinates, click or drag. The coordinates sit outside the board, in a gutter left of the ranks and under the files (the owner, 2026-11-17). | Preferences | owner | 3 | agreed |
 | I10 | **Clocks and time controls** against bots. Built 2026-11-15: no clock by default; rapid and classical controls (TRACKER D70). | Play vs computer | owner | 7 | agreed |
 | I11 | **Phone-friendly layout** on the home network (TRACKER Q7). | Mobile apps | owner | 12 | agreed |
 | I12 | Online play against humans, tournaments, teams, chat, TV, variants. | — | — | — | parked: a single-user local app; the owner plays humans on the real sites (D24) |
@@ -251,6 +252,7 @@ All H rows: source *owner* ("you need to have all the powers") for H1–H10, *re
 | I15 | **Menu and mode picker** wired to everything that exists: the modes as tabs (Analysis board · Play a bot), one *Game* menu with every action of the current mode, and a *View* menu for what the board shows and how the page looks. Each new mode and action is added here as it is built. | Site navigation | owner | 3 | agreed |
 | I16 | **The look of the page, and where things live:** an Apple-style interface (quiet panes, one toolbar, the board as the picture); the menus, options and drop-downs rearranged (a *Game* menu, the *View* switches, a settings window with the groups down the side, the coach's options behind one button); light and dark as a setting; the coach's words in a book typeface, as a setting. Nothing was removed: every action and setting is still there. | Site design | owner | 3 | agreed |
 | I17 | **Captured material beside the board:** the pieces each side has taken on its edge of the board, and +2 or +3 for the side ahead in material, as on Chess.com (or only the difference, as on Lichess, or off: a setting). Built 2026-11-15 on the analysis board and in games against the bots. | Analysis board, game screen | owner | 3 | agreed |
+| I18 | **The computer's load in the top bar:** CPU, memory and GPU use beside *Game* and *View*, with the numbers behind them on press (the GPU's memory, heat and power; this app's server and its Stockfish engines). Sampled every three seconds while the page is open; nothing leaves the machine; a setting. Built 2026-11-17 (WP 3.12). | Site chrome | owner | 3 | agreed |
 
 The rest of the two sites maps onto other groups: play vs computer and Play Coach → A5, F4, F9 ·
 puzzles, themes and the puzzle dashboard → C5, G7 · Learn, Practice and lessons → F1, F2 · game review
@@ -426,4 +428,18 @@ Anything the owner wants goes here first, in their own words, then into the cata
 - **The coach beside the repertoire (2026-11-16):** about the moves the app cannot give a reason for:
   "I mean coach would be there seeing my board and i can ask it any time so cool - have coach be there"
   → **D12** (TRACKER D98).
+- **Black's openings (2026-11-17):** "Kings indian and sicilian"; asked which Sicilian, the Accelerated
+  Dragon; asked what against White's other first moves, the King's Indian setup → Q18 answered for Black,
+  built from the book like the Réti (TRACKER D102).
+- **Grounded or made (2026-11-17):** "Also differentiate between what you created or generated vs what was
+  taken as a reference like with grounding since its all book practice it has to be grounded" → **D13**
+  (TRACKER D100).
+- **The repertoire pane (2026-11-17):** about the Openings tab's walk ("Your move: f3 / Book: played in
+  303,299 of the masters' games here. / Not approved yet … / Nf3 develops your knight. / Play it / Coach /
+  Start coach"): "this isnt good looking or correctly done UI wise please fix it" → D9 redesigned with D13
+  (TRACKER D100).
+- **The computer's load (2026-11-17):** "Also in the site show the hardware insights like RAM used GPU used
+  CPU used memeory shit beside Game, View and settings have this" → **I18** (TRACKER D101).
+- **Coordinates (2026-11-17):** "The board lables like A B C D 1 2 3 4 move then outside the board cause its
+  kinda not visible" → I9 (TRACKER D101).
 - *(add more here)*

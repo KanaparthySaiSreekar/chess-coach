@@ -13,6 +13,19 @@ import { describeMove, parsePosition, positionKey, sanToMove, type Color } from 
 import type { GateResult } from './content.ts';
 import { standardCastling } from './setup.ts';
 
+/**
+ * Who wrote a position's words (D13): the app's own reasons phrased by code ('facts'), Claude from the
+ * checked facts ('claude'), or the owner. Every sentence passed V3 whoever wrote it.
+ */
+export type WordsBy = 'facts' | 'claude' | 'owner';
+
+/**
+ * Where a repertoire move comes from (D13): the owner's outline, the masters' games past it (a book
+ * repertoire), the replies players at the owner's level make (book too), a PGN or study the owner
+ * imported, or the starter builder (the engine and Maia, no book behind it).
+ */
+export type MoveFrom = 'outline' | 'book' | 'level' | 'imported' | 'built';
+
 export type RepLine = {
   /** the repertoire the line belongs to (0 until it is stored) */
   repertoire: number;

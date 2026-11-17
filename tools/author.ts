@@ -10,7 +10,9 @@
 //                                                   only my first N moves of each line
 //   node tools/author.ts apply <id> <file.json>     keep the words written in the file; V3 checks every
 //        [--full]                                   sentence, on the lines through those positions (every
-//                                                   gate on every line with --full)
+//        [--by claude|facts|owner]                  gate on every line with --full); --by says who wrote them
+//                                                   (D13): Claude (the default), the app's own reasons
+//                                                   phrased by code, or the owner
 //
 // The words are written by a person or by Claude in a terminal session, from the facts on the sheet
 // only; they are checked like live coach messages (V3), and a position whose words fail quarantines
@@ -42,11 +44,14 @@ const chapter = option('--chapter');
 const missing = option('--missing') !== undefined;
 const depthOnly = option('--depth');
 const full = option('--full') !== undefined;
+const byText = option('--by');
 const [command, idText, file] = argv;
 const usage = () => {
-  console.error('usage: node tools/author.ts list | chapters <id> | sheet <id> [file.json] [--chapter "<name>"] [--missing] [--depth N] | apply <id> <file.json> [--full]');
+  console.error('usage: node tools/author.ts list | chapters <id> | sheet <id> [file.json] [--chapter "<name>"] [--missing] [--depth N] | apply <id> <file.json> [--full] [--by claude|facts|owner]');
   process.exit(1);
 };
+if (byText !== undefined && byText !== 'claude' && byText !== 'facts' && byText !== 'owner') usage();
+const by = (byText || undefined) as 'claude' | 'facts' | 'owner' | undefined;
 if (!command || !['list', 'chapters', 'sheet', 'apply'].includes(command)) usage();
 
 const dbFile = path.join(config.dataDir, 'chess-coach.sqlite');
@@ -128,7 +133,7 @@ if (command === 'chapters') {
   }
 } else {
   const entries = JSON.parse(readFileSync(file!, 'utf8')) as { key: string; why?: string; idea?: string }[];
-  const r = await reps.setWords(id, entries, { full });
+  const r = await reps.setWords(id, entries, { full, by });
   process.stderr.write('\n');
   if (!r.ok) {
     console.error(r.reason);

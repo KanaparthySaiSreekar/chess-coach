@@ -2,6 +2,7 @@
 // board and i can ask it any time"). Beside the repertoire being walked and beside the practice card:
 // the coach sees that board, and the owner types a question whenever they like. The answers go through
 // the same checks as on the analysis board; while a card asks for the move, the coach does not name it.
+// It looks like the analysis board's coach pane (CoachPanel): the same head, thread and composer.
 
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
 import { ArrowUp } from 'lucide-react';
@@ -10,7 +11,14 @@ import { Message } from './CoachPanel.tsx';
 import { send, type Store } from './store.ts';
 import { Mark } from './ui.tsx';
 
-export function OpeningCoach({ s, shows, thread, suggestions = [], showThread = true }: { s: Store; shows: string; thread: (m: CoachMessage) => boolean; suggestions?: string[]; showThread?: boolean }) {
+const STATE_TEXT: Record<string, string> = { off: 'Off', starting: 'Starting…', ready: 'Ready', thinking: 'Thinking…', retrying: 'Retrying…', error: 'Stopped' };
+
+/** Ask the coach about the board in front of you; `send` it from anywhere on the tab (a button that asks a set question). */
+export function askCoach(text: string) {
+  send({ type: 'ask', text });
+}
+
+export function OpeningCoach({ s, shows, thread, suggestions = [], compact = false }: { s: Store; shows: string; thread: (m: CoachMessage) => boolean; suggestions?: string[]; compact?: boolean }) {
   const [text, setText] = useState('');
   const end = useRef<HTMLDivElement>(null);
   const messages = s.thread.filter(thread);
@@ -19,13 +27,13 @@ export function OpeningCoach({ s, shows, thread, suggestions = [], showThread = 
   const thinking = state === 'thinking' || state === 'starting' || state === 'retrying';
   const lastIsOwner = messages.at(-1)?.from === 'owner';
   useEffect(() => {
-    if (showThread) end.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-  }, [messages.length, thinking, showThread]);
+    if (!compact) end.current?.scrollIntoView({ block: 'end', behavior: 'smooth' });
+  }, [messages.length, thinking, compact]);
 
   const ask = (q: string) => {
     const t = q.trim();
     if (!t) return;
-    send({ type: 'ask', text: t });
+    askCoach(t);
     setText('');
   };
   const submit = (e: FormEvent) => {
@@ -40,28 +48,35 @@ export function OpeningCoach({ s, shows, thread, suggestions = [], showThread = 
   };
 
   return (
-    <section className="pane-section opening-coach" aria-label="Ask the coach">
-      <header className="pane-head">
-        <h2>Coach</h2>
-        {on ? (
-          <span className="muted opening-coach-state" role="status">
-            {thinking ? 'Thinking…' : `Sees ${shows}`}
-          </span>
-        ) : (
-          <button className="btn small primary" onClick={() => send({ type: 'coach', action: 'start' })}>
-            Start coach
+    <section className={`opening-coach${compact ? ' compact' : ''}`} aria-label="Ask the coach">
+      <div className="coach-head">
+        <div className="coach-title">
+          <span className={`dot dot-${state}`} aria-hidden="true" />
+          <div className="coach-name">
+            <h2>Coach</h2>
+            <span className="coach-state" role="status">
+              {on ? (thinking ? STATE_TEXT[state] : `Sees ${shows}`) : (STATE_TEXT[state] ?? state)}
+            </span>
+          </div>
+          <button className={on ? 'btn small' : 'btn primary small'} onClick={() => send({ type: 'coach', action: on ? 'stop' : 'start' })}>
+            {on ? 'Stop coach' : 'Start coach'}
           </button>
-        )}
-      </header>
-      {showThread && (
-        <div className="drill-thread" aria-live="polite">
-          {messages.length === 0 && on && suggestions.length > 0 && (
-            <div className="suggestions">
-              {suggestions.map((q) => (
-                <button key={q} className="suggestion" onClick={() => ask(q)}>
-                  {q}
-                </button>
-              ))}
+        </div>
+      </div>
+      {!compact && (
+        <div className="thread" aria-live="polite">
+          {messages.length === 0 && (
+            <div className="thread-empty">
+              <p className="opening-coach-hint">{on ? `Ask anything about ${shows}: the coach checks every chess statement against the engine before you see it.` : `Start the coach to ask about ${shows}.`}</p>
+              {on && suggestions.length > 0 && (
+                <div className="suggestions">
+                  {suggestions.map((q) => (
+                    <button key={q} className="suggestion" onClick={() => ask(q)}>
+                      {q}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
           {messages.map((m) => (
@@ -80,12 +95,14 @@ export function OpeningCoach({ s, shows, thread, suggestions = [], showThread = 
           <div ref={end} />
         </div>
       )}
-      <form className="ask" onSubmit={submit}>
-        <textarea value={text} onChange={(e) => setText(e.target.value)} onKeyDown={onKey} rows={2} placeholder={`Ask the coach about ${shows}…`} aria-label="Ask the coach" maxLength={1000} />
-        <button className="send" type="submit" disabled={!text.trim()} aria-label="Send" title="Send (Enter)">
-          <ArrowUp size={17} strokeWidth={2.4} />
-        </button>
-      </form>
+      <div className="composer">
+        <form className="ask" onSubmit={submit}>
+          <textarea value={text} onChange={(e) => setText(e.target.value)} onKeyDown={onKey} rows={compact ? 1 : 2} placeholder={`Ask the coach about ${shows}…`} aria-label="Ask the coach" maxLength={1000} />
+          <button className="send" type="submit" disabled={!text.trim()} aria-label="Send" title="Send (Enter)">
+            <ArrowUp size={17} strokeWidth={2.4} />
+          </button>
+        </form>
+      </div>
     </section>
   );
 }

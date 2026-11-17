@@ -14,6 +14,7 @@ import { ExplorerPane } from './Explorer.tsx';
 import { RepGameNote } from './RepGame.tsx';
 import { MaterialStrip } from './Material.tsx';
 import { OpeningsTab } from './OpeningsTab.tsx';
+import { SystemStats } from './SystemStats.tsx';
 import { EndgamesTab } from './Endgames.tsx';
 import { GamesView } from './Games.tsx';
 import { KeyMoments } from './Moments.tsx';
@@ -385,6 +386,7 @@ export function App() {
         )}
       </div>
       <div className="toolbar-actions">
+        <SystemStats s={s} />
         <Popover
           label={
             <>

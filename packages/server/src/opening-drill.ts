@@ -225,6 +225,7 @@ export class OpeningTrainer {
       move: { san: c.move.san, from: info.uci.slice(0, 2), to: info.uci.slice(2, 4) },
       why: c.why ? plainText(c.why) : undefined,
       idea: c.idea ? plainText(c.idea) : undefined,
+      wordsBy: c.why || c.idea ? c.wordsBy : undefined,
       replies: c.replies.map((r) => ({ san: r.san, share: shares?.get(r.uci) })).sort((a, b) => (b.share ?? -1) - (a.share ?? -1)),
       after: info.fenAfter,
     };

@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { SkipForward } from 'lucide-react';
-import { lineText, type Color, type Shape } from '@chess-coach/core';
+import { lineText, type Color, type Shape, type WordsBy } from '@chess-coach/core';
 import { Board } from './Board.tsx';
 import { Message } from './CoachPanel.tsx';
 import { OpeningCoach } from './OpeningCoach.tsx';
@@ -13,6 +13,13 @@ import { send, setting, type Store } from './store.ts';
 
 
 const side = (c: Color) => (c === 'white' ? 'White' : 'Black');
+
+/** Who wrote a move's words (D13), as the page says it: generated text is never shown as if it came from a book. */
+export const WORDS_BY: Record<WordsBy, string> = {
+  facts: "Phrased by the app from the engine's checked facts",
+  claude: "Written by Claude from the engine's checked facts, and checked against them",
+  owner: 'Your own words',
+};
 
 /** What the drill draws from (D11): everything, one repertoire, or one of its chapters. */
 function Scope({ s }: { s: Store }) {
@@ -166,6 +173,7 @@ export function OpeningPanels({ s, sets }: { s: Store; sets: React.ReactNode }) 
             )}
             {v.why && <p className="opening-words">{v.why}</p>}
             {v.idea && v.status !== 'why' && <p className="opening-words idea">{v.idea}</p>}
+            {(v.why || (v.idea && v.status !== 'why')) && v.wordsBy && <p className="words-source">{WORDS_BY[v.wordsBy]}</p>}
             {v.status === 'why' && v.why && (
               <div className="opening-why">
                 {v.words && <p className="muted">You said: “{v.words}”</p>}
@@ -214,7 +222,7 @@ export function OpeningPanels({ s, sets }: { s: Store; sets: React.ReactNode }) 
           </section>
         )}
         {/* the coach sees this card and can be asked any time (D12); its answers show with the card above */}
-        {v.status !== 'idle' && <OpeningCoach s={s} shows="this card" thread={(m) => m.drill === v.id} showThread={false} />}
+        {v.status !== 'idle' && <OpeningCoach s={s} shows="this card" thread={(m) => m.drill === v.id} compact />}
       </aside>
     </main>
   );

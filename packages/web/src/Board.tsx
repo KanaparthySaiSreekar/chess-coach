@@ -212,7 +212,7 @@ export function Board(p: BoardProps) {
   };
 
   return (
-    <div className={`board-frame theme-${p.theme}`}>
+    <div className={`board-frame theme-${p.theme}${p.coordinates ? ' with-coords' : ''}`}>
       <div ref={el} className="cg-wrap board" />
       {promo && (
         <div className="promo-backdrop" onClick={() => choose(null)}>

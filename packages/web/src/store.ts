@@ -1,7 +1,7 @@
 // The page's state: one WebSocket to the server, one store the components read.
 
 import { useSyncExternalStore } from 'react';
-import type { AppMode, BotsView, ClientMsg, CoachMessage, CoachStatus, EngineView, ExplorerView, ContentReviewView, OpeningView, EndgameView, RepGameView, RepStatsView, RepBrowserView, GameView, Insight, LibraryView, PresetView, PuzzleView, ReviewView, SafetyView, ThreatView, ConvertView, SpeedView, StudiesView, ServerMsg, SessionState, SettingView } from '@chess-coach/core';
+import type { AppMode, BotsView, ClientMsg, CoachMessage, CoachStatus, EngineView, ExplorerView, ContentReviewView, OpeningView, EndgameView, RepGameView, RepStatsView, RepBrowserView, SystemView, GameView, Insight, LibraryView, PresetView, PuzzleView, ReviewView, SafetyView, ThreatView, ConvertView, SpeedView, StudiesView, ServerMsg, SessionState, SettingView } from '@chess-coach/core';
 
 export type Toast = { id: number; level: 'info' | 'error'; text: string };
 /** The coach's line being played move by move on the page. */
@@ -41,6 +41,8 @@ export type Store = {
   repstats: RepStatsView | null;
   /** the Openings tab's repertoires to walk (D9) */
   repbrowser: RepBrowserView | null;
+  /** the computer's load for the top bar (I18) */
+  system: SystemView | null;
   /** the Endgames tab: the ladder and the position being played (F2) */
   endgame: EndgameView | null;
   /** a speed run (streak or timed), when that is what is practised */
@@ -85,6 +87,7 @@ let store: Store = {
   repgame: null,
   repstats: null,
   repbrowser: null,
+  system: null,
   endgame: null,
   speed: null,
   studies: null,
@@ -250,6 +253,8 @@ function onMessage(m: ServerMsg) {
       return set({ repstats: m.view });
     case 'repbrowser':
       return set({ repbrowser: m.view });
+    case 'system':
+      return set({ system: m.view });
     case 'endgame':
       return set({ endgame: m.view });
     case 'speed':

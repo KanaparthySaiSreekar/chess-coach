@@ -921,16 +921,24 @@ describe('the page in a browser', () => {
     await expect.poll(() => page.locator('.rep-pick', { hasText: 'Test White' }).count()).toBe(1);
     await page.locator('.rep-pick', { hasText: 'Test White' }).click();
     const walk = page.locator('.rep-walk');
-    await expect.poll(() => walk.innerText()).toMatch(/The starting position[\s\S]*Your move:\s*e4/);
+    await expect.poll(() => walk.innerText()).toMatch(/Start[\s\S]*Your move\s*e4/i);
+    // where the move comes from (D13): an imported repertoire says so, on the move and beside the chapters
+    expect(await walk.locator('.tag').allInnerTexts()).toContain('Imported');
+    expect(await page.locator('.rep-origin').innerText()).toMatch(/Imported by you[\s\S]*Words:/);
     await walk.getByRole('button', { name: 'Play it' }).click();
     // their replies prepared after 1.e4, the most played at the owner's level first (the recorded explorer answer)
     // (1...d6 is there too: the review test accepted that line with a note)
-    await expect.poll(() => walk.locator('.rep-reply').allInnerTexts()).toEqual([expect.stringMatching(/^e5 65% at your level/), expect.stringMatching(/^c5 5% at your level/), expect.stringMatching(/^d6 \d+% at your level/), 'a6']);
+    await expect.poll(() => walk.locator('.rep-reply-move').allInnerTexts()).toEqual(['e5', 'c5', 'd6', 'a6']);
+    expect(await walk.locator('.rep-reply-share').allInnerTexts()).toEqual(['65%', '5%', expect.stringMatching(/^\d+%$/), '–']);
     expect(await walk.innerText()).toMatch(/Not prepared: d5/);
     await walk.locator('.rep-reply', { hasText: /^e5/ }).click();
-    await expect.poll(() => walk.innerText()).toMatch(/1\.e4 e5[\s\S]*Your move:\s*f3/);
+    await expect.poll(() => walk.innerText()).toMatch(/1\.\s*e4\s*e5[\s\S]*Your move\s*f3/i);
+    // the moves walked are steps back: the first one goes back to 1.e4
+    await walk.locator('.crumb').nth(1).click();
+    await expect.poll(() => walk.innerText()).toMatch(/What they play/i);
+    await walk.locator('.rep-reply', { hasText: /^e5/ }).click();
     await page.getByRole('button', { name: 'Back', exact: true }).click();
-    await expect.poll(() => walk.innerText()).toMatch(/What they play/);
+    await expect.poll(() => walk.innerText()).toMatch(/What they play/i);
   });
 
   it('the coach on the Openings tab: started there, it sees the walked board and answers beside it, not in the analysis thread (D12)', async () => {
@@ -939,7 +947,7 @@ describe('the page in a browser', () => {
     const walk = page.locator('.rep-walk');
     await walk.getByRole('button', { name: 'Play it' }).click();
     await walk.locator('.rep-reply', { hasText: /^e5/ }).click();
-    await expect.poll(() => walk.innerText()).toMatch(/1\.e4 e5[\s\S]*Your move:\s*f3/);
+    await expect.poll(() => walk.innerText()).toMatch(/1\.\s*e4\s*e5[\s\S]*Your move\s*f3/i);
     const box = page.locator('.opening-coach');
     await box.getByRole('button', { name: 'Start coach' }).click();
     await expect.poll(() => box.innerText()).toMatch(/Sees this position/);
@@ -1004,7 +1012,7 @@ describe('the page in a browser', () => {
     const chapters = page.locator('.rep-chapter-list');
     await expect.poll(() => chapters.innerText()).toMatch(/Against 1\.\.\.d5[\s\S]*Against 1\.\.\.Nf6/);
     await chapters.locator('.rep-pick', { hasText: 'Against 1...Nf6' }).click();
-    await expect.poll(() => page.locator('.rep-walk').innerText()).toMatch(/1\.Nf3 Nf6[\s\S]*Your move:\s*b3/);
+    await expect.poll(() => page.locator('.rep-walk').innerText()).toMatch(/1\.\s*f3\s*f6[\s\S]*Chapter\s*Against 1\.\.\.Nf6[\s\S]*Your move\s*b3/i);
     // the drill kept to the approved chapter: its first new card
     await page.getByRole('radio', { name: 'Practice' }).click();
     const scope = page.getByLabel('What to practise');

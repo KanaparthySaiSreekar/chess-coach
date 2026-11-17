@@ -6,7 +6,7 @@
 
 import { describeMove, mustPosition, parsePosition, positionKey, sanToMove, uciToMove, type Color } from './chess.ts';
 import type { GateResult } from './content.ts';
-import { lineSteps, type RepLine } from './repertoire.ts';
+import { lineSteps, type RepLine, type WordsBy } from './repertoire.ts';
 import type { TrapItem } from './trap.ts';
 
 export type OpeningCard = {
@@ -22,6 +22,8 @@ export type OpeningCard = {
   startFen: string;
   why?: string;
   idea?: string;
+  /** who wrote the why and the idea (D13): the app's reasons phrased by code, Claude, or the owner */
+  wordsBy?: WordsBy;
   /** the opponent's replies the repertoire prepares after my move */
   replies: { uci: string; san: string }[];
   /** the opponent's last move is a mistake to punish (marked by the starter builder) */
@@ -43,7 +45,7 @@ export type OpeningCard = {
  * depth (moves of mine past it are kept in the lines but not drilled). The first line through a
  * position gives its context; the replies are gathered from every line.
  */
-export function openingCards(repertoire: number, lines: readonly RepLine[], words: ReadonlyMap<string, { uci: string; why?: string; idea?: string }>, depthMoves: number): OpeningCard[] {
+export function openingCards(repertoire: number, lines: readonly RepLine[], words: ReadonlyMap<string, { uci: string; why?: string; idea?: string; by?: WordsBy }>, depthMoves: number): OpeningCard[] {
   const cards = new Map<string, OpeningCard>();
   // in the teaching order: a position shared by several chapters belongs first to the one taught first
   const ordered = lines.map((line, li) => ({ line, li })).sort((a, b) => (a.line.order ?? a.li) - (b.line.order ?? b.li));
@@ -75,6 +77,7 @@ export function openingCards(repertoire: number, lines: readonly RepLine[], word
           startFen: line.startFen,
           why: w?.uci === s.uci ? w.why : undefined,
           idea: w?.uci === s.uci ? w.idea : undefined,
+          wordsBy: w?.uci === s.uci && (w.why || w.idea) ? w.by : undefined,
           replies: [],
           punish: prev && !prev.mine && line.punish?.includes(prev.index) ? true : undefined,
           chapters: line.chapter ? [line.chapter] : undefined,

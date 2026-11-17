@@ -35,6 +35,7 @@ draft  →  machine-verified  →  owner-approved  →  live
 | Starter repertoire | Generated here ([§7](#7-repertoire)) | the project's | D1, D3, D4 |
 | Imported repertoires | PGN files, Lichess studies | the author's; private use, not committed unless the owner wrote it | D2 |
 | Repertoires from the book | The owner's outline (`content/repertoires/`, moves only) and the Lichess masters' database: over-the-board games, players 2200 and up; counts of games only, asked through the explorer ([§7](#7-repertoire)) | the project's (the outline: the owner's choice of moves) | D10, D11 |
+| Black's repertoire from the book | An outline drawn up by Claude from the owner's choices (`content/repertoires/kid-accelerated-dragon.json`, `listBy: "claude"`), then the masters' database as above | the project's | D10, D11, D13 |
 | Trap pack | Authored here, then gated | the project's | D8 |
 | Lessons, model-game notes | Authored here to the curriculum ([§8](#8-lessons)) | the project's | F1, F5 |
 | Endgame positions | Composed + tablebase verdicts | the project's | F2 |
@@ -43,6 +44,27 @@ draft  →  machine-verified  →  owner-approved  →  live
 
 Not used as content: chess_rocket's puzzle sets (GPL), anything from Chessable (no export), Lichess
 Learn / Practice text (its content licence hasn't been checked; ideas only).
+
+### 2.1 Grounded or made (D13)
+
+The owner studies from all of this, so what was **taken from a reference** is kept apart from what was
+**made** (by code, by Claude, or by the engine), in the data and on the page (the owner, 2026-11-17: "it
+has to be grounded"). Made things are never presented as if they came from a book; every made thing is
+checked by the gates before it is used.
+
+| What | Taken from a reference | Made, and by whom | Where the page says so |
+|---|---|---|---|
+| A book repertoire's moves past the outline | The Lichess masters' database: every move, both sides, in at least 25 games; the count is kept with the move | Which of the masters' moves is chosen: the most played that Stockfish passes (V2, V7) | The move's labels: *Masters' choice* and *N master games* |
+| A book repertoire's outline moves | The owner's choice (the Réti: the owner's chapter list, from a course's headings, moves only) | Black's outline (2026-11-17): drawn up by **Claude** from the owner's choices (the King's Indian, the Accelerated Dragon, the King's Indian setup elsewhere), `listBy: "claude"`; every move in it checked against the masters' games | *Your outline* on the move; *Where it comes from* says whose chapter list it is |
+| The opponent's replies | The masters' database (the book rule) and the Lichess explorer at the owner's level | Which are prepared: the reply rule (`repliesToPrepare`), code | The replies' table: master games and the owner's level; *your outline* / *your level* where that is why |
+| Chapters | The outline's chapters | A chapter the book added (a move order the outline does not name): named by code from its moves and the Lichess openings list | *added by the book* in the chapter list |
+| A move's why and the opponent's idea | Never from a course or a book | The app's own reasons (`moveReasons`, code) phrased by code (`facts`), or written by **Claude** from the same checked facts (`claude`), or the owner's (`owner`); every sentence through V3 | A line under the words: *Phrased by the app from the engine's checked facts* / *Written by Claude …* / *Your own words* |
+| Imported repertoires | The owner's PGN or study | — | *Imported* |
+| The starter repertoire | — | The engine and Maia around the seed lines (no book behind it) | *Engine-built* |
+| Puzzles | The owner's games; the Lichess puzzle database | The engine's solution and the motif tags (code) | The puzzle set's name |
+| Endgame positions, mini-games, the trap pack | Known positions and traps (named in the files) | Composed or chosen by Claude and checked: the tablebases (endgames), the engine and the masters' counts (traps) | The tab they are on |
+| The coach's messages | — | Written live by the model; every chess statement checked against the engine's facts (the validator) | *Checked by Stockfish* / *Matches Lichess analysis*; *An idea, not a checked fact* for the rest |
+| Opening names | The Lichess openings list | — | Beside the moves |
 
 ## 3. The envelope
 

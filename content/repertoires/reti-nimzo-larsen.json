@@ -2,6 +2,7 @@
   "id": "reti-nimzo-larsen",
   "name": "Réti: the Nimzo-Larsen setup (1.Nf3 and 2.b3)",
   "colour": "white",
+  "listBy": "owner",
   "about": "The owner's choice of White opening (TRACKER Q18, 2026-11-15): the moves of each chapter are the owner's, from the chapter list they gave, plus their answers for White's second move against 1...c5 (2.b3), 1...Nc6 (2.d4) and 1...b5 (2.e4), and where the masters' usual move left the 2.b3 setup (Q30, 2026-11-16): 2.b3 against 1...e6, 3.e4 against 1...d6 2.d4 g6. Moves only. Everything past these moves comes from the Lichess masters database (every move played in at least the book rule's number of games), checked by the engine.",
   "chapters": [
     { "moves": "1. Nf3 Nf6 2. b3 g6", "name": "1...Nf6 2.b3 g6: Black plays without ...d5" },

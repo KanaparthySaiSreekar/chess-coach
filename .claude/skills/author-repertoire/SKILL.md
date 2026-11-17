@@ -31,7 +31,9 @@ facts give no reason, write less, or nothing: an empty idea is fine; an invented
      a fact on that position's list says exactly that. The validator refuses them otherwise.
 4. `node tools/author.ts apply <id> work.json`: the words are kept, and V3 checks every sentence like
    a live coach message, against the same facts, on the lines through those positions (`--full` runs
-   every gate on every line).
+   every gate on every line). The words are recorded as **written by Claude** (D13: the page says who
+   wrote them); words phrased word for word from the facts' "Why:" by a script go in with `--by facts`,
+   the owner's own with `--by owner`.
 5. Read what failed: `the why "{m:Nf3} forks…": …` names the sentence and the rule. Rewrite it from the
    facts and apply again, until it prints `Every sentence passed V3.`
 

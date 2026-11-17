@@ -4,16 +4,16 @@
 // level play them, and the gaps. *Practice*: the opening drill (one card per position, the trap pack
 // among them). Building, importing and approving stay on the review screen, one click away.
 
-import { useEffect, useState } from 'react';
-import { ChevronLeft, ChevronsLeft, ClipboardCheck } from 'lucide-react';
-import { START_FEN, lineText, playLine, positionKey, type Color, type RepBrowserView, type Shape } from '@chess-coach/core';
+import { Fragment, useEffect, useState } from 'react';
+import { BookOpen, ChevronLeft, ChevronsLeft, ClipboardCheck, Clock3, Cpu, ListOrdered, Swords, Upload, Users, type LucideIcon } from 'lucide-react';
+import { START_FEN, playLine, positionKey, type Color, type MoveFrom, type RepBrowserView, type Shape } from '@chess-coach/core';
 import { Board } from './Board.tsx';
-import { OpeningCoach } from './OpeningCoach.tsx';
-import { OpeningPanels } from './Openings.tsx';
+import { OpeningCoach, askCoach } from './OpeningCoach.tsx';
+import { OpeningPanels, WORDS_BY } from './Openings.tsx';
 import { RepStats } from './RepGame.tsx';
 import { San } from './San.tsx';
 import { send, setting, type Store } from './store.ts';
-import { Segmented } from './ui.tsx';
+import { Mark, Segmented } from './ui.tsx';
 
 type Rep = RepBrowserView['repertoires'][number];
 const side = (c: Color) => (c === 'white' ? 'White' : 'Black');
@@ -82,10 +82,11 @@ function LeftPane({ s, view, setView, rep, choose, onReview, onChapter }: { s: S
           <ul>
             {chapters.map((c) => (
               <li key={c.name}>
-                <button className="rep-pick" onClick={() => onChapter(c.moves)} title={`Walk to the start of the chapter: ${c.moves.join(' ')}`}>
+                <button className="rep-pick" onClick={() => onChapter(c.moves)} title={`Walk to the start of the chapter: ${c.moves.join(' ')}${c.added ? ' (a chapter the masters’ games added, not one of the outline’s)' : ''}`}>
                   <span className="rep-pick-name">{c.name}</span>
                   <span className="muted">
                     {c.lines} {c.lines === 1 ? 'line' : 'lines'} · {c.live} live{c.waiting ? ` · ${c.waiting} waiting` : ''}
+                    {c.added ? ' · added by the book' : ''}
                   </span>
                 </button>
               </li>
@@ -93,6 +94,7 @@ function LeftPane({ s, view, setView, rep, choose, onReview, onChapter }: { s: S
           </ul>
         </section>
       )}
+      {view === 'repertoire' && rep?.origin && <Origin rep={rep} />}
       {s.repstats && <RepStats v={s.repstats} />}
     </>
   );
@@ -142,6 +144,12 @@ export function OpeningsTab({ s, onReview }: { s: Store; onReview: () => void })
     ? [{ from: at.mine.uci.slice(0, 2), to: at.mine.uci.slice(2, 4), style: 'good' }]
     : (at?.replies ?? []).map((r) => ({ from: r.uci.slice(0, 2), to: r.uci.slice(2, 4), style: 'move' as const }));
   const lastMove = walked.ok && path.length ? ([path.at(-1)!.slice(0, 2), path.at(-1)!.slice(2, 4)] as [string, string]) : undefined;
+  // the chapter the walk is in: the deepest whose moves it has followed
+  const clean = (x: string) => x.replace(/[+#!?]+$/, '');
+  const chapterHere = (rep?.chapters ?? [])
+    .filter((c) => c.moves.length <= sans.length && c.moves.every((m, i) => clean(m) === clean(sans[i]!)))
+    .sort((a, b) => b.moves.length - a.moves.length)[0]?.name;
+  const coachOn = !!s.status && s.status.state !== 'off' && s.status.state !== 'error';
 
   return (
     <main className="layout play puzzles openings-tab">
@@ -179,7 +187,7 @@ export function OpeningsTab({ s, onReview }: { s: Store; onReview: () => void })
           </div>
         </div>
       </section>
-      <aside className="pane pane-right play-side puzzle-side">
+      <aside className="pane pane-right play-side walk-side">
         {!rep ? (
           <section className="pane-section">
             <p className="thread-empty-title">No repertoire yet</p>
@@ -195,48 +203,112 @@ export function OpeningsTab({ s, onReview }: { s: Store; onReview: () => void })
           </section>
         ) : (
           <section className="pane-section rep-walk">
-            <p className="opening-line muted" aria-label="The moves so far">
-              {sans.length ? lineText(start, sans) : 'The starting position'}
-            </p>
+            <Crumbs start={start} sans={sans} figurine={figurine} onPick={(n) => setPath(path.slice(0, n))} />
+            {chapterHere && (
+              <p className="walk-chapter">
+                <span className="walk-label">Chapter</span> {chapterHere}
+              </p>
+            )}
             {at?.mine ? (
               <>
-                <p className="puzzle-task">
-                  Your move: <San san={at.mine.san} by={you} figurine={figurine} />
-                </p>
-                {at.book?.[at.mine.uci] !== undefined && <p className="muted rep-book">Book: played in {at.book[at.mine.uci]!.toLocaleString('en-US')} of the masters' games here.</p>}
-                {at.mine.waiting && <p className="muted rep-waiting">Not approved yet: it waits under Review content.</p>}
-                {at.mine.punish && <p className="opening-punish">Their last move was a mistake: this punishes it.</p>}
-                {at.mine.why ? <p className="opening-words">{plain(at.mine.why)}</p> : <p className="muted">No words written for this move yet.</p>}
-                {at.mine.idea && <p className="opening-words idea">{plain(at.mine.idea)}</p>}
-                <button className="btn primary" onClick={() => go(at.mine!.uci)}>
-                  Play it
-                </button>
+                <div className="walk-block">
+                  <span className="walk-label">Your move</span>
+                  <div className="walk-move-row">
+                    <span className="walk-san">
+                      <San san={at.mine.san} by={you} figurine={figurine} />
+                    </span>
+                    <button className="btn primary" onClick={() => go(at.mine!.uci)}>
+                      Play it
+                    </button>
+                  </div>
+                  <div className="walk-tags">
+                    {at.mine.from && <Tag icon={FROM[at.mine.from].icon} title={FROM[at.mine.from].about}>{FROM[at.mine.from].label}</Tag>}
+                    {at.book?.[at.mine.uci] !== undefined && (
+                      <Tag icon={BookOpen} title={`The Lichess masters database: this move was played in ${at.book[at.mine.uci]!.toLocaleString('en-US')} games from this position`}>
+                        {at.book[at.mine.uci]!.toLocaleString('en-US')} master games
+                      </Tag>
+                    )}
+                    {at.mine.waiting && (
+                      <Tag icon={Clock3} tone="wait" title="Not approved yet: it waits for you under Review content">
+                        Waiting for your approval
+                      </Tag>
+                    )}
+                    {at.mine.punish && (
+                      <Tag icon={Swords} tone="ok" title="Their last move was a mistake: this move punishes it">
+                        Punishes their mistake
+                      </Tag>
+                    )}
+                  </div>
+                </div>
+                <div className="walk-block">
+                  <span className="walk-label">Why</span>
+                  {at.mine.why ? (
+                    <p className="opening-words">{plain(at.mine.why)}</p>
+                  ) : (
+                    <p className="walk-none">
+                      The engine's checked facts give no reason for this move.{' '}
+                      <button className="link-btn" onClick={() => askCoach('Why is this move played?')} disabled={!coachOn}>
+                        Ask the coach
+                      </button>
+                    </p>
+                  )}
+                  {at.mine.idea && (
+                    <>
+                      <span className="walk-label">Their last move</span>
+                      <p className="opening-words idea">{plain(at.mine.idea)}</p>
+                    </>
+                  )}
+                  {(at.mine.why || at.mine.idea) && at.mine.wordsBy && <p className="words-source">{WORDS_BY[at.mine.wordsBy]}</p>}
+                </div>
               </>
             ) : at?.replies?.length ? (
-              <>
-                <p className="puzzle-task">What they play, and you are ready for:</p>
-                <ul className="rep-replies">
+              <div className="walk-block">
+                <span className="walk-label">What they play, and you are ready for</span>
+                <div className="walk-replies" role="list">
+                  <div className="walk-replies-head" aria-hidden="true">
+                    <span>Move</span>
+                    <span>{rep.book ? 'Masters' : ''}</span>
+                    <span>Your level</span>
+                  </div>
                   {[...at.replies]
-                    .sort((a, b) => (at.shares?.[b.uci] ?? -1) - (at.shares?.[a.uci] ?? -1))
-                    .map((r) => (
-                      <li key={r.uci}>
-                        <button className="rep-reply" onClick={() => go(r.uci)}>
-                          <San san={r.san} by={them} figurine={figurine} />
-                          {at.shares?.[r.uci] !== undefined && <span className="muted"> {Math.round(at.shares[r.uci]!) || '<1'}% at your level</span>}
-                          {at.book?.[r.uci] !== undefined && <span className="muted"> · {at.book[r.uci]!.toLocaleString('en-US')} master games</span>}
-                          {r.waiting && <span className="muted"> · waiting</span>}
+                    .sort((a, b) => (at.shares?.[b.uci] ?? -1) - (at.shares?.[a.uci] ?? -1) || (at.book?.[b.uci] ?? 0) - (at.book?.[a.uci] ?? 0))
+                    .map((r) => {
+                      const share = at.shares?.[r.uci];
+                      const games = at.book?.[r.uci];
+                      return (
+                        <button key={r.uci} className="rep-reply" role="listitem" onClick={() => go(r.uci)} title={replyTitle(r.from, r.waiting)}>
+                          <span className="rep-reply-move">
+                            <San san={r.san} by={them} figurine={figurine} />
+                            {r.from?.includes('outline') && <span className="rep-reply-tag">your outline</span>}
+                            {r.from && !r.from.includes('outline') && !r.from.includes('book') && r.from.includes('level') && <span className="rep-reply-tag">your level</span>}
+                          </span>
+                          <span className="rep-reply-num">{games !== undefined ? games.toLocaleString('en-US') : ''}</span>
+                          <span className="rep-reply-share">
+                            {share !== undefined ? (
+                              <>
+                                <span className="share-bar" aria-hidden="true">
+                                  <i style={{ width: `${Math.max(2, Math.min(100, share))}%` }} />
+                                </span>
+                                {Math.round(share) || '<1'}%
+                              </>
+                            ) : (
+                              <span className="muted">–</span>
+                            )}
+                          </span>
                         </button>
-                      </li>
-                    ))}
-                </ul>
+                      );
+                    })}
+                </div>
                 {at.gap && (
                   <p className="rep-gap">
                     Not prepared{at.gap.missing.length ? `: ${at.gap.missing.map((m) => `${m.san} (${m.share}%)`).join(', ')}` : ''}. Your lines cover {at.gap.covered}% of {rep.book ? "the masters' games" : 'what players at your level play'} here.
                   </p>
                 )}
-              </>
+              </div>
             ) : (
-              <p className="muted">{path.length ? 'Your repertoire ends here.' : 'This repertoire has no lines that are live or waiting.'}</p>
+              <div className="walk-block">
+                <p className="muted">{path.length ? 'Your repertoire ends here: the masters\' games run out, or this is as deep as it goes.' : 'This repertoire has no lines that are live or waiting.'}</p>
+              </div>
             )}
           </section>
         )}
@@ -249,4 +321,101 @@ export function OpeningsTab({ s, onReview }: { s: Store; onReview: () => void })
 /** The written words' tokens as plain words ("{m:Nf3}" → "Nf3"). */
 function plain(text: string): string {
   return text.replace(/\{(?:m|sq|pc):([^}@]*)(?:@[^}]*)?\}/g, '$1');
+}
+
+/** What a repertoire is grounded in, and what in it was made (D13): said once, beside the chapters. */
+function Origin({ rep }: { rep: Rep }) {
+  const o = rep.origin!;
+  return (
+    <section className="pane-section rep-origin" aria-label="Where it comes from">
+      <header className="pane-head">
+        <h2>Where it comes from</h2>
+      </header>
+      <ul>
+        {o.kind === 'book' ? (
+          <li>
+            <BookOpen size={14} strokeWidth={2} aria-hidden="true" />
+            <span>
+              <b>Every move is book:</b> played in at least {rep.book?.minGames ?? 25} games of the Lichess masters database, and each of yours passed by Stockfish.
+            </span>
+          </li>
+        ) : o.kind === 'imported' ? (
+          <li>
+            <Upload size={14} strokeWidth={2} aria-hidden="true" />
+            <span>
+              <b>Imported by you</b> from a PGN or a study; every line passed the gates.
+            </span>
+          </li>
+        ) : (
+          <li>
+            <Cpu size={14} strokeWidth={2} aria-hidden="true" />
+            <span>
+              <b>Built by the engine</b> (Stockfish and Maia) around your seed lines: no book behind it; every line passed the gates.
+            </span>
+          </li>
+        )}
+        {o.outline && (
+          <li>
+            <ListOrdered size={14} strokeWidth={2} aria-hidden="true" />
+            <span>{o.outline.by === 'owner' ? <><b>Chapters:</b> your list, its moves checked against the book.</> : <><b>Chapters:</b> drawn up by Claude from your choices, every move checked against the book.</>}</span>
+          </li>
+        )}
+        <li>
+          <Mark className="origin-mark" />
+          <span>
+            <b>Words:</b> made from the engine's checked facts, never copied from a course; each says who wrote it. A move with none, the coach explains when you ask.
+          </span>
+        </li>
+      </ul>
+    </section>
+  );
+}
+
+/** Where a move of the repertoire comes from (D13), as the page labels it: a reference, or something made. */
+const FROM: Record<MoveFrom, { label: string; about: string; icon: LucideIcon }> = {
+  outline: { label: 'Your outline', about: 'A move of your outline: your own choice, checked against the masters’ games and the engine', icon: ListOrdered },
+  book: { label: 'Masters’ choice', about: 'Past your outline: the move the masters played most here (the Lichess masters database) that the engine passes', icon: BookOpen },
+  level: { label: 'Your level', about: 'A reply players at your level make here (the Lichess explorer)', icon: Users },
+  imported: { label: 'Imported', about: 'From a PGN or a study you imported, checked by the gates', icon: Upload },
+  built: { label: 'Engine-built', about: 'Made by the starter builder (Stockfish and Maia): no book behind it, checked by the gates', icon: Cpu },
+};
+
+function replyTitle(from: MoveFrom[] | undefined, waiting?: boolean): string {
+  const why = (from ?? []).map((f) => ({ outline: 'your outline names it', book: 'the masters play it', level: 'players at your level play it', imported: 'from your import', built: 'from the starter builder' })[f]);
+  return `${why.length ? `Prepared because ${why.join(', and ')}` : 'Prepared'}${waiting ? '; not approved yet' : ''}`;
+}
+
+function Tag({ children, icon: Icon, tone, title }: { children: React.ReactNode; icon?: LucideIcon; tone?: 'ok' | 'wait'; title?: string }) {
+  return (
+    <span className={`tag${tone ? ` tag-${tone}` : ''}`} title={title}>
+      {Icon && <Icon size={12} strokeWidth={2.2} aria-hidden="true" />}
+      {children}
+    </span>
+  );
+}
+
+/** The moves walked so far, each one a step back to there. */
+function Crumbs({ start, sans, figurine, onPick }: { start: string; sans: string[]; figurine: boolean; onPick: (n: number) => void }) {
+  const whiteFirst = start.split(' ')[1] !== 'b';
+  const firstNo = Number(start.split(' ')[5] ?? 1);
+  return (
+    <nav className="walk-crumbs" aria-label="The moves so far">
+      <button className={`crumb${sans.length === 0 ? ' on' : ''}`} onClick={() => onPick(0)}>
+        Start
+      </button>
+      {sans.map((san, i) => {
+        const white = whiteFirst ? i % 2 === 0 : i % 2 === 1;
+        const no = firstNo + Math.floor((i + (whiteFirst ? 0 : 1)) / 2);
+        return (
+          <Fragment key={i}>
+            {white && <span className="crumb-no">{no}.</span>}
+            {!white && i === 0 && <span className="crumb-no">{no}…</span>}
+            <button className={`crumb${i === sans.length - 1 ? ' on' : ''}`} onClick={() => onPick(i + 1)} aria-current={i === sans.length - 1 ? 'step' : undefined}>
+              <San san={san} by={white ? 'white' : 'black'} figurine={figurine} />
+            </button>
+          </Fragment>
+        );
+      })}
+    </nav>
+  );
 }

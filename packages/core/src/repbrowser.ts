@@ -5,17 +5,17 @@
 // owner's approval, which the page marks).
 
 import { positionKey } from './chess.ts';
-import { lineSteps, type RepLine } from './repertoire.ts';
+import { lineSteps, type MoveFrom, type RepLine, type WordsBy } from './repertoire.ts';
 
 export type BrowserPosition = {
-  /** the owner's position: the move the repertoire plays here */
-  mine?: { san: string; uci: string; why?: string; idea?: string; punish?: boolean; waiting?: boolean };
-  /** the opponent's position: the replies prepared, each to follow */
-  replies?: { san: string; uci: string; waiting?: boolean }[];
+  /** the owner's position: the move the repertoire plays here; `from` where the move comes from, `wordsBy` who wrote its words (D13) */
+  mine?: { san: string; uci: string; why?: string; idea?: string; wordsBy?: WordsBy; punish?: boolean; waiting?: boolean; from?: MoveFrom };
+  /** the opponent's position: the replies prepared, each to follow, and why each is prepared */
+  replies?: { san: string; uci: string; waiting?: boolean; from?: MoveFrom[] }[];
 };
 
 /** Positions by key, from lines that are live or waiting. `waiting` marks a line the owner has not approved yet. */
-export function browserPositions(lines: readonly { body: RepLine; waiting: boolean }[], words: ReadonlyMap<string, { uci: string; why?: string; idea?: string }>): Record<string, BrowserPosition> {
+export function browserPositions(lines: readonly { body: RepLine; waiting: boolean }[], words: ReadonlyMap<string, { uci: string; why?: string; idea?: string; by?: WordsBy }>): Record<string, BrowserPosition> {
   const out: Record<string, BrowserPosition> = {};
   for (const { body: line, waiting } of lines) {
     const { steps, illegalAt } = lineSteps(line);
@@ -35,6 +35,7 @@ export function browserPositions(lines: readonly { body: RepLine; waiting: boole
           uci: s.uci,
           why: w?.uci === s.uci ? w.why : undefined,
           idea: w?.uci === s.uci ? w.idea : undefined,
+          wordsBy: w?.uci === s.uci && (w.why || w.idea) ? w.by : undefined,
           punish: prev && !prev.mine && line.punish?.includes(prev.index) ? true : undefined,
           waiting: waiting || undefined,
         };

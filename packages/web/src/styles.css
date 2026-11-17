@@ -518,6 +518,97 @@ input[type='number'] {
 .tb-btn svg {
   color: var(--ink-2);
 }
+/* the computer's load (I18): three small meters in one button, the numbers behind them on press */
+.sys-btn {
+  padding: 0 10px;
+}
+.sys-meters {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.sys-meter {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+.sys-meter-label {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.sys-meter-bar {
+  width: 30px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--fill-hover);
+  overflow: hidden;
+}
+.sys-meter-bar i {
+  display: block;
+  height: 100%;
+  background: var(--chart-line);
+  transition: width var(--base) var(--ease);
+}
+.sys-meter.busy .sys-meter-bar i {
+  background: var(--chart-mark);
+}
+.sys-meter.hot .sys-meter-bar i {
+  background: var(--danger);
+}
+.sys-meter.hot .sys-meter-num {
+  color: var(--danger);
+  font-weight: 600;
+}
+.sys-meter-num {
+  min-width: 3ch;
+  text-align: right;
+}
+.sys-details {
+  width: 300px;
+  padding: 12px 14px;
+  font-size: 13px;
+}
+.sys-details h3 {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.sys-details h3:not(:first-child) {
+  margin-top: 12px;
+}
+.sys-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 10px;
+  padding: 3px 0;
+}
+.sys-row-value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  text-align: right;
+}
+.sys-row-note {
+  grid-column: 1 / -1;
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+.sys-note {
+  margin: 12px 0 0;
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+@media (max-width: 1100px) {
+  .sys-meter-label,
+  .sys-meter-bar {
+    display: none;
+  }
+}
 
 /* ---------- things that float: the menu, the View switches, the coach's options */
 .popover-wrap {
@@ -1352,6 +1443,56 @@ input[type='number'] {
   font-family: var(--font-ui);
   font-weight: 700;
   font-size: 11px;
+}
+/* the coordinates outside the board (the owner, 2026-11-17: "move them outside the board cause its kinda
+   not visible"): a gutter left of the ranks and under the files, in the page's own ink. The squares keep
+   their rounded frame and shadow; the gutter is part of the frame's box, so the board's size rule holds. */
+.board-frame.with-coords {
+  --gutter: 20px;
+  overflow: visible;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0 0 var(--gutter) var(--gutter);
+}
+.board-frame.with-coords cg-container {
+  border-radius: 8px;
+  box-shadow: var(--shadow-board);
+}
+.board-frame.with-coords cg-board {
+  border-radius: 8px;
+  overflow: hidden;
+}
+.board-frame.with-coords coords {
+  opacity: 1;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: lowercase;
+  font-variant-numeric: tabular-nums;
+}
+.board-frame.with-coords coords coord {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-2) !important;
+  text-shadow: none !important;
+  transform: none !important;
+}
+.board-frame.with-coords coords.ranks {
+  left: calc(-1 * var(--gutter));
+  top: 0;
+  width: var(--gutter);
+  height: 100%;
+}
+.board-frame.with-coords coords.files {
+  left: 0;
+  bottom: calc(-1 * var(--gutter));
+  width: 100%;
+  height: var(--gutter);
+}
+/* the eval bar stops where the squares do */
+.board-pair:has(.board-frame.with-coords) .evalbar {
+  margin-bottom: 20px;
 }
 
 /* the eval bar: its light part is White's winning chances */
@@ -3113,41 +3254,256 @@ input[type='number'] {
   flex-wrap: wrap;
   gap: 6px;
 }
+/* the walk (D9, redesigned 2026-11-17 with D13): where you are, the move, where it comes from, why */
+.openings-tab .pane-left {
+  overflow-y: auto;
+}
+.openings-tab .pane-left .pane-section {
+  flex: none;
+}
+.walk-side {
+  overflow: hidden;
+}
 .rep-walk {
+  flex: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
+  max-height: 62%;
+  overflow-y: auto;
 }
-.rep-replies {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.walk-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.walk-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 2px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.crumb {
+  padding: 2px 6px;
+  border: none;
+  border-radius: var(--r-xs);
+  background: none;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+.crumb:hover {
+  background: var(--fill);
+  color: var(--ink);
+}
+.crumb.on {
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-weight: 600;
+}
+.crumb-no {
+  margin-left: 4px;
+  color: var(--ink-3);
+  font-size: 12px;
+}
+.walk-chapter {
+  margin: -6px 0 0;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.walk-chapter .walk-label {
+  display: inline;
+  margin: 0 6px 0 0;
+}
+.walk-block {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
+.walk-block + .walk-block {
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.walk-move-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.walk-san {
+  font-size: 30px;
+  font-weight: 650;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.walk-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 22px;
+  padding: 0 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.tag-ok {
+  border-color: transparent;
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+.tag-wait {
+  border-style: dashed;
+}
+.walk-block .opening-words + .walk-label {
+  margin-top: 8px;
+}
+.words-source {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+.walk-none {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--ink-2);
+}
+.link-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent-text);
+  cursor: pointer;
+}
+.link-btn:hover {
+  text-decoration: underline;
+}
+.link-btn:disabled {
+  color: var(--ink-3);
+  text-decoration: none;
+  cursor: default;
+}
+.walk-replies {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.walk-replies-head,
+.rep-reply {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px 92px;
+  align-items: center;
+  gap: 10px;
+}
+.walk-replies-head {
+  padding: 0 10px 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.walk-replies-head span:not(:first-child) {
+  text-align: right;
+}
 .rep-reply {
   width: 100%;
-  padding: 7px 10px;
+  min-height: 36px;
+  padding: 0 10px;
   border: none;
   border-radius: var(--r-control);
   background: var(--fill);
   text-align: left;
   font-size: 14px;
-  font-weight: 600;
 }
 .rep-reply:hover {
   background: var(--fill-hover);
 }
-.rep-reply .muted {
-  font-weight: 400;
+.rep-reply-move {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  font-weight: 650;
+}
+.rep-reply-tag {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+.rep-reply-num,
+.rep-reply-share {
   font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+  text-align: right;
+}
+.rep-reply-share {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.share-bar {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--fill-hover);
+  overflow: hidden;
+}
+.share-bar i {
+  display: block;
+  height: 100%;
+  background: var(--accent-text);
 }
 .rep-gap,
 .rep-waiting {
-  margin: 0;
+  margin: 4px 0 0;
   font-size: 12.5px;
   color: var(--ink-2);
+}
+/* what a repertoire is grounded in, and what was made (D13) */
+.rep-origin ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+.rep-origin li {
+  display: flex;
+  gap: 8px;
+  line-height: 1.4;
+}
+.rep-origin li > svg,
+.rep-origin .origin-mark {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  color: var(--ink-3);
+}
+.rep-origin b {
+  font-weight: 600;
+  color: var(--ink);
 }
 /* ---------- the opening drill (WP 8.8) */
 .opening-card {
@@ -3244,22 +3600,29 @@ input[type='number'] {
   margin: 0;
   font-size: 13px;
 }
-/* the coach on the Openings tab (D12): beside the walked board and the practice card */
+/* the coach on the Openings tab (D12): beside the walked board (a chat pane filling the rest of the
+   column, like the analysis board's) and under the practice card (just the head and the composer) */
 .opening-coach {
+  flex: 1;
+  min-height: 240px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  border-top: 1px solid var(--line);
 }
-.opening-coach .pane-head {
-  align-items: center;
+.opening-coach.compact {
+  flex: none;
+  min-height: 0;
+  margin-top: auto;
 }
-.opening-coach-state {
-  font-size: 12px;
+.opening-coach .coach-head h2 {
+  margin: 0;
+  font-size: 14px;
 }
-.opening-coach .suggestions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+.opening-coach .thread {
+  min-height: 80px;
+}
+.opening-coach-hint {
+  margin: 0;
 }
 .puzzle-guide {
   display: flex;
@@ -3348,6 +3711,12 @@ input[type='number'] {
 /* ---------- the review screen (WP 8.4) */
 .content-sheet {
   width: min(760px, calc(100vw - 32px));
+}
+/* the parts keep their height and the sheet scrolls: in the modal's flex column, the item list (a box with
+   its own scroll) would otherwise be squeezed flat once the sheet is taller than the window, its rows
+   left lying over the filters (seen with two outlines listed, 2026-11-17) */
+.content-sheet > * {
+  flex-shrink: 0;
 }
 .rep-card {
   display: flex;

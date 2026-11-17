@@ -4,7 +4,7 @@
 import { mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { outcomeOf, type Color, type ContentItem, type ContentStatus, type Puzzle, type GameNumbers, type GamePly, type GameSite, type GameSummary, type ImportedGame, type Moment, type OngoingGame, type ProfileGame, type ReportSlip, type StoredCard, type ReviewReport, type SkippedStep } from '@chess-coach/core';
+import { outcomeOf, type Color, type ContentItem, type ContentStatus, type Puzzle, type GameNumbers, type GamePly, type GameSite, type GameSummary, type ImportedGame, type Moment, type OngoingGame, type ProfileGame, type ReportSlip, type StoredCard, type ReviewReport, type SkippedStep, type WordsBy } from '@chess-coach/core';
 
 const MIGRATIONS: string[] = [
   // 1: the tables the board and the coach need (Phases 3–4)
@@ -108,6 +108,11 @@ const MIGRATIONS: string[] = [
   ALTER TABLE repertoires ADD COLUMN plan TEXT;
   ALTER TABLE repertoires ADD COLUMN outline TEXT;
   CREATE TABLE rep_book (repertoire INTEGER NOT NULL, key TEXT NOT NULL, data TEXT NOT NULL, PRIMARY KEY (repertoire, key));
+  `,
+  // 15: who wrote a position's words (D13): 'facts' (the app's own reasons, phrased by code), 'claude'
+  // (written by Claude from the checked facts), 'owner'; null for words from before it was recorded
+  `
+  ALTER TABLE rep_positions ADD COLUMN source TEXT;
   `,
 ];
 
@@ -391,15 +396,16 @@ export class Db {
   }
 
   /** The authored words of a repertoire's positions of mine, by position key (WP 8.6). */
-  repTexts(id: number): Map<string, { fen: string; uci: string; san: string; why?: string; idea?: string }> {
-    const rows = this.sql.prepare('SELECT key, fen, uci, san, why, idea FROM rep_positions WHERE repertoire = ?').all(id) as { key: string; fen: string; uci: string; san: string; why: string | null; idea: string | null }[];
-    return new Map(rows.map((r) => [r.key, { fen: r.fen, uci: r.uci, san: r.san, why: r.why ?? undefined, idea: r.idea ?? undefined }]));
+  repTexts(id: number): Map<string, { fen: string; uci: string; san: string; why?: string; idea?: string; by?: WordsBy }> {
+    const rows = this.sql.prepare('SELECT key, fen, uci, san, why, idea, source FROM rep_positions WHERE repertoire = ?').all(id) as { key: string; fen: string; uci: string; san: string; why: string | null; idea: string | null; source: string | null }[];
+    return new Map(rows.map((r) => [r.key, { fen: r.fen, uci: r.uci, san: r.san, why: r.why ?? undefined, idea: r.idea ?? undefined, by: (r.source as WordsBy | null) ?? undefined }]));
   }
 
-  setRepText(id: number, key: string, t: { fen: string; uci: string; san: string; why?: string; idea?: string }) {
+  /** A position's words; `by` is who wrote them (D13), kept as it was when not given. */
+  setRepText(id: number, key: string, t: { fen: string; uci: string; san: string; why?: string; idea?: string; by?: WordsBy }) {
     this.sql
-      .prepare('INSERT INTO rep_positions (repertoire, key, fen, uci, san, why, idea, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(repertoire, key) DO UPDATE SET fen = excluded.fen, uci = excluded.uci, san = excluded.san, why = excluded.why, idea = excluded.idea, updated_at = excluded.updated_at')
-      .run(id, key, t.fen, t.uci, t.san, t.why ?? null, t.idea ?? null, new Date().toISOString());
+      .prepare('INSERT INTO rep_positions (repertoire, key, fen, uci, san, why, idea, source, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(repertoire, key) DO UPDATE SET fen = excluded.fen, uci = excluded.uci, san = excluded.san, why = excluded.why, idea = excluded.idea, source = COALESCE(excluded.source, rep_positions.source), updated_at = excluded.updated_at')
+      .run(id, key, t.fen, t.uci, t.san, t.why ?? null, t.idea ?? null, t.by ?? null, new Date().toISOString());
   }
 
   /**
