@@ -280,6 +280,7 @@ export function OpeningsTab({ s, onReview }: { s: Store; onReview: () => void })
                           <span className="rep-reply-move">
                             <San san={r.san} by={them} figurine={figurine} />
                             {r.from?.includes('outline') && <span className="rep-reply-tag">your outline</span>}
+                            {r.from?.includes('game') && <span className="rep-reply-tag">from your game</span>}
                             {r.from && !r.from.includes('outline') && !r.from.includes('book') && r.from.includes('level') && <span className="rep-reply-tag">your level</span>}
                           </span>
                           <span className="rep-reply-num">{games !== undefined ? games.toLocaleString('en-US') : ''}</span>
@@ -378,10 +379,11 @@ const FROM: Record<MoveFrom, { label: string; about: string; icon: LucideIcon }>
   level: { label: 'Your level', about: 'A reply players at your level make here (the Lichess explorer)', icon: Users },
   imported: { label: 'Imported', about: 'From a PGN or a study you imported, checked by the gates', icon: Upload },
   built: { label: 'Engine-built', about: 'Made by the starter builder (Stockfish and Maia): no book behind it, checked by the gates', icon: Cpu },
+  game: { label: 'From your game', about: 'Added from one of your games: their move as it was played, yours the engine’s move after it; checked by every gate', icon: Swords },
 };
 
 function replyTitle(from: MoveFrom[] | undefined, waiting?: boolean): string {
-  const why = (from ?? []).map((f) => ({ outline: 'your outline names it', book: 'the masters play it', level: 'players at your level play it', imported: 'from your import', built: 'from the starter builder' })[f]);
+  const why = (from ?? []).map((f) => ({ outline: 'your outline names it', book: 'the masters play it', level: 'players at your level play it', imported: 'from your import', built: 'from the starter builder', game: 'it was played against you in one of your games' })[f]);
   return `${why.length ? `Prepared because ${why.join(', and ')}` : 'Prepared'}${waiting ? '; not approved yet' : ''}`;
 }
 

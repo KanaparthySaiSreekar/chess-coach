@@ -75,6 +75,8 @@ export type SafetyOptions = {
   guard: (fens: string[]) => string | null;
   /** ask for the opponent's checks and captures before the ruling (safety.listFirst) */
   listFirst: () => boolean;
+  /** and their threats with them: quiet moves that attack something the owner could then lose (safety.listThreats) */
+  listThreats?: () => boolean;
   now?: () => Date;
 };
 
@@ -125,7 +127,8 @@ export class SafetyTrainer {
     this.item = item;
     this.startedAt = Date.now();
     const body = item.body;
-    const list = body.question === 'is_safe' && this.o.listFirst() ? forcingReplies(body.fen, body.candidates[0]!.san) : null;
+    const threats = this.o.listThreats?.() ?? false;
+    const list = body.question === 'is_safe' && this.o.listFirst() ? forcingReplies(body.fen, body.candidates[0]!.san, { threats }) : null;
     this.replies = list?.replies ?? [];
     this.found = [];
     this.view = {
@@ -135,7 +138,7 @@ export class SafetyTrainer {
       you: parsePosition(body.fen)!.turn,
       question: body.question,
       candidates: body.candidates.map((c) => ({ san: c.san, ...(candidateArrow(body.fen, c.san) ?? { from: '', to: '' }) })),
-      list: list ? { stage: 'listing', fen: list.fen, lastMove: list.lastMove, found: [], tries: 0 } : undefined,
+      list: list ? { stage: 'listing', fen: list.fen, lastMove: list.lastMove, found: [], tries: 0, threats: threats || undefined } : undefined,
       ...this.deck.counts(),
     };
     this.o.onChange();
@@ -151,11 +154,11 @@ export class SafetyTrainer {
     if (hit && this.found.includes(hit)) note = { san: hit.san, text: 'is on your list already.', good: true };
     else if (hit) {
       this.found.push(hit);
-      note = { san: hit.san, text: hit.check && hit.capture ? 'is a capture with check.' : hit.check ? 'is a check.' : 'is a capture.', good: true };
+      note = { san: hit.san, text: hit.check && hit.capture ? 'is a capture with check.' : hit.check ? 'is a check.' : hit.capture ? 'is a capture.' : `is a threat: it attacks ${plainText(hit.attacks ?? 'something of yours')}.`, good: true };
     } else {
       const pos = parsePosition(list.fen);
       const legal = pos ? legalMoves(pos).find((m) => m.from === from && m.to === to) : undefined;
-      note = legal ? { san: legal.san, text: 'is neither a check nor a capture.', good: false } : { text: 'That move is not possible.', good: false };
+      note = legal ? { san: legal.san, text: list.threats ? 'is not a check, a capture or a threat.' : 'is neither a check nor a capture.', good: false } : { text: 'That move is not possible.', good: false };
     }
     this.view = { ...this.view, list: { ...list, found: this.found.map(({ san, from: f, to: t }) => ({ san, from: f, to: t })), note, tries: list.tries + 1 } };
     this.o.onChange();

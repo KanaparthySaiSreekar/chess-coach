@@ -57,6 +57,14 @@ export function RepGameNote({ v, tree, you, figurine }: { v: RepGameView; tree: 
           ) : null}
         </p>
       )}
+      {v.by === 'them' && v.engineMove && (
+        <div className="rep-game-add">
+          <button className="btn small" onClick={() => send({ type: 'repgame', action: 'add' })} title="Their move as played, then the engine's move: added to this repertoire and checked by every gate; it waits for your approval">
+            Add to my repertoire
+          </button>
+          <span className="muted">Checked by every gate first; it waits for your approval.</span>
+        </div>
+      )}
       {v.by === 'end' && (
         <p>
           Your preparation ran out at {num}

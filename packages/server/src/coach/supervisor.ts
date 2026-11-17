@@ -12,7 +12,7 @@ import { HeadlessCliTransport, type CoachTransport, type TransportEvents } from 
 /** One event for the coach (ARCHITECTURE §5.2), plus what the server tracks while it is answered. */
 export type CoachEvent = {
   seq: number;
-  kind: 'owner_move' | 'owner_reply' | 'owner_question' | 'owner_tries' | 'hint_request' | 'tell_me' | 'why' | 'show_me' | 'resume' | 'review_moment' | 'review_end' | 'drill_miss' | 'drill_ask' | 'drill_done' | 'drill_example' | 'drill_end' | 'spar_start' | 'spar_turn' | 'spar_blunder' | 'spar_ask' | 'spar_end' | 'opening_new' | 'opening_miss' | 'opening_why' | 'opening_question' | 'endgame_over' | 'endgame_ask';
+  kind: 'owner_move' | 'owner_reply' | 'owner_question' | 'owner_tries' | 'hint_request' | 'tell_me' | 'why' | 'show_me' | 'resume' | 'review_moment' | 'review_end' | 'drill_miss' | 'drill_ask' | 'drill_done' | 'drill_example' | 'drill_end' | 'spar_start' | 'spar_turn' | 'spar_blunder' | 'spar_ask' | 'spar_end' | 'opening_new' | 'opening_miss' | 'opening_why' | 'opening_question' | 'drill_question' | 'endgame_over' | 'endgame_ask';
   /** the JSON the coach receives */
   payload: Record<string, unknown>;
   /** must the owner get an answer (scripted if need be)? */

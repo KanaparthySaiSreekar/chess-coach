@@ -42,6 +42,10 @@ import {
   type PuzzleRun,
   type PracticeSet,
   type PuzzleView,
+  type RoutineLevel,
+  type SkippedStep,
+  promptAt,
+  routinePrompt,
 } from '@chess-coach/core';
 import type { ContentService } from './content.ts';
 import { NOT_A_THEME, type DbPuzzle, type PuzzleDb } from './datasets/puzzle-db.ts';
@@ -86,6 +90,10 @@ export type PuzzleOptions = {
   modes?: () => { woodpecker: boolean; speed: boolean; woodpeckerSize: number };
   /** what the drill coach may speak to (6.11): a miss, the end of a puzzle, the end of a sitting */
   onDrill?: (e: DrillEvent) => void;
+  /** the thinking routine before the owner's first move of a puzzle (A9 in the drills, WP 7.5): how often, and the habit to work on */
+  routine?: () => { level: RoutineLevel; top?: SkippedStep };
+  /** a puzzle from the owner's games coming back: every other time, the same idea in a new position (`puzzles.sameIdeaNew`) */
+  sameMotif?: () => boolean;
   /** tests: the clock */
   now?: () => Date;
   /** tests: no pause before the opponent's moves */
@@ -177,6 +185,11 @@ export class PuzzleController {
   private sittingSummed = false;
   /** the answer being played out is a worked example (6.9) */
   private exampling = false;
+  /** the puzzles put up since the server started, and this one's routine question (A9, WP 7.5) */
+  private routineN = 0;
+  private routineQ: string | undefined;
+  /** the puzzle on the board stands in for one of the owner's own coming back: the same idea in a new position (WP 6.5) */
+  private standIn: { original: Stored; theme: string } | null = null;
   /** the Woodpecker round under way (C6) */
   private round: { id: number; round: number; items: number[]; done: { id: number; solved: boolean; alone: boolean; ms: number }[] } | null = null;
   private readonly o: PuzzleOptions;
@@ -347,7 +360,8 @@ export class PuzzleController {
       status: run.status,
       id: item.id,
       kind,
-      from: this.where(item),
+      // a new position for one of the owner's own puzzles says so: grounded in the Lichess database, the idea theirs
+      from: this.standIn ? `The same idea (${themeName(this.standIn.theme).toLowerCase()}) as your puzzle ${this.where(this.standIn.original).replace(/^From /, 'from ')}, in a new position: ${this.where(item).replace(/^From /, 'from ')}` : this.where(item),
       fen: runFen(run),
       lastMove: last ? [last.from, last.to] : undefined,
       you: run.you,
@@ -363,6 +377,8 @@ export class PuzzleController {
       guide: this.guide(run),
       // the themes would give the idea away: they are shown once the puzzle is over
       themes: run.status === 'solving' ? undefined : run.puzzle.themes.filter((t) => !NOT_A_THEME.has(t)),
+      // the routine's question, until the owner has made a move of their own
+      routine: run.status === 'solving' && yourTurn(run) && run.misses === 0 && !run.moves.some((m) => m.by === 'you') ? this.routineQ : undefined,
       ...this.counts(),
     };
     this.o.onChange();
@@ -377,6 +393,8 @@ export class PuzzleController {
 
   /** Begin a puzzle: the one asked for, or the next one that is waiting. */
   start(id?: number, again = false): { ok: true } | { ok: false; reason: string } {
+    // a puzzle started for itself stands in for nothing (sameIdea sets it again after starting one)
+    this.standIn = null;
     const w = this.o.words;
     let item: Stored | undefined;
     let run: PuzzleRun | undefined;
@@ -413,6 +431,10 @@ export class PuzzleController {
     this.item = item;
     this.run = run;
     this.again = again;
+    // the routine's question for this puzzle, asked before the owner's first move (fading like the games' overlay)
+    const r = this.o.routine?.();
+    this.routineN++;
+    this.routineQ = r && promptAt(r.level, this.routineN) ? routinePrompt(this.routineN, r.top) : undefined;
     this.countMastery();
     // a themed set is about its theme; any other puzzle gets the guidance of its least known idea
     const ideas = this.set.kind === 'theme' && item.type === 'puzzle_db' ? [this.set.theme] : run.puzzle.themes;
@@ -439,7 +461,7 @@ export class PuzzleController {
       this.close();
       return Promise.resolve({ ok: true });
     }
-    if (this.set.kind === 'due') return Promise.resolve(this.startDue());
+    if (this.set.kind === 'due') return this.startDue();
     if (this.set.kind === 'woodpecker') return Promise.resolve(this.woodpeckerNext());
     if (this.set.kind === 'games') {
       // new puzzles come a few a day; puzzles already tried come back through the schedule
@@ -458,10 +480,12 @@ export class PuzzleController {
   }
 
   /** The next puzzle due again, the longest overdue first. */
-  private startDue(): { ok: true } | { ok: false; reason: string } {
+  private async startDue(): Promise<{ ok: true } | { ok: false; reason: string }> {
     // a card answered today is due on another day, so the puzzle just played never comes straight back
     const ids = this.dueIds();
     for (const id of ids) {
+      const alt = await this.sameIdea(id);
+      if (alt) return alt;
       const r = this.start(id);
       if (r.ok) return r;
     }
@@ -471,6 +495,35 @@ export class PuzzleController {
     this.view = this.idle(reason);
     this.o.onChange();
     return { ok: false, reason };
+  }
+
+  /**
+   * A puzzle from the owner's games comes back: every other time, the same idea in a new position
+   * (CONTENT §6; WP 6.5 and 6.9): a puzzle of the Lichess database with the card's main theme, near the
+   * owner's level, through the gates like any. The answer schedules the owner's own card.
+   */
+  private async sameIdea(id: number): Promise<{ ok: true } | null> {
+    if (!this.o.sameMotif?.()) return null;
+    const original = this.o.db.getContent(id) as unknown as Stored | undefined;
+    if (!original || original.type !== 'puzzle_game') return null;
+    // the card's reviews so far: the first comes back as itself, the next as a new position, and so on
+    if ((this.o.db.getCard(id)?.reps ?? 0) % 2 === 0) return null;
+    const db = this.o.puzzleDb?.();
+    const content = this.o.content;
+    const theme = original.body.themes.find((t) => !NOT_A_THEME.has(t));
+    if (!db || !content || !theme) return null;
+    for (const p of db.near({ theme, rating: this.level() - DRAW_BELOW, count: 5, exclude: this.o.db.drawnPuzzleIds(), minPopularity: 50 })) {
+      const puzzle = puzzleFromDb(p);
+      if (!puzzle) continue;
+      const item = await content.submit({ type: 'puzzle_db', status: 'draft', source: `puzzle:${p.id}`, licence: 'cc0', level: bandOf(p.rating), gates: [], body: puzzle });
+      if (item.status !== 'live') continue;
+      const r = this.start(item.id);
+      if (!r.ok) continue;
+      this.standIn = { original, theme };
+      this.show();
+      return { ok: true };
+    }
+    return null;
   }
 
   async retry(): Promise<{ ok: true } | { ok: false; reason: string }> {
@@ -536,14 +589,16 @@ export class PuzzleController {
       this.o.db.logEvent('puzzle', { id: item.id, ...result, again: this.again });
       if (!this.again && (item.type === 'puzzle_game' || item.type === 'puzzle_db')) {
         const token = this.token;
-        void this.schedule(item.id, item.type, { result: result.result, hints: result.hints, misses: result.misses, ms })
+        // a new position standing in for one of the owner's own: the answer schedules the owner's card
+        const card = this.standIn ? { id: this.standIn.original.id, type: 'puzzle_game' as const } : { id: item.id, type: item.type };
+        void this.schedule(card.id, card.type, { result: result.result, hints: result.hints, misses: result.misses, ms })
           .then((due) => {
             if (token === this.token && due) {
               this.view = { ...this.view, comesBack: due, ...this.counts() };
               this.o.onChange();
             }
           })
-          .catch((e) => this.o.log?.(`puzzle: could not schedule ${item.id}: ${(e as Error).message}`));
+          .catch((e) => this.o.log?.(`puzzle: could not schedule ${card.id}: ${(e as Error).message}`));
       }
     }
     const tone = run.status === 'solved' ? 'good' : 'answer';

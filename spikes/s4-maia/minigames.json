@@ -1,0 +1,684 @@
+{
+  "when": "2026-11-17T05:28:16.752Z",
+  "settings": {
+    "GAMES": 6,
+    "BASE": 3,
+    "ELOS": [
+      600,
+      1000,
+      1500
+    ],
+    "NODES": 150000,
+    "SEED": 1,
+    "OWNER_ELO": 600,
+    "MAX_PLIES": 240
+  },
+  "seconds": 405,
+  "rows": [
+    {
+      "game": "ordinary game (baseline)",
+      "owner": "maia600",
+      "elo": 600,
+      "games": 3,
+      "outcomes": {
+        "checkmate": 3
+      },
+      "ownerMovesAvg": 18.3,
+      "botMoves": 53,
+      "labels": {
+        "book": 5,
+        "best": 11,
+        "forced": 3,
+        "mistake": 2,
+        "miss": 3,
+        "blunder": 22,
+        "good": 3,
+        "inaccuracy": 2,
+        "brilliant": 1,
+        "excellent": 1
+      },
+      "badPer100": 53.3,
+      "blundersPer100": 48.9,
+      "topShareAvg": 46
+    },
+    {
+      "game": "pawn-war",
+      "owner": "engine",
+      "elo": 600,
+      "games": 6,
+      "outcomes": {
+        "You made a queen first. You win.": 6
+      },
+      "ownerMovesAvg": 20.2,
+      "botMoves": 115,
+      "labels": {
+        "excellent": 58,
+        "best": 24,
+        "good": 13,
+        "mistake": 6,
+        "blunder": 5,
+        "inaccuracy": 9
+      },
+      "badPer100": 9.6,
+      "blundersPer100": 4.3,
+      "topShareAvg": 49
+    },
+    {
+      "game": "pawn-war",
+      "owner": "maia600",
+      "elo": 600,
+      "games": 6,
+      "outcomes": {
+        "They made a queen first.": 2,
+        "You made a queen first. You win.": 4
+      },
+      "ownerMovesAvg": 15,
+      "botMoves": 86,
+      "labels": {
+        "best": 25,
+        "excellent": 22,
+        "good": 9,
+        "blunder": 16,
+        "inaccuracy": 6,
+        "great": 2,
+        "mistake": 5,
+        "miss": 1
+      },
+      "badPer100": 24.4,
+      "blundersPer100": 18.6,
+      "topShareAvg": 53
+    },
+    {
+      "game": "queen-vs-pawns",
+      "owner": "engine",
+      "elo": 600,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 6
+      },
+      "ownerMovesAvg": 12,
+      "botMoves": 66,
+      "labels": {
+        "excellent": 40,
+        "forced": 4,
+        "best": 12,
+        "blunder": 5,
+        "good": 2,
+        "inaccuracy": 3
+      },
+      "badPer100": 8.1,
+      "blundersPer100": 8.1,
+      "topShareAvg": 49
+    },
+    {
+      "game": "queen-vs-pawns",
+      "owner": "maia600",
+      "elo": 600,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 3,
+        "You took every pawn. You win.": 1,
+        "A pawn got through and became a queen.": 2
+      },
+      "ownerMovesAvg": 11.8,
+      "botMoves": 67,
+      "labels": {
+        "excellent": 38,
+        "best": 12,
+        "good": 6,
+        "inaccuracy": 3,
+        "blunder": 7,
+        "mistake": 1
+      },
+      "badPer100": 11.9,
+      "blundersPer100": 10.4,
+      "topShareAvg": 46
+    },
+    {
+      "game": "two-rook-mate",
+      "owner": "engine",
+      "elo": 600,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 6
+      },
+      "ownerMovesAvg": 2,
+      "botMoves": 6,
+      "labels": {
+        "best": 3,
+        "excellent": 3
+      },
+      "badPer100": 0,
+      "blundersPer100": 0,
+      "topShareAvg": 62
+    },
+    {
+      "game": "two-rook-mate",
+      "owner": "maia600",
+      "elo": 600,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 5,
+        "stalemate": 1
+      },
+      "ownerMovesAvg": 9.8,
+      "botMoves": 53,
+      "labels": {
+        "best": 20,
+        "excellent": 25,
+        "forced": 4,
+        "blunder": 3,
+        "mistake": 1
+      },
+      "badPer100": 8.2,
+      "blundersPer100": 6.1,
+      "topShareAvg": 58
+    },
+    {
+      "game": "rook-mate",
+      "owner": "engine",
+      "elo": 600,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 6
+      },
+      "ownerMovesAvg": 8.8,
+      "botMoves": 47,
+      "labels": {
+        "excellent": 16,
+        "best": 25,
+        "forced": 6
+      },
+      "badPer100": 0,
+      "blundersPer100": 0,
+      "topShareAvg": 73
+    },
+    {
+      "game": "rook-mate",
+      "owner": "maia600",
+      "elo": 600,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 1,
+        "draw: not enough material to mate": 2,
+        "No mate within 40 moves. Try it again.": 2,
+        "repetition": 1
+      },
+      "ownerMovesAvg": 21.2,
+      "botMoves": 123,
+      "labels": {
+        "best": 37,
+        "excellent": 75,
+        "forced": 1,
+        "mistake": 9,
+        "blunder": 1
+      },
+      "badPer100": 8.2,
+      "blundersPer100": 0.8,
+      "topShareAvg": 49
+    },
+    {
+      "game": "ordinary game (baseline)",
+      "owner": "maia600",
+      "elo": 1000,
+      "games": 3,
+      "outcomes": {
+        "checkmate": 3
+      },
+      "ownerMovesAvg": 32.3,
+      "botMoves": 97,
+      "labels": {
+        "book": 2,
+        "excellent": 33,
+        "good": 5,
+        "best": 30,
+        "inaccuracy": 4,
+        "miss": 7,
+        "blunder": 9,
+        "great": 2,
+        "brilliant": 1,
+        "mistake": 4
+      },
+      "badPer100": 13.7,
+      "blundersPer100": 9.5,
+      "topShareAvg": 54
+    },
+    {
+      "game": "pawn-war",
+      "owner": "engine",
+      "elo": 1000,
+      "games": 6,
+      "outcomes": {
+        "You made a queen first. You win.": 6
+      },
+      "ownerMovesAvg": 24.3,
+      "botMoves": 140,
+      "labels": {
+        "excellent": 61,
+        "best": 40,
+        "inaccuracy": 8,
+        "good": 15,
+        "great": 2,
+        "mistake": 8,
+        "blunder": 6
+      },
+      "badPer100": 10,
+      "blundersPer100": 4.3,
+      "topShareAvg": 56
+    },
+    {
+      "game": "pawn-war",
+      "owner": "maia600",
+      "elo": 1000,
+      "games": 6,
+      "outcomes": {
+        "They made a queen first.": 5,
+        "You made a queen first. You win.": 1
+      },
+      "ownerMovesAvg": 21.5,
+      "botMoves": 128,
+      "labels": {
+        "best": 44,
+        "excellent": 52,
+        "blunder": 6,
+        "mistake": 6,
+        "great": 3,
+        "good": 11,
+        "miss": 3,
+        "inaccuracy": 3
+      },
+      "badPer100": 9.4,
+      "blundersPer100": 4.7,
+      "topShareAvg": 54
+    },
+    {
+      "game": "queen-vs-pawns",
+      "owner": "engine",
+      "elo": 1000,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 6
+      },
+      "ownerMovesAvg": 8.5,
+      "botMoves": 45,
+      "labels": {
+        "excellent": 26,
+        "best": 10,
+        "blunder": 5,
+        "forced": 2,
+        "inaccuracy": 1,
+        "good": 1
+      },
+      "badPer100": 11.6,
+      "blundersPer100": 11.6,
+      "topShareAvg": 48
+    },
+    {
+      "game": "queen-vs-pawns",
+      "owner": "maia600",
+      "elo": 1000,
+      "games": 6,
+      "outcomes": {
+        "You took every pawn. You win.": 2,
+        "A pawn got through and became a queen.": 3,
+        "checkmate": 1
+      },
+      "ownerMovesAvg": 22,
+      "botMoves": 129,
+      "labels": {
+        "excellent": 70,
+        "best": 30,
+        "forced": 2,
+        "blunder": 9,
+        "great": 2,
+        "good": 9,
+        "mistake": 2,
+        "inaccuracy": 5
+      },
+      "badPer100": 8.7,
+      "blundersPer100": 7.1,
+      "topShareAvg": 56
+    },
+    {
+      "game": "two-rook-mate",
+      "owner": "engine",
+      "elo": 1000,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 6
+      },
+      "ownerMovesAvg": 2,
+      "botMoves": 6,
+      "labels": {
+        "excellent": 5,
+        "best": 1
+      },
+      "badPer100": 0,
+      "blundersPer100": 0,
+      "topShareAvg": 64
+    },
+    {
+      "game": "two-rook-mate",
+      "owner": "maia600",
+      "elo": 1000,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 5,
+        "No mate within 20 moves. Try it again.": 1
+      },
+      "ownerMovesAvg": 6.3,
+      "botMoves": 32,
+      "labels": {
+        "best": 12,
+        "excellent": 17,
+        "forced": 1,
+        "mistake": 1,
+        "blunder": 1
+      },
+      "badPer100": 6.5,
+      "blundersPer100": 3.2,
+      "topShareAvg": 62
+    },
+    {
+      "game": "rook-mate",
+      "owner": "engine",
+      "elo": 1000,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 6
+      },
+      "ownerMovesAvg": 8.3,
+      "botMoves": 44,
+      "labels": {
+        "best": 23,
+        "excellent": 19,
+        "forced": 2
+      },
+      "badPer100": 0,
+      "blundersPer100": 0,
+      "topShareAvg": 72
+    },
+    {
+      "game": "rook-mate",
+      "owner": "maia600",
+      "elo": 1000,
+      "games": 6,
+      "outcomes": {
+        "draw: not enough material to mate": 3,
+        "No mate within 40 moves. Try it again.": 1,
+        "repetition": 2
+      },
+      "ownerMovesAvg": 25.8,
+      "botMoves": 153,
+      "labels": {
+        "excellent": 75,
+        "best": 66,
+        "forced": 4,
+        "mistake": 7,
+        "blunder": 1
+      },
+      "badPer100": 5.4,
+      "blundersPer100": 0.7,
+      "topShareAvg": 60
+    },
+    {
+      "game": "ordinary game (baseline)",
+      "owner": "maia600",
+      "elo": 1500,
+      "games": 3,
+      "outcomes": {
+        "checkmate": 3
+      },
+      "ownerMovesAvg": 37.7,
+      "botMoves": 113,
+      "labels": {
+        "book": 6,
+        "best": 29,
+        "inaccuracy": 10,
+        "excellent": 51,
+        "good": 11,
+        "forced": 1,
+        "miss": 1,
+        "blunder": 2,
+        "mistake": 2
+      },
+      "badPer100": 3.8,
+      "blundersPer100": 1.9,
+      "topShareAvg": 52
+    },
+    {
+      "game": "pawn-war",
+      "owner": "engine",
+      "elo": 1500,
+      "games": 6,
+      "outcomes": {
+        "You made a queen first. You win.": 6
+      },
+      "ownerMovesAvg": 24,
+      "botMoves": 138,
+      "labels": {
+        "excellent": 62,
+        "best": 43,
+        "good": 16,
+        "inaccuracy": 8,
+        "blunder": 5,
+        "mistake": 4
+      },
+      "badPer100": 6.5,
+      "blundersPer100": 3.6,
+      "topShareAvg": 60
+    },
+    {
+      "game": "pawn-war",
+      "owner": "maia600",
+      "elo": 1500,
+      "games": 6,
+      "outcomes": {
+        "They made a queen first.": 6
+      },
+      "ownerMovesAvg": 20.8,
+      "botMoves": 125,
+      "labels": {
+        "best": 55,
+        "excellent": 57,
+        "blunder": 4,
+        "great": 2,
+        "good": 5,
+        "inaccuracy": 1,
+        "mistake": 1
+      },
+      "badPer100": 4,
+      "blundersPer100": 3.2,
+      "topShareAvg": 65
+    },
+    {
+      "game": "queen-vs-pawns",
+      "owner": "engine",
+      "elo": 1500,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 5,
+        "repetition": 1
+      },
+      "ownerMovesAvg": 12.7,
+      "botMoves": 70,
+      "labels": {
+        "excellent": 49,
+        "best": 8,
+        "forced": 5,
+        "inaccuracy": 2,
+        "blunder": 3,
+        "good": 2,
+        "mistake": 1
+      },
+      "badPer100": 6.2,
+      "blundersPer100": 4.6,
+      "topShareAvg": 51
+    },
+    {
+      "game": "queen-vs-pawns",
+      "owner": "maia600",
+      "elo": 1500,
+      "games": 6,
+      "outcomes": {
+        "A pawn got through and became a queen.": 5,
+        "You took every pawn. You win.": 1
+      },
+      "ownerMovesAvg": 23.3,
+      "botMoves": 139,
+      "labels": {
+        "excellent": 65,
+        "best": 45,
+        "good": 16,
+        "great": 1,
+        "blunder": 3,
+        "mistake": 4,
+        "inaccuracy": 5
+      },
+      "badPer100": 5,
+      "blundersPer100": 2.2,
+      "topShareAvg": 55
+    },
+    {
+      "game": "two-rook-mate",
+      "owner": "engine",
+      "elo": 1500,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 6
+      },
+      "ownerMovesAvg": 2,
+      "botMoves": 6,
+      "labels": {
+        "excellent": 5,
+        "best": 1
+      },
+      "badPer100": 0,
+      "blundersPer100": 0,
+      "topShareAvg": 64
+    },
+    {
+      "game": "two-rook-mate",
+      "owner": "maia600",
+      "elo": 1500,
+      "games": 6,
+      "outcomes": {
+        "No mate within 20 moves. Try it again.": 4,
+        "checkmate": 2
+      },
+      "ownerMovesAvg": 17.7,
+      "botMoves": 100,
+      "labels": {
+        "excellent": 54,
+        "best": 33,
+        "forced": 6,
+        "mistake": 7
+      },
+      "badPer100": 7.4,
+      "blundersPer100": 0,
+      "topShareAvg": 66
+    },
+    {
+      "game": "rook-mate",
+      "owner": "engine",
+      "elo": 1500,
+      "games": 6,
+      "outcomes": {
+        "checkmate": 6
+      },
+      "ownerMovesAvg": 9.5,
+      "botMoves": 51,
+      "labels": {
+        "best": 35,
+        "excellent": 9,
+        "forced": 7
+      },
+      "badPer100": 0,
+      "blundersPer100": 0,
+      "topShareAvg": 79
+    },
+    {
+      "game": "rook-mate",
+      "owner": "maia600",
+      "elo": 1500,
+      "games": 6,
+      "outcomes": {
+        "repetition": 3,
+        "draw: not enough material to mate": 2,
+        "stalemate": 1
+      },
+      "ownerMovesAvg": 19.5,
+      "botMoves": 116,
+      "labels": {
+        "excellent": 59,
+        "best": 38,
+        "blunder": 2,
+        "forced": 12,
+        "mistake": 5
+      },
+      "badPer100": 6.7,
+      "blundersPer100": 1.9,
+      "topShareAvg": 65
+    },
+    {
+      "game": "pawn-war",
+      "owner": "engine (defender too)",
+      "elo": "engine",
+      "games": 1,
+      "outcomes": {
+        "repetition": 1
+      },
+      "ownerMovesAvg": 24,
+      "botMoves": 23,
+      "labels": {},
+      "badPer100": 0,
+      "blundersPer100": 0,
+      "topShareAvg": 100
+    },
+    {
+      "game": "queen-vs-pawns",
+      "owner": "engine (defender too)",
+      "elo": "engine",
+      "games": 1,
+      "outcomes": {
+        "A pawn got through and became a queen.": 1
+      },
+      "ownerMovesAvg": 23,
+      "botMoves": 23,
+      "labels": {},
+      "badPer100": 0,
+      "blundersPer100": 0,
+      "topShareAvg": 100
+    },
+    {
+      "game": "two-rook-mate",
+      "owner": "engine (defender too)",
+      "elo": "engine",
+      "games": 1,
+      "outcomes": {
+        "checkmate": 1
+      },
+      "ownerMovesAvg": 2,
+      "botMoves": 1,
+      "labels": {},
+      "badPer100": 0,
+      "blundersPer100": 0,
+      "topShareAvg": 100
+    },
+    {
+      "game": "rook-mate",
+      "owner": "engine (defender too)",
+      "elo": "engine",
+      "games": 1,
+      "outcomes": {
+        "checkmate": 1
+      },
+      "ownerMovesAvg": 12,
+      "botMoves": 11,
+      "labels": {},
+      "badPer100": 0,
+      "blundersPer100": 0,
+      "topShareAvg": 100
+    }
+  ]
+}

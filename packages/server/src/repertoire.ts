@@ -689,6 +689,26 @@ export class RepertoireService {
   }
 
   /**
+   * A line from one of the owner's games (WP 8.10): the repertoire's moves to where the opponent left it,
+   * their move as played, and the engine's move after it. It joins the repertoire and every gate runs
+   * over it with the rest, so it waits for the owner's approval like any line, and a repertoire built
+   * from the book holds it back when a move of it is not book (V4). It says where it came from (D13).
+   */
+  async addLine(id: number, moves: string[], from: { game: number; chapter?: string }): Promise<{ ok: true; report: RepertoireReport; status: ContentStatus; reasons: string[] } | { ok: false; reason: string }> {
+    const rep = this.db.repertoire(id);
+    if (!rep) return { ok: false, reason: 'That repertoire is not here any more.' };
+    const items = this.db.repertoireItems<RepLine>(id);
+    const startFen = items[0]?.body.startFen ?? START_FEN;
+    const line: RepLine = { repertoire: id, colour: rep.colour as Color, startFen, moves, chapter: from.chapter, order: Math.max(0, ...items.map((x) => x.body.order ?? 0)) + 1, added: { game: from.game, on: new Date().toISOString().slice(0, 10) } };
+    if (items.some((x) => x.key === lineKey(line))) return { ok: false, reason: 'This line is in the repertoire already.' };
+    const old = rep.report as RepertoireReport | undefined;
+    const report = await this.run(id, [...items.map((x) => x.body), line], { source: rep.source, licence: rep.licence as Licence, level: rep.level ?? '400–700' }, { duplicates: old?.duplicates ?? 0, skipped: old?.skipped ?? [] });
+    const saved = this.db.repertoireItems<RepLine>(id).find((x) => x.key === lineKey(line));
+    this.db.logEvent('repertoire_line_added', { id, moves, game: from.game, status: saved?.status });
+    return { ok: true, report, status: saved?.status ?? 'draft', reasons: saved ? quarantineReasons(saved) : [] };
+  }
+
+  /**
    * The owner's fix for a quarantined line (the review screen): the line becomes `moves` (the board's
    * line, which must start like this one and change it at or before the move that failed), and the
    * repertoire's gates run again, so the new move is checked like every other.
@@ -779,6 +799,15 @@ export class RepertoireService {
         if (checked !== 'quarantined') item.status = 'live';
         else if (was.note && failed(was) === failed(item)) item.status = 'live';
         item.note = was.note;
+        // approved, then put back in quarantine by a check: remembered, so the approval comes back with a pass (WP 8.11)
+        if (item.status === 'quarantined') item.body = { ...item.body, approvedBefore: true };
+      } else if (was?.status === 'quarantined' && was.body.approvedBefore) {
+        // the owner approved this very line before a check put it in quarantine: passing again, it is live again
+        if (checked !== 'quarantined') {
+          item.status = 'live';
+          item.body = { ...item.body, approvedBefore: undefined };
+          item.note = was.note;
+        } else item.body = { ...item.body, approvedBefore: true };
       }
       return item;
     });

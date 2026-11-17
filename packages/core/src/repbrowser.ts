@@ -31,6 +31,8 @@ export function browserPositions(lines: readonly { body: RepLine; waiting: boole
         const w = words.get(key);
         const prev = steps[steps.indexOf(s) - 1];
         at.mine = {
+          // a line added from a game: its last move of mine is the engine's (D13); the moves before are the repertoire's
+          ...(line.added && s.index === line.moves.length - 1 ? { from: 'game' as const } : {}),
           san: s.san,
           uci: s.uci,
           why: w?.uci === s.uci ? w.why : undefined,
@@ -42,7 +44,7 @@ export function browserPositions(lines: readonly { body: RepLine; waiting: boole
       } else {
         const replies = (at.replies ??= []);
         const r = replies.find((x) => x.uci === s.uci);
-        if (!r) replies.push({ san: s.san, uci: s.uci, waiting: waiting || undefined });
+        if (!r) replies.push({ san: s.san, uci: s.uci, waiting: waiting || undefined, ...(line.added && s.index === line.moves.length - 2 ? { from: ['game' as const] } : {}) });
         else if (!waiting) r.waiting = undefined;
       }
     }

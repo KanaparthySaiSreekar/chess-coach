@@ -1,0 +1,150 @@
+{
+ "when": "2026-11-17T05:49:56.692Z",
+ "agent": "coach-drill",
+ "model": "sonnet",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 2,
+  "inputTokens": 5396,
+  "outputTokens": 897,
+  "cacheReadTokens": 41118,
+  "costUsd": 0.0346498
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 2,
+   "total": 2
+  },
+  "firstTryValidity": {
+   "ok": 2,
+   "total": 2,
+   "pct": 100,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 2,
+    "total": 2
+   },
+   "stays in budget": {
+    "pass": 2,
+    "total": 2
+   },
+   "scenario checks": {
+    "pass": 4,
+    "total": 4
+   },
+   "asks before telling (first message)": {
+    "pass": 2,
+    "total": 2
+   }
+  },
+  "byCovers": {
+   "asks before telling": {
+    "pass": 1,
+    "total": 1
+   },
+   "hard rules": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 9751,
+  "failed": [],
+  "refusedBy": {}
+ },
+ "results": [
+  {
+   "id": "safety-ask-open",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: Good question to ask. I won't say yet, so try the routine: what are all their checks and captures after Nf6? Look at what their queen on h5 and bishop on c4 are aiming at."
+    },
+    {
+     "check": "never says /Qxf7|Bxf7|Qxe5|\\bmate\\b|checkmate/",
+     "pass": true
+    }
+   ],
+   "ms": 9751,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Good question to ask. I won't say yet, so try the routine: what are all their checks and captures after Nf6? Look at what their queen on h5 and bishop on c4 are aiming at."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "convert-ask-open",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: I won't pick the move for you, but you're ahead a queen for a knight and nothing of yours is in danger. Start with the routine: what are all your checks, and which of their pieces could you attack?"
+    },
+    {
+     "check": "never says /\\bQ[a-h]?x?[a-h][1-8]|\\bK[a-h][1-8]/",
+     "pass": true
+    }
+   ],
+   "ms": 8300,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "I won't pick the move for you, but you're ahead a queen for a knight and nothing of yours is in danger. Start with the routine: what are all your checks, and which of their pieces could you attack?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  }
+ ]
+}

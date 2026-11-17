@@ -52,6 +52,12 @@ export type ConvertOptions = {
   nodes: () => number;
   /** the owner's moves before a drill stops (`conversion.maxMoves`) */
   maxMoves: () => number;
+  /**
+   * Who defends (`conversion.defender`, WP 6.8's open item): the engine (null), or a human-like defender,
+   * Maia at the owner's level, whose move (UCI) is asked for here. The engine's search still says whether
+   * the win is there after every move; only the reply comes from the defender.
+   */
+  defender?: () => ((fen: string) => Promise<string | null>) | null;
   now?: () => Date;
 };
 
@@ -188,7 +194,11 @@ export class ConvertTrainer {
       if (run !== this.run) return;
       return this.finish('thrown', { throwMove: { san: mine.san, why: verdict?.why ?? '' } });
     }
-    const reply = line?.pv[0] ? uciToMove(after, line.pv[0]) : null;
+    // the reply: the human-like defender's when it is chosen (falling back on the engine's), else the engine's
+    const human = this.o.defender?.();
+    const humanUci = human ? await human(mine.fenAfter).catch(() => null) : null;
+    if (run !== this.run) return;
+    const reply = (humanUci ? uciToMove(after, humanUci) : null) ?? (line?.pv[0] ? uciToMove(after, line.pv[0]) : null);
     if (!reply) return this.finish('drawn', { draw: 'no reply was found' });
     const theirs = describeMove(after, reply);
     this.push(theirs);

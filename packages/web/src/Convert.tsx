@@ -5,6 +5,7 @@
 import { Flag, RotateCcw, SkipForward, Undo2 } from 'lucide-react';
 import type { Color } from '@chess-coach/core';
 import { Board } from './Board.tsx';
+import { BoardCoach } from './OpeningCoach.tsx';
 import { San } from './San.tsx';
 import { send, setting, type Store } from './store.ts';
 
@@ -139,6 +140,8 @@ export function ConvertPanels({ s, sets }: { s: Store; sets: React.ReactNode }) 
             </div>
           </section>
         )}
+        {/* the drill coach sees this board and can be asked any time; it never suggests a move while the owner plays (D105) */}
+        {v.status !== 'idle' && v.id !== undefined && <BoardCoach s={s} shows="this position" thread={(m) => m.drill === v.id} suggestions={v.status === 'playing' ? ['What is my plan to finish this?'] : ['Why did the win slip away?']} />}
       </aside>
     </main>
   );

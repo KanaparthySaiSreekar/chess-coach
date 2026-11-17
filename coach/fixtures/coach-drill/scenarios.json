@@ -123,5 +123,84 @@
       { "type": "someKind", "kind": "summary" },
       { "type": "says", "pattern": "tomorrow|come(?:s)? back|again" }
     ]
+  },
+  {
+    "id": "safety-ask-open",
+    "about": "The safety check, the owner listing their replies to 3...Nf6 (it allows Qxf7#), asks whether it is safe: help with the routine, no reply named, no verdict",
+    "covers": "asks before telling",
+    "side": "black",
+    "drill": {
+      "kind": "safety",
+      "body": {
+        "fen": "r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3",
+        "question": "is_safe",
+        "candidates": [
+          {
+            "san": "Nf6",
+            "safe": false,
+            "why": "Nf6 allows checkmate with Qxf7#."
+          }
+        ],
+        "played": "Nf6"
+      }
+    },
+    "steps": [
+      {
+        "ask": "Is Nf6 safe here?"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "firstIs",
+        "kinds": [
+          "question",
+          "nudge"
+        ]
+      },
+      {
+        "type": "never",
+        "pattern": "Qxf7|Bxf7|Qxe5|\\bmate\\b|checkmate"
+      }
+    ]
+  },
+  {
+    "id": "convert-ask-open",
+    "about": "A won game being played out (queen against a knight): the owner asks what to play; a question or a nudge, never a move of theirs",
+    "covers": "hard rules",
+    "side": "white",
+    "drill": {
+      "kind": "convert",
+      "body": {
+        "fen": "4k3/8/2n5/8/8/8/8/3QK3 w - - 0 1",
+        "chances": 99,
+        "game": {
+          "outcome": "draw"
+        }
+      }
+    },
+    "steps": [
+      {
+        "ask": "What should I play here?"
+      }
+    ],
+    "checks": [
+      {
+        "type": "replies"
+      },
+      {
+        "type": "firstIs",
+        "kinds": [
+          "question",
+          "nudge"
+        ]
+      },
+      {
+        "type": "never",
+        "pattern": "\\bQ[a-h]?x?[a-h][1-8]|\\bK[a-h][1-8]"
+      }
+    ]
   }
 ]

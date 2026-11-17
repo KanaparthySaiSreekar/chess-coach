@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { STEP_NAME, STEP_QUESTION, findableMove, gradeMove, tagMistake, type EngineLine, type GradeResult, type MoveClock, type SkippedStep } from '../src/index.ts';
+import { STEP_NAME, STEP_QUESTION, findableMove, gradeMove, lookedQuestion, tagMistake, tagUnclear, type EngineLine, type GradeResult, type MoveClock, type SkippedStep } from '../src/index.ts';
 
 // PLAN WP 5.4: a fixture per row of the skipped-step table (LEARNING §4). Each is a small position,
 // the move played, and the engine's lines written by hand: its best move, and the line that
@@ -162,5 +162,23 @@ describe('the findable move (H12)', () => {
     expect(['d3', 'Bxf7+', 'O-O']).toContain(f.move);
     // Bxf7+ takes a pawn with check but gives up the bishop: a sacrifice is not the easy move to teach
     expect(f.move).not.toBe('Bxf7+');
+  });
+});
+
+describe('a tag the board cannot settle (WP 5.7, D105)', () => {
+  it('only "it looked safe" and "no safety check" are asked', () => {
+    expect(tagUnclear('seemed_safe')).toBe(true);
+    expect(tagUnclear('no_safety_check')).toBe(true);
+    for (const step of Object.keys(STEP_NAME) as SkippedStep[]) if (step !== 'seemed_safe' && step !== 'no_safety_check') expect(tagUnclear(step)).toBe(false);
+    expect(tagUnclear(undefined)).toBe(false);
+  });
+
+  it('the question names the move as a token, and each answer means one of the two steps', () => {
+    const q = lookedQuestion('12.', 'Nf6');
+    expect(q.text).toContain('{m:Nf6}');
+    expect(q.choices.map((c) => c.step)).toEqual(['seemed_safe', 'no_safety_check']);
+    // the two answers are told apart by their text, and each names the moment
+    expect(new Set(q.choices.map((c) => c.text)).size).toBe(2);
+    for (const c of q.choices) expect(c.text.startsWith('12.Nf6: ')).toBe(true);
   });
 });

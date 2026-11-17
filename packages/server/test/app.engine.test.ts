@@ -846,6 +846,36 @@ describe('the app with a scripted coach (real engine)', () => {
     await send({ type: 'library', action: 'remove', id });
   });
 
+  it('replay: a tag the board cannot settle is asked at the end; the answer is the owner\'s own word for the step (WP 5.7)', async () => {
+    // Black puts a bishop where a pawn simply takes it, threatening nothing: whether they looked at the reply is theirs to say
+    const id = await reviewed('[White "x"]\n[Black "y"]\n[Result "1-0"]\n\n1. e4 e5 2. Nf3 Ba3 3. bxa3 1-0', 'black');
+    const moment = app.review!.moments.find((m) => m.san === 'Ba3')!;
+    expect(['no_safety_check', 'seemed_safe']).toContain(moment.step);
+    expect(moment.stepBy).toBeUndefined();
+    await send({ type: 'replay', action: 'start' });
+    await until(() => app.review?.replay?.phase === 'asking');
+    for (let i = 0; i < 4 && app.review?.replay?.phase !== 'finished'; i++) await send({ type: 'replay', action: 'next' });
+    await until(() => app.review?.replay?.phase === 'finished');
+    // the question, with the two answers as buttons
+    await until(() => coachMsgs().some((m) => m.expect === 'choice'));
+    const q = coachMsgs().find((m) => m.expect === 'choice')!;
+    expect(q.text).toBe(`About your move ${moment.number}Ba3: did you look at their reply and it seemed fine, or didn't you look?`);
+    expect(q.choices).toEqual([`${moment.number}Ba3: I looked, and it seemed fine`, `${moment.number}Ba3: I didn't look at their reply`]);
+    // the owner presses one: it is their word for the step, the report is made again
+    await send({ type: 'ask', text: q.choices![0]! });
+    await until(() => app.review!.moments.find((m) => m.san === 'Ba3')!.stepBy === 'owner');
+    expect(app.review!.moments.find((m) => m.san === 'Ba3')).toMatchObject({ step: 'seemed_safe', stepBy: 'owner' });
+    expect(coachMsgs().some((m) => m.from === 'system' && m.text.startsWith('Noted: it looked safe at a glance.'))).toBe(true);
+    expect(JSON.parse(app.db.recentEvents('tag', 1)[0]!.data)).toMatchObject({ game: id, step: 'seemed_safe', how: 'asked' });
+    // pressed again, nothing more happens (the question is settled)
+    const n = coachMsgs().length;
+    await send({ type: 'ask', text: q.choices![1]! });
+    expect(app.review!.moments.find((m) => m.san === 'Ba3')!.step).toBe('seemed_safe');
+    expect(coachMsgs().length).toBeGreaterThan(n); // it went to the coach as an ordinary question instead
+    await send({ type: 'replay', action: 'stop' });
+    await send({ type: 'library', action: 'remove', id });
+  });
+
   it('replay: a tactic that has not come up before is shown as a worked example; the next time it is asked', async () => {
     // 3.e3 lets the queen check on a5 and take the bishop on g5: a fork
     const id = await reviewed('[White "a"]\n[Black "b"]\n[Result "0-1"]\n\n1. d4 Nf6 2. Bg5 c6 3. e3 Qa5+ 4. Nc3 Qxg5 0-1', 'white');
@@ -1734,6 +1764,8 @@ describe('the safety-check trainer (real engine)', () => {
 
   it('the listing step: their checks and captures are made first, the ones missed are shown, and a miss makes the grade hard', async () => {
     await send({ type: 'setting', key: 'safety.listFirst', value: true });
+    // checks and captures only here (their threats have a test of their own below)
+    await send({ type: 'setting', key: 'safety.listThreats', value: false });
     const fen = 'r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3';
     const body = { fen, question: 'is_safe' as const, candidates: [{ san: 'Nf6', safe: false, why: 'Nf6 allows checkmate with Qxf7#.' }], played: 'Nf6' };
     const id = app.db.saveContent('game:999#6|safety|is_safe|Nf6', { type: 'safety', status: 'live', source: 'game:999#6', licence: 'own', level: '400–700', gates: [gateV1Safety(body), { gate: 'V6', result: 'pass' }], body } as never);
@@ -1769,6 +1801,28 @@ describe('the safety-check trainer (real engine)', () => {
     const good = (Date.parse(reviewCard(await makeScheduler(180), null, 'good', new Date()).card.dueAt) - Date.now()) / 86_400_000;
     expect(hard).toBeLessThan(good);
     expect(hard).toBeGreaterThanOrEqual(0.99);
+    await send({ type: 'safety', action: 'close' });
+    await send({ type: 'setting', key: 'safety.listThreats', value: true });
+  });
+
+  it('their threats too (safety.listThreats, D104): a quiet move that attacks something that can then be won is on the list', async () => {
+    await send({ type: 'setting', key: 'safety.listFirst', value: true });
+    await send({ type: 'setting', key: 'safety.listThreats', value: true });
+    // 1.e4 e5 2.Nf3 Nc6 3.Bc4, Black thinking of 3...Nf6: then 4.Ng5 hits f7 twice, the king guards it once
+    const fen = 'r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3';
+    const body = { fen, question: 'is_safe' as const, candidates: [{ san: 'Nf6', safe: true, why: 'Nf6 develops your knight.' }], played: 'Nf6' };
+    const id = app.db.saveContent('game:998#6|safety|is_safe|Nf6', { type: 'safety', status: 'live', source: 'game:998#6', licence: 'own', level: '400–700', gates: [gateV1Safety(body), { gate: 'V6', result: 'pass' }], body } as never);
+    await send({ type: 'safety', action: 'next' });
+    expect(view).toMatchObject({ status: 'asking', id, list: { stage: 'listing', threats: true } });
+    await send({ type: 'safety', action: 'try', from: 'f3', to: 'g5' });
+    expect(view!.list!.note).toEqual({ san: 'Ng5', text: 'is a threat: it attacks your pawn on f7.', good: true });
+    await send({ type: 'safety', action: 'try', from: 'a2', to: 'a3' });
+    expect(view!.list!.note).toEqual({ san: 'a3', text: 'is not a check, a capture or a threat.', good: false });
+    await send({ type: 'safety', action: 'listed' });
+    // the ones missed include the captures not made (Bxf7+, Nxe5), and not the threat found
+    const missed = view!.list!.missed!.map((r) => r.san);
+    expect(missed).toEqual(expect.arrayContaining(['Bxf7+', 'Nxe5']));
+    expect(missed).not.toContain('Ng5');
     await send({ type: 'safety', action: 'close' });
   });
 });
@@ -1996,6 +2050,33 @@ describe('win the won game (real engine)', () => {
     expect(days(id)).toBeGreaterThan(0.99);
   });
 
+  it('a human-like defender: its reply is the one played, while the engine still judges the win (conversion.defender)', async () => {
+    const asked: string[] = [];
+    const trainer = new ConvertTrainer({
+      db: app.db,
+      facts: app.facts,
+      engine: app.engine,
+      storedUnderData: true,
+      onChange: () => {},
+      schedule: () => ({ reviewCap: 30, maxDays: 180 }),
+      guard: () => null,
+      nodes: () => 200_000,
+      maxMoves: () => 5,
+      // a stand-in for Maia: the black knight goes to a8 when it can (no engine would choose that), else it passes
+      defender: () => async (fen) => {
+        asked.push(fen);
+        return fen.startsWith('4k3/8/2n5/8/8/8/3Q4/4K3 b') ? 'c6a5' : null;
+      },
+    });
+    drill('4k3/8/2n5/8/8/8/8/3QK3 w - - 0 1');
+    expect(trainer.next()).toEqual({ ok: true });
+    await trainer.move('d1', 'd2');
+    expect(asked).toHaveLength(1);
+    expect(trainer.view.moves.map((m) => m.san)).toEqual(['Qd2', 'Na5']);
+    expect(trainer.view).toMatchObject({ status: 'playing', yourTurn: true });
+    trainer.resign();
+  });
+
   it('a game that was won and then drawn gives a drill from before the move that threw it', async () => {
     await send({ type: 'setting', key: 'review.ownFirst', value: false });
     await send({ type: 'setting', key: 'puzzles.fromGames', value: true });
@@ -2185,6 +2266,84 @@ describe('the drill coach (scripted coach, real engine)', () => {
     expect(any).toBeTruthy();
     expect(coach.seen.length).toBe(before);
     expect(app.speed.view).toMatchObject({ status: 'over', silent: true });
+  });
+
+  it('asked on a won game being played out, it sees that board, names no move the owner could play, and answers beside the drill (D105)', async () => {
+    const body: ConvertItem = { fen: '4k3/8/2n5/8/8/8/8/3QK3 w - - 0 1', chances: 99, game: { outcome: 'draw' } };
+    const id = app.db.saveContent('game:996#1|convert', { type: 'convert', status: 'live', source: 'game:996#1', licence: 'own', level: '400–700', gates: [gateV1Convert(body), { gate: 'V6', result: 'pass' }], body } as never);
+    await send({ type: 'mode', mode: 'puzzles' });
+    await send({ type: 'puzzle', action: 'set', set: { kind: 'convert' } });
+    await send({ type: 'convert', action: 'next' });
+    expect(app.convert.view).toMatchObject({ status: 'playing', id });
+    // the coach off: the box says so, beside the drill
+    await send({ type: 'coach', action: 'stop' });
+    messages.length = 0;
+    await send({ type: 'ask', text: 'How do I win this?' });
+    await until(() => messages.some((m) => m.from === 'system'));
+    expect(messages.filter((m) => m.drill === id).map((m) => m.from)).toEqual(['owner', 'system']);
+    // the coach on: the question goes to the drill coach with this board
+    await send({ type: 'coach', action: 'start' });
+    const tries: any[] = [];
+    coach.steps.push(async (a, ev) => {
+      expect(ev).toMatchObject({ event: 'drill_question', drill: 'convert', ownerSaid: 'How do I win this?', youMayGiveTheAnswer: false, about: { now: expect.stringMatching(/playing/) } });
+      expect(await a.tools.get_state({})).toMatchObject({ mode: 'puzzles', drill: 'convert', fen: body.fen });
+      tries.push(await a.tools.say({ seq: ev.seq, kind: 'nudge', text: 'Play {m:Qd7+} here.', claims: [] }));
+      tries.push(await a.tools.say({ seq: ev.seq, kind: 'question', text: 'Which of their pieces can still make trouble?', claims: [] }));
+    });
+    messages.length = 0;
+    await send({ type: 'ask', text: 'How do I win this?' });
+    await until(() => tries.length === 2);
+    expect(tries[0]).toMatchObject({ ok: false });
+    expect(tries[0].problems.join(' ')).toMatch(/still working this out/);
+    expect(tries[1]).toMatchObject({ ok: true });
+    await until(() => messages.some((m) => m.from === 'coach'));
+    expect(messages.find((m) => m.from === 'coach')).toMatchObject({ drill: id, text: 'Which of their pieces can still make trouble?' });
+    await send({ type: 'convert', action: 'resign' });
+    await send({ type: 'coach', action: 'stop' });
+    await send({ type: 'puzzle', action: 'set', set: { kind: 'games' } });
+  });
+
+  it('asked on the safety check before the owner has ruled, it may name the move asked about, but none of their replies and no verdict (D105)', async () => {
+    await send({ type: 'setting', key: 'safety.listFirst', value: true });
+    // Black is asked whether 3...Nf6 is safe: it allows Qxf7#
+    const fen = 'r1bqkbnr/pppp1ppp/2n5/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 3 3';
+    const body = { fen, question: 'is_safe' as const, candidates: [{ san: 'Nf6', safe: false, why: 'Nf6 allows checkmate with Qxf7#.' }], played: 'Nf6' };
+    const id = app.db.saveContent('game:995#6|safety|is_safe|Nf6', { type: 'safety', status: 'live', source: 'game:995#6', licence: 'own', level: '400–700', gates: [gateV1Safety(body), { gate: 'V6', result: 'pass' }], body } as never);
+    await send({ type: 'mode', mode: 'puzzles' });
+    await send({ type: 'puzzle', action: 'set', set: { kind: 'safety' } });
+    if (app.safety.view.status !== 'asking') await send({ type: 'safety', action: 'next' });
+    expect(app.safety.view).toMatchObject({ status: 'asking', id, list: { stage: 'listing' } });
+    await send({ type: 'coach', action: 'start' });
+    // while they list their replies (the board after 3...Nf6): no reply named, no verdict
+    const tries: any[] = [];
+    coach.steps.push(async (a, ev) => {
+      expect(ev).toMatchObject({ event: 'drill_question', drill: 'safety', ownerSaid: 'Is it safe?', youMayGiveTheAnswer: false });
+      expect(await a.tools.get_state({})).toMatchObject({ mode: 'puzzles', drill: 'safety' });
+      tries.push(await a.tools.say({ seq: ev.seq, kind: 'nudge', text: 'Look at {m:Qxf7#}.', claims: [] }));
+      tries.push(await a.tools.say({ seq: ev.seq, kind: 'nudge', text: 'I would not call it safe.', claims: [] }));
+      // the move asked about is on the question's own board, one move back: it may be named here too
+      tries.push(await a.tools.say({ seq: ev.seq, kind: 'question', text: 'After {m:Nf6}, which of their pieces can reach your king?', claims: [] }));
+    });
+    messages.length = 0;
+    await send({ type: 'ask', text: 'Is it safe?' });
+    await until(() => tries.length === 3);
+    expect(tries.map((t) => t.ok)).toEqual([false, false, true]);
+    expect(tries[0].problems.join(' ')).toMatch(/still working this out/);
+    expect(tries[1].problems.join(' ')).toMatch(/has not ruled yet/);
+    await until(() => messages.some((m) => m.from === 'coach'));
+    expect(messages.find((m) => m.from === 'coach')).toMatchObject({ drill: id, text: 'After Nf6, which of their pieces can reach your king?' });
+    // the list done, the ruling still to come (the board before 3...Nf6): the move asked about may be named
+    await send({ type: 'safety', action: 'listed' });
+    const later: any[] = [];
+    coach.steps.push(async (a, ev) => {
+      later.push(await a.tools.say({ seq: ev.seq, kind: 'question', text: 'You are ruling on {m:Nf6}: what did your list show?', claims: [] }));
+    });
+    await send({ type: 'ask', text: 'What now?' });
+    await until(() => later.length === 1);
+    expect(later[0]).toMatchObject({ ok: true });
+    await send({ type: 'safety', action: 'close' });
+    await send({ type: 'coach', action: 'stop' });
+    await send({ type: 'puzzle', action: 'set', set: { kind: 'games' } });
   });
 });
 

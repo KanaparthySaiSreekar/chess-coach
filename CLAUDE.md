@@ -73,7 +73,11 @@ deep (built 2026-11-16: 552 lines, all the book holds, none quarantined, its wor
 book; chapters through the review screen, the Openings tab, the words and the drill (new cards a few a day); several repertoires per
 side (a game is matched with the one it stayed in longest). **The coach sits beside the repertoire** (D12, WP 8.17): on the Openings tab
 it sees the position the owner walks to, or the practice card, and answers any question there (`opening_question`; on a card being
-recalled it never names the move). Nothing is committed to git yet.
+recalled it never names the move). **Black's opening is chosen too (Q18, 2026-11-17): the Accelerated Dragon against 1.e4,
+the King's Indian setup against everything else** (D102; `content/repertoires/kid-accelerated-dragon.json`, 45 chapters, the
+outline drawn up by Claude from the owner's choices; built 2026-11-17: 648 lines, none quarantined, waiting for the owner's
+approval; Q32). Every move says where it comes from and every word who wrote it (D13). The coach is also beside the safety,
+threat and won-game drills (D105). The code is on `main`, pushed to a private GitHub repository (D103).
 
 ## Run it
 
@@ -86,7 +90,7 @@ recalled it never names the move). Nothing is committed to git yet.
 | `npm run test:page` | Builds the page, then drives it in Chrome against a real server and Stockfish with a scripted coach (AC power, about 15 s) |
 | `npm run typecheck` | TypeScript over all three packages |
 | `npm run lint` · `npm run check:docs` · `npm run check` | The linter (oxlint) · every feature ID in exactly one phase and every doc link resolving · both plus the type check and the fast tests |
-| `npm run test:coach` (`-- --model sonnet`, `--agent coach-review`, `coach-drill`, `coach-spar`, `coach-opening` or `coach-endgame`, `--only id,id`, `--list`) | The playbook harness: the live coach through its scenarios (30 for the analysis board, 14 for the Openings tab, 10 each for the game review, puzzles, games against the bots and the endgames), scored by code, saved in `coach/results/` (uses the plan; about 6 minutes; AC power) |
+| `npm run test:coach` (`-- --model sonnet`, `--agent coach-review`, `coach-drill`, `coach-spar`, `coach-opening` or `coach-endgame`, `--only id,id`, `--list`) | The playbook harness: the live coach through its scenarios (30 for the analysis board, 14 for the Openings tab, 12 for the puzzles and the other drills, 10 each for the game review, games against the bots and the endgames), scored by code, saved in `coach/results/` (uses the plan; about 6 minutes; AC power) |
 | `npm run content:install -- puzzles` | Build the local puzzle database from the downloaded Lichess CSV (once; about ten minutes; 1.5 GB) |
 | `npm run content:validate -- <file.json or id>` (`--save`) | Run the content gates over puzzles and print the report: quarantined with the reason, or passed (engine work; AC power) |
 | `node tools/author.ts list` · `chapters <id>` · `sheet <id> [file.json]` (`--chapter "<name>"`, `--missing`, `--depth N`) · `apply <id> <file.json>` (`--full`, `--by claude\|facts\|owner`: who wrote them, D13) | A repertoire's words (the `author-repertoire` skill): how far each chapter's words are; the worksheet of positions with their facts (one chapter, only those still without words); the words written into it kept and checked by V3 on the lines through them (every gate with `--full`) (engine work; AC power) |
@@ -98,6 +102,7 @@ recalled it never names the move). Nothing is committed to git yet.
 | `node tools/ws-probe.mjs '<json message>' …` | Send messages to the running server and print the board, the coach's lines and the labels |
 | `node tools/label-line.ts "<moves>"` | Label every move of a line as the page does and print the numbers behind each label (for comparing with another site's review) |
 | `node tools/label-audit.ts --games 14 --elo 700` | Play Maia games, label every move, and list the labels a person would not accept |
+| `node tools/minigame-maia.ts` (`--games 6`, `--elos 600,1000,1500`, `--only <id>`, `--json <file>`) | Play the mini-games with Maia as the bot and Stockfish or a 600 Maia on the owner's side; how they end, the bot's labels, how sure Maia is (AC power; about 8 minutes) |
 | `node tools/make-golden.ts` (`--engine` to search again) | Rebuild the golden fact packets of `core/test/fixtures/golden` after a deliberate change of wording |
 | `node tools/tb-probe.ts "<FEN>"` · `node tools/sample-puzzles.ts` | Ask the tablebases about a position · rebuild the puzzle sample the motif tests use |
 | `node tools/shot-board.mjs "<PGN or FEN>" <name>` | Load a game on the analysis board and save a picture of the board with its arrows (`URL=`, `OUT=`) |

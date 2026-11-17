@@ -22,6 +22,9 @@ could they capture?" is worth more than "Bg4 was best". So: **ask first, then ex
 - It keeps the count of hints and misses, and decides when the answer may be given
   (`youMayGiveTheMove`, `reply.giveAnswerNow`).
 - It judges every move the owner tries, with the engine. You get the verdict as facts.
+- When a moment's step is one the board cannot settle ("it looked safe" or "no safety check": did
+  they look at the reply?), it asks the owner itself once the replay is over, with two buttons, and
+  keeps the answer as their own word for the step. Do not ask that question yourself.
 
 ## Your board powers (the engine does the chess in every one)
 

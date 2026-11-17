@@ -212,6 +212,12 @@ export function PuzzlesView({ s }: { s: Store }) {
         ) : (
           <section className="pane-section">
             <p className="puzzle-task">{p.task}</p>
+            {p.routine && (
+              <p className="puzzle-routine" aria-live="polite">
+                <span className="walk-label">Before you move</span>
+                {p.routine}
+              </p>
+            )}
             {p.guide && (
               <div className="puzzle-guide">
                 <p>{p.guide.text}</p>

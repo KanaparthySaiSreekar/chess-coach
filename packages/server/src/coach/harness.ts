@@ -87,6 +87,12 @@ export type Scenario = {
   opening?: { pgn: string; words?: { line: string; why?: string; idea?: string }[]; card: number; due?: boolean; trap?: string };
   /** The Endgames tab (the endgame coach): a position of content/endgames.json by its id. The side is the owner's (the position's side to move). */
   endgame?: { position: string };
+  /**
+   * One of the other drills on the Puzzles tab (the drill coach, D105): the safety check or a won game
+   * played out, with its item as the app stores it (`body`: its position and, for the safety check,
+   * the question and the candidates). The side is the owner's.
+   */
+  drill?: { kind: 'safety' | 'convert'; body: { fen: string } & Record<string, unknown> };
   settings?: Record<string, SettingValue>;
   /** start the coach before the steps (default true) */
   coach?: boolean;
@@ -178,6 +184,12 @@ export function scenarioStart(s: Scenario): { ok: true; text: string; fen: strin
   if (s.spar) return { ok: true, text: '', fen: START_FEN };
   if (s.opening?.trap) return { ok: true, text: '', fen: START_FEN }; // a trap of the pack: checked when it is set up
   if (s.endgame) return { ok: true, text: '', fen: START_FEN }; // a position of the endgame pack: checked when it is set up
+  if (s.drill) {
+    const pos = parsePosition(s.drill.body.fen);
+    if (!pos) return { ok: false, reason: `${s.id}: the drill's FEN is not a legal position` };
+    if (pos.turn !== s.side) return { ok: false, reason: `${s.id}: the drill's position is not the owner's move` };
+    return { ok: true, text: s.drill.body.fen, fen: s.drill.body.fen };
+  }
   if (s.opening) {
     const lines = repertoireLines(s.opening.pgn, s.side).lines;
     if (!lines.length) return { ok: false, reason: `${s.id}: the repertoire has no line for ${s.side}` };
@@ -234,6 +246,8 @@ export function lintScenarios(list: Scenario[]): string[] {
     for (const step of s.steps) if ('gmove' in step && !/^[a-h][1-8][a-h][1-8][qrbn]?$/.test(step.gmove)) problems.push(`${s.id}: a game move must be like "e2e4", not "${step.gmove}"`);
     for (const step of s.steps) if ('pmove' in step && !/^[a-h][1-8][a-h][1-8]$/.test(step.pmove)) problems.push(`${s.id}: a puzzle move must be like "h2h3", not "${step.pmove}"`);
     if (!s.endgame && s.steps.some((step) => 'emove' in step || 'endgame' in step)) problems.push(`${s.id}: an endgame step needs an endgame scenario`);
+    if (s.drill && !['safety', 'convert'].includes(s.drill.kind)) problems.push(`${s.id}: a drill is the safety check ("safety") or a won game ("convert")`);
+    if (s.drill && s.steps.some((step) => !('ask' in step) && !('wait' in step))) problems.push(`${s.id}: a drill scenario's steps are questions ("ask") and waits`);
     for (const step of s.steps) if ('emove' in step && !/^[a-h][1-8][a-h][1-8][qrbn]?$/.test(step.emove)) problems.push(`${s.id}: an endgame move must be like "c5c7" or "a7a8q", not "${step.emove}"`);
   }
   return problems;

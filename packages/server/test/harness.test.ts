@@ -5,7 +5,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import type { CoachMessage } from '@chess-coach/core';
+import { START_FEN, type CoachMessage } from '@chess-coach/core';
 import { judge, lintScenarios, scenarioStart, summarise, type Scenario, type ScenarioResult, type Transcript } from '../src/coach/harness.ts';
 import { config } from '../src/config.ts';
 
@@ -28,11 +28,15 @@ describe('the scenarios for coach-spar', () => {
 });
 
 describe('the scenarios for coach-drill', () => {
-  it('are ten, each with a legal puzzle, and a puzzle step needs a puzzle (PLAN 6.11)', () => {
+  it('are twelve, each with a legal puzzle or drill, and a puzzle step needs a puzzle (PLAN 6.11, D105)', () => {
     const drill = JSON.parse(readFileSync(path.join(config.repoRoot, 'coach', 'fixtures', 'coach-drill', 'scenarios.json'), 'utf8')) as Scenario[];
-    expect(drill).toHaveLength(10);
+    expect(drill).toHaveLength(12);
     expect(lintScenarios(drill)).toEqual([]);
-    expect(drill.every((s) => s.puzzle && scenarioStart(s).ok)).toBe(true);
+    expect(drill.every((s) => (s.puzzle || s.drill) && scenarioStart(s).ok)).toBe(true);
+    // the other drills (D105): the safety check and a won game, asked while they are open
+    expect(drill.filter((s) => s.drill).map((s) => s.drill!.kind).sort()).toEqual(['convert', 'safety']);
+    expect(lintScenarios([{ ...base, id: 'turn', drill: { kind: 'convert', body: { fen: '4k3/8/2n5/8/8/8/8/3QK3 w - - 0 1' } }, side: 'black', steps: [{ ask: 'What now?' }], checks: [{ type: 'replies' }] }])).toEqual(["turn: the drill's position is not the owner's move"]);
+    expect(lintScenarios([{ ...base, id: 'drillmove', drill: { kind: 'safety', body: { fen: START_FEN } }, side: 'white', steps: [{ move: 'e2e4' }], checks: [{ type: 'replies' }] }])).toEqual(['drillmove: a drill scenario\'s steps are questions ("ask") and waits']);
     for (const line of ['hard rules', 'asks before telling', 'quiet when it should be', 'explains from facts']) expect(new Set(drill.map((s) => s.covers)), line).toContain(line);
     const first = drill[0]!;
     expect(lintScenarios([{ ...first, id: 'bad', puzzle: { ...first.puzzle!, solution: ['Rd9'] } }])).toEqual(["bad: the puzzle's move Rd9 is not legal"]);

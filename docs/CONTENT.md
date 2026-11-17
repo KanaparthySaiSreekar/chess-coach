@@ -223,7 +223,10 @@ On review a motif card can bring **the same motif in a new position**. New cards
 *As built (WP 6.5, `core/schedule.ts`).* `ts-fsrs` 6 (FSRS-7), with a miss always due the next day
 and no gap under a day or over `puzzles.maxIntervalDays` (TRACKER D63). Cards are made for every
 puzzle from the owner's games and for database puzzles that went wrong. "Right but slow" is not used
-yet; "fast" is 20 seconds. The same motif in a new position is not built yet.
+yet; "fast" is 20 seconds. **The same motif in a new position** (2026-11-17, `puzzles.sameIdeaNew`, on):
+every other time a puzzle from the owner's games comes back, a puzzle of the Lichess database with its
+main theme stands in for it, near the owner's level and through the gates like any; the answer
+schedules the owner's own card, and the page says the position is a new one with the same idea (D104).
 
 **The safety check (C7).** *As built (WP 6.6, `core/safety.ts`, `server/safety.ts`).* Made with
 the puzzles of a game, from the owner's mistakes and blunders where the move played lost something.
@@ -233,7 +236,9 @@ choice, and "which of these two is not safe?" about both. Each verdict and its r
 the move played unsafe and its choice safe. Gates V1 (a valid position, legal moves, exactly one
 unsafe move in a pair, a reason for every move) and V6. With `safety.listFirst` on, the owner first
 makes each of the opponent's checks and captures after the move (worked out by code), and the ones
-missed are drawn before the ruling (TRACKER D64). Graded for the schedule as: right with nothing
+missed are drawn before the ruling (TRACKER D64); with `safety.listThreats` (on, 2026-11-17) their
+threats too, by the app's own definition, the "it attacks your …" of `moveReasons`: a quiet move after
+which something of the owner's can be won that could not before (D104). Graded for the schedule as: right with nothing
 missed → Good; right with replies missed → Hard; wrong → Again.
 
 **"What's the threat?" (C8).** *As built (WP 6.7, `core/threat.ts`, `server/threat.ts`).* Made

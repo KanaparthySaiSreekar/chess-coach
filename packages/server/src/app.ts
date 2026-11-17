@@ -77,7 +77,9 @@ import {
   STEP_HABIT,
   STEP_NAME,
   STEP_QUESTION,
+  lookedQuestion,
   tagMistake,
+  tagUnclear,
   routineLevel,
   routinePrompt,
   tok,
@@ -223,6 +225,12 @@ const MODEL_FOR: Record<AppMode, string> = { analysis: 'coach.model.analysis', g
 const DRILL_MODES: ReadonlySet<AppMode> = new Set(['puzzles', 'openings', 'endgames']);
 /** What the owner hears when the endgame coach cannot answer a request for help in time */
 const ENDGAME_ASK_SCRIPT = 'Which squares can their king still go to? Find a move that takes one more away.';
+/** What the owner hears when the drill coach cannot answer about the safety check, the threat or the won game (D105): a step of the routine, no move */
+const DRILL_ASK_SCRIPT: Record<'safety' | 'threat' | 'convert', string> = {
+  safety: 'After the move, what are their checks, captures and threats? Look at each one before you decide.',
+  threat: 'Look at their last move: which of your pieces or squares does it go after now?',
+  convert: 'Which of their pieces can still make trouble? Find a move that takes away its best square, without giving anything back.',
+};
 /** What the owner hears when the opening coach cannot answer and the move is theirs to recall, or there is no move of theirs here (D12) */
 const OPENING_ASK_SCRIPT = 'Look at what their last move changed: which of your pieces does it touch, and which squares does it take? Then play the move you think your repertoire has here.';
 
@@ -312,6 +320,8 @@ export class App {
   private sparSeq = 0;
   /** the puzzle the latest drill event was about: its messages are shown with it */
   private drillFor: number | null = null;
+  /** the answers offered to "did you look at their reply?" (WP 5.7): each button's words → the moment and the step it means */
+  private readonly tagAsks = new Map<string, { gameId: number; ply: number; step: SkippedStep }>();
   /** the position the owner walks to on the Openings tab (D12): the coach there sees it and answers about it */
   private openingWalk: { repertoire: number; moves: string[] } | null = null;
   /** the computer's load for the top bar (I18): sampled only while a page is open and the setting is on */
@@ -494,6 +504,7 @@ export class App {
       onChange: () => this.broadcast({ type: 'safety', view: this.safety.view }),
       schedule: () => ({ reviewCap: this.settings.get<number>('puzzles.reviewCap'), maxDays: this.settings.get<number>('puzzles.maxIntervalDays') }),
       listFirst: () => this.settings.get<boolean>('safety.listFirst'),
+      listThreats: () => this.settings.get<boolean>('safety.listThreats'),
       guard: (fens) => {
         const hit = this.library.guard(fens);
         return hit ? guardText(hit) : null;
@@ -523,6 +534,15 @@ export class App {
       },
       nodes: () => this.settings.get<number>('conversion.engineNodes'),
       maxMoves: () => this.settings.get<number>('conversion.maxMoves'),
+      // a human-like defender (WP 6.8's open item): Maia at the owner's level answers; the engine still judges the win
+      defender: () =>
+        this.settings.get<string>('conversion.defender') === 'maia' && this.botSource.state !== 'error'
+          ? async (fen: string) => {
+              const elo = Math.min(2600, Math.max(600, Math.round((this.ownerRating() ?? 600) / 100) * 100));
+              const probs = await this.botSource.probabilities({ startFen: fen, moves: [], selfElo: elo, oppoElo: elo });
+              return [...probs].sort((a, b) => b.p - a.p)[0]?.uci ?? null;
+            }
+          : null,
     });
     this.traps = new TrapPack({
       db: this.db,
@@ -596,6 +616,17 @@ export class App {
       facts: this.facts,
       words: this.puzzleWords,
       onDrill: (e) => void this.onDrill(e).catch((err) => this.log(`drill coach: ${(err as Error).message}`)),
+      // a puzzle from the owner's games coming back: every other time, the same idea in a new position (WP 6.5, 6.9)
+      sameMotif: () => this.settings.get<string>('puzzles.sameIdeaNew') === 'alternate',
+      // A9 in the drills (WP 7.5): the routine's question before a puzzle's first move, fading like the games' overlay
+      routine: () => {
+        const mode = this.settings.get<string>('puzzles.routineOverlay');
+        if (mode === 'off') return { level: 'off' };
+        const p = this.library.profile();
+        const top = p.steps[0]?.step;
+        if (mode === 'always') return { level: 'every', top };
+        return { level: routineLevel({ blundersPer100: p.blunders.recent ?? p.blunders.value, games: p.blunders.games }), top };
+      },
       maxMisses: () => this.settings.get<number>('coach.ladder.maxMisses'),
       // fair play: a puzzle whose position is one of a game still being played is passed over
       guard: (fens) => {
@@ -1193,6 +1224,9 @@ export class App {
         if (msg.action === 'move' && typeof msg.from === 'string' && typeof msg.to === 'string') return void e.move(msg.from, msg.to, msg.promotion);
         return;
       }
+      case 'repgame':
+        if (msg.action === 'add') return void this.addFromGame(client);
+        return;
       case 'opening':
         if (msg.action === 'next') return void this.openings.next();
         if (msg.action === 'close') return this.openings.close();
@@ -1593,6 +1627,49 @@ export class App {
     if (this.session.state.game?.id === g.id) this.broadcast({ type: 'repgame', view });
   }
 
+  /**
+   * The game on the board left the repertoire with a new move of the opponent's: that line goes into the
+   * repertoire it matched (WP 8.10): the moves to there, their move as played, then the engine's move
+   * after it (the one the note shows). Every gate runs over it; it waits for the owner's approval.
+   */
+  private async addFromGame(client: Client) {
+    const say = (text: string, level: 'info' | 'error' = 'info') => client.send({ type: 'toast', level, text });
+    const game = this.session.state.game;
+    const g = game ? this.db.getGame(game.id) : undefined;
+    if (!g || (g.you !== 'white' && g.you !== 'black')) return say('Open one of your games first.', 'error');
+    const stop = this.blocked();
+    if (stop) return say(stop, 'error');
+    const sans = this.sansOf(g.id, g.pgn);
+    const m = sans ? matchGame(this.graphs(), g.you, sans) : null;
+    const d = m?.deviation;
+    if (!m || !sans || !d || d.by !== 'them' || !d.played || m.graph.repertoire === undefined) return say('This game did not leave your repertoire with a new move of theirs.', 'error');
+    const pos = mustPosition(d.fenBefore);
+    const after = describeMove(pos, uciToMove(pos, d.played.uci)!).fenAfter;
+    let mine: string | undefined;
+    try {
+      const ev = await this.engine.analyse({ fen: after, nodes: this.settings.get<number>('engine.verdictNodes'), multipv: 1 });
+      const p = mustPosition(after);
+      const mv = ev.lines[0]?.pv[0] ? uciToMove(p, ev.lines[0].pv[0]) : null;
+      mine = mv ? describeMove(p, mv).san : undefined;
+    } catch {
+      /* below */
+    }
+    if (!mine) return say('The engine is not answering, so the line cannot be made now.', 'error');
+    const moves = [...sans.slice(0, d.ply), d.played.san, mine];
+    const repId = m.graph.repertoire;
+    const plan = this.db.repertoire(repId)?.plan as BookPlan | null | undefined;
+    const outline = plan?.kind === 'book' ? outlineFiles(this.outlinesDir).find((o) => o.id === plan.outline.id)?.outline : undefined;
+    const chapter = outline ? chapterOf({ repertoire: repId, colour: g.you, startFen: START_FEN, moves }, outline, (fens) => this.book.lookup(fens)?.name).name : undefined;
+    say(`Checking ${lineText(START_FEN, moves)} with every gate…`);
+    const r = await this.repertoires.addLine(repId, moves, { game: g.id, chapter });
+    if (!r.ok) return say(r.reason, 'error');
+    this.repGraphs = null;
+    this.sendDesk();
+    void this.sendRepGame();
+    if (r.status === 'quarantined') say(`Added, but held back: ${r.reasons[0] ?? 'a gate failed'}. It is under Game → Review content…, in quarantine.`, 'error');
+    else say(`Added: ${lineText(START_FEN, moves)} waits for your approval under Game → Review content….`);
+  }
+
   /** The owner's results per repertoire line (G3, D7), over every game in the library. */
   private repStats(): RepStatsView | null {
     const graphs = this.graphs();
@@ -1799,11 +1876,7 @@ export class App {
       return;
     }
     const step = String(msg.step) as SkippedStep;
-    if (!(step in STEP_NAME) || !this.db.setOwnerStep(game.id, Number(msg.ply), step)) return void client.send({ type: 'toast', level: 'error', text: 'That move is not one of your slips in this game.' });
-    this.db.logEvent('tag', { game: game.id, ply: Number(msg.ply), step });
-    const written = this.makeReport(game.id, you);
-    this.setReview({ ...review, moments: this.withOwnerSteps(game.id, you, review.moments), report: written?.report, ownerNote: written?.note });
-    this.broadcast({ type: 'library', view: this.library.view() });
+    if (!(step in STEP_NAME) || !this.setOwnerTag(game.id, Number(msg.ply), step, 'chosen')) return void client.send({ type: 'toast', level: 'error', text: 'That move is not one of your slips in this game.' });
   }
 
   private setReview(view: ReviewView | null) {
@@ -2032,6 +2105,8 @@ export class App {
     const written = you ? this.makeReport(r.gameId, you) : undefined;
     if (this.review && written) this.review = { ...this.review, report: written.report, ownerNote: written.note };
     this.pushReplay();
+    // the tags only the owner can settle: asked now, once each moment has been gone through (WP 5.7)
+    this.askUnclearTags(r);
     let packet: FactPacket;
     try {
       packet = await this.focusPacket(true);
@@ -2069,6 +2144,33 @@ export class App {
   }
 
   /** Leave the replay: the board and the coach go back to plain analysis. */
+  /**
+   * A tag the board cannot settle (WP 5.7, COACH §6.2 step 3): for each moment of the replay tagged "it
+   * looked safe" or "no safety check" by the machine, the owner is asked whether they looked at the reply.
+   * The two answers are buttons; the one pressed becomes the owner's own word for the step (H8).
+   */
+  private askUnclearTags(r: NonNullable<App['replay']>) {
+    this.tagAsks.clear();
+    for (const m of r.moments) {
+      if (!tagUnclear(m.step) || m.stepBy === 'owner') continue;
+      const q = lookedQuestion(m.number, m.san);
+      for (const c of q.choices) this.tagAsks.set(c.text, { gameId: r.gameId, ply: m.ply, step: c.step });
+      this.deliver({ kind: 'question', text: q.text, claims: [], expect: 'choice', choices: q.choices.map((c) => c.text), source: 'scripted', fen: m.fenBefore });
+    }
+  }
+
+  /** The owner's own word for a step, from the review screen or an answer to the question above (H8): the report is made again. */
+  private setOwnerTag(gameId: number, ply: number, step: SkippedStep, how: 'chosen' | 'asked'): boolean {
+    const review = this.review;
+    const you = this.db.getReview(gameId)?.you;
+    if (!review || review.gameId !== gameId || !you || !this.db.setOwnerStep(gameId, ply, step)) return false;
+    this.db.logEvent('tag', { game: gameId, ply, step, how });
+    const written = this.makeReport(gameId, you);
+    this.setReview({ ...review, moments: this.withOwnerSteps(gameId, you, review.moments), report: written?.report, ownerNote: written?.note });
+    this.broadcast({ type: 'library', view: this.library.view() });
+    return true;
+  }
+
   private endReplay() {
     if (!this.replay) return;
     this.replay = null;
@@ -2652,8 +2754,18 @@ export class App {
   private async ownerAsked(raw: string) {
     const text = raw.trim().slice(0, 1000);
     if (!text) return;
+    // an answer to "did you look at their reply?" (WP 5.7): the owner's own word for that moment's step
+    const tag = this.tagAsks.get(text);
+    if (tag) {
+      this.ownerMessage(text);
+      for (const [k, v] of this.tagAsks) if (v.gameId === tag.gameId && v.ply === tag.ply) this.tagAsks.delete(k);
+      return this.setOwnerTag(tag.gameId, tag.ply, tag.step, 'asked') ? this.systemSay(`Noted: ${STEP_NAME[tag.step].toLowerCase()}. The report and your journal say so now.`) : this.systemSay('That game is not open any more: open it to say which it was.');
+    }
     // on the Openings tab the question is about the board there: the walked repertoire, or the card (D12)
     if (this.openingSet()) return this.askOpeningCoach(text);
+    // on the safety check, the threat or a won game: about that board (D105)
+    const od = this.otherDrill();
+    if (od) return this.askOtherDrill(od, text);
     this.ownerMessage(text);
     const stop = this.blocked();
     if (stop) return this.systemSay(stop);
@@ -2963,8 +3075,8 @@ export class App {
       // where each move of mine comes from (D13): the outline's, the masters' past it, or a repertoire with no book behind it
       const builtBy: MoveFrom = plan?.kind === 'book' ? 'book' : stored?.source.startsWith('generated:') ? 'built' : 'imported';
       for (const [key, at] of Object.entries(positions)) {
-        if (at.mine) at.mine.from = outline?.mine.get(key)?.uci === at.mine.uci ? 'outline' : builtBy;
-        if (builtBy !== 'book') for (const reply of at.replies ?? []) reply.from = [builtBy];
+        if (at.mine) at.mine.from = outline?.mine.get(key)?.uci === at.mine.uci ? 'outline' : at.mine.from === 'game' ? 'game' : builtBy;
+        if (builtBy !== 'book') for (const reply of at.replies ?? []) if (!reply.from?.includes('game')) reply.from = [builtBy];
       }
       // its chapters, in teaching order: each starts where the outline's chapter does, or where its lines part
       const byChapter = new Map<string, { lines: RepLine[]; live: number; waiting: number; order: number }>();
@@ -3043,6 +3155,111 @@ export class App {
       mine: at?.mine ? { san: at.mine.san, why: at.mine.why, idea: at.mine.idea, punish: at.mine.punish } : undefined,
       replies: (at?.replies ?? []).map((x) => x.san),
     };
+  }
+
+  /**
+   * The safety check, "what's the threat?" or a won game being played out on the Puzzles tab (WP 6.11's
+   * open item, D105): its board, the owner's side, whether it is still open (then nothing that gives it
+   * away may be said), and what the drill coach is told about it.
+   */
+  private otherDrill(): { kind: 'safety' | 'threat' | 'convert'; id: number; fen: string; you: Color; open: boolean; noVerdict: boolean; hidden?: string[]; also?: string[]; brief: Record<string, unknown> } | null {
+    if (this.mode !== 'puzzles') return null;
+    const k = this.puzzles.view.set?.kind;
+    if (k === 'safety') {
+      const v = this.safety.view;
+      if (v.status === 'idle' || v.id === undefined) return null;
+      const listing = v.status === 'asking' && v.list?.stage === 'listing';
+      const c = v.candidates.map((x) => x.san);
+      // what the owner is looking for is the opponent's replies after each candidate, not the candidates
+      // themselves (the question names them): those replies are what may not be named while it is open
+      const replies = c.flatMap((san) => {
+        const after = playLine(v.fen, [san]);
+        const pos = after.ok ? parsePosition(after.fens[1]!) : null;
+        return pos ? legalMoves(pos).map((x) => x.san) : [];
+      });
+      return {
+        kind: 'safety',
+        id: v.id,
+        fen: listing ? v.list!.fen : v.fen,
+        you: v.you,
+        open: v.status === 'asking',
+        noVerdict: v.status === 'asking',
+        hidden: replies,
+        // while listing, the question's own board (before the move asked about) is in front of them too: that move may be named
+        also: listing ? [v.fen] : [],
+        brief: {
+          drill: 'the safety check: is a move safe? (safe: it loses nothing by force and allows no mate)',
+          question: v.question === 'is_safe' ? `is ${c[0]} safe?` : `which of ${c[0]} and ${c[1]} is not safe?`,
+          now: listing ? `the board shows the position after ${c[0]}: the owner makes each of their checks, captures${v.list?.threats ? ' and threats' : ''}, one at a time` : v.status === 'asking' ? 'the owner is about to rule' : 'answered: the verdicts are out',
+          found: v.list?.found.map((r) => r.san) ?? [],
+          result: v.result ?? null,
+        },
+      };
+    }
+    if (k === 'threat') {
+      const v = this.threat.view;
+      if (v.status === 'idle' || v.id === undefined) return null;
+      const open = v.status === 'naming' || v.status === 'defending';
+      return {
+        kind: 'threat',
+        id: v.id,
+        fen: v.fen,
+        you: v.you,
+        open,
+        noVerdict: false,
+        brief: {
+          drill: "what's the threat? First the owner names their threat by making it (the board shows the position with the turn passed), then finds a move that deals with it",
+          now: v.status === 'naming' ? "the owner is naming the opponent's threat" : v.status === 'defending' ? 'the owner is finding a move that deals with the threat' : 'over',
+          threat: v.threat && v.status !== 'naming' ? { move: v.threat.san, what: v.threat.what } : null,
+          result: v.result ?? null,
+        },
+      };
+    }
+    if (k === 'convert') {
+      const v = this.convert.view;
+      if (v.status === 'idle' || v.id === undefined) return null;
+      return {
+        kind: 'convert',
+        id: v.id,
+        fen: v.fen,
+        you: v.you,
+        open: v.status === 'playing',
+        noVerdict: false,
+        brief: { drill: 'win the won game: the owner plays a clearly won position out against the engine', now: v.status === 'playing' ? 'the owner is playing: the moves are theirs to find' : 'over', movesSoFar: v.moves.map((m) => m.san).join(' ') || 'none yet', movesLeft: v.status === 'playing' ? v.movesLeft : undefined, result: v.result ?? null },
+      };
+    }
+    return null;
+  }
+
+  /** The owner asks the drill coach about the safety check, the threat or the won game in front of them (D105): help, never the answer while it is open. */
+  private async askOtherDrill(od: NonNullable<ReturnType<App['otherDrill']>>, text: string) {
+    const said = this.session.addMessage({ seq: this.drillSeq, from: 'owner', text, segments: [{ type: 'text', text }], drill: od.id });
+    this.broadcast({ type: 'coach_msg', message: said });
+    if (!this.coach.isOn) return this.systemSay('The coach is off: start it with the button above, then ask again.', { drill: od.id });
+    const seq = ++this.drillSeq;
+    this.drillFor = od.id;
+    let packet: FactPacket;
+    try {
+      packet = await this.facts.packet({ fen: od.fen, you: od.you, deep: true });
+    } catch {
+      return this.systemSay('The chess engine is not answering, so I cannot check anything right now.', { drill: od.id });
+    }
+    if (seq !== this.drillSeq) return;
+    this.db.logEvent('ask', { text, drill: od.kind, open: od.open });
+    const payload = {
+      event: 'drill_question',
+      seq,
+      mode: 'puzzles',
+      drill: od.kind,
+      ownerSaid: text,
+      ownerAsksForAMove: asksForMove(text),
+      youMayGiveTheAnswer: !od.open,
+      about: od.brief,
+      owner: { level: this.ownerLevel(), vocabulary: this.settings.get<string>('coach.vocabulary'), sayInPlainWords: this.keptForLater() },
+      budget: this.budget(),
+      facts: packetForCoach(packet),
+    };
+    this.coach.submit({ seq, kind: 'drill_question', payload, needsReply: true, canAnswer: !od.open, ownerText: text, scripted: { kind: 'question', text: DRILL_ASK_SCRIPT[od.kind] } });
   }
 
   /** Who played the move from this position: the owner or their opponent. */
@@ -3395,7 +3612,7 @@ export class App {
     // the coach did not manage to answer: the scripted fallback does, from the same facts
     this.log(`coach turn ended (${how}) without a message; the scripted fallback answers`);
     turn.fallbackSpoke = true;
-    if (turn.event.kind === 'owner_question' || turn.event.kind === 'opening_question') this.systemSay(how === 'done' ? 'The coach did not get an answer out. Here is what the board says for certain:' : 'The coach was interrupted. Here is what the board says for certain:', turn.event.kind === 'opening_question' ? this.openingTags() : {});
+    if (turn.event.kind === 'owner_question' || turn.event.kind === 'opening_question' || turn.event.kind === 'drill_question') this.systemSay(how === 'done' ? 'The coach did not get an answer out. Here is what the board says for certain:' : 'The coach was interrupted. Here is what the board says for certain:', turn.event.kind === 'opening_question' ? this.openingTags() : turn.event.kind === 'drill_question' && this.drillFor !== null ? { drill: this.drillFor } : {});
     if (turn.event.scripted) return this.speakEventScript(turn.event);
     if (turn.event.scriptedFacts) return this.speakFacts(turn.event.scriptedFacts);
     // the analysis board's own scripted answers are about the analysis board
@@ -3445,6 +3662,8 @@ export class App {
     if (opening) return opening.fen;
     const walk = this.walkNow();
     if (walk) return walk.fen;
+    const od = this.otherDrill();
+    if (od) return od.fen;
     const drill = this.mode === 'puzzles' ? this.puzzles.drillState() : null;
     if (drill) return drill.fen;
     const spar = this.mode === 'play' ? this.play.sparState() : null;
@@ -3479,6 +3698,8 @@ export class App {
     const opening = this.openingNow();
     const walk = opening ? null : this.walkNow();
     const endgame = this.mode === 'endgames' ? this.endgames.coachState() : null;
+    // the safety check, the threat or a won game (D105): its board and side, in place of the puzzle's
+    const od = drill ? null : this.otherDrill();
     // In a replay the app itself handed the coach the fact for what the game move cost. A message that names that
     // move is checked against that fact whether or not the coach remembered to list it: the claim is still checked.
     const rm = this.replay && this.replay.phase !== 'finished' ? this.replay.moments[this.replay.index] : undefined;
@@ -3489,12 +3710,12 @@ export class App {
       {
         fen: m.fen,
         // while a demo is showing, the owner still has their own board (and the demo's start) in mind
-        alsoFens: endgame ? (endgame.slip ? [endgame.slip.fenBefore] : endgame.lastMove ? [endgame.lastMove.baseFen] : []) : opening ? (opening.after ? [opening.after] : []) : walk ? (walk.last ? [walk.last.baseFen] : []) : drill ? [drill.solverFen] : spar ? (spar.lastMove ? [spar.lastMove.fenBefore] : []) : this.session.state.layer === 'demo' && this.session.state.demo ? [this.session.focusFen(), this.session.state.demo.baseFen] : [],
-        you: endgame ? endgame.you : opening ? opening.card.colour : walk ? walk.you : drill ? drill.you : spar ? spar.you : this.you(),
+        alsoFens: endgame ? (endgame.slip ? [endgame.slip.fenBefore] : endgame.lastMove ? [endgame.lastMove.baseFen] : []) : opening ? (opening.after ? [opening.after] : []) : walk ? (walk.last ? [walk.last.baseFen] : []) : od ? (od.also ?? []) : drill ? [drill.solverFen] : spar ? (spar.lastMove ? [spar.lastMove.fenBefore] : []) : this.session.state.layer === 'demo' && this.session.state.demo ? [this.session.focusFen(), this.session.state.demo.baseFen] : [],
+        you: endgame ? endgame.you : opening ? opening.card.colour : walk ? walk.you : od ? od.you : drill ? drill.you : spar ? spar.you : this.you(),
         fact: this.facts.fact,
         budgetSentences: m.source === 'scripted' ? 12 : explainish ? b.explain : b.short,
         // the walk shows every move: nothing there is the owner's to find
-        canAnswer: endgame ? !endgame.playing : opening ? !opening.asking : walk ? true : drill ? !drill.solving : spar ? !spar.playing : m.turn ? m.turn.event.canAnswer || this.ladder.level > 0 : true,
+        canAnswer: endgame ? !endgame.playing : opening ? !opening.asking : walk ? true : od ? !od.open : drill ? !drill.solving : spar ? !spar.playing : m.turn ? m.turn.event.canAnswer || this.ladder.level > 0 : true,
         numbersOn: this.settings.get<boolean>('display.numbers'),
         vocabulary: this.settings.get<VocabularyLevel>('coach.vocabulary'),
         ladder: this.concepts,
@@ -3550,6 +3771,15 @@ export class App {
     if (opening?.asking && m.source === 'coach') {
       const plain = (san: string) => san.replace(/[+#!?]/g, '');
       if (verdict.tokens.some((t) => t.kind === 'move' && plain(t.san) === plain(opening.card.move.san)) || m.kind === 'answer') problems = [...problems, { rule: 'R7', message: 'The owner is recalling the repertoire move: do not name it or give the answer. Answer their question about the position, or give a nudge that names no move of theirs.' }];
+    }
+    // the safety check, the threat or a won game still open (D105): no move on the board that is the owner's to find
+    // (their replies to list, the threat to name, the move to play), no answer, and while ruling no verdict on a move
+    if (od?.open && m.source === 'coach') {
+      const pos = parsePosition(od.fen);
+      const plain = (san: string) => san.replace(/[+#!?]/g, '');
+      const toFind = new Set((od.hidden ?? (pos ? legalMoves(pos).map((x) => x.san) : [])).map(plain));
+      if (verdict.tokens.some((t) => t.kind === 'move' && toFind.has(plain(t.san))) || m.kind === 'answer') problems = [...problems, { rule: 'R7', message: 'The owner is still working this out: do not name a move on the board they are looking for, and do not give the answer. Ask a question about the routine, or give a nudge that names no move.' }];
+      if (od.noVerdict && /\b(un)?safe\b|\bloses?\b|\bblunder|\bmistake|\bhang(s|ing)?\b/i.test(m.text)) problems = [...problems, { rule: 'R7', message: 'The owner has not ruled yet: do not say whether a move is safe or what it loses. Ask about their checks, captures and threats instead.' }];
     }
     // a game in progress (COACH §6.4): the coach never suggests a move the owner could play, and never gives the answer
     if (spar?.playing && m.source === 'coach') {
@@ -3635,6 +3865,8 @@ export class App {
         return { seq: this.drillSeq, mode: 'endgames', fen: eg.fen, ownerPlays: eg.you, go: this.endgameForCoach(eg) };
       }
       if (this.mode === 'puzzles') {
+        const od = this.otherDrill();
+        if (od) return { seq: this.drillSeq, mode: 'puzzles', fen: od.fen, ownerPlays: od.you, drill: od.kind, about: od.brief, youMayGiveTheAnswer: !od.open };
         const d = this.puzzles.drillState();
         if (!d) return { seq: this.drillSeq, mode: 'puzzles', puzzle: null, note: 'No puzzle is on the board. Say nothing.' };
         const pos = mustPosition(d.fen);
@@ -3690,6 +3922,8 @@ export class App {
         return { ok: true, facts: packetForCoach(await this.facts.packet({ fen: o.fen, you: o.card.colour, deep: true, lastMove: o.last ? { san: o.last.san, by: 'opponent', fenBefore: o.last.baseFen } : undefined })) };
       }
       if (this.mode === 'puzzles') {
+        const od = this.otherDrill();
+        if (od) return { ok: true, facts: packetForCoach(await this.facts.packet({ fen: od.fen, you: od.you, deep: true })) };
         const d = this.puzzles.drillState();
         if (!d) return { ok: false, problems: ['no puzzle is on the board'] };
         return { ok: true, facts: packetForCoach(await this.drillPacket(d)) };
@@ -3783,7 +4017,7 @@ export class App {
       if (res.ok) {
         turn.accepted++;
         // the hint ladder belongs to the analysis board
-        const elsewhere = (this.mode === 'puzzles' && this.puzzles.drillState()) || (this.mode === 'play' && this.play.sparState()) || this.openingNow() || this.walkNow() || (this.mode === 'endgames' && this.endgames.coachState());
+        const elsewhere = (this.mode === 'puzzles' && (this.puzzles.drillState() || this.otherDrill())) || (this.mode === 'play' && this.play.sparState()) || this.openingNow() || this.walkNow() || (this.mode === 'endgames' && this.endgames.coachState());
         if (!elsewhere) this.advanceLadder(kind, a.expect, false);
         return { ok: true, id: res.message!.id, messagesLeft: max - turn.accepted };
       }

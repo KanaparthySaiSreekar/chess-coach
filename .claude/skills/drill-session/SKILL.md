@@ -1,12 +1,14 @@
 ---
 name: drill-session
-description: Playbook for the Puzzles tab of the Chess Coach page - coaching the owner through puzzles made from their own games and themed sets. The app runs the puzzle; the coach asks after a miss, helps when asked, names the idea once a puzzle is over. Used by the coach-drill agent with coach-core.
+description: Playbook for the Puzzles tab of the Chess Coach page - coaching the owner through puzzles made from their own games and themed sets, and answering their questions on the safety check, "what's the threat?" and won games played out. The app runs the drill; the coach asks after a miss, helps when asked, names the idea once a puzzle is over, and never gives an open drill away. Used by the coach-drill agent with coach-core.
 ---
 # drill-session: coaching puzzles
 
 **For:** the Puzzles tab: puzzles from the owner's own games, puzzles due again, one theme at a
-time, mixed sets (the theme hidden) and Woodpecker rounds. The app is never going to wake you during
-a speed run (streak or timed): those are silent by design.
+time, mixed sets (the theme hidden) and Woodpecker rounds; and the other drills there, the safety
+check, "what's the threat?" and *Win the won game*, where the owner can ask you anything beside the
+board (`drill_question`, below). The app is never going to wake you during a speed run (streak or
+timed): those are silent by design.
 
 **The point:** a puzzle is retrieval practice. The owner learns most by finding the move
 themselves, so you mostly stay out of the way. When they miss, you point them back at the
@@ -69,6 +71,25 @@ sentences, `expect: "move"`:
 - Naming the idea in a hint ("the back rank", "a fork") is a claim like any other: only when the
   event has `ideas`, and then put that idea's `cite` in `claims`. Without `ideas`, describe what you
   see instead ("their king has no square to step to").
+
+### `drill_question`: the owner asked you something on the safety check, the threat or a won game
+
+`drill` says which (`safety`, `threat`, `convert`), `about` what the drill is and where it stands
+(`now`), `ownerSaid` the question, `facts` the facts of the board in front of them, and
+`youMayGiveTheAnswer` whether the drill is over. One `say`, at most `budget.explain` sentences, every
+chess statement citing its fact.
+
+- **While it is open** (`youMayGiveTheAnswer` false): give it away in no form. Do not name a move on
+  the board they are looking for (their replies to list on the safety check, the threat to name or the
+  defence to find, the move to play in a won game), do not use kind `answer`, and on the safety check
+  do not say whether the move is safe or what it loses (the move they are asked about may be named:
+  the question names it already). Answer about the routine and the position
+  instead: which of their pieces are active, what their last move changed, which of the owner's pieces
+  are loose (a fact that says so). Kind `question` or `nudge`. The validator refuses what gives it away.
+- **Once it is over:** explain what they ask, from the facts and `about.result` (the verdicts, the
+  threat and what it wins, how the won game ended and the move that let it go).
+- **A question the facts cannot answer:** say so plainly, kind `general`, and offer what the facts do
+  say. Never fill the gap from your own head.
 
 ### `drill_done`: the puzzle is over
 

@@ -16,7 +16,7 @@
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { legalMoves, lineKey, lineSteps, lineText, makeScheduler, mustPosition, playLine, positionKey, readEndgame, readTrap, repertoireLines, review as reviewCard, type ClientMsg, type CoachMessage, type CoachStatus, type ServerMsg } from '@chess-coach/core';
+import { gateV1Convert, gateV1Safety, legalMoves, lineKey, lineSteps, lineText, makeScheduler, mustPosition, playLine, positionKey, readEndgame, readTrap, repertoireLines, review as reviewCard, type ClientMsg, type CoachMessage, type CoachStatus, type ServerMsg } from '@chess-coach/core';
 import type { MoveSource } from '../packages/server/src/bots/service.ts';
 import { App } from '../packages/server/src/app.ts';
 import { judge, lintScenarios, scenarioStart, summarise, type SayCall, type Scenario, type ScenarioResult, type Step, type ToolCall, type Transcript } from '../packages/server/src/coach/harness.ts';
@@ -308,6 +308,23 @@ async function setUpEndgame(s: Scenario): Promise<void> {
   if (app.endgames.view.id !== id) throw new Error(`${s.id}: the position did not start`);
 }
 
+/** A drill scenario (the drill coach on the other drills, D105): the item alone in the library, the Puzzles tab, the coach, and the item on its board. */
+async function setUpDrill(s: Scenario): Promise<void> {
+  const d = s.drill!;
+  for (const x of app.db.listContent({ status: 'live', limit: 10_000 })) app.db.setContentStatus(x.id, 'quarantined');
+  const stamp = Date.now();
+  const gate = d.kind === 'safety' ? gateV1Safety(d.body as never) : gateV1Convert(d.body as never);
+  const id = app.db.saveContent(`harness:${s.id}:${stamp}|${d.kind}`, { type: d.kind, status: 'live', source: `game:${stamp % 100_000}#7`, licence: 'own', level: '400–700', gates: [gate, { gate: 'V6', result: 'pass' }], body: d.body } as never);
+  await send({ type: 'mode', mode: 'puzzles' });
+  await send({ type: 'puzzle', action: 'close' });
+  await send({ type: 'coach', action: 'start' });
+  for (let i = 0; i < 120 && status?.state !== 'ready'; i++) await sleep(250);
+  await send({ type: 'puzzle', action: 'set', set: { kind: d.kind } });
+  const view = () => (d.kind === 'safety' ? app.safety.view : app.convert.view);
+  if (view().id !== id) await send({ type: d.kind, action: 'next' } as ClientMsg);
+  if (view().id !== id) throw new Error(`${s.id}: the drill did not start`);
+}
+
 /** A game scenario (the sparring coach): the Play tab, the coach, and the game started with the bot's script. */
 async function setUpSpar(s: Scenario): Promise<void> {
   await send({ type: 'game', action: 'new' });
@@ -351,6 +368,8 @@ async function run(s: Scenario): Promise<ScenarioResult> {
     await setUpOpening(s);
   } else if (s.endgame) {
     await setUpEndgame(s);
+  } else if (s.drill) {
+    await setUpDrill(s);
   } else if (s.game) {
     // a finished game of the owner's: into the library, onto the board with the owner's side facing them, and through the engine
     await send({ type: 'setting', key: 'review.ownFirst', value: false });
@@ -367,7 +386,7 @@ async function run(s: Scenario): Promise<ScenarioResult> {
     await send({ type: 'load', text: start.text });
     await send({ type: 'nav', to: 'end' });
   }
-  if (!s.game && !s.puzzle && !s.spar && !s.opening && !s.endgame && app.session.focusFen().split(' ').slice(0, 2).join(' ') !== start.fen.split(' ').slice(0, 2).join(' ')) throw new Error(`${s.id}: the board did not reach the scenario's position`);
+  if (!s.game && !s.puzzle && !s.spar && !s.opening && !s.endgame && !s.drill && app.session.focusFen().split(' ').slice(0, 2).join(' ') !== start.fen.split(' ').slice(0, 2).join(' ')) throw new Error(`${s.id}: the board did not reach the scenario's position`);
   await sleep(300);
   messages = [];
   says = [];
@@ -381,7 +400,7 @@ async function run(s: Scenario): Promise<ScenarioResult> {
     await settle(4000);
   }
   // a game scenario starts its coach with the replay: the review has an agent of its own
-  if (s.coach !== false && !s.game && !s.puzzle && !s.spar && !s.opening && !s.endgame) {
+  if (s.coach !== false && !s.game && !s.puzzle && !s.spar && !s.opening && !s.endgame && !s.drill) {
     await send({ type: 'coach', action: 'start' });
     for (let i = 0; i < 120 && status?.state !== 'ready'; i++) await sleep(250);
     messages = []; // nothing said while starting counts
@@ -401,6 +420,12 @@ async function run(s: Scenario): Promise<ScenarioResult> {
   }
   if (s.endgame) {
     await send({ type: 'endgame', action: 'close' });
+    await send({ type: 'mode', mode: 'analysis' });
+  }
+  if (s.drill) {
+    if (s.drill.kind === 'safety') await send({ type: 'safety', action: 'close' });
+    else await send({ type: 'convert', action: 'resign' });
+    await send({ type: 'puzzle', action: 'set', set: { kind: 'games' } });
     await send({ type: 'mode', mode: 'analysis' });
   }
   if (s.spar) {

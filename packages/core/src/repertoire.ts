@@ -24,7 +24,7 @@ export type WordsBy = 'facts' | 'claude' | 'owner';
  * repertoire), the replies players at the owner's level make (book too), a PGN or study the owner
  * imported, or the starter builder (the engine and Maia, no book behind it).
  */
-export type MoveFrom = 'outline' | 'book' | 'level' | 'imported' | 'built';
+export type MoveFrom = 'outline' | 'book' | 'level' | 'imported' | 'built' | 'game';
 
 export type RepLine = {
   /** the repertoire the line belongs to (0 until it is stored) */
@@ -44,6 +44,13 @@ export type RepLine = {
   book?: number[];
   /** the line's place in the repertoire's teaching order (chapter by chapter) */
   order?: number;
+  /**
+   * The owner approved this line, and a check after an engine or threshold change put it back in
+   * quarantine (WP 8.11): when it passes again it goes back to live by itself, the owner's approval kept.
+   */
+  approvedBefore?: boolean;
+  /** added from one of the owner's games (WP 8.10): the opponent's move as played there, the owner's the engine's (D13) */
+  added?: { game: number; on: string };
 };
 
 export type RepImport = {

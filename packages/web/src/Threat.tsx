@@ -5,6 +5,7 @@
 import { Lightbulb, SkipForward } from 'lucide-react';
 import type { Color } from '@chess-coach/core';
 import { Board } from './Board.tsx';
+import { BoardCoach } from './OpeningCoach.tsx';
 import { San } from './San.tsx';
 import { send, setting, type Store } from './store.ts';
 
@@ -143,6 +144,8 @@ export function ThreatPanels({ s, sets }: { s: Store; sets: React.ReactNode }) {
             </div>
           </section>
         )}
+        {/* the drill coach sees this board and can be asked any time; it never names the threat or the defence while they are being found (D105) */}
+        {v.status !== 'idle' && v.id !== undefined && <BoardCoach s={s} shows="this position" thread={(m) => m.drill === v.id} suggestions={v.status === 'naming' || v.status === 'defending' ? ['What should I look at first?'] : ['Why was that the threat?']} />}
       </aside>
     </main>
   );

@@ -194,7 +194,7 @@ The order from [LEARNING §4](LEARNING.md#4-how-a-good-coach-reviews-a-game).
 |---|---|
 | **For** | Reviewing one finished game (B3–B5, B7, B10) |
 | **Before it starts** | The owner's own review (B7), engine off, unless the setting is off or they skip it. The coach reads it through `owner_profile` |
-| **Steps** | 1 Open with one true positive about the game. 2 For each moment, first turning point first: `show_position` before the mistake → a question aimed at the skipped step (table below) → the hint ladder → when solved or shown, `explain` what the played move lost → one "why" prompt. 3 If the tag is unclear, ask: "did you look at their reply and it seemed fine, or didn't you look?" and `record` the answer. 4 Wrap up: 2–4 takeaways with `record`, positive sandwich, then offer the puzzles made from this game |
+| **Steps** | 1 Open with one true positive about the game. 2 For each moment, first turning point first: `show_position` before the mistake → a question aimed at the skipped step (table below) → the hint ladder → when solved or shown, `explain` what the played move lost → one "why" prompt. 3 If the tag is unclear, ask: "did you look at their reply and it seemed fine, or didn't you look?" and `record` the answer (as built, WP 5.7, D105: the app asks it once the replay is over, for each moment tagged "it looked safe" or "no safety check", with the two answers as buttons; the one pressed is the owner's own word for the step, H8). 4 Wrap up: 2–4 takeaways with `record`, positive sandwich, then offer the puzzles made from this game |
 | **May not** | Cover more moments than the setting; show evaluations; start from the final blunder when an earlier turning point exists |
 | **Writes** | Confirmed tags, takeaways, the review report. *As built (WP 5.7, TRACKER D59):* the app writes the report and the takeaways from the stored analysis, and the owner confirms or changes a tag on the page; the coach is handed the report at `review_end` and closes with its first takeaway |
 
@@ -220,8 +220,7 @@ First question by skipped step:
 | **May not** | Talk during speed modes; name the theme in a mixed set before the owner answers |
 | **Writes** | Nothing directly: the app logs attempts. May `record` a `mastery_hint` |
 
-*As built (WP 6.11, TRACKER D69).* Woken in the puzzle player only (not yet by the safety, threat and
-won-game drills, which keep their own scripted words), never during a speed run. Events
+*As built (WP 6.11, TRACKER D69).* Woken in the puzzle player, never during a speed run. Events
 `drill_miss`, `drill_ask` (*Ask the coach*: question, then nudge; it counts as a hint),
 `drill_done`, `drill_example`, `drill_end`. Its tools are the talking ones; `get_state`,
 `get_facts` and `check_move` answer about the puzzle board. The worked example is the player's own
@@ -229,6 +228,15 @@ won-game drills, which keep their own scripted words), never during a speed run.
 move of the solution, no `answer`, and the idea's name only where the player's guidance names it. A
 puzzle's ideas come as facts the coach cites. `mastery_hint` is not written: mastery is counted from
 the attempts (D67).
+
+*The other drills (TRACKER D105).* On the safety check, "what's the threat?" and *Win the won game*
+the coach is beside the board (*Ask the coach*) and answers only when asked: event `drill_question`
+with the drill, where it stands, the owner's words and the facts of that board, which `get_state` and
+`get_facts` also answer about. The drills keep their own scripted words after each move. Enforced in
+code while one is open: no move the owner is looking for (on the safety check the opponent's replies
+after the move asked about, which itself may be named; on the others any legal move on the board), no
+`answer`, and on the safety check no word of a verdict until the owner has ruled. With the coach off or
+silent, a scripted line per drill points at a step of the routine.
 
 ### 6.4 `spar-commentary`
 
@@ -449,6 +457,13 @@ The endgame coach's ten scenarios (`--agent coach-endgame`, D88: positions of th
 The first Haiku run was 10 of 10 at 83% (10/12): one message refused for "wasn't in check" (read as a claim that someone was in check: fixed in the validator, D89) and a praise that named the mating move with no fact for it (the event now hands the coach `yourLastMove`, the verdict on that move).
 
 **Regression after D88 and D89 (2026-11-15, Haiku 5.5):** the drill coach 10 of 10 at 11/12 = 92% first-try (73% before; its one refusal named the back rank in a hint without citing the idea's fact; `drill-session` now says so for hints too), the opening coach 12 of 12 at 9/9 = 100%, run on the *Openings* tab, where every message would have been refused as stale before the fix.
+
+**The drill coach on the other drills (2026-11-17, TRACKER D105):** two scenarios, `safety-ask-open`
+(the safety check, asked "is it safe?" while the replies are being listed) and `convert-ask-open` (a won
+game, asked what to play). Haiku 2/2 and Sonnet 2/2, every message a question about the routine, no
+reply or move named, no verdict. Sonnet's first try named the move asked about and was refused: the
+board then shows the position one move on. The question's own board now counts as in front of the
+owner, and the rerun was valid at the first try (2/2).
 
 The first full run on Haiku scored 74% first-try validity. Reading the refused messages showed that
 most were true and had been bounced for form (a move without its braces) or by a rule that read a

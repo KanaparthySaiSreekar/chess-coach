@@ -482,6 +482,8 @@ export type SafetyView = {
     note?: { san?: string; text: string; good: boolean };
     /** goes up with every move tried, so the board puts the piece back */
     tries: number;
+    /** their threats are asked for too (safety.listThreats): quiet moves that attack something that could then be won */
+    threats?: boolean;
   };
   /** once answered: right or not, each move's verdict and reason, and the move played in the game */
   result?: { right: boolean; candidates: { san: string; safe: boolean; why: string }[]; played?: string };
@@ -498,6 +500,8 @@ export type PuzzleView = {
   status: 'idle' | 'solving' | 'solved' | 'shown';
   id?: number;
   kind?: PuzzleKind;
+  /** the thinking routine's question before the owner's first move (A9 in the drills), when it is asked this time */
+  routine?: string;
   /** where the puzzle came from, in words */
   from?: string;
   fen: string;
@@ -754,6 +758,8 @@ export type ClientMsg =
   | { type: 'opening'; action: 'why_known'; known: boolean }
   /** what the drill draws from (D11): one repertoire and some of its chapters, or everything (null) */
   | { type: 'opening'; action: 'scope'; repertoire: number | null; chapters?: string[] }
+  /** the game on the board left the repertoire with a new move of the opponent's: add it, with the engine's move after it, to that repertoire (WP 8.10) */
+  | { type: 'repgame'; action: 'add' }
   /** the position the owner walks to on the Openings tab (D12): the repertoire and the moves from its start (UCI); null when they leave it */
   | { type: 'opening'; action: 'walk'; repertoire: number | null; moves?: string[] }
   | { type: 'convert'; action: 'next' | 'close' | 'resign' | 'retry_start' | 'retry_before' }

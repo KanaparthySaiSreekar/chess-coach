@@ -3,11 +3,13 @@
 // verdict is given in the engine's words.
 //
 // With the listing step on (safety.listFirst), one move is judged in two steps: first the board
-// shows the position after it, and the owner makes each of the opponent's checks and captures
-// there (every piece goes back); then the ones missed are drawn, and the question is asked.
+// shows the position after it, and the owner makes each of the opponent's checks and captures, and
+// with safety.listThreats their threats, there (every piece goes back); then the ones missed are
+// drawn, and the question is asked.
 
 import type { Color, Shape } from '@chess-coach/core';
 import { Board } from './Board.tsx';
+import { BoardCoach } from './OpeningCoach.tsx';
 import { San } from './San.tsx';
 import { send, setting, type Store } from './store.ts';
 
@@ -72,7 +74,7 @@ export function SafetyPanels({ s, sets }: { s: Store; sets: React.ReactNode }) {
             <div className="under-board">
               <div className="turn">
                 <span className={`turn-dot ${list ? them : v.you}`} aria-hidden="true" />
-                {listing ? <>Their move: make their checks and captures</> : list ? <>After your move: {them === 'white' ? 'White' : 'Black'} to move</> : <>You are {v.you === 'white' ? 'White' : 'Black'}, to move</>}
+                {listing ? <>Their move: make their {list?.threats ? 'checks, captures and threats' : 'checks and captures'}</> : list ? <>After your move: {them === 'white' ? 'White' : 'Black'} to move</> : <>You are {v.you === 'white' ? 'White' : 'Black'}, to move</>}
               </div>
             </div>
           )}
@@ -105,7 +107,9 @@ export function SafetyPanels({ s, sets }: { s: Store; sets: React.ReactNode }) {
             </p>
             {listing && (
               <>
-                <p className="muted">The board shows the position after your move. Make each of their checks and captures, one at a time; every piece goes back.</p>
+                <p className="muted">
+                  The board shows the position after your move. Make each of their checks and captures{list!.threats ? ', and each threat: a move that attacks something of yours it could then win' : ''}, one at a time; every piece goes back.
+                </p>
                 {list!.note && (
                   <div className={`puzzle-says ${list!.note.good ? 'good' : 'wrong'}`} aria-live="polite">
                     {list!.note.san && <San san={list!.note.san} by={them} figurine={figurine} />} {list!.note.text}
@@ -124,7 +128,7 @@ export function SafetyPanels({ s, sets }: { s: Store; sets: React.ReactNode }) {
                 <Found list={list.found} by={them} figurine={figurine} />
                 <p className="safety-tally" aria-live="polite">
                   {list.found.length + (list.missed?.length ?? 0) === 0 ? (
-                    'They have no checks or captures after it.'
+                    list.threats ? 'They have no checks, captures or threats after it.' : 'They have no checks or captures after it.'
                   ) : list.missed?.length ? (
                     <>
                       You found {list.found.length} of {list.found.length + list.missed.length}. Missed:{' '}
@@ -186,6 +190,8 @@ export function SafetyPanels({ s, sets }: { s: Store; sets: React.ReactNode }) {
             )}
           </section>
         )}
+        {/* the drill coach sees this board and can be asked any time; it never rules for the owner (D105) */}
+        {v.status !== 'idle' && v.id !== undefined && <BoardCoach s={s} shows="this safety check" thread={(m) => m.drill === v.id} suggestions={asking ? ['What should I look at after this move?'] : ['Why is it safe, or not?']} />}
       </aside>
     </main>
   );

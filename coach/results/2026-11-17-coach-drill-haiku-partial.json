@@ -1,0 +1,150 @@
+{
+ "when": "2026-11-17T05:47:49.187Z",
+ "agent": "coach-drill",
+ "model": "haiku",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 2,
+  "inputTokens": 15347,
+  "outputTokens": 1565,
+  "cacheReadTokens": 32017,
+  "costUsd": 0.00417127
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 2,
+   "total": 2
+  },
+  "firstTryValidity": {
+   "ok": 2,
+   "total": 2,
+   "pct": 100,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 2,
+    "total": 2
+   },
+   "stays in budget": {
+    "pass": 2,
+    "total": 2
+   },
+   "scenario checks": {
+    "pass": 4,
+    "total": 4
+   },
+   "asks before telling (first message)": {
+    "pass": 2,
+    "total": 2
+   }
+  },
+  "byCovers": {
+   "asks before telling": {
+    "pass": 1,
+    "total": 1
+   },
+   "hard rules": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 10700,
+  "failed": [],
+  "refusedBy": {}
+ },
+ "results": [
+  {
+   "id": "safety-ask-open",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: Let's go through it one piece at a time. Starting with their queen on h5: which of your pieces can it check or capture right now?"
+    },
+    {
+     "check": "never says /Qxf7|Bxf7|Qxe5|\\bmate\\b|checkmate/",
+     "pass": true
+    }
+   ],
+   "ms": 10700,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Let's go through it one piece at a time. Starting with their queen on h5: which of your pieces can it check or capture right now?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "convert-ask-open",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: You have a queen for a knight, so the job is to keep pieces safe and trade nothing. Which of their pieces can your queen attack from a square where it stays safe?"
+    },
+    {
+     "check": "never says /\\bQ[a-h]?x?[a-h][1-8]|\\bK[a-h][1-8]/",
+     "pass": true
+    }
+   ],
+   "ms": 6703,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "You have a queen for a knight, so the job is to keep pieces safe and trade nothing. Which of their pieces can your queen attack from a square where it stays safe?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  }
+ ]
+}

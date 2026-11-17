@@ -9,7 +9,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { chromium, type Browser, type Page } from 'playwright';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { gateV1Convert, gateV1Safety, gateV1Threat, legalMoves, mustPosition, playLine, type ConvertItem, type SafetyItem, type ServerMsg, type ThreatItem } from '@chess-coach/core';
+import { gateV1Convert, gateV1Safety, gateV1Threat, legalMoves, mustPosition, playLine, type ConvertItem, type RepLine, type SafetyItem, type ServerMsg, type ThreatItem } from '@chess-coach/core';
 import { App } from '../../server/src/app.ts';
 import type { MoveSource } from '../../server/src/bots/service.ts';
 import type { CoachTransport, TransportEvents } from '../../server/src/coach/transport.ts';
@@ -647,6 +647,8 @@ describe('the page in a browser', () => {
     const save = (key: string, body: SafetyItem) => app.db.saveContent(key, { type: 'safety', status: 'live', source: 'game:901#6', licence: 'own', level: '400–700', gates: [gateV1Safety(body), { gate: 'V6', result: 'pass' }], body } as never);
     const first = save('game:901#6|safety|is_safe|Nf6', { fen, question: 'is_safe', candidates: [nf6], played: 'Nf6' });
     const second = save('game:901#6|safety|which_loses|Nf6,g6', { fen, question: 'which_loses', candidates: [nf6, g6], played: 'Nf6' });
+    // checks and captures here; their threats are asked in an engine test of their own (D104)
+    await app.onClientMessage(quiet, { type: 'setting', key: 'safety.listThreats', value: false });
     app.safety.refresh();
     await page.getByRole('tab', { name: /^Puzzles/ }).click();
     await page.locator('.puzzle-set', { hasText: 'Safety check' }).click();
@@ -683,6 +685,7 @@ describe('the page in a browser', () => {
     await expect.poll(() => page.locator('.layout.puzzles').innerText()).toMatch(/Nothing more to check today\./);
     await app.onClientMessage(quiet, { type: 'safety', action: 'close' });
     await app.onClientMessage(quiet, { type: 'puzzle', action: 'close' });
+    await app.onClientMessage(quiet, { type: 'setting', key: 'safety.listThreats', value: true });
   });
 
   it("names their threat on a board with the turn passed, then finds a move that deals with it (WP 6.7)", async () => {
@@ -1086,7 +1089,26 @@ describe('the page in a browser', () => {
     // My games: the results per line
     await page.getByRole('tab', { name: /^My games/ }).click();
     await expect.poll(() => page.locator('.rep-stats').innerText()).toMatch(/Your openings[\s\S]*you left it \d+ times?[\s\S]*1\.e4 e5 2\.Nf3 Nc6 3\.Bb5 a6 4\.Ba4[\s\S]*as White: \d+ games?, won \d+/);
-  });
+
+    // a game where they left it: their move, and the engine's after it, added to the repertoire through every gate
+    // (the engine speaks on a new game only after the owner's own review, D56: off for this one)
+    await app.onClientMessage(quiet, { type: 'setting', key: 'review.ownFirst', value: false });
+    await page.getByLabel('A PGN, or a link to a game').fill('[White "OwnerLichess"]\n[Black "rival_add"]\n[Result "1-0"]\n\n1. e4 e5 2. Nf3 f6 3. Nxe5 1-0');
+    await page.getByRole('button', { name: 'Add and open' }).click();
+    await expect.poll(() => app.mode).toBe('analysis');
+    await expect.poll(() => note.innerText(), { timeout: 30_000 }).toMatch(/They left it at 2\.\.\.\s*f6[\s\S]*Next time, the engine's move after theirs is/);
+    const gameId = app.session.state.game!.id;
+    await note.getByRole('button', { name: 'Add to my repertoire' }).click();
+    await expect.poll(() => page.locator('.toast').allInnerTexts(), { timeout: 240_000 }).toContainEqual(expect.stringMatching(/^Added/));
+    const rep = app.db.repertoires().find((r) => r.name === 'Test White')!.id;
+    const added = app.db.repertoireItems<RepLine>(rep).find((x) => x.body.added);
+    expect(added!.body.moves.slice(0, 4)).toEqual(['e4', 'e5', 'Nf3', 'f6']);
+    expect(added!.body.moves).toHaveLength(5);
+    expect(added!.body.added!.game).toBe(gameId);
+    // it waits for the owner (or is held back with its reason): never live by itself
+    expect(['machine-verified', 'quarantined']).toContain(added!.status);
+    await app.onClientMessage(quiet, { type: 'setting', key: 'review.ownFirst', value: true });
+  }, 360_000);
 
   it('the material beside the board: the pieces each side has taken, +N for the side ahead, and off as a setting (I17)', async () => {
     if (app.session.state.orientation !== 'white') await app.onClientMessage(quiet, { type: 'flip' });

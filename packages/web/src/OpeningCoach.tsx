@@ -13,6 +13,9 @@ import { Mark } from './ui.tsx';
 
 const STATE_TEXT: Record<string, string> = { off: 'Off', starting: 'Starting…', ready: 'Ready', thinking: 'Thinking…', retrying: 'Retrying…', error: 'Stopped' };
 
+/** The same box beside the Puzzles tab's other drills (the safety check, the threat, a won game: D105). */
+export { OpeningCoach as BoardCoach };
+
 /** Ask the coach about the board in front of you; `send` it from anywhere on the tab (a button that asks a set question). */
 export function askCoach(text: string) {
   send({ type: 'ask', text });

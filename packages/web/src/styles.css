@@ -3600,6 +3600,18 @@ input[type='number'] {
   margin: 0;
   font-size: 13px;
 }
+/* the routine's question before a puzzle's first move (A9 in the drills) */
+.puzzle-routine {
+  margin: 0;
+  padding: 8px 10px;
+  border-left: 2px solid var(--coach-line);
+  background: var(--coach-soft);
+  border-radius: 0 var(--r-xs) var(--r-xs) 0;
+  font-size: 13.5px;
+}
+.puzzle-routine .walk-label {
+  margin-bottom: 2px;
+}
 /* the coach on the Openings tab (D12): beside the walked board (a chat pane filling the rest of the
    column, like the analysis board's) and under the practice card (just the head and the composer) */
 .opening-coach {

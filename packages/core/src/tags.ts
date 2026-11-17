@@ -27,6 +27,29 @@ export const STEP_NAME: Record<SkippedStep, string> = {
   unknown: 'No single step stands out',
 };
 
+/**
+ * A tag the board cannot settle (COACH §6.2, step 3; WP 5.7): whether the owner looked at the reply and
+ * it seemed fine, or did not look. Code tells "it looked safe" from "no safety check" by what was taken
+ * and by what, not by what the owner did, so once the replay is over the owner is asked, and the answer
+ * is their own word for the step (H8).
+ */
+export function tagUnclear(step: SkippedStep | undefined): boolean {
+  return step === 'seemed_safe' || step === 'no_safety_check';
+}
+
+/** The question for an unclear tag, and the step each answer means (the move number names the moment). */
+export function lookedQuestion(number: string, san: string): { text: string; choices: { text: string; step: SkippedStep }[] } {
+  const at = `${number}${san}`;
+  return {
+    // the move as a token (checked against the position before it); the answers are plain words on buttons
+    text: `About your move ${number}{m:${san}}: did you look at their reply and it seemed fine, or didn't you look?`,
+    choices: [
+      { text: `${at}: I looked, and it seemed fine`, step: 'seemed_safe' },
+      { text: `${at}: I didn't look at their reply`, step: 'no_safety_check' },
+    ],
+  };
+}
+
 /** The coach's first question for each row (LEARNING §4, "Ask first"). */
 export const STEP_QUESTION: Record<SkippedStep, string> = {
   missed_threat: "What was your opponent's last move trying to do?",

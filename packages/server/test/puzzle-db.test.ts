@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { DRAW_BELOW, practiceLevel, scoreOf, themeName, type PuzzleView } from '@chess-coach/core';
+import { DRAW_BELOW, makeScheduler, practiceLevel, review, scoreOf, themeName, type PuzzleView } from '@chess-coach/core';
 import { config } from '../src/config.ts';
 import { ContentService } from '../src/content.ts';
 import { PuzzleDb, installPuzzles } from '../src/datasets/puzzle-db.ts';
@@ -114,6 +114,48 @@ describe('themed sets from the puzzle database', () => {
     ]);
     expect(item.body.themes).toContain('fork');
     expect(Math.abs(item.body.rating! - (900 - DRAW_BELOW))).toBeLessThan(150);
+  });
+
+  it('a puzzle from your games coming back: every other time the same idea in a new position, which schedules your own card (WP 6.5)', async () => {
+    let seen: PuzzleView | undefined;
+    const mdb = new Db(':memory:');
+    const ladder = compileLadder(JSON.parse(readFileSync(config.ladderFile, 'utf8')) as ConceptLadderFile);
+    const content = new ContentService({ db: mdb, engine: {} as EngineService, facts: {} as FactService, ladder, dataDir: dir, dbFile: ':memory:', options: () => ({ nodes: 0, vocabulary: 'core', autoApprove: true }) });
+    const own = new PuzzleController({
+      db: mdb,
+      facts: { checkMove: async () => ({ legal: false, reason: '', legalMoves: [] }) } as unknown as FactService,
+      words: loadPuzzleWords(path.join(config.repoRoot, 'coach', 'templates', 'puzzle.json')),
+      maxMisses: () => 2,
+      guard: () => null,
+      onChange: () => (seen = own.view),
+      content,
+      puzzleDb: () => puzzleDb,
+      startLevel: () => 900,
+      sameMotif: () => true,
+      noDelay: true,
+    });
+    // one of the owner's puzzles, a fork, answered once and due again
+    const mine = mdb.saveContent('game:77#20|mistake', { type: 'puzzle_game', status: 'live', source: 'game:77#20', licence: 'own', level: '400–700', gates: [], body: { fen: '6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1', solution: ['Rd8#'], themes: ['fork'], kind: 'mistake' } } as never);
+    const scheduler = await makeScheduler(180);
+    const past = new Date(Date.now() - 3 * 86_400_000);
+    mdb.saveCard(mine, { ...review(scheduler, null, 'good', past).card, dueAt: new Date(Date.now() - 60_000).toISOString() });
+    await own.choose({ kind: 'due' });
+    expect(seen!.id).not.toBe(mine);
+    expect(mdb.getContent(seen!.id!)).toMatchObject({ type: 'puzzle_db', status: 'live' });
+    expect(mdb.getContent(seen!.id!)!.body.themes).toContain('fork');
+    expect(seen!.from).toMatch(/^The same idea \(fork\) as your puzzle from one of your games, move 10, in a new position: from the Lichess puzzle database, rated \d+$/);
+    // the answer schedules the owner's own card, not the stand-in
+    const before = mdb.getCard(mine)!.reps;
+    own.showAnswer();
+    await new Promise((r) => setTimeout(r, 30));
+    expect(mdb.getCard(mine)!.reps).toBe(before + 1);
+    expect(mdb.getCard(seen!.id!)).toBeUndefined();
+    // the next time it comes back as itself
+    mdb.saveCard(mine, { ...mdb.getCard(mine)!, dueAt: new Date(Date.now() - 60_000).toISOString() });
+    await own.choose({ kind: 'due' });
+    expect(seen!.id).toBe(mine);
+    own.close();
+    mdb.close();
   });
 
   it('the level follows the results: solved alone it rises, shown it falls, and a set never repeats a puzzle', async () => {

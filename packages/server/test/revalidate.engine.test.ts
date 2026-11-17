@@ -58,10 +58,23 @@ describe('re-validation (WP 8.11)', () => {
     expect(after!.status).toBe('quarantined');
     expect(after!.gates.find((g) => g.gate === 'V2')!.detail).toMatch(new RegExp(`^1\\.${borderline!.san}: ${borderline!.san} is not sound \\(.+\\); the engine plays \\S+ here \\(1,000,000 nodes\\) \\(re-checked after a change of the most a repertoire move may lose \\(4 → 2 points of winning chances\\)\\)$`));
 
-    // set back: it passes again
+    expect(after!.body.approvedBefore).toBe(true); // the owner's approval is remembered
+
+    // set back: it passes again, and is live again without being approved a second time
     options.maxDrop = 4;
     const back = await service.revalidate(report.id, becauseText(basisChanges({ ...before, maxDrop: 2 }, before)));
     expect(back!.quarantined).toBe(0);
+    const [restored] = db.repertoireItems<RepLine>(report.id);
+    expect(restored!.status).toBe('live');
+    expect(restored!.body.approvedBefore).toBeUndefined();
+
+    // a line never approved that passes again only waits for the owner, as before
+    const fresh = await service.importPgn(`1. ${borderline!.san} *`, { name: 'Never approved', colour: 'white', source: 'pasted:2026-11-17', licence: 'own', level: '400–700' });
+    options.maxDrop = 2;
+    await service.revalidate(fresh.id, because);
+    options.maxDrop = 4;
+    await service.revalidate(fresh.id);
+    expect(db.repertoireItems<RepLine>(fresh.id)[0]!.status).toBe('machine-verified');
     db.close();
   }, 300_000);
 });
