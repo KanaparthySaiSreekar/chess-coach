@@ -106,6 +106,7 @@ threat and won-game drills (D105). The code is on `main`, pushed to a private Gi
 | `node tools/make-golden.ts` (`--engine` to search again) | Rebuild the golden fact packets of `core/test/fixtures/golden` after a deliberate change of wording |
 | `node tools/tb-probe.ts "<FEN>"` · `node tools/sample-puzzles.ts` | Ask the tablebases about a position · rebuild the puzzle sample the motif tests use |
 | `node tools/shot-board.mjs "<PGN or FEN>" <name>` | Load a game on the analysis board and save a picture of the board with its arrows (`URL=`, `OUT=`) |
+| `node tools/readme-media.mjs tour` · `stills` · `banner` (`URL=`, `FFMPEG=<ffmpeg.exe>`, `SCENES=coach,review,…`) | The README's media in `docs/media/`: one recorded clip per feature and the whole tour as a video, the pictures, the banner. Drives the real page with the live coach, so point it at a second server with its own data folder, never the owner's (uses the plan; AC power; about 6 minutes) |
 
 To try a change without touching the owner's board or data, run a second server on another port with
 its own data folder: `npm run build`, then

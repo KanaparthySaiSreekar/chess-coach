@@ -154,7 +154,7 @@ export function checkLinks(files, read = (f) => readFileSync(f, 'utf8'), exists 
 /** The docs that are kept in step: the top-level ones, docs/, and the coach's agent and skill files. */
 export function docFiles(root) {
   const out = [];
-  for (const f of ['CLAUDE.md', 'TRACKER.md']) if (existsSync(path.join(root, f))) out.push(path.join(root, f));
+  for (const f of ['README.md', 'CLAUDE.md', 'TRACKER.md']) if (existsSync(path.join(root, f))) out.push(path.join(root, f));
   const walk = (dir) => {
     if (!existsSync(dir)) return;
     for (const entry of readdirSync(dir, { withFileTypes: true })) {
