@@ -25,6 +25,7 @@ const app = new App({
   maia: { python: config.maiaPython, script: config.maiaSidecar, models: config.maiaModels },
   lichessToken: config.lichessToken,
   rosterFile: config.rosterFile,
+  voice: { dir: config.voiceModels },
   log,
 });
 

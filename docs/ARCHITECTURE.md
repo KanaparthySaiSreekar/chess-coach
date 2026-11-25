@@ -10,6 +10,9 @@ Phase 2 spike must prove before it is built on; see [§19](#19-what-the-spikes-m
 _Updated 2026-11-14: S1–S3 confirmed and written in (§5, §9, §10); the engine-first rule (D33) and the
 Lichess cross-check (D37) changed §3 rule 2, §4, §6, §7, §9, §10 and §12._
 
+_Updated 2026-11-25 (D108): the voice, [§20](#20-the-voice-a20-a21-d108); with it the stack (§3), privacy
+(§15), budgets (§16) and tests (§17)._
+
 _Updated 2026-11-14 (second session, D39–D43): the eval bar, best-move arrows and move labels (§4, §8,
 §10); the owner's moves on the coach's board (§4, §5.2); `annotate show` and `show_position at` (§6);
 the bots as built (§11); presets and quick settings (§14)._
@@ -91,6 +94,9 @@ live coach messages and stored content.
 | HTTP + WebSocket | Fastify + `ws` | MIT | Small and well known |
 | Tests | Vitest (unit), Playwright (page) | MIT | — |
 | Data | Lichess puzzle database, Lichess openings list | CC0 | Free to use |
+| The coach's voice (A20) | `kokoro-js` 1.2.1 with the Kokoro-82M v1.0 model (ONNX, fp32) | Apache-2.0 (code and model) | A natural male voice made on this computer, about five times faster than real time on the processor ([§20](#20-the-voice-a20-a21-d108)) |
+| Speech recognition (A21) | `@huggingface/transformers` 3.8.1 with Whisper small.en (ONNX, 8-bit) | Apache-2.0; the model MIT | The owner's voice written down on this computer, in any browser |
+| Their runtime | `onnxruntime-node` 1.21 (through transformers.js); `phonemizer` 1.2 (kokoro-js's text-to-sounds step) | MIT; Apache-2.0 around eSpeak NG compiled to WebAssembly, which is GPL-3.0-or-later | Prebuilt for Windows: their install scripts are not needed, and npm skips them |
 
 - **Project licence: AGPL-3.0-or-later (D23).** It is the only licence compatible with reusing code
   from lila, lichess-puzzler and Maia-3 alongside the GPL libraries. The repository is public since
@@ -843,7 +849,11 @@ defineSetting({
 - Secrets (`LICHESS_TOKEN`) live in `.env`, entered through the secret box, never in chat or in git.
 - `data/` is never served as static files. A pre-commit check blocks `data/`, `courses/` and `.env`.
 - **Course material (D28):** only the item being studied is sent to the coach, for live explanation.
-- No telemetry. Outside calls are only: Lichess, Chess.com, and the coach's model.
+- No telemetry. Outside calls are only: Lichess, Chess.com, and the coach's model; and Hugging Face once,
+  when the voice's model files are downloaded (pinned by checksum, §20).
+- **The voice (§20):** the coach's words and the owner's voice stay on this machine, and the voice routes
+  (`/api/voice/*`) answer only pages of this machine (the WebSocket's origin rule). The one exception is the
+  browser's own recogniser, an option whose setting says that Chrome sends the voice to Google.
 
 ## 16. Performance budgets
 
@@ -854,6 +864,8 @@ defineSetting({
 | Coach's first message after an event (Haiku) | median < 4 s |
 | Analysing a 60-move game (AC power) | < 90 s |
 | A themed puzzle query against the 6M-puzzle table | < 100 ms |
+| The coach's first spoken sentence after its message arrives (the natural voice, loaded) | < 1.5 s (measured 0.7 s) |
+| The owner's words in the chat after they stop talking (Whisper, loaded) | the 1.4 s pause + < 1.5 s (measured 0.6–0.9 s) |
 
 ## 17. Testing
 
@@ -862,7 +874,8 @@ defineSetting({
 | `core` | Unit tests with position fixtures: each motif detector, exchange evaluation, grading, the validator (true and planted-false messages), the puzzle rules on known games, each content gate |
 | Server | Integration tests with a fake engine; a small tagged set runs against real Stockfish. The importers and the library run against a stand-in for the two sites that answers from recorded files (`server/test/fake-sites.ts`, fixtures in `core/test/fixtures/import` with every name replaced): no test touches the network |
 | Coach | The playbook harness ([COACH §9](COACH.md#9-testing-the-playbooks)): recorded events through each agent, scored by fixed checks. Run on demand: it uses plan usage |
-| Page | Playwright, one happy path per phase: `npm run test:page` builds the page and drives Chrome against the real server (`http.ts`) around an App with a scripted coach and a stand-in bot, on a free port and a throwaway data folder; it also fails if the browser console logged an error. A geometry test or two run without a browser (`packages/web/test`) |
+| Page | Playwright, one happy path per phase: `npm run test:page` builds the page and drives Chrome against the real server (`http.ts`) around an App with a scripted coach and a stand-in bot, on a free port and a throwaway data folder; it also fails if the browser console logged an error. Chrome runs with a fake microphone playing a recorded WAV, and the voice's engines are stand-ins, so the microphone, the routes and the playback run for real without the models. A drag waits for the server's answer before the next one (a hot laptop is slow enough for the page to lag a move). A geometry test or two run without a browser (`packages/web/test`) |
+| Voice | The words, chunks, transcript and end-of-speech rules in `core/test/speech.test.ts`; the service and its routes with stand-in engines (`server/test/voice.test.ts`); the real Kokoro and Whisper in `voice.engine.test.ts` (each voice says a message and Whisper hears its moves back; skipped when the models are missing) |
 | Docs | `npm run check:docs` (`tools/check-docs.mjs`): every feature ID sits in exactly one phase; links resolve |
 | Repo | `npm run lint` (oxlint: typescript-eslint does not support TypeScript 7); the pre-commit guard (`tools/check-staged.mjs`, tested with a real `git commit` in a throwaway repository) |
 
@@ -894,3 +907,56 @@ Node-limited searches and the cache make engine-backed tests repeatable.
 | S6 | **Confirmed 2026-11-14, with its fallback.** The two checks alone catch 79% of single slips; with a second independent transcription to compare against, 2,163 of 2,164 (D49, [CONTENT §9](CONTENT.md#9-courses-books-and-pdfs)) |
 
 Each result is written into [TRACKER.md](../TRACKER.md) and, if it changes a design here, into this file.
+
+## 20. The voice (A20, A21, D108)
+
+The owner asked for the coach to speak and to be spoken to, with text staying the default. Both are
+settings (group *Voice*, all off at first) and neither touches the chess: what is spoken is what the
+coach's message says, and what is heard is sent as the owner's words, through the same checks as typing.
+
+**Speaking (A20).** When a coach message arrives (`coach_msg`), the page turns it into words with
+`spokenMessage` (`core/speech.ts`): the text of its bubble, a move token said as a coach says it
+("knight takes e5, check", "castles kingside", "pawn takes d5, promoting to a queen"; the square a
+piece came from only when the SAN names it, taken from the token), a square or a piece token as the
+page shows it, and no notes, labels or buttons. `speechChunks` cuts the words into sentences (a very
+short one joined to the next, a long one cut at a comma) so the first can start at once.
+`web/src/audio.ts` asks the server for each sentence (`POST /api/voice/speak` `{text, voice, speed}` →
+a 16-bit WAV) while the one before plays, and plays them in order. `server/voice.ts` makes them with
+**Kokoro-82M** (kokoro-js on ONNX Runtime, fp32 on the processor), one sentence at a time, the last 64
+kept in memory. Kokoro reads squares as written ("a4", "e5"), so they are not respelled. The browser's
+own voice (`speechSynthesis`, the first male English voice in a preference list) speaks instead when
+the owner chooses it, or when the natural voice is not installed or fails (said once, as a toast).
+Five of Kokoro's male voices are offered, chosen by ear (*Hear it*); **Michael** is the default,
+measured on one sentence as the steadiest and the most unhurried of the American voices (median pitch
+121 Hz with the narrowest spread; Fenrir is the liveliest, Puck lower and quicker, George steady, Fable
+quicker). A new spoken or typed question, the microphone, or switching the voice off stops the talking.
+
+**Listening (A21).** The microphone button records through an AudioWorklet (echo cancellation and
+noise suppression on), and `Endpointer` (`core/speech.ts`) decides when the owner has finished: the
+first 300 ms measure the room (capped, so someone who starts talking at once is not taken for the
+room), speech must clear three times that, and a turn ends 1.4 s after the speech stops, at 30 s, or
+after 8 s with nothing said. The samples are resampled to 16 kHz and sent as 16-bit PCM
+(`POST /api/voice/listen`, `application/octet-stream`); **Whisper small.en** (8-bit) writes them down,
+and `tidyTranscript` drops the sounds the recogniser writes down ("[BLANK_AUDIO]") and puts chess
+words right ("night" → "knight", "E5" → "e5"). Or the browser's recogniser does it (in Chrome that
+sends the voice to Google; the setting says so). `spokenChip` makes "Hint", "Why?", "Show me" and
+"Just tell me", said on their own, those buttons; anything else is sent as a question, or put in the
+box first when *Send what I say as soon as I stop* is off. *Keep talking* opens the microphone again
+once the coach has answered a spoken question and finished speaking (closed by eight quiet seconds).
+
+**The model files** are pinned in `server/voice.ts` by repository, revision and SHA-256, each checked
+against Hugging Face's own record of the file (2026-11-25): Kokoro-82M-v1.0-ONNX (`onnx/model.onnx`,
+326 MB, Apache-2.0) and whisper-small.en (`encoder_model_quantized.onnx` and
+`decoder_model_merged_quantized.onnx`, 249 MB, MIT): 577 MB in all, in `C:\Tools\Voice\models`
+(`VOICE_MODELS` changes it). `npm run voice:install` downloads what is missing, keeps a file only if its
+size and checksum match, then says a sentence and hears it back; *Download* under Settings → Voice runs
+the same download from the page (`POST /api/voice/install`, progress in `GET /api/voice/status`). At run
+time the models are read from disk only (transformers.js with remote models off): nothing the coach or
+the owner says leaves the machine, unless the owner chooses the browser's recogniser. Nothing is loaded
+until a voice setting is on; switching one on loads its model in the background.
+
+**Measured on this laptop** (AC power, 2026-11-25): Kokoro fp32 on the processor makes speech about five
+times faster than it plays (1.4 s for 7.6 s); the 8-bit model was slower (4.7 s), and DirectML on the GPU
+refuses the model (a ConvTranspose node). Loading takes about a second from disk. Whisper small.en takes
+0.6–1.4 s for a sentence and wrote every test sentence back exactly, moves included; base.en was twice as
+fast but heard "knight" as "night". Memory: about 0.5 GB for both, only while loaded.

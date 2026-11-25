@@ -77,7 +77,9 @@ recalled it never names the move). **Black's opening is chosen too (Q18, 2026-11
 the King's Indian setup against everything else** (D102; `content/repertoires/kid-accelerated-dragon.json`, 45 chapters, the
 outline drawn up by Claude from the owner's choices; built 2026-11-17: 648 lines, none quarantined, its words written from the
 facts for 948 of 1,103 positions, waiting for the owner's approval; Q32). Every move says where it comes from and every word who wrote it (D13). The coach is also beside the safety,
-threat and won-game drills (D105). The code is on `main`, pushed to a GitHub repository that is **public** since 2026-11-17 (D103, D106): every push is published.
+threat and won-game drills (D105). **The coach can speak, and the owner can talk to it** (A20, A21, WP 4.14; D108): both off by default (text
+is the default), the coach's words read out by Kokoro-82M in a male voice (Michael by default) and the owner's voice written down by Whisper
+small.en, both on this laptop (`core/speech.ts`, `server/voice.ts`, `web/src/audio.ts`, `web/src/Voice.tsx`; ARCHITECTURE §20). The code is on `main`, pushed to a GitHub repository that is **public** since 2026-11-17 (D103, D106): every push is published.
 
 ## Run it
 
@@ -91,6 +93,7 @@ threat and won-game drills (D105). The code is on `main`, pushed to a GitHub rep
 | `npm run typecheck` | TypeScript over all three packages |
 | `npm run lint` · `npm run check:docs` · `npm run check` | The linter (oxlint) · every feature ID in exactly one phase and every doc link resolving · both plus the type check and the fast tests |
 | `npm run test:coach` (`-- --model sonnet`, `--agent coach-review`, `coach-drill`, `coach-spar`, `coach-opening` or `coach-endgame`, `--only id,id`, `--list`) | The playbook harness: the live coach through its scenarios (30 for the analysis board, 14 for the Openings tab, 12 for the puzzles and the other drills, 10 each for the game review, games against the bots and the endgames), scored by code, saved in `coach/results/` (uses the plan; about 6 minutes; AC power) |
+| `npm run voice:install` (`-- --check`) | The coach's voice and the speech recogniser (D108): download what is missing into `C:\Tools\Voice\models` (577 MB, each file checked against its pinned checksum), then say a sentence and hear it back (`--check`: no download) |
 | `npm run content:install -- puzzles` | Build the local puzzle database from the downloaded Lichess CSV (once; about ten minutes; 1.5 GB) |
 | `npm run content:validate -- <file.json or id>` (`--save`) | Run the content gates over puzzles and print the report: quarantined with the reason, or passed (engine work; AC power) |
 | `node tools/author.ts list` · `chapters <id>` · `sheet <id> [file.json]` (`--chapter "<name>"`, `--missing`, `--depth N`) · `apply <id> <file.json>` (`--full`, `--by claude\|facts\|owner`: who wrote them, D13) | A repertoire's words (the `author-repertoire` skill): how far each chapter's words are; the worksheet of positions with their facts (one chapter, only those still without words); the words written into it kept and checked by V3 on the lines through them (every gate with `--full`) (engine work; AC power) |
@@ -208,6 +211,7 @@ properties, and imports carry the `.ts` extension.
   | Stockfish 19 | `C:\Tools\Stockfish\stockfish-windows-x86-64-universal.exe` | `bench` = **2,497,913** nodes; 1.65 M nps on 1 thread, 11.8–12.5 M on 16; runs `x86-64-avx512icl` |
   | Syzygy 3-4-5 | `C:\Tools\Syzygy\` | 290 files; set `SyzygyPath` to it |
   | Maia-3 | venv Python `C:\Tools\Maia3\venv\Scripts\python.exe -m maia3.uci --model maia3-5m --checkpoint-path C:\Tools\Maia3\models\maia3-5m.pt`, with `HF_HUB_OFFLINE=1` | `maia3@1e13597`; torch 2.15 + CUDA 13.2; 5M on CPU 33 ms/move, 23M 73 ms |
+  | Voice (D108) | `C:\Tools\Voice\models` (`VOICE_MODELS`): Kokoro-82M v1.0 ONNX fp32 and Whisper small.en ONNX 8-bit, pinned by revision and SHA-256 in `server/voice.ts` | 577 MB; installed and checked 2026-11-25; Kokoro fp32 about 5× real time on the CPU (DirectML refuses it), Whisper 0.6–1.4 s a sentence |
   | Datasets | `data/datasets/puzzles/`, `data/datasets/openings/` (gitignored) | 6,193,530 puzzles (installed into `puzzles.sqlite` 2026-11-15); 3,865 openings |
 - The coach runs as a headless Claude Code session on the owner's plan login (decision D17).
 - Secrets (the Lichess API token, `LICHESS_TOKEN`) go into `.env` through the secret box, never into

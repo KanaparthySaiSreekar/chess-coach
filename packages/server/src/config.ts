@@ -32,6 +32,8 @@ export const config = {
   maiaPython: process.env.MAIA_PYTHON ?? 'C:/Tools/Maia3/venv/Scripts/python.exe',
   maiaModels: process.env.MAIA_MODELS ?? 'C:/Tools/Maia3/models',
   maiaSidecar: path.join(REPO_ROOT, 'tools', 'maia_sidecar.py'),
+  /** the coach's voice and the owner's (A20, A21; D108): Kokoro and Whisper's model files, pinned and checked (`npm run voice:install`) */
+  voiceModels: process.env.VOICE_MODELS ?? 'C:/Tools/Voice/models',
   rosterFile: path.join(REPO_ROOT, 'content', 'bots.json'),
   ladderFile: path.join(REPO_ROOT, 'content', 'concept-ladder.json'),
 };

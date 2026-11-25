@@ -12,6 +12,7 @@ import type { PresetView, SettingView } from '@chess-coach/core';
 import { send, useStore } from './store.ts';
 import { Sheet } from './ui.tsx';
 import { PieceBox } from './San.tsx';
+import { VoiceInstall, VoicePicker } from './Voice.tsx';
 
 const pretty = (s: SettingView, option: string) => s.optionLabels?.[option] ?? option;
 
@@ -49,7 +50,10 @@ function Stepper({ s }: { s: SettingView }) {
 }
 
 export function Control({ s }: { s: SettingView }) {
+  const store = useStore();
   const set = (value: unknown) => send({ type: 'setting', key: s.key, value });
+  // the coach's voice is chosen by ear (A20)
+  if (s.key === 'voice.voice') return <VoicePicker s={store} />;
   if (s.type === 'boolean') {
     const on = s.value as boolean;
     return (
@@ -222,6 +226,7 @@ export function SettingsWindow({ onClose }: { onClose: () => void }) {
                     </button>
                   )}
                 </div>
+                {g === 'Voice' && <VoiceInstall />}
                 <div className="group">
                   {rows.map((s) => {
                     const isChanged = s.value !== s.default;

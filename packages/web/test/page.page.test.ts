@@ -4,17 +4,18 @@
 //
 //   npm run test:page        (builds the page first; needs Stockfish and Chrome; on AC power)
 
-import { mkdtempSync, rmSync } from 'node:fs';
+import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { chromium, type Browser, type Page } from 'playwright';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { gateV1Convert, gateV1Safety, gateV1Threat, legalMoves, mustPosition, playLine, type ConvertItem, type RepLine, type SafetyItem, type ServerMsg, type ThreatItem } from '@chess-coach/core';
+import { gateV1Convert, gateV1Safety, gateV1Threat, legalMoves, mustPosition, playLine, speechChunks, spokenMessage, type ConvertItem, type RepLine, type SafetyItem, type ServerMsg, type ThreatItem } from '@chess-coach/core';
 import { App } from '../../server/src/app.ts';
 import type { MoveSource } from '../../server/src/bots/service.ts';
 import type { CoachTransport, TransportEvents } from '../../server/src/coach/transport.ts';
 import { config } from '../../server/src/config.ts';
 import { serve, type Served } from '../../server/src/http.ts';
+import { wavBytes, type VoiceEngines } from '../../server/src/voice.ts';
 import { fakeSites, ongoingCc } from '../../server/test/fake-sites.ts';
 import { TEST_REPERTOIRE } from '../../core/test/fixtures/repertoire.ts';
 
@@ -47,6 +48,18 @@ class ScriptedCoach implements CoachTransport {
   }
 }
 
+// stand-ins for the voice (A20, A21): a short silence for every sentence, and the owner always heard saying "Hint."
+const voiceHeard: number[] = [];
+const fakeVoice: VoiceEngines = {
+  loadSpeaker: async () => ({ speak: async () => ({ samples: new Float32Array(2400), rate: 24000 }) }),
+  loadListener: async () => ({
+    listen: async (samples) => {
+      voiceHeard.push(samples.length);
+      return ' Hint. ';
+    },
+  }),
+};
+
 // a stand-in for Maia: always the first legal move
 const firstMoveBot: MoveSource = {
   state: 'ready',
@@ -70,6 +83,10 @@ describe('the page in a browser', () => {
 
   beforeAll(async () => {
     dir = mkdtempSync(path.join(tmpdir(), 'cc-page-'));
+    // the fake microphone's recording: a second of quiet, a second of a voice-like tone, quiet again
+    const mic = new Float32Array(48000 * 4.5);
+    for (let i = 48000; i < 96000; i++) mic[i] = 0.3 * Math.sin((2 * Math.PI * 220 * i) / 48000) * (0.6 + 0.4 * Math.sin((2 * Math.PI * 4 * i) / 48000));
+    writeFileSync(path.join(dir, 'mic.wav'), wavBytes(mic, 48000));
     app = new App({
       repoRoot: config.repoRoot,
       dataDir: dir,
@@ -84,6 +101,7 @@ describe('the page in a browser', () => {
       sites: fakeSites().http,
       lichessToken: () => 'page-test-token',
       powerProbe: async () => true,
+      voice: { dir: path.join(dir, 'voice'), engines: fakeVoice, checkFiles: false },
       makeTransport: (events) => {
         coach = new ScriptedCoach(events);
         coach.app = app;
@@ -92,12 +110,32 @@ describe('the page in a browser', () => {
     });
     app.engine.signature = 'page-test';
     served = await serve(app, { host: '127.0.0.1', port: 0, webDist: path.join(config.repoRoot, 'packages', 'web', 'dist') });
-    browser = await chromium.launch({ channel: process.env.CHANNEL ?? 'chrome', headless: true });
-    page = await browser.newPage({ viewport: { width: 1440, height: 900 }, colorScheme: 'dark' });
+    // a fake microphone that plays mic.wav, and sound allowed without a click (the voice, A20, A21)
+    browser = await chromium.launch({ channel: process.env.CHANNEL ?? 'chrome', headless: true, args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${path.join(dir, 'mic.wav')}%noloop`, '--autoplay-policy=no-user-gesture-required'] });
+    page = await browser.newPage({ viewport: { width: 1440, height: 900 }, colorScheme: 'dark', permissions: ['microphone'] });
     page.on('console', (m) => {
       if (m.type() === 'error') errors.push(m.text());
     });
     page.on('pageerror', (e) => errors.push(String(e)));
+    // count the server's answers to a move (a board's state, a refusal), so that a drag can wait for its answer
+    await page.addInitScript(() => {
+      const Native = window.WebSocket;
+      const kinds = new Set(['state', 'toast', 'game', 'puzzle', 'endgame', 'opening', 'safety', 'threat', 'convert', 'speed']);
+      const w = window as unknown as { ccAnswers?: number };
+      class Counted extends Native {
+        constructor(url: string | URL, protocols?: string | string[]) {
+          super(url, protocols);
+          this.addEventListener('message', (e) => {
+            try {
+              if (kinds.has((JSON.parse(String(e.data)) as { type: string }).type)) w.ccAnswers = (w.ccAnswers ?? 0) + 1;
+            } catch {
+              /* not JSON */
+            }
+          });
+        }
+      }
+      window.WebSocket = Counted;
+    });
     await page.goto(served.url);
     await page.waitForSelector('.board piece', { timeout: 20_000 });
   });
@@ -131,8 +169,14 @@ describe('the page in a browser', () => {
     await page.mouse.down();
     await page.mouse.move((x1 + x2) / 2, (y1 + y2) / 2, { steps: 4 });
     await page.mouse.move(x2, y2, { steps: 4 });
+    const before = await answers();
     await page.mouse.up();
+    // the next drag waits for the server's answer to this one: on a slow, hot laptop the page could otherwise still be showing
+    // the turn before, and the next piece would not move (seen 2026-11-25). A drop that sends nothing waits out the timeout.
+    await expect.poll(answers, { timeout: 1500, interval: 25 }).toBeGreaterThan(before).catch(() => {});
   };
+  /** How many answers to a move (a board's state, a refusal) the page has had from the server. */
+  const answers = () => page.evaluate(() => (window as unknown as { ccAnswers?: number }).ccAnswers ?? 0);
   /** Press one square of the board that is showing. */
   const press = async (square: string, board = '.board') => {
     const box = (await page.locator(board).first().boundingBox())!;
@@ -428,6 +472,53 @@ describe('the page in a browser', () => {
     await expect.poll(() => page.locator('.msg-coach').count(), { timeout: 30_000 }).toBeGreaterThan(before);
   });
 
+  it('the voice: text by default; switched on, a spoken "hint" is the Hint button and the reply is read out in words (A20, A21)', async () => {
+    const spoken: string[] = [];
+    const onRequest = (r: { url: () => string; postData: () => string | null }) => {
+      if (r.url().endsWith('/api/voice/speak')) spoken.push((JSON.parse(r.postData() ?? '{}') as { text: string }).text);
+    };
+    page.on('request', onRequest);
+    try {
+      // text is the default: no microphone, the speaker off
+      expect(await page.locator('.mic').count()).toBe(0);
+      expect(await page.getByRole('switch', { name: 'The coach speaks aloud' }).first().getAttribute('aria-checked')).toBe('false');
+      // both switched on from the View menu
+      await page.getByRole('button', { name: /View/ }).click();
+      await page.locator('.view-menu .quick-row', { hasText: 'The coach speaks aloud' }).getByRole('switch').click();
+      await page.locator('.view-menu .quick-row', { hasText: 'Talk instead of typing' }).getByRole('switch').click();
+      await page.keyboard.press('Escape');
+      await page.waitForSelector('.mic');
+      // a position with something to find
+      await page.getByRole('button', { name: 'Load PGN / FEN' }).click();
+      await page.locator('.modal textarea').fill('1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Bxc6 dxc6 5. Nxe5 Qd4');
+      await page.getByRole('button', { name: 'Load', exact: true }).click();
+      await page.keyboard.press('End');
+      // the microphone: it opens, hears the recording, closes by itself at the pause, and the words are the Hint button
+      const heardBefore = voiceHeard.length;
+      await page.locator('.mic').click();
+      await page.waitForSelector('.voice-caption');
+      await expect.poll(() => voiceHeard.length, { timeout: 30_000 }).toBe(heardBefore + 1);
+      // what was sent: the recording at 16 kHz, from about the first second to the pause after the tone
+      expect(voiceHeard.at(-1)!).toBeGreaterThan(16000 * 2);
+      await expect.poll(() => page.locator('.msg-owner').last().innerText(), { timeout: 30_000 }).toBe('Hint');
+      await expect.poll(() => app.session.thread.filter((m) => m.from === 'coach').length, { timeout: 30_000 }).toBeGreaterThan(0);
+      // the reply (from the facts, the coach is off) is read out: its first sentence, moves in words
+      const reply = app.session.thread.filter((m) => m.from === 'coach').at(-1)!;
+      await expect.poll(() => spoken.length, { timeout: 30_000 }).toBeGreaterThan(0);
+      expect(spoken[0]).toBe(speechChunks(spokenMessage(reply))[0]);
+      expect(await page.locator('.mic').count()).toBe(1);
+      expect(await page.locator('.voice-caption').count()).toBe(0);
+      // the speaker in the coach's head switches the voice off again
+      await page.getByRole('switch', { name: 'The coach speaks aloud' }).first().click();
+      await expect.poll(() => app.settings.get('voice.speak')).toBe(false);
+      expect(errors).toEqual([]);
+    } finally {
+      page.off('request', onRequest);
+      await app.onClientMessage(quiet, { type: 'setting', key: 'voice.speak', value: false });
+      await app.onClientMessage(quiet, { type: 'setting', key: 'voice.listen', value: false });
+    }
+  });
+
   // ------------------------------------------------------------ Phase 7
 
   it('plays a game against a bot with a clock, and the finished game goes to the library and the analysis board (WP 7.3)', async () => {
@@ -476,7 +567,7 @@ describe('the page in a browser', () => {
     expect(await page.locator('.layout.play .board piece.queen.white').count()).toBe(1);
     await page.getByRole('button', { name: /^Play it against / }).click();
     await expect.poll(() => app.play.game.mini?.id).toBe('queen-vs-pawns');
-    expect(await page.locator('.play-side').innerText()).toMatch(/Queen against pawns\. Take every pawn/);
+    await expect.poll(() => page.locator('.play-side').innerText()).toMatch(/Queen against pawns\. Take every pawn/);
     // a move: the queen takes a pawn; the bot answers
     await drag('d1', 'd7');
     await expect.poll(() => Object.keys(app.play.game.tree.nodes).length, { timeout: 15_000 }).toBeGreaterThanOrEqual(3);
@@ -485,7 +576,7 @@ describe('the page in a browser', () => {
     await expect.poll(() => app.play.game.status).toBe('over');
     // not one of the owner's games: it stays out of the library
     expect(app.play.game.libraryId).toBeUndefined();
-    expect(await page.getByRole('button', { name: 'Play it again' }).count()).toBe(1);
+    await expect.poll(() => page.getByRole('button', { name: 'Play it again' }).count()).toBe(1);
     await app.onClientMessage(quiet, { type: 'game', action: 'new' });
   });
 
@@ -1094,6 +1185,8 @@ describe('the page in a browser', () => {
     await page.getByRole('button', { name: 'Try that move again' }).click();
     await expect.poll(() => app.endgames.view.status).toBe('playing');
     expect(app.endgames.view.fen).toBe('k7/8/1K6/2Q5/8/8/8/8 w - - 0 1');
+    // the page too: the verdict gone, the queen back on c5 (the server is ahead of the page; seen 2026-11-25)
+    await expect.poll(() => page.locator('.puzzle-says').count()).toBe(0);
     await drag('c5', 'c8');
     await expect.poll(() => page.locator('.puzzle-says').innerText()).toBe('Checkmate. Well played.');
     // ticked on the ladder

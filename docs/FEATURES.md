@@ -13,7 +13,7 @@ What the coach should do, in the owner's words where possible. How it is built i
 - **Everything is an option.** Each behaviour ships as a setting whose default is the research's
   recommendation (group K). Only the two hard rules in §5 can't be switched off.
 
-_Last updated: 2026-11-14 (A19 added; A17's rules changed, D47). Added A15, H18 and H19 from the owner's words (§7), and later the same day
+_Last updated: 2026-11-25 (A20 and A21, the coach's voice and talking to the coach, from the owner's words in §7; D108). Before that 2026-11-14 (A19 added; A17's rules changed, D47). Added A15, H18 and H19 from the owner's words (§7), and later the same day
 A16, A17, A18, H20, I13, I14, I15 and K7 (§7, "the next addition"); A6 and B9 changed their defaults
 at the owner's request (D39). What is built so far is tracked in [TRACKER.md](../TRACKER.md), phase by
 phase._
@@ -109,6 +109,8 @@ All nine points are agreed. The full behaviour spec is [COACH.md](COACH.md).
 | A17 | **Move labels like Chess.com's:** brilliant, great, best, excellent, good, book, inaccuracy, mistake, miss, blunder, forced. Every move on the analysis board and on the coach's board gets one, as a badge on the square, a mark in the move list and a line under the board ("♞e6 is a blunder: it loses a knight. ♝b5+ was best."). Worked out by code from the engine's grading; the rules are in [ARCHITECTURE §8.2](ARCHITECTURE.md#82-move-labels-a17-d40). A setting, on by default (D39, D40). | owner | 4 | agreed |
 | A18 | **Try your own move while the coach is explaining.** The owner can move pieces on the coach's board. A move that is not the lesson's becomes "Your alternative": the engine judges it and plays the replies, it is shown as a side line marked as the owner's, and the coach explains how it compares (D41). Works with the coach off too. | owner | 4 | agreed |
 | A19 | **The better move, drawn on the board, and arrows shaped like the move.** When a move is labelled an inaccuracy, a mistake, a miss or a blunder, a green arrow shows what should have been played, from where the piece stood, and the line under the board names it in the same green ("♛e6 is a mistake: it loses a queen for a bishop. ♝g4 was best."). An arrow for a knight's move is bent like the move, not a straight line across the pieces in between. Both are settings. | owner | 4 | agreed |
+| A20 | **The coach speaks aloud.** Every message of the coach, wherever it shows (the analysis board, a review, the drills, a game against a bot, the Openings and Endgames tabs), is read out as it arrives, in a warm male voice, with moves said in words ("knight takes e5, check"); what it writes stays on the screen. The voice is made on this computer (Kokoro-82M; five male voices to choose from by ear, Michael by default) or by the browser. A speaker in the coach's head switches it on and off and stops it mid-sentence; a message can be read out again. **Off by default: text is the default** (the owner's words, D108). | owner | 4 | agreed (optional) |
+| A21 | **Talk to the coach instead of typing.** A microphone button beside the chat box: press it, ask out loud, pause. What was said is written down on this computer (Whisper small.en) or by the browser, and goes to the coach like a typed question, through the same checks; "Hint", "Why?", "Show me" and "Just tell me" said on their own are those buttons. Options: send at once or put the words in the box first; listen again after each spoken answer, for a conversation without touching the page. **Off by default** (D108). | owner | 4 | agreed (optional) |
 
 ### B. Game review
 
@@ -447,4 +449,7 @@ Anything the owner wants goes here first, in their own words, then into the cata
   menu of 59 openings taught by titled players; their lines are paid and cannot be exported, so an opening
   chosen there is built from the masters' book like the others (D10) and joins the collection per side (8.15).
   Nothing new to build.
+- **The coach's voice, and mine (2026-11-25):** "Add text to speech for the coach when hes talking or giving
+  feed back and the same for use to use the voice mode to chat freely rather than type - keep this as an option with
+  text being the default, also the coach voice should be male and warm and nice" → **A20**, **A21** (TRACKER D108).
 - *(add more here)*

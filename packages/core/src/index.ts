@@ -38,4 +38,5 @@ export * from './repgames.ts';
 export * from './material.ts';
 export * from './repbrowser.ts';
 export * from './endgame.ts';
+export * from './speech.ts';
 export * from './protocol.ts';

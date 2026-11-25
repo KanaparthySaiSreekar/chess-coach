@@ -4,10 +4,12 @@
 
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
 import { ArrowUp, Check, Eraser, SlidersHorizontal } from 'lucide-react';
-import type { Chip, CoachMessage, ResolvedToken, Segment } from '@chess-coach/core';
+import { spokenChip, type Chip, type CoachMessage, type ResolvedToken, type Segment } from '@chess-coach/core';
 import { San, useFigurine } from './San.tsx';
 import { send, setHover, setPeek, setting, stopAnim, useStore, type Store } from './store.ts';
 import { Mark, Popover, Segmented } from './ui.tsx';
+import { MicButton, ReplayButton, SpeakToggle, VoiceCaption, VoiceOptions } from './Voice.tsx';
+import { ownerTyped } from './audio.ts';
 
 const STATE_TEXT: Record<string, string> = {
   off: 'Off',
@@ -77,6 +79,7 @@ export function Message({ m }: { m: CoachMessage }) {
     <div className={`msg msg-coach kind-${m.kind ?? 'explain'}`}>
       <Mark className="avatar" />
       <div className="bubble">
+        <ReplayButton m={m} />
         {label && <div className="msg-label">{label}</div>}
         <Body segments={m.segments} />
         {m.kind === 'idea' && <div className="msg-note">An idea, not a checked fact.</div>}
@@ -92,7 +95,14 @@ export function Message({ m }: { m: CoachMessage }) {
         {m.expect === 'choice' && m.choices?.length ? (
           <div className="choices">
             {m.choices.map((c) => (
-              <button key={c} className="chip" onClick={() => send({ type: 'ask', text: c })}>
+              <button
+                key={c}
+                className="chip"
+                onClick={() => {
+                  ownerTyped();
+                  send({ type: 'ask', text: c });
+                }}
+              >
                 {c}
               </button>
             ))}
@@ -131,6 +141,7 @@ function Options({ s }: { s: Store }) {
           <h3>Model</h3>
           <Segmented className="wide" label="Coach model" value={model} options={MODELS.map(([value, name, about]) => ({ value, label: name, title: about }))} onChange={(value) => send({ type: 'setting', key: 'coach.model.analysis', value })} />
           <p className="option-note">{MODELS.find(([value]) => value === model)?.[2]}</p>
+          <VoiceOptions s={s} />
           {u && u.turns > 0 && (
             <p className="option-note usage" title={`Checked messages accepted first time: ${st!.firstTry.ok} of ${st!.firstTry.total}.`}>
               This session: {u.turns} {u.turns === 1 ? 'turn' : 'turns'}, {tokens.toLocaleString()} tokens ({u.cacheReadTokens.toLocaleString()} of them cached).
@@ -171,6 +182,7 @@ function Header({ s }: { s: Store }) {
         <button className={on ? 'btn small' : 'btn primary small'} onClick={() => send({ type: 'coach', action: on ? 'stop' : 'start' })}>
           {on ? 'Stop coach' : 'Start coach'}
         </button>
+        <SpeakToggle />
         <Options s={s} />
       </div>
       {st?.detail && <div className={`coach-detail${state === 'error' ? ' error' : ''}`}>{st.detail}</div>}
@@ -193,11 +205,24 @@ export function CoachPanel() {
     if (thread.length) settled.current = true;
   }, [thread.length, thinking]);
 
-  const ask = (q: string) => {
+  const ask = (q: string, byVoice = false) => {
     const t = q.trim();
     if (!t) return;
+    if (!byVoice) ownerTyped();
     send({ type: 'ask', text: t });
     setText('');
+  };
+  // what the owner said (A21): a quick reply said on its own is that button; anything else is a question, sent at once or put in the box to check
+  const input = useRef<HTMLTextAreaElement>(null);
+  const heard = (said: string) => {
+    if (!setting(s, 'voice.autoSend', true)) {
+      setText((t) => (t.trim() ? `${t.trim()} ${said}` : said));
+      input.current?.focus();
+      return;
+    }
+    const c = spokenChip(said);
+    if (c) send({ type: 'chip', chip: c });
+    else ask(said, true);
   };
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -209,7 +234,10 @@ export function CoachPanel() {
       ask(text);
     }
   };
-  const chip = (c: Chip) => send({ type: 'chip', chip: c });
+  const chip = (c: Chip) => {
+    ownerTyped();
+    send({ type: 'chip', chip: c });
+  };
 
   return (
     <aside className="pane pane-right coach" aria-label="Coach">
@@ -258,8 +286,10 @@ export function CoachPanel() {
             Show me
           </button>
         </div>
+        <VoiceCaption id="analysis" />
         <form className="ask" onSubmit={submit}>
-          <textarea value={text} onChange={(e) => setText(e.target.value)} onKeyDown={onKey} rows={2} placeholder="Ask the coach about this position…" aria-label="Ask the coach" maxLength={1000} />
+          <textarea ref={input} value={text} onChange={(e) => setText(e.target.value)} onKeyDown={onKey} rows={2} placeholder={setting(s, 'voice.listen', false) ? 'Ask the coach, or press the microphone and ask out loud…' : 'Ask the coach about this position…'} aria-label="Ask the coach" maxLength={1000} />
+          <MicButton id="analysis" heard={heard} />
           <button className="send" type="submit" disabled={!text.trim()} aria-label="Send" title="Send (Enter)">
             <ArrowUp size={17} strokeWidth={2.4} />
           </button>

@@ -25,6 +25,10 @@ grading now also judges a move by what it gives away (D47), the coach is given t
 either side's last move and what the board shows (D48), and A19 (the better move drawn on the
 board, bent arrows for knight moves) joined Phase 4 as work package 4.13._
 
+_2026-11-25: the owner asked for the coach to speak and to be spoken to, with text staying the default.
+A20 (the coach speaks aloud) and A21 (talk to the coach instead of typing) joined Phase 4 as work
+package 4.14, built the same day (D108)._
+
 ---
 
 ## How a build session works
@@ -43,7 +47,7 @@ board, bent arrows for knight moves) joined Phase 4 as work package 4.13._
 | 1 | Toolchain | — |
 | 2 | Spikes | — |
 | 3 | Foundation | A1, H1, I1, I2, I7, I9, I13, I14, I15, I16, I17, I18, K1, K7 |
-| 4 | Coach on the page | A0, A2, A3, A4, A6, A7, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, H2, H3, H4, H9, H11, H13, H14, H15, H16, H17, H18, H19, H20 |
+| 4 | Coach on the page | A0, A2, A3, A4, A6, A7, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, H2, H3, H4, H9, H11, H13, H14, H15, H16, H17, H18, H19, H20 |
 | 5 | Import and review | B1, B2, B3, B4, B5, B7, B8, B9, B10, G1, G2, G5, G6, H5, H8, H10, H12 |
 | 6 | Puzzles and drills | C1, C2, C3, C4, C5, C6, C7, C8, C9, G7, H6, I4, J2, J3, J6 |
 | 7 | Sparring and bots | A5, A8, A9, F4, F6, F9, H7, I10 |
@@ -133,7 +137,7 @@ decision.
 
 **Goal:** the owner starts the coach from the page and it coaches on the analysis board, truthfully.
 
-**Features:** A0, A2, A3, A4, A6, A7, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, H2, H3, H4, H9, H11, H13, H14, H15, H16, H17, H18, H19, H20
+**Features:** A0, A2, A3, A4, A6, A7, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, H2, H3, H4, H9, H11, H13, H14, H15, H16, H17, H18, H19, H20
 
 **Depends on:** Phase 3; S1 and S2.
 
@@ -152,6 +156,7 @@ decision.
 | 4.11 The engine on the board (A6, A16, A17) | The eval bar; best-move arrows, held back while the coach waits for a move; move labels by the rules in [ARCHITECTURE §8](ARCHITECTURE.md#82-move-labels-a17-d40), quick first and then from the checked analysis; "Label every move" | Table tests for every label; engine-backed: a blunder is labelled and says what it lost, an opening move is "book", the arrow disappears while a question is open, the label equals the verdict the coach was given |
 | 4.12 Board control and the owner's own tries (A18, H20) | `annotate` with `show`; red and amber boxes; `show_position` with `at`; `ownerDrew`; moves on the coach's board (follow the line, or become "Your alternative"); the `owner_tries` event and its scripted fallback | Engine-backed: the alternative is a side line with the engine's verdict and replies, `seq` moves on, the owner's own board does not; with the coach off the verdict is still said |
 | 4.13 Labels that match the consequence; the better move on the board (A17, A19; D47, D48) | The class of a move is the worse of the drop in winning chances and what the move gives away ([ARCHITECTURE §8](ARCHITECTURE.md#8-grading-moves)); facts never call a material-losing move good or safe; the last move is judged whoever played it; `get_state` and every event carry `gameSoFar` and `boardShows`; `bestAt` on a label and the green arrow; bent knight arrows; `tools/label-line.ts` and `tools/label-audit.ts` | Table tests for every row of the give-away table; the owner's game engine-backed: 10...Qe6 is a mistake on the board and in the coach's facts; the audit lists no label a person would not accept |
+| 4.14 The voice (A20, A21; D108) | Speaking: each new coach message turned into words by code (`core/speech.ts`: moves said as a coach says them, sentence by sentence), made on this computer by Kokoro-82M (`server/voice.ts`, `/api/voice/speak`) or by the browser, played on the page (`web/src/audio.ts`); five male voices chosen by ear. Listening: the microphone records until the owner pauses (`Endpointer`), Whisper small.en writes it down (`/api/voice/listen`) or the browser does; a quick reply said on its own is that button. Model files pinned by revision and checksum, installed by `npm run voice:install` or from Settings → Voice. Eight settings, all off or at the owner's choice; text is the default ([ARCHITECTURE §20](ARCHITECTURE.md#20-the-voice-a20-a21-d108)) | Fast: words for every kind of move, chunks, transcript tidying, chips, the end-of-speech detector; the service with stand-in engines (cache, one sentence at a time, checksum refused, routes refuse other pages). Engine-backed: each of the five voices says a message and Whisper hears its moves back. Browser: off by default; switched on, a spoken "hint" from a fake microphone is the Hint button and the reply is read out in words |
 
 **Done when**
 

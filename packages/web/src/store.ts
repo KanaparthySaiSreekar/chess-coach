@@ -118,6 +118,22 @@ export function useStore(): Store {
   );
 }
 
+/** The store as it is now, and a call on every change: for code outside React (the voice, A20). */
+export function getStore(): Store {
+  return store;
+}
+export function subscribe(fn: () => void): () => void {
+  listeners.add(fn);
+  return () => listeners.delete(fn);
+}
+
+const coachHeard = new Set<(m: CoachMessage) => void>();
+/** Be told of every new message in the conversation as it arrives (not the history sent on connect): the voice reads the coach's out (A20). */
+export function onCoachMessage(fn: (m: CoachMessage) => void): () => void {
+  coachHeard.add(fn);
+  return () => coachHeard.delete(fn);
+}
+
 export function setting<T extends boolean | number | string>(s: Store, key: string, fallback: T): T {
   const hit = s.settings.find((x) => x.key === key);
   return hit ? (hit.value as T) : fallback;
@@ -213,7 +229,9 @@ function onMessage(m: ServerMsg) {
     case 'thread':
       return set({ thread: m.messages });
     case 'coach_msg':
-      return set({ thread: [...store.thread, m.message] });
+      set({ thread: [...store.thread, m.message] });
+      for (const fn of coachHeard) fn(m.message);
+      return;
     case 'coach_status':
       return set({ status: m.status });
     case 'settings':

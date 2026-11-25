@@ -147,6 +147,7 @@ import { NOT_A_THEME, PuzzleDb } from './datasets/puzzle-db.ts';
 import { GameAnalyser, type GameAnalysis } from './review.ts';
 import { BoardSession } from './session.ts';
 import { PRESETS, Settings } from './settings.ts';
+import { VoiceService, type VoiceEngines } from './voice.ts';
 
 export type Client = { send: (msg: ServerMsg) => void };
 
@@ -182,6 +183,8 @@ export type AppOptions = {
   sites?: Http;
   /** tests: a stand-in for asking Windows whether the laptop is on mains power */
   powerProbe?: () => Promise<boolean | null>;
+  /** the coach's voice and the owner's (A20, A21): where the model files are; tests: stand-in engines that need no files */
+  voice?: { dir: string; engines?: VoiceEngines; checkFiles?: boolean };
   log?: (msg: string) => void;
 };
 
@@ -267,6 +270,8 @@ export class App {
   readonly desk: ContentDesk;
   /** the opening drill (WP 8.8): one card per position of the live repertoires */
   readonly openings: OpeningTrainer;
+  /** the coach's voice and the owner's (A20, A21; D108): loaded only when a voice setting is on */
+  readonly voice: VoiceService;
   /** the trap pack (WP 8.9): content/traps.json through its gates, drilled as opening cards */
   readonly traps: TrapPack;
   /** endgame training (F2, built early 2026-11-15): content/endgames.json through its gates, played out against the tablebases */
@@ -355,6 +360,8 @@ export class App {
     this.concepts = compileLadder(JSON.parse(readFileSync(opts.ladderFile ?? path.join(opts.repoRoot, 'content', 'concept-ladder.json'), 'utf8')) as ConceptLadderFile);
     this.db = new Db(opts.dbFile ?? path.join(opts.dataDir, 'chess-coach.sqlite'));
     this.settings = new Settings(this.db);
+    this.voice = new VoiceService({ dir: opts.voice?.dir ?? path.join(opts.dataDir, 'voice-models'), engines: opts.voice?.engines, checkFiles: opts.voice?.checkFiles, log: this.log });
+    this.warmVoice();
     this.engine = new EngineService({ path: opts.stockfish, syzygyPath: opts.syzygy, quickWorkers: 4, analysisWorkers: 6, expectedBench: opts.expectedBench, cache: this.db.engineCache, log: this.log });
     const cloud = opts.cloud === undefined ? new LichessCloud(this.db, { log: this.log }) : (opts.cloud ?? undefined);
     this.facts = new FactService(this.engine, { cloud, nodes: this.settings.get<number>('engine.quickNodes'), verdictNodes: this.settings.get<number>('engine.verdictNodes'), thresholds: this.thresholds(), startAt: Math.floor(Date.now() / 1000) % 100000 });
@@ -688,6 +695,7 @@ export class App {
       if (key === 'engine.verdictNodes') this.facts.verdictNodes = this.settings.get<number>('engine.verdictNodes');
       if (key === 'engine.lichessCrossCheck') this.facts.useCloud = this.settings.get<boolean>('engine.lichessCrossCheck');
       if (key.startsWith('coach.model.')) this.coach.restart();
+      if (key.startsWith('voice.')) this.warmVoice();
       if (key === 'play.model') this.botSource.stop(); // the next bot move loads the other model
       // "your own review first" switched off in the middle of one: the engine's findings are shown now (nothing is recorded as reviewed)
       if (key === 'review.ownFirst' && !this.settings.get<boolean>('review.ownFirst') && this.own) {
@@ -835,6 +843,12 @@ export class App {
     } catch (e) {
       this.log(`trap pack: ${(e as Error).message}`);
     }
+  }
+
+  /** A voice switched on with this computer making it: load its model now, so the first sentence is not slow (A20, A21). */
+  private warmVoice() {
+    if (this.settings.get<boolean>('voice.speak') && this.settings.get<string>('voice.speakWith') === 'computer') this.voice.warm('speak');
+    if (this.settings.get<boolean>('voice.listen') && this.settings.get<string>('voice.listenWith') === 'computer') this.voice.warm('listen');
   }
 
   async stop() {

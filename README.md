@@ -210,7 +210,8 @@ ordinary code, and the coach adds the conversation on top. The details are in
 | **Openings** | Repertoires built from the masters' games, import from a PGN or a Lichess study, the why behind your moves, a trap pack, the drill, where each of your games left the repertoire |
 | **Endgames** | 13 key positions and random starts for the basic mates, played against the engine with the tablebases judging |
 | **Explorer** | What players at your level play in the position on the board, what masters play, and what you played |
-| **Settings** | 113 settings with reasons, four presets, light and dark, 13 board themes, 16 piece sets |
+| **Voice** | Off by default. The coach can read its messages out in a warm male voice, moves said in words, made on your own machine (Kokoro); you can ask out loud with the microphone beside the chat box, written down on your machine (Whisper) |
+| **Settings** | 121 settings with reasons, four presets, light and dark, 13 board themes, 16 piece sets |
 
 Phases 1 to 7 of the [plan](docs/PLAN.md) are done, and the repertoire work of Phase 8 is built. Next
 come lessons and a curriculum, courses, the daily plan and progress, and the last pieces of parity
@@ -248,6 +249,7 @@ npm run build && npm start     # the built page and the server together on http:
 | Python with Maia-3 | The bots | `MAIA_PYTHON`, `MAIA_MODELS` |
 | A Lichess API token | The opening explorer | `LICHESS_TOKEN` in `.env` |
 | The Lichess puzzle CSV | Themed puzzle sets: `npm run content:install -- puzzles` | |
+| The voice models (577 MB) | The coach speaking and you talking: `npm run voice:install`, or *Download* under Settings → Voice | `VOICE_MODELS` |
 
 The defaults are the paths on the owner's Windows laptop. Each one can be overridden from the
 environment: see [`packages/server/src/config.ts`](packages/server/src/config.ts). Your games and
@@ -301,6 +303,9 @@ tools/             development tools: probes, screenshots, content builders
   openings, the opening explorer and the cloud analysis.
 - [Claude Code](https://claude.com/claude-code) for the coach, with its tools served over the
   [Model Context Protocol](https://modelcontextprotocol.io).
+- [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) through [kokoro-js](https://github.com/hexgrad/kokoro) for the coach's
+  voice, and [Whisper](https://github.com/openai/whisper) through [transformers.js](https://github.com/huggingface/transformers.js)
+  for yours, both on [ONNX Runtime](https://onnxruntime.ai).
 - [ts-fsrs](https://github.com/open-spaced-repetition/ts-fsrs) for the schedule, and
   [Inter](https://rsms.me/inter/) and [Newsreader](https://fonts.google.com/specimen/Newsreader) for
   the page's two voices.

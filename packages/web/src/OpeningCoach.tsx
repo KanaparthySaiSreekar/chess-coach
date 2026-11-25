@@ -8,8 +8,10 @@ import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 
 import { ArrowUp } from 'lucide-react';
 import type { CoachMessage } from '@chess-coach/core';
 import { Message } from './CoachPanel.tsx';
-import { send, type Store } from './store.ts';
+import { send, setting, type Store } from './store.ts';
 import { Mark } from './ui.tsx';
+import { MicButton, SpeakToggle, VoiceCaption } from './Voice.tsx';
+import { ownerTyped } from './audio.ts';
 
 const STATE_TEXT: Record<string, string> = { off: 'Off', starting: 'Starting…', ready: 'Ready', thinking: 'Thinking…', retrying: 'Retrying…', error: 'Stopped' };
 
@@ -24,6 +26,7 @@ export function askCoach(text: string) {
 export function OpeningCoach({ s, shows, thread, suggestions = [], compact = false }: { s: Store; shows: string; thread: (m: CoachMessage) => boolean; suggestions?: string[]; compact?: boolean }) {
   const [text, setText] = useState('');
   const end = useRef<HTMLDivElement>(null);
+  const input = useRef<HTMLTextAreaElement>(null);
   const messages = s.thread.filter(thread);
   const state = s.status?.state ?? 'off';
   const on = state !== 'off' && state !== 'error';
@@ -33,11 +36,18 @@ export function OpeningCoach({ s, shows, thread, suggestions = [], compact = fal
     if (!compact) end.current?.scrollIntoView({ block: 'end', behavior: 'smooth' });
   }, [messages.length, thinking, compact]);
 
-  const ask = (q: string) => {
+  const ask = (q: string, byVoice = false) => {
     const t = q.trim();
     if (!t) return;
+    if (!byVoice) ownerTyped();
     askCoach(t);
     setText('');
+  };
+  // what the owner said out loud (A21): sent at once, or put in the box to check first
+  const heard = (said: string) => {
+    if (setting(s, 'voice.autoSend', true)) return ask(said, true);
+    setText((t) => (t.trim() ? `${t.trim()} ${said}` : said));
+    input.current?.focus();
   };
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -64,6 +74,7 @@ export function OpeningCoach({ s, shows, thread, suggestions = [], compact = fal
           <button className={on ? 'btn small' : 'btn primary small'} onClick={() => send({ type: 'coach', action: on ? 'stop' : 'start' })}>
             {on ? 'Stop coach' : 'Start coach'}
           </button>
+          <SpeakToggle />
         </div>
       </div>
       {!compact && (
@@ -99,8 +110,10 @@ export function OpeningCoach({ s, shows, thread, suggestions = [], compact = fal
         </div>
       )}
       <div className="composer">
+        <VoiceCaption id="board" />
         <form className="ask" onSubmit={submit}>
-          <textarea value={text} onChange={(e) => setText(e.target.value)} onKeyDown={onKey} rows={compact ? 1 : 2} placeholder={`Ask the coach about ${shows}…`} aria-label="Ask the coach" maxLength={1000} />
+          <textarea ref={input} value={text} onChange={(e) => setText(e.target.value)} onKeyDown={onKey} rows={compact ? 1 : 2} placeholder={`Ask the coach about ${shows}…`} aria-label="Ask the coach" maxLength={1000} />
+          <MicButton id="board" heard={heard} />
           <button className="send" type="submit" disabled={!text.trim()} aria-label="Send" title="Send (Enter)">
             <ArrowUp size={17} strokeWidth={2.4} />
           </button>

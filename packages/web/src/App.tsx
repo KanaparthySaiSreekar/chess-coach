@@ -124,11 +124,15 @@ function ResetDialog({ moves, customStart, onClose }: { moves: number; customSta
 // what the board shows, switchable without opening the settings window
 const ON_BOARD = ['display.evalBar', 'display.bestArrows', 'display.bestArrowCount', 'display.moveLabels', 'display.engineLines', 'display.numbers'];
 const LOOK = ['display.notation', 'display.boardTheme', 'display.pieceSet', 'display.appearance'];
+// the coach's voice and the owner's (A20, A21): text stays the default
+const VOICE = ['voice.speak', 'voice.listen'];
 const QUICK_LABEL: Record<string, string> = {
   'display.bestArrowCount': 'Arrows to draw',
   'display.moveLabels': 'Move labels',
   'display.notation': 'Notation',
   'display.appearance': 'Appearance',
+  'voice.speak': 'The coach speaks aloud',
+  'voice.listen': 'Talk instead of typing',
 };
 
 function ViewMenu({ s, openSettings }: { s: Store; openSettings: () => void }) {
@@ -161,6 +165,8 @@ function ViewMenu({ s, openSettings }: { s: Store; openSettings: () => void }) {
           <div className="group">{rows(ON_BOARD)}</div>
           <h3>Look</h3>
           <div className="group">{rows(LOOK)}</div>
+          <h3>Voice</h3>
+          <div className="group">{rows(VOICE)}</div>
           <h3>Presets</h3>
           <Presets compact />
           <button

@@ -4673,6 +4673,149 @@ input[type='number'] {
     box-shadow: inset 0 0 0 1px var(--line-strong);
   }
 }
+/* ---------- the voice (A20, A21): the microphone in the chat box, what it is doing, the speaker in the coach's head */
+.ask:has(.mic) textarea {
+  padding-right: 82px;
+}
+.mic {
+  position: absolute;
+  right: 44px;
+  bottom: 8px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--fill-hover);
+  color: var(--ink-2);
+  transition: background var(--fast) var(--ease), color var(--fast) var(--ease), box-shadow 90ms linear;
+}
+.mic:hover:not(:disabled) {
+  background: var(--fill-press);
+  color: var(--ink);
+}
+.mic:disabled {
+  opacity: 0.4;
+}
+/* open: red, the way every recorder shows it; the ring grows with the owner's voice */
+.mic-listening,
+.mic-hearing {
+  background: var(--danger-fill);
+  color: #fff;
+  box-shadow: 0 0 0 calc(2px + var(--level, 0) * 9px) rgba(217, 48, 37, 0.24);
+}
+.mic-listening:hover:not(:disabled),
+.mic-hearing:hover:not(:disabled) {
+  background: var(--danger-fill);
+  color: #fff;
+}
+.mic-writing:disabled,
+.mic-starting:disabled {
+  opacity: 1;
+}
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+.voice-caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: -4px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+  animation: fade var(--fast) var(--ease);
+}
+.voice-caption > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.voice-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--danger);
+  opacity: 0.55;
+}
+.voice-dot.on {
+  opacity: 1;
+  animation: pulse 0.9s ease-in-out infinite;
+}
+.icon-btn.plain.on {
+  color: var(--coach);
+}
+.icon-btn.plain.speaking {
+  color: var(--coach);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+/* a coach message read out again: out of the way until the message is pointed at */
+.msg-replay {
+  float: right;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin: -2px -4px 2px 8px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: var(--ink-3);
+  opacity: 0;
+  transition: opacity var(--fast) var(--ease), background var(--fast) var(--ease);
+}
+.msg-coach:hover .msg-replay,
+.msg-replay:focus-visible {
+  opacity: 1;
+}
+.msg-replay:hover {
+  background: var(--fill-hover);
+  color: var(--ink);
+}
+.voice-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.voice-picker select {
+  flex: 1;
+  min-width: 0;
+}
+.voice-picker .btn {
+  flex: none;
+}
+.voice-install {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+.voice-install > span:first-child {
+  flex: 1 1 200px;
+}
+.voice-install progress {
+  flex: 1 1 100%;
+  height: 6px;
+  accent-color: var(--accent);
+}
+.voice-install .error-text {
+  flex: 1 1 100%;
+  color: var(--danger);
+}
+.coach-options .voice-install,
+.coach-options .voice-picker {
+  margin: 2px 4px 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
