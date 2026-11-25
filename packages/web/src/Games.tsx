@@ -5,7 +5,7 @@
 
 import { useEffect, useState } from 'react';
 import { RefreshCw, ShieldCheck, Trash2 } from 'lucide-react';
-import type { AccountView, GameSummary, Measure, SkillProfile } from '@chess-coach/core';
+import { isUndated, type AccountView, type GameSummary, type Measure, type SkillProfile } from '@chess-coach/core';
 import { send, type Store } from './store.ts';
 import { Segmented } from './ui.tsx';
 import { RepStats } from './RepGame.tsx';
@@ -37,7 +37,8 @@ function ago(iso: string | undefined): string {
   return `${days} ${days === 1 ? 'day' : 'days'} ago`;
 }
 
-const day = (iso: string) => new Date(iso).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
+// a pasted game that names no date is stored as the oldest (core's UNDATED) and shown as "no date", not as 1 Jan 1970
+const day = (iso: string) => (isUndated(iso) ? 'no date' : new Date(iso).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }));
 
 function Account({ a }: { a: AccountView }) {
   const [name, setName] = useState(a.user);

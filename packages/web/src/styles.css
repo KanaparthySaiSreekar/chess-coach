@@ -1048,6 +1048,26 @@ input[type='number'] {
   display: flex;
   flex-direction: column;
 }
+/* The analysis board's left pane on a short window (seen 2026-11-17: at about 860 px a long explorer
+   table squeezed the moves to nothing, and "Delete from here" ran over "Label every move"). The moves
+   keep at least 40% of the pane, the engine's lines keep their size, and the sections under them
+   (the key moments, a repertoire note, the explorer) scroll inside themselves. Side by side only: below
+   1180 px the pane wraps into a row of its own (the rules further down). */
+@media (min-width: 1181px) {
+  .board-side > .pane-section {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+  .board-side > .pane-section.grow {
+    flex: 1 1 0;
+    min-height: max(200px, 40%);
+    overflow: hidden;
+  }
+  .board-side > .pane-section.engine {
+    flex: none;
+  }
+}
 .pane-head {
   display: flex;
   align-items: center;

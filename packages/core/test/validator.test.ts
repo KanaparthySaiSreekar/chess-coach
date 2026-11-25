@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { START_FEN, compileLadder, playLine, splitSentences, validateSay, type ConceptLadderFile, type Fact, type FactPacket, type ValidatorContext } from '../src/index.ts';
+import { START_FEN, compileLadder, lineTitleProblems, playLine, splitSentences, validateSay, type ConceptLadderFile, type Fact, type FactPacket, type ValidatorContext } from '../src/index.ts';
 import { MESSAGES } from './fixtures/s2/messages.ts';
 import { POSITIONS } from './fixtures/s2/positions.ts';
 
@@ -399,5 +399,27 @@ describe('a question reported inside a sentence (D72)', () => {
     // a claim before the reported question is still a claim
     expect(say('Your knight is hanging, so ask what they could take.').ok).toBe(false);
     expect(say('Their bishop makes two threats at once.').ok).toBe(false);
+  });
+});
+
+describe("the title of a line on the coach's board", () => {
+  // the case seen while recording the README (2026-11-17): after 6.Nxf7?? the coach asked for "threat",
+  // which is White's (the owner's) Nxh8, and titled it "Their threat: Qxe4+"
+  const threat = { moves: ['Nxh8', 'Qxe4+', 'Qe2', 'Qxe2+', 'Kxe2'], firstBy: 'you' as const };
+
+  it('refuses a title that names the wrong side, or a move the line does not start with', () => {
+    const problems = lineTitleProblems('Their threat: Qxe4+', threat);
+    expect(problems.join(' ')).toMatch(/names Qxe4\+ first, but the line starts with Nxh8/);
+    expect(problems.join(' ')).toMatch(/"Their threat", but the line starts with Nxh8, which is the owner's move/);
+    expect(lineTitleProblems('If they play Bc5', threat)).toEqual([expect.stringMatching(/names Bc5, which is not in the line/)]);
+    expect(lineTitleProblems('What they threaten', threat)).toHaveLength(1);
+  });
+
+  it('lets a title through that says what the line is', () => {
+    for (const ok of ['Your threat', 'Your threat: Nxh8', 'If you take the rook', 'Nxh8, then Qxe4+', 'Your big threat on h8', 'If you do nothing, Nxh8']) expect(lineTitleProblems(ok, threat), ok).toEqual([]);
+    // a bare square may be a square, so it is never read as a move; tokens are read as what they say
+    expect(lineTitleProblems('The rook on h8', threat)).toEqual([]);
+    expect(lineTitleProblems('Their threat: {m:Qxe5}', { moves: ['Qxe5+', 'Qe2'], firstBy: 'they' })).toEqual([]);
+    expect(lineTitleProblems('Castling: O-O', { moves: ['O-O', 'Nf6'], firstBy: 'you' })).toEqual([]);
   });
 });

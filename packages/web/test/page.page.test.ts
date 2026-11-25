@@ -849,6 +849,42 @@ describe('the page in a browser', () => {
     expect(await page.locator('.opening').first().innerText()).toMatch(/King's Pawn Game/); // the name is above the moves, not repeated in the explorer
   });
 
+  it('on a short window the moves keep their room under a long explorer table and the engine lines (seen 2026-11-17)', async () => {
+    await page.setViewportSize({ width: 1280, height: 760 });
+    await app.onClientMessage(quiet, { type: 'setting', key: 'display.engineLines', value: true });
+    await app.onClientMessage(quiet, { type: 'setting', key: 'explorer.source', value: 'level' });
+    try {
+      await page.getByRole('button', { name: 'Load PGN / FEN' }).click();
+      await page.locator('.modal textarea').fill('[Result "1-0"]\n\n1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 d6 8. c3 O-O 9. h3 Nb8 10. d4 Nbd7 11. c4 c6 12. cxb5 axb5 13. Nc3 Bb7 14. Bg5 b4 15. Nb1 h6 16. Bh4 c5 17. dxe5 Nxe4 18. Bxe7 Qxe7 19. exd6 Qf6 20. Nbd2 1-0');
+      await page.getByRole('button', { name: 'Load', exact: true }).click();
+      await page.waitForFunction(() => document.querySelectorAll('.moves-scroll .san').length === 39);
+      // after 1.e4, where the explorer has its long table
+      await page.keyboard.press('Home');
+      await page.keyboard.press('ArrowRight');
+      await expect.poll(() => page.locator('.explorer .ex-row').count(), { timeout: 10_000 }).toBeGreaterThan(5);
+      await page.waitForSelector('.pane-section.engine', { timeout: 20_000 });
+      const box = await page.locator('.board-side').evaluate((pane) => {
+        const r = (sel: string) => pane.querySelector(sel)?.getBoundingClientRect();
+        const ex = pane.querySelector('.explorer')!;
+        return {
+          moves: r('.moves-scroll')!.height,
+          actionsBottom: r('.moves-actions')?.bottom,
+          labelTop: r('.label-all')?.top,
+          paneBottom: pane.getBoundingClientRect().bottom,
+          explorerBottom: ex.getBoundingClientRect().bottom,
+          explorerScrolls: ex.scrollHeight > ex.clientHeight,
+        };
+      });
+      expect(box.moves).toBeGreaterThanOrEqual(100); // the moves are not squeezed to nothing
+      if (box.actionsBottom !== undefined && box.labelTop !== undefined) expect(box.labelTop).toBeGreaterThanOrEqual(box.actionsBottom - 1); // "Delete from here" no longer runs over "Label every move"
+      expect(box.explorerBottom).toBeLessThanOrEqual(box.paneBottom + 1); // the explorer stays inside the pane
+      expect(box.explorerScrolls).toBe(true); // and its table scrolls there instead
+    } finally {
+      await app.onClientMessage(quiet, { type: 'setting', key: 'display.engineLines', value: false });
+      await page.setViewportSize({ width: 1440, height: 900 });
+    }
+  });
+
   it("the review screen: a repertoire's quarantined lines shown at the failing move, one fixed from the board, one dropped, one accepted with a note, the rest approved after the spot check (WP 8.4)", async () => {
     // quicker budgets than the app's for the test; the gates themselves are the app's
     await app.onClientMessage(quiet, { type: 'setting', key: 'content.gateNodes', value: 1_000_000 });

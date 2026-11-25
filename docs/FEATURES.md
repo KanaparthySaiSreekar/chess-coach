@@ -442,4 +442,9 @@ Anything the owner wants goes here first, in their own words, then into the cata
   CPU used memeory shit beside Game, View and settings have this" → **I18** (TRACKER D101).
 - **Coordinates (2026-11-17):** "The board lables like A B C D 1 2 3 4 move then outside the board cause its
   kinda not visible" → I9 (TRACKER D101).
+- **Chessreps (2026-11-17):** "https://www.chessreps.com/ - Look at this site - it has so many opening many we
+  can use it" → looked at ([REFERENCES](REFERENCES.md#chessreps-httpswwwchessrepscom-added-2026-11-17)): a
+  menu of 59 openings taught by titled players; their lines are paid and cannot be exported, so an opening
+  chosen there is built from the masters' book like the others (D10) and joins the collection per side (8.15).
+  Nothing new to build.
 - *(add more here)*

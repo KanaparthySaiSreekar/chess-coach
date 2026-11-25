@@ -224,6 +224,35 @@ export function softenMoves(text: string, isLegal: (move: string) => boolean = (
   return out + fix(text.slice(last));
 }
 
+/** A move written in a title: a piece move, a capture, a promotion or castling. A bare square ("on f7") is left alone: it may be a square. */
+const TITLE_MOVE = /\b(?:[KQRBN][a-h]?[1-8]?x?[a-h][1-8]|[a-h]x[a-h][1-8](?:=[QRBN])?|[a-h][18]=[QRBN])[+#]?|\bO-O(?:-O)?\b/g;
+/** "their threat", "your big threat", "they threaten": a title saying whose threat the line is. */
+const TITLE_THREAT_SIDE = /\b(their|they|your|you|my)\s+(?:[a-z]+\s+){0,2}?threat(?:s|en\w*)?\b/gi;
+
+/**
+ * The title the coach gives a line on its board ("If you take the pawn", "Their threat"). The line
+ * is the engine's, the title is the coach's own words above it, so the title may not say what the
+ * line does not (D33): every move it writes is a move of the line, the first move it writes is the
+ * one the line starts with, and "their threat" or "your threat" names the side that plays that move.
+ * `firstBy` is whose move the line's first move is, from the owner's side. Returns what is wrong.
+ */
+export function lineTitleProblems(title: string, line: { moves: string[]; firstBy: 'you' | 'they' }): string[] {
+  const text = plainText(title);
+  const problems: string[] = [];
+  const first = line.moves[0] ?? '';
+  const named = [...text.matchAll(TITLE_MOVE)].map((m) => m[0]);
+  const stray = named.filter((m) => !line.moves.some((x) => sameMoveText(x, m)));
+  if (stray.length) problems.push(`the title names ${stray.join(', ')}, which ${stray.length === 1 ? 'is' : 'are'} not in the line (${line.moves.join(' ')})`);
+  else if (named.length && !sameMoveText(first, named[0]!)) problems.push(`the title names ${named[0]} first, but the line starts with ${first}`);
+  for (const m of text.matchAll(TITLE_THREAT_SIDE)) {
+    const side = /^(?:their|they)$/i.test(m[1]!) ? 'they' : 'you';
+    if (side === line.firstBy) continue;
+    problems.push(`the title says "${m[0]}", but the line starts with ${first}, which is ${line.firstBy === 'you' ? "the owner's move" : 'their move'}`);
+    break;
+  }
+  return problems;
+}
+
 /** The part of a sentence around position i, cut at commas, colons and "but / so / because". */
 function clauseAround(sentence: string, i: number): string {
   const cut = /[,;:]|\b(?:but|so|because|while|although|and then)\b/gi;

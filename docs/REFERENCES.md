@@ -119,6 +119,18 @@ Details and the comparison: [RESEARCH §11](RESEARCH.md#11-how-the-coach-reaches
 
 ---
 
+## Chessreps: https://www.chessreps.com (added 2026-11-17)
+
+- A spaced-repetition opening trainer, like Chessable: 59 courses by titled players (34 for White, 25 for
+  Black, 13 to 124 lines each), and community courses. A course's first lines are free; the rest needs an
+  account and a plan.
+- A small public API for agents: `/api/agent/openings` (the catalogue: name, author, side, line count,
+  description) and `/api/agent/community-courses`. Nothing reads a course's moves, there is no PGN export,
+  and no terms or licence are published.
+- What this project takes from it: the catalogue as a menu of openings taught at club level, and the
+  variation names a course page shows to anyone. Never its lines or its words: they are the authors' paid
+  work (the copyright rule). An opening chosen from it is built from the masters' book like the others (D10).
+
 ## What none of them does, and this project wants
 
 - **One live board** that the owner and Claude share, with **the coaching on the web page** (A0, A1).

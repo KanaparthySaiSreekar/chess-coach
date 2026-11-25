@@ -275,6 +275,11 @@ describe('the app with a scripted coach (real engine)', () => {
       out.say = await a.tools.say({ seq: ev.seq, kind: 'explain', text: `{m:f4} is a mistake: after {m:Qxe4+} you lose a pawn.`, claims: out.line.facts.map((f: any) => f.id) });
       out.best = await a.tools.play_line({ seq: ev.seq, what: 'best', label: 'Best play' });
       out.threat = await a.tools.play_line({ seq: ev.seq, what: 'threat' });
+      out.linesBefore = lastState().demo!.lines.length;
+      // the title is the coach's words above the engine's line: the wrong side's threat, or a move the line does not start with, is refused
+      out.wrongSide = await a.tools.play_line({ seq: ev.seq, what: 'threat', label: 'Your threat' });
+      out.wrongMove = await a.tools.play_line({ seq: ev.seq, what: 'best', label: 'Their threat: Qxe4+' });
+      out.linesAfter = lastState().demo!.lines.length;
       out.check = await a.tools.check_move({ move: 'Ng4' });
       out.bad = await a.tools.check_move({ move: 'Nxh8' });
     });
@@ -291,7 +296,14 @@ describe('the app with a scripted coach (real engine)', () => {
     expect(out.best.shown.startsWith('Ng4')).toBe(true);
     expect(out.threat.ok).toBe(true);
     expect(out.threat.shown).toMatch(/^Qxe5/);
+    expect(out.wrongSide.ok).toBe(false);
+    expect(out.wrongSide.problems.join(' ')).toMatch(/says "Your threat", but the line starts with Qxe5\S*, which is their move/);
+    expect(out.wrongSide.problems.join(' ')).toMatch(/is what "best"/); // and it says which tool shows the owner's own play
+    expect(out.wrongMove.ok).toBe(false);
+    expect(out.wrongMove.problems.join(' ')).toMatch(/Qxe4\+/);
+    expect(out.linesAfter).toBe(out.linesBefore); // nothing was put on the board
     const st = lastState();
+    expect(st.demo!.lines.some((l) => l.label === 'Their threat')).toBe(true); // with no title, the page says whose threat it is
     expect(st.layer).toBe('demo');
     expect(st.demo!.lines.length).toBeGreaterThanOrEqual(4);
     expect(st.demo!.lines[1]!.parent).toEqual({ line: st.demo!.lines[0]!.id, ply: 1 });

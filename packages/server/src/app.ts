@@ -65,6 +65,7 @@ import {
   pathTo,
   plainText,
   playLine,
+  lineTitleProblems,
   profileInWords,
   replayPlan,
   themeName,
@@ -4143,7 +4144,20 @@ export class App {
       const r = await this.facts.engineLine({ baseFen: base.fen, you: this.you(), what: a.what, move: a.move, maxPlies: this.settings.get<number>('coach.lineMaxPlies') });
       if (!r.ok) return { ok: false, problems: [r.reason], facts: r.facts?.map((f) => ({ id: f.id, type: f.type, text: f.text })) };
       if (this.stale(a.seq)) return this.stale(a.seq)!;
-      const label = a.label ?? (a.what === 'threat' ? 'The threat' : a.what === 'best' ? 'Best play' : `If ${r.moves[0]}`);
+      // the title is the coach's words above the engine's line: it may not name a move the line does not start with, or the wrong side's threat
+      const firstBy = mustPosition(r.baseFen).turn === this.you() ? 'you' : 'they';
+      const titleWrong = a.label ? lineTitleProblems(a.label, { moves: r.moves, firstBy }) : [];
+      if (titleWrong.length) {
+        return {
+          ok: false,
+          problems: [
+            ...titleWrong.map((p) => `Nothing was shown: ${p}.`),
+            'Give a title that says what this line is, or leave the title out and the page names it.' +
+              (a.what === 'threat' ? ` What "threat" shows is what the side not to move would play with a free move; the best play of the side to move (${firstBy === 'you' ? 'theirs' : 'yours'} here) is what "best".` : ''),
+          ],
+        };
+      }
+      const label = a.label ?? (a.what === 'threat' ? (firstBy === 'you' ? 'Your threat' : 'Their threat') : a.what === 'best' ? 'Best play' : `If ${r.moves[0]}`);
       const line = this.putLineOnDemo(r, label, base, a.what);
       this.db.logEvent('play_line', { what: a.what, line: r.moves, marks: r.marks });
       return {

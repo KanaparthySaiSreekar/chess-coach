@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 import {
   EARLY,
   START_FEN,
+  UNDATED,
   boardKey,
   fromChessCom,
   fromLichess,
@@ -14,6 +15,7 @@ import {
   guardText,
   guardTree,
   importPgn,
+  isUndated,
   ongoingFromChessCom,
   ongoingFromLichess,
   outcomeOf,
@@ -272,5 +274,19 @@ describe('the fair-play guard', () => {
     if (!other.ok) throw new Error(other.reason);
     expect(guardTree(other.tree, ongoing)).toBeNull();
     expect(guardTree(other.tree, [])).toBeNull();
+  });
+});
+
+describe('a pasted game with no date', () => {
+  it('is stored as undated: sorted as the oldest, and told apart so the page can say "no date"', () => {
+    const r = fromPgn('[White "A"]\n[Black "B"]\n[Result "0-1"]\n\n1. f3 e5 2. g4 Qh4# 0-1', []);
+    if (!r.ok) throw new Error(r.reason);
+    expect(r.game.playedAt).toBe(UNDATED);
+    expect(isUndated(r.game.playedAt)).toBe(true);
+    // a partial date ("1858.??.??") is no date either; a full one is a date
+    const partial = fromPgn('[Date "1858.??.??"]\n[White "A"]\n[Black "B"]\n[Result "0-1"]\n\n1. f3 e5 2. g4 Qh4# 0-1', []);
+    expect(partial.ok && isUndated(partial.game.playedAt)).toBe(true);
+    const dated = fromPgn('[Date "2026.11.17"]\n[White "A"]\n[Black "B"]\n[Result "0-1"]\n\n1. f3 e5 2. g4 Qh4# 0-1', []);
+    expect(dated.ok && isUndated(dated.game.playedAt)).toBe(false);
   });
 });

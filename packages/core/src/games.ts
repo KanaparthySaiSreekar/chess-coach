@@ -282,6 +282,13 @@ function hashId(text: string): string {
   return (h2 >>> 0).toString(16).padStart(8, '0') + (h1 >>> 0).toString(16).padStart(8, '0');
 }
 
+/**
+ * The date of a game that names none (a pasted PGN with no full Date tag). It sorts as the oldest
+ * game, and the page shows it as "no date" rather than the start of 1970.
+ */
+export const UNDATED = new Date(0).toISOString();
+export const isUndated = (iso: string): boolean => Date.parse(iso) === 0;
+
 const pgnDate = (date: string | undefined, time: string | undefined): string | undefined => {
   const d = /^(\d{4})\.(\d{2})\.(\d{2})$/.exec(date ?? '');
   if (!d) return undefined;
@@ -328,7 +335,7 @@ export function fromPgn(text: string, owners: (string | undefined)[] = []): Impo
   const tc = readTimeControl(h.TimeControl, site === 'chesscom' ? 'chesscom' : 'lichess');
   const num = (v: string | undefined) => (v && /^\d+$/.test(v) ? Number(v) : undefined);
   const diff = (v: string | undefined) => (v && /^[+-]?\d+$/.test(v) ? Number(v) : undefined);
-  const playedAt = pgnDate(h.EndDate, h.EndTime) ?? pgnDate(h.UTCDate, h.UTCTime) ?? pgnDate(h.Date, undefined) ?? new Date(0).toISOString();
+  const playedAt = pgnDate(h.EndDate, h.EndTime) ?? pgnDate(h.UTCDate, h.UTCTime) ?? pgnDate(h.Date, undefined) ?? UNDATED;
   return {
     ok: true,
     game: {

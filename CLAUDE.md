@@ -77,7 +77,7 @@ recalled it never names the move). **Black's opening is chosen too (Q18, 2026-11
 the King's Indian setup against everything else** (D102; `content/repertoires/kid-accelerated-dragon.json`, 45 chapters, the
 outline drawn up by Claude from the owner's choices; built 2026-11-17: 648 lines, none quarantined, its words written from the
 facts for 948 of 1,103 positions, waiting for the owner's approval; Q32). Every move says where it comes from and every word who wrote it (D13). The coach is also beside the safety,
-threat and won-game drills (D105). The code is on `main`, pushed to a private GitHub repository (D103).
+threat and won-game drills (D105). The code is on `main`, pushed to a GitHub repository that is **public** since 2026-11-17 (D103, D106): every push is published.
 
 ## Run it
 

@@ -530,7 +530,7 @@ export function App() {
     <div className="app">
       {toolbar}
       <main className="layout">
-        <aside className="pane pane-left">
+        <aside className="pane pane-left board-side">
           {onDemo ? (
             <section className="pane-section grow coach-lines">
               <header className="pane-head">

@@ -93,8 +93,9 @@ live coach messages and stored content.
 | Data | Lichess puzzle database, Lichess openings list | CC0 | Free to use |
 
 - **Project licence: AGPL-3.0-or-later (D23).** It is the only licence compatible with reusing code
-  from lila, lichess-puzzler and Maia-3 alongside the GPL libraries. A private repo has no obligations;
-  publishing or hosting it for others means publishing the source.
+  from lila, lichess-puzzler and Maia-3 alongside the GPL libraries. The repository is public since
+  2026-11-17 (D106), so the source is published under that licence; hosting the app for others means
+  publishing any changes too.
 - Versions are pinned in `package-lock.json` when each dependency is first installed. This doc names
   no version it hasn't checked.
 - Nothing is copied from chess_rocket (GPL, Python) or claude-chess (MIT, Python): ideas only.
