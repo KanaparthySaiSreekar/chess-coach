@@ -917,8 +917,10 @@ coach's message says, and what is heard is sent as the owner's words, through th
 **Speaking (A20).** When a coach message arrives (`coach_msg`), the page turns it into words with
 `spokenMessage` (`core/speech.ts`): the text of its bubble, a move token said as a coach says it
 ("knight takes e5, check", "castles kingside", "pawn takes d5, promoting to a queen"; the square a
-piece came from only when the SAN names it, taken from the token), a square or a piece token as the
-page shows it, and no notes, labels or buttons. `speechChunks` cuts the words into sentences (a very
+piece came from only when the SAN names it, taken from the token), a square as written, a piece token
+with what the words around it leave out (after "on" its square, after its own name "on g4", otherwise
+"knight on f3": the page shows only the square, which reads well but sounds clipped), and no notes,
+labels or buttons. `speechChunks` cuts the words into sentences (a very
 short one joined to the next, a long one cut at a comma) so the first can start at once.
 `web/src/audio.ts` asks the server for each sentence (`POST /api/voice/speak` `{text, voice, speed}` →
 a 16-bit WAV) while the one before plays, and plays them in order. `server/voice.ts` makes them with

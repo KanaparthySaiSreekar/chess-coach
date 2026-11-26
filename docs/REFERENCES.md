@@ -119,6 +119,22 @@ Details and the comparison: [RESEARCH §11](RESEARCH.md#11-how-the-coach-reaches
 
 ---
 
+## The voice: Kokoro-82M and Whisper (added 2026-11-25)
+
+- **Kokoro-82M** (https://huggingface.co/hexgrad/Kokoro-82M · Apache-2.0, code and weights): a small
+  text-to-speech model; kokoro-js offers 28 of its English voices, 13 of them male, each graded by Kokoro's
+  author (the best male ones C+). Run here as
+  the ONNX export (`onnx-community/Kokoro-82M-v1.0-ONNX`) through **kokoro-js** (Apache-2.0), which turns
+  text into sounds with eSpeak NG compiled to WebAssembly (GPL-3.0-or-later).
+- **Whisper** (https://github.com/openai/whisper · MIT): OpenAI's speech recogniser. Run here as the
+  English-only small model's ONNX export (`onnx-community/whisper-small.en`) through **transformers.js**
+  (Apache-2.0) on ONNX Runtime (MIT).
+
+**What we take:** the coach's voice (A20) and the owner's (A21), both run on this laptop from files
+pinned by checksum (D108, [ARCHITECTURE §20](ARCHITECTURE.md#20-the-voice-a20-a21-d108)). Kokoro's five
+best-graded male voices are offered; which one sounds warmest is the owner's call (*Hear it*). Nothing
+of the chess comes from either.
+
 ## Chessreps: https://www.chessreps.com (added 2026-11-17)
 
 - A spaced-repetition opening trainer, like Chessable: 59 courses by titled players (34 for White, 25 for

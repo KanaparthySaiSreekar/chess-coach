@@ -17,8 +17,8 @@ first (5.5: the engine and the coach stay silent on a game until the owner press
 Socratic replay (5.6: agent `coach-review`, playbook `review-game`, the state machine in
 `App.replay`); the review report with its takeaway journal (5.7: `core/report.ts`, written by code
 from the stored analysis); and the skill profile (5.8: `core/profile.ts`, the coach's tool
-`owner_profile`). Phase 7 is `in progress`: built early
-as a slice at the owner's request (D42), with open items listed in [TRACKER.md](TRACKER.md). The analysis board has an
+`owner_profile`). Phase 7 was built early
+as a slice at the owner's request (D42), and finished on 2026-11-15 (below). The analysis board has an
 eval bar, best-move arrows, Chess.com-style move labels and a green arrow for the move that should
 have been played (all settings, on by default: D39, A19); the owner can try their own moves on the
 coach's board (D41); 18 Maia-3 bots play from 600 to 2600 (D42). **A move's label is the worse of the
@@ -52,7 +52,7 @@ without a token). The Lichess token is read from `.env` by `config.lichessToken`
 called at most once every three seconds and every answer is kept (D45, D73). A repertoire PGN goes through its gates line by line
 (8.3: `core/repertoire.ts`, `server/repertoire.ts`, `content:validate -- --repertoire <side> <file.pgn>`; D74), and the
 review screen settles what failed (8.4: *Game → Review content…*, `server/content-desk.ts`; D75) and builds a starter
-repertoire around the seed lines in the settings (8.5: `RepertoireService.buildStarter`; D76; the openings wait on Q18).
+repertoire around the seed lines in the settings (8.5: `RepertoireService.buildStarter`; D76; the owner's own openings, Q18, were built from the book instead).
 Each repertoire move's why and the opponent's idea are written from the checked facts with the `author-repertoire` skill and
 `tools/author.ts`, and V3 checks every sentence (8.6; D77). A repertoire is imported from the page (8.7: a PGN, a Lichess study
 link or one of the owner's studies; D78). The approved lines are drilled one position at a time under *Openings → Practice*
@@ -60,8 +60,8 @@ link or one of the owner's studies; D78). The approved lines are drilled one pos
 pack among the cards (8.9: `content/traps.json`, `server/traps.ts`, gated at server start; D80). An opened game says
 where it left the repertoire and who left it, and *My games* shows results per line (8.10: `core/repgames.ts`; D81). When
 the engine or a threshold changes, live content is checked again (8.11: `server/revalidate.ts`; D82). **All Phase 8 work
-packages are done; the phase's first done-criterion (a live White and Black starter) waits on the owner's openings (Q18)
-and approval. Phase 9 starts after that.** The repertoire and its drill have their own *Openings* tab (D9, D85:
+packages are done; the phase's first done-criterion (a live White and Black repertoire) waits only on the owner's
+approval of the two built from the book (Q18 is answered for both sides). Phase 9 starts after that.** The repertoire and its drill have their own *Openings* tab (D9, D85:
 `core/repbrowser.ts`, `web/src/OpeningsTab.tsx`). **The Endgames tab is built early** (F2, PLAN 9.3, D84): `content/endgames.json` through
 gates V1, V2, V3, V6, V8 (`core/endgame.ts`, `server/endgames.ts`), played against the engine with the Syzygy
 tablebases judging every move, with random starts for the queen, rook and two-rook mates (D87) and its own coach
@@ -88,8 +88,8 @@ small.en, both on this laptop (`core/speech.ts`, `server/voice.ts`, `web/src/aud
 | `npm run dev` | The server (port 5174) and the page with hot reload (port 5173) |
 | `npm run build` then `npm start` | The built page and the server together on port 5174 |
 | `npm test` | Fast tests: no engine, no model |
-| `npm run test:engine` | Tests against real Stockfish with a fake coach (AC power, about 15 s) |
-| `npm run test:page` | Builds the page, then drives it in Chrome against a real server and Stockfish with a scripted coach (AC power, about 15 s) |
+| `npm run test:engine` | Tests against real Stockfish with a fake coach, and the real voice models when installed (AC power; 7–9 minutes on this laptop as it runs now) |
+| `npm run test:page` | Builds the page, then drives it in Chrome against a real server and Stockfish with a scripted coach and stand-in voice engines (AC power; about 4 minutes; needs free memory: with the laptop near its limit the system may stop it) |
 | `npm run typecheck` | TypeScript over all three packages |
 | `npm run lint` · `npm run check:docs` · `npm run check` | The linter (oxlint) · every feature ID in exactly one phase and every doc link resolving · both plus the type check and the fast tests |
 | `npm run test:coach` (`-- --model sonnet`, `--agent coach-review`, `coach-drill`, `coach-spar`, `coach-opening` or `coach-endgame`, `--only id,id`, `--list`) | The playbook harness: the live coach through its scenarios (30 for the analysis board, 14 for the Openings tab, 12 for the puzzles and the other drills, 10 each for the game review, games against the bots and the endgames), scored by code, saved in `coach/results/` (uses the plan; about 6 minutes; AC power) |

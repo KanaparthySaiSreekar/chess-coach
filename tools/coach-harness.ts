@@ -53,12 +53,24 @@ let coachProblems: string[] = [];
 const dataDir = mkdtempSync(path.join(tmpdir(), 'cc-harness-'));
 // the bot of a game scenario plays its script (its first legal move when a scripted one does not fit), so every run is the same game
 let botScript: string[] = [];
+/** The position at the end of the game being played (its main line). */
+const gameEndFen = () => {
+  const t = app.play.game.tree;
+  let n = t.nodes[t.root]!;
+  while (n.children[0]) n = t.nodes[n.children[0]]!;
+  return n.fen;
+};
 const scriptedBot: MoveSource = {
   state: 'ready',
   probabilities: async (req) => {
     const r = playLine(req.startFen, req.moves);
-    const legal = legalMoves(mustPosition(r.fens.at(-1) ?? req.startFen)).map((m) => m.uci);
-    const want = botScript.shift();
+    const fen = r.fens.at(-1) ?? req.startFen;
+    const legal = legalMoves(mustPosition(fen)).map((m) => m.uci);
+    // the same stand-in also answers for "Maia's guess" in the explorer and the findable move (D6, H12); only the
+    // game's own position takes a move from the script, or those calls use it up and the game goes another way
+    // (seen 2026-11-26: blunder-asks played 1...a5 for its scripted 1...d5, so 2.Qg4 hung nothing)
+    const forGame = app.play.game.status === 'playing' && fen === gameEndFen() && mustPosition(fen).turn !== app.play.game.you;
+    const want = forGame ? botScript.shift() : undefined;
     return [{ uci: want && legal.includes(want) ? want : legal[0]!, p: 1 }];
   },
   stop: () => {},

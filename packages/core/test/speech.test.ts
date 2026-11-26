@@ -48,9 +48,17 @@ describe("a coach message said aloud (A20)", () => {
     expect(spokenMessage(m)).toBe('Play knight takes e5, check: it attacks the king and the rook on h8.');
   });
 
-  it('says a piece token as the page shows it (its square)', () => {
-    const m = coach([text('Your knight on '), { type: 'token', token: { kind: 'piece', raw: '{pc:Nf3}', square: 'f3', role: 'knight', color: 'white' } }, text(' is attacked twice.')]);
-    expect(spokenMessage(m)).toBe('Your knight on f3 is attacked twice.');
+  it('says a piece token with what the words around it leave out', () => {
+    const piece = (sq: string, role: 'knight' | 'bishop' | 'queen' | 'pawn'): Segment => ({ type: 'token', token: { kind: 'piece', raw: `{pc:${sq}}`, square: sq, role, color: 'white' } });
+    // after "on": the square
+    expect(spokenMessage(coach([text('Your knight on '), piece('f3', 'knight'), text(' is attacked twice.')]))).toBe('Your knight on f3 is attacked twice.');
+    // after its own name, as the coach writes it: "on" and the square
+    expect(spokenMessage(coach([text('Their queen '), piece('d4', 'queen'), text(' is aiming at your knight '), piece('e5', 'knight'), text('.')]))).toBe('Their queen on d4 is aiming at your knight on e5.');
+    // on its own: the piece and its square
+    expect(spokenMessage(coach([text('Your '), piece('f3', 'knight'), text(' has no defender.')]))).toBe('Your knight on f3 has no defender.');
+    expect(spokenMessage(coach([piece('e4', 'pawn'), text(' is weak.')]))).toBe('pawn on e4 is weak.');
+    // a bishop named before a knight's token is not the knight's name
+    expect(spokenMessage(coach([text('Trade the bishop for '), piece('c6', 'knight'), text('.')]))).toBe('Trade the bishop for knight on c6.');
   });
 
   it('speaks only the coach: the owner and the app are silent', () => {

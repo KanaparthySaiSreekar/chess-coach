@@ -169,6 +169,8 @@ decision.
 6. No engine numbers are visible unless the owner switches them on.
 7. Every move on the board carries a label that agrees with what the coach says about it, and a move
    tried on the coach's board is judged and explained (A17, A18).
+8. Text stays the default; with the voice switched on, the coach's messages are read out with their
+   moves in words, and a question asked out loud reaches the coach as typed text (A20, A21, D108).
 
 ---
 

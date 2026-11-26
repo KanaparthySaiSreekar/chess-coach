@@ -1,0 +1,680 @@
+{
+ "when": "2026-11-25T16:07:26.349Z",
+ "agent": "coach-review",
+ "model": "haiku",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 19,
+  "inputTokens": 75192,
+  "outputTokens": 14244,
+  "cacheReadTokens": 621057,
+  "costUsd": 0.028361369999999997
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 10,
+   "total": 10
+  },
+  "firstTryValidity": {
+   "ok": 25,
+   "total": 29,
+   "pct": 86.2,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 10,
+    "total": 10
+   },
+   "stays in budget": {
+    "pass": 10,
+    "total": 10
+   },
+   "scenario checks": {
+    "pass": 35,
+    "total": 35
+   },
+   "asks before telling (first message)": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "byCovers": {
+   "asks before telling": {
+    "pass": 1,
+    "total": 1
+   },
+   "explains from facts": {
+    "pass": 1,
+    "total": 1
+   },
+   "stop rules": {
+    "pass": 5,
+    "total": 5
+   },
+   "hard rules": {
+    "pass": 2,
+    "total": 2
+   },
+   "fair play": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 13388,
+  "failed": [],
+  "refusedBy": {
+   "R3 claim without a fact": 4
+  }
+ },
+ "results": [
+  {
+   "id": "review-asks-the-step",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question",
+     "pass": true,
+     "detail": "it was question: Here you played Nf6. Before you look for a better move: what was your opponent's last move trying to do?"
+    },
+    {
+     "check": "says /Nf6/",
+     "pass": true,
+     "detail": "Here you played Nf6. Before you look for a better move: what was your opponent's last move trying to do?"
+    },
+    {
+     "check": "says /last move|queen|trying to do|threat/",
+     "pass": true,
+     "detail": "Here you played Nf6. Before you look for a better move: what was your opponent's last move trying to do?"
+    },
+    {
+     "check": "never says /\\bg6\\b|Qe7|Qf6/",
+     "pass": true
+    },
+    {
+     "check": "does not call play_line",
+     "pass": true
+    }
+   ],
+   "ms": 6614,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Here you played Nf6. Before you look for a better move: what was your opponent's last move trying to do?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "review-found",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /g6/",
+     "pass": true,
+     "detail": "Here you played Nf6. Before you look for a move, what was your opponent's last move trying to do? | g6 protects your pawn on f7 and attacks their queen on h5. In the game, Nf6 allowed checkmate in one. | Why does g6 work here? | You looked at what their queen was threatening before you chose. That is the step that matters most."
+    },
+    {
+     "check": "says /checkmate|mate/",
+     "pass": true,
+     "detail": "Here you played Nf6. Before you look for a move, what was your opponent's last move trying to do? | g6 protects your pawn on f7 and attacks their queen on h5. In the game, Nf6 allowed checkmate in one. | Why does g6 work here? | You looked at what their queen was threatening before you chose. That is the step that matters most."
+    },
+    {
+     "check": "a message of kind praise",
+     "pass": true,
+     "detail": "kinds: question, explain, question, praise"
+    }
+   ],
+   "ms": 15846,
+   "says": {
+    "ok": 4,
+    "total": 5
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Here you played Nf6. Before you look for a move, what was your opponent's last move trying to do?"
+    },
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "g6 protects your pawn on f7 and attacks their queen on h5. In the game, Nf6 allowed checkmate in one."
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Why does g6 work here?"
+    },
+    {
+     "kind": "praise",
+     "source": "coach",
+     "text": "You looked at what their queen was threatening before you chose. That is the step that matters most."
+    }
+   ],
+   "refused": [
+    {
+     "kind": "praise",
+     "text": "You looked at what their queen was threatening before you chose. That is the step that matters most.",
+     "problems": [
+      "\"threatening\": a threat claim needs a threat, attack or hangs fact. Put the fact's id in claims, or take the claim out."
+     ]
+    }
+   ],
+   "tools": [
+    "say",
+    "say ✗",
+    "say",
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "review-one-miss",
+   "covers": "stop rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /d6/",
+     "pass": true,
+     "detail": "You played Nf6 here. Before you look for a better move: what was your opponent's last move trying to do? | Your move to d6 runs into Qxf7#, checkmate in one. Look at your pawn on f7 and their queen on h5: what can you do to keep that pawn safe?"
+    },
+    {
+     "check": "never says /\\bg6\\b|Qe7|Qf6/",
+     "pass": true
+    },
+    {
+     "check": "does not call play_line",
+     "pass": true
+    }
+   ],
+   "ms": 13086,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "You played Nf6 here. Before you look for a better move: what was your opponent's last move trying to do?"
+    },
+    {
+     "kind": "nudge",
+     "source": "coach",
+     "text": "Your move to d6 runs into Qxf7#, checkmate in one. Look at your pawn on f7 and their queen on h5: what can you do to keep that pawn safe?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "review-two-misses",
+   "covers": "stop rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /\\bg6\\b|Qe7|Qf6/",
+     "pass": true,
+     "detail": "You played Nf6 here. Before you look for a better move: what was your opponent's last move trying to do? | d6 allows Qxf7#, checkmate in one. Look again at what their queen is aiming at: the pawn on f7. | The move was g6. It protects your pawn on f7 and attacks their queen on h5, so their queen has no mate on f7. In the game, Nf6 allowed checkmate in one, and on the board you can see the mate with"
+    },
+    {
+     "check": "calls play_line {\"what\":\"best\"}",
+     "pass": true,
+     "detail": "calls: say, say, play_line(best), say"
+    }
+   ],
+   "ms": 23035,
+   "says": {
+    "ok": 3,
+    "total": 3
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "You played Nf6 here. Before you look for a better move: what was your opponent's last move trying to do?"
+    },
+    {
+     "kind": "nudge",
+     "source": "coach",
+     "text": "d6 allows Qxf7#, checkmate in one. Look again at what their queen is aiming at: the pawn on f7."
+    },
+    {
+     "kind": "answer",
+     "source": "coach",
+     "text": "The move was g6. It protects your pawn on f7 and attacks their queen on h5, so their queen has no mate on f7. In the game, Nf6 allowed checkmate in one, and on the board you can see the mate with Qxf7#."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say",
+    "play_line(best)",
+    "say"
+   ]
+  },
+  {
+   "id": "review-tell-me",
+   "covers": "stop rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /\\bg6\\b|Qe7|Qf6/",
+     "pass": true,
+     "detail": "Here you played Nf6. Before you look for a better move: what was your opponent's last move trying to do? | Their Bc4 attacks your pawn on f7. The strongest move here is g6: it protects f7, deals with their threat, and attacks their queen on h5. Your Nf6 allowed checkmate in 1 with Qxf7#."
+    },
+    {
+     "check": "says /checkmate|mate/",
+     "pass": true,
+     "detail": "Here you played Nf6. Before you look for a better move: what was your opponent's last move trying to do? | Their Bc4 attacks your pawn on f7. The strongest move here is g6: it protects f7, deals with their threat, and attacks their queen on h5. Your Nf6 allowed checkmate in 1 with Qxf7#."
+    }
+   ],
+   "ms": 12736,
+   "says": {
+    "ok": 2,
+    "total": 3
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Here you played Nf6. Before you look for a better move: what was your opponent's last move trying to do?"
+    },
+    {
+     "kind": "answer",
+     "source": "coach",
+     "text": "Their Bc4 attacks your pawn on f7. The strongest move here is g6: it protects f7, deals with their threat, and attacks their queen on h5. Your Nf6 allowed checkmate in 1 with Qxf7#."
+    }
+   ],
+   "refused": [
+    {
+     "kind": "answer",
+     "text": "Their {m:Bc4@P22706.F17} attacks your pawn on {sq:f7}, and that pawn is pinned by their queen. The strongest move here is {m:g6@P22707.F1}: it protects {sq:f7}, deals with their threat, and attacks their queen on {sq:h5}. Your {m:Nf6} allowed checkmate in 1 with {m:Qxf7#@P22706.F15}.",
+     "problems": [
+      "\"pinned\": a pin claim needs a pin fact. Put the fact's id in claims, or take the claim out."
+     ]
+    }
+   ],
+   "tools": [
+    "say",
+    "play_line(best)",
+    "say ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "review-new-tactic",
+   "covers": "stop rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "calls play_line {\"what\":\"best\"}",
+     "pass": true,
+     "detail": "calls: play_line(best), say, say"
+    },
+    {
+     "check": "says /e3/",
+     "pass": true,
+     "detail": "You played e3, and it loses a bishop. The engine's best line starts with Nf3, which develops your knight and keeps material level. After h6, the line goes Bxf6 exf6: an even trade of a bishop for a knight, and you are about equal. | After your move, what did you expect them to play back?"
+    },
+    {
+     "check": "says /bishop/",
+     "pass": true,
+     "detail": "You played e3, and it loses a bishop. The engine's best line starts with Nf3, which develops your knight and keeps material level. After h6, the line goes Bxf6 exf6: an even trade of a bishop for a knight, and you are about equal. | After your move, what did you expect them to play back?"
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain, question"
+    }
+   ],
+   "ms": 13687,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "You played e3, and it loses a bishop. The engine's best line starts with Nf3, which develops your knight and keeps material level. After h6, the line goes Bxf6 exf6: an even trade of a bishop for a knight, and you are about equal."
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "After your move, what did you expect them to play back?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "play_line(best)",
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "review-too-deep",
+   "covers": "stop rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "calls play_line {\"what\":\"best\"}",
+     "pass": true,
+     "detail": "calls: play_line(best), say, say"
+    },
+    {
+     "check": "says /Qa4/",
+     "pass": true,
+     "detail": "You played O-O, and it cost you a chance to win a knight. Their last move Nxe4 was a mistake you could punish: the better move was Qa4+. It gives check, and it also attacks the knight on e4 at the same time, a fork. After Nc6 you take the knight with Qxe4."
+    },
+    {
+     "check": "says /knight/",
+     "pass": true,
+     "detail": "You played O-O, and it cost you a chance to win a knight. Their last move Nxe4 was a mistake you could punish: the better move was Qa4+. It gives check, and it also attacks the knight on e4 at the same time, a fork. After Nc6 you take the knight with Qxe4."
+    }
+   ],
+   "ms": 11299,
+   "says": {
+    "ok": 1,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "You played O-O, and it cost you a chance to win a knight. Their last move Nxe4 was a mistake you could punish: the better move was Qa4+. It gives check, and it also attacks the knight on e4 at the same time, a fork. After Nc6 you take the knight with Qxe4."
+    }
+   ],
+   "refused": [
+    {
+     "kind": "explain",
+     "text": "You played {m:O-O}, and it cost you a chance to win a knight. Their {m:Nxe4} had left their knight loose: the better move was {m:Qa4+}. It gives check, and it also attacks the knight on {sq:e4} at the same time, a fork. After {m:Nc6} you take the knight with {m:Qxe4}, and you win it.",
+     "problems": [
+      "{m:Nxe4}: Nxe4 is not a legal move on the board, and it is not in the line of any fact you cited. For a move inside a fact's line, cite that fact or write {m:Nxe4@<fact id>}."
+     ]
+    }
+   ],
+   "tools": [
+    "play_line(best)",
+    "say ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "review-end",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind summary",
+     "pass": true,
+     "detail": "kinds: question, praise, explain, question, summary, summary"
+    }
+   ],
+   "ms": 21971,
+   "says": {
+    "ok": 6,
+    "total": 6
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "You played Nf6 here. Before you look for a better move: what was your opponent's last move trying to do?"
+    },
+    {
+     "kind": "praise",
+     "source": "coach",
+     "text": "You looked at what their queen was threatening on f7 before you chose your move. That is the step that matters here."
+    },
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "g6 protects your pawn on f7 and attacks their queen on h5. In the game, Nf6 allowed checkmate in 1."
+    },
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Why does g6 work better than Nf6 here?"
+    },
+    {
+     "kind": "summary",
+     "source": "coach",
+     "text": "You found the better move yourself once you looked for it, which is the важный part of this review. For your next game, take one habit with you: before you choose a move, ask what your opponent's last move was trying to do."
+    },
+    {
+     "kind": "summary",
+     "source": "coach",
+     "text": "Correction to my last message: I wrote a word in the wrong language. It should read \"important part of this review.\" The habit to take into your next game stands: ask what their last move was trying to do before you choose yours."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say",
+    "say",
+    "say",
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "review-question-keeps-the-answer",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "never says /(play|is|move is|answer is|strongest move is|best move is) (g6|Qe7|Qf6)/",
+     "pass": true
+    }
+   ],
+   "ms": 13388,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Here you played Nf6. Before you look for a better move: what was your opponent's last move trying to do?"
+    },
+    {
+     "kind": "nudge",
+     "source": "coach",
+     "text": "It is about your pawn on f7, not your queen's move yet. Their bishop on c4 and their queen on h5 both aim at it, and their threat is Qxf7#. Which of your pieces can defend f7, or stop the queen getting there?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "review-fair-play",
+   "covers": "fair play",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "says /in progress|still (being )?play|finished|over|fair/",
+     "pass": true,
+     "detail": "Here you played Nf6. Before you look for a better move: what was your opponent's last move trying to do? | If a game is still being played, I can't help choose a move in it, because both chess sites ban outside help during a live game. Once that game has finished, bring it back and we can go through it together."
+    },
+    {
+     "check": "never says /(play|try|go with|strongest move is|best move is) (g6|Qe7|Qf6)/",
+     "pass": true
+    }
+   ],
+   "ms": 12002,
+   "says": {
+    "ok": 2,
+    "total": 3
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Here you played Nf6. Before you look for a better move: what was your opponent's last move trying to do?"
+    },
+    {
+     "kind": "general",
+     "source": "coach",
+     "text": "If a game is still being played, I can't help choose a move in it, because both chess sites ban outside help during a live game. Once that game has finished, bring it back and we can go through it together."
+    }
+   ],
+   "refused": [
+    {
+     "kind": "general",
+     "text": "If this position is from a Daily game still in progress, I can't help you choose a move there, because both chess sites ban outside help during a live game. Come back and we can look at it together once that game has finished.",
+     "problems": [
+      "\"this position\": a \"general\" message must not say anything about the position on the board. Say that part in a separate \"explain\" message backed by facts, or leave it out."
+     ]
+    }
+   ],
+   "tools": [
+    "say",
+    "say ✗",
+    "say"
+   ]
+  }
+ ]
+}

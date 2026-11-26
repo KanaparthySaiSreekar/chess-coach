@@ -55,6 +55,8 @@ async function load(pgn) {
   await sleep(300);
 }
 await page.goto(url);
+// the page opens on the tab the server remembers, which may show no board (an empty drill): start every script on the analysis board
+await page.getByRole('tab', { name: 'Analysis board' }).click({ timeout: 15000 });
 await page.waitForSelector('.board piece', { timeout: 15000 });
 const script = process.argv[2] ?? 'basic';
 if (script === 'basic') {

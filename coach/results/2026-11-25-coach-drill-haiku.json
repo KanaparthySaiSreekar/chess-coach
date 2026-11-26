@@ -1,0 +1,619 @@
+{
+ "when": "2026-11-25T16:09:35.395Z",
+ "agent": "coach-drill",
+ "model": "haiku",
+ "engine": {
+  "ok": true,
+  "bench": 2497913,
+  "name": "Stockfish 19"
+ },
+ "usage": {
+  "turns": 13,
+  "inputTokens": 38910,
+  "outputTokens": 8726,
+  "cacheReadTokens": 289658,
+  "costUsd": 0.015035980000000004
+ },
+ "summary": {
+  "scenarios": {
+   "pass": 12,
+   "total": 12
+  },
+  "firstTryValidity": {
+   "ok": 13,
+   "total": 15,
+   "pct": 86.7,
+   "bar": 85
+  },
+  "byCheck": {
+   "hard rules": {
+    "pass": 12,
+    "total": 12
+   },
+   "stays in budget": {
+    "pass": 12,
+    "total": 12
+   },
+   "scenario checks": {
+    "pass": 26,
+    "total": 26
+   },
+   "asks before telling (first message)": {
+    "pass": 6,
+    "total": 6
+   },
+   "quiet when it should be": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "byCovers": {
+   "asks before telling": {
+    "pass": 3,
+    "total": 3
+   },
+   "explains from facts": {
+    "pass": 4,
+    "total": 4
+   },
+   "stop rules": {
+    "pass": 1,
+    "total": 1
+   },
+   "hard rules": {
+    "pass": 3,
+    "total": 3
+   },
+   "quiet when it should be": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "medianMs": 8060,
+  "failed": [],
+  "refusedBy": {
+   "R3 claim without a fact": 2
+  }
+ },
+ "results": [
+  {
+   "id": "miss-asks",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: h3 lets the chance slip. Before you move, list all your checks here, and see where their king can run after each one."
+    },
+    {
+     "check": "never says /d8/",
+     "pass": true
+    }
+   ],
+   "ms": 8060,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "h3 lets the chance slip. Before you move, list all your checks here, and see where their king can run after each one."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "miss-own-move",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: After g3, what are all your checks here? Look at their king on the last rank."
+    },
+    {
+     "check": "never says /d8/",
+     "pass": true
+    }
+   ],
+   "ms": 7747,
+   "says": {
+    "ok": 1,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "After g3, what are all your checks here? Look at their king on the last rank."
+    }
+   ],
+   "refused": [
+    {
+     "kind": "question",
+     "text": "After {m:g3}, what are all your checks here? Look at their king on the back rank.",
+     "problems": [
+      "\"back rank\": no cited fact has a line that ends in a back-rank mate. Put the fact's id in claims, or take the claim out."
+     ]
+    }
+   ],
+   "tools": [
+    "say ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "ask-question",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question",
+     "pass": true,
+     "detail": "it was question: Their last move was Ra8. Look at every check you have here: which one could they not answer?"
+    },
+    {
+     "check": "never says /d8/",
+     "pass": true
+    }
+   ],
+   "ms": 6627,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Their last move was Ra8. Look at every check you have here: which one could they not answer?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "ask-twice",
+   "covers": "stop rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind nudge",
+     "pass": true,
+     "detail": "kinds: question, nudge"
+    },
+    {
+     "check": "never says /d8/",
+     "pass": true
+    }
+   ],
+   "ms": 10770,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "After their Ra8, what are all your checks here?"
+    },
+    {
+     "kind": "nudge",
+     "source": "coach",
+     "text": "Look at their king on g8. Which squares next to it are blocked by their own pawns?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "shown-explains",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /back.?rank|last rank|checkmate|mate/",
+     "pass": true,
+     "detail": "Rd8+ is the move: it gives check, and it forces checkmate in two. Their own pawns on f7, g7 and h7 block every square for the king, so the check on the back rank cannot be escaped. This is a back-rank mate: when the king is shut in behind its own pawns, look at every check on the last rank first."
+    }
+   ],
+   "ms": 9167,
+   "says": {
+    "ok": 1,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Rd8+ is the move: it gives check, and it forces checkmate in two. Their own pawns on f7, g7 and h7 block every square for the king, so the check on the back rank cannot be escaped. This is a back-rank mate: when the king is shut in behind its own pawns, look at every check on the last rank first."
+    }
+   ],
+   "refused": [
+    {
+     "kind": "explain",
+     "text": "{m:Rd8+} is the move: it gives check, and it forces checkmate in two. Their own pawns on f7, g7 and h7 block every square for the king, so the check on the back rank cannot be escaped. This is a back-rank mate: when the king is shut in behind its own pawns, look at every check on the last rank first.",
+     "problems": [
+      "claims lists P22862, but there is no such fact."
+     ]
+    }
+   ],
+   "tools": [
+    "say ✗",
+    "say"
+   ]
+  },
+  {
+   "id": "example-new-idea",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "a message of kind explain",
+     "pass": true,
+     "detail": "kinds: explain"
+    },
+    {
+     "check": "says /fork|two (?:things|pieces)|both/",
+     "pass": true,
+     "detail": "Nc7+ is the strongest move: it gives check, and you win a rook. After their king moves, Nxa8 takes the rook. This is a fork, where one piece attacks two things at once. When a knight can check the king and attack another piece in the same move, look for it."
+    }
+   ],
+   "ms": 7109,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Nc7+ is the strongest move: it gives check, and you win a rook. After their king moves, Nxa8 takes the rook. This is a fork, where one piece attacks two things at once. When a knight can check the king and attack another piece in the same move, look for it."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "mixed-ask-hides",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: Before you move, list all your checks. Once your knight lands on a checking square, what else can it attack from there?"
+    },
+    {
+     "check": "never says /fork/",
+     "pass": true
+    },
+    {
+     "check": "never says /c7/",
+     "pass": true
+    }
+   ],
+   "ms": 6221,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Before you move, list all your checks. Once your knight lands on a checking square, what else can it attack from there?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "mixed-miss-hides",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "never says /fork/",
+     "pass": true
+    },
+    {
+     "check": "never says /c7/",
+     "pass": true
+    }
+   ],
+   "ms": 6152,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "After Ke2, what are all your checks here? Look at every piece you have, not only your king."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "solved-quiet",
+   "covers": "quiet when it should be",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "quiet when it should be",
+     "pass": true
+    }
+   ],
+   "ms": 12150,
+   "says": {
+    "ok": 0,
+    "total": 0
+   },
+   "messages": [],
+   "refused": [],
+   "tools": []
+  },
+  {
+   "id": "end-of-sitting",
+   "covers": "explains from facts",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "a message of kind summary",
+     "pass": true,
+     "detail": "kinds: explain, summary"
+    },
+    {
+     "check": "says /tomorrow|come(?:s)? back|again/",
+     "pass": true,
+     "detail": "Rd8+ is the move. It forces checkmate in two. This is a back-rank mate: their king is boxed in by its own pawns on f7, g7 and h7, so after the check it has no square to step to. When you look for a winning check, always check the last rank first. | You finished one puzzle today, and it was a back-rank mate, the idea you saw in Rd8+. That puzzle comes back tomorrow, so you'll get another try at thi"
+    }
+   ],
+   "ms": 12987,
+   "says": {
+    "ok": 2,
+    "total": 2
+   },
+   "messages": [
+    {
+     "kind": "explain",
+     "source": "coach",
+     "text": "Rd8+ is the move. It forces checkmate in two. This is a back-rank mate: their king is boxed in by its own pawns on f7, g7 and h7, so after the check it has no square to step to. When you look for a winning check, always check the last rank first."
+    },
+    {
+     "kind": "summary",
+     "source": "coach",
+     "text": "You finished one puzzle today, and it was a back-rank mate, the idea you saw in Rd8+. That puzzle comes back tomorrow, so you'll get another try at this idea then."
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say",
+    "say"
+   ]
+  },
+  {
+   "id": "safety-ask-open",
+   "covers": "asks before telling",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was question: Before you decide on Nf6, go through their checks and captures one at a time. Which of your pawns is not defended well enough?"
+    },
+    {
+     "check": "never says /Qxf7|Bxf7|Qxe5|\\bmate\\b|checkmate/",
+     "pass": true
+    }
+   ],
+   "ms": 9816,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "question",
+     "source": "coach",
+     "text": "Before you decide on Nf6, go through their checks and captures one at a time. Which of your pawns is not defended well enough?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  },
+  {
+   "id": "convert-ask-open",
+   "covers": "hard rules",
+   "pass": true,
+   "outcomes": [
+    {
+     "check": "hard rules: only accepted messages reach the page",
+     "pass": true
+    },
+    {
+     "check": "stays in budget",
+     "pass": true
+    },
+    {
+     "check": "replies",
+     "pass": true
+    },
+    {
+     "check": "first message is question or nudge",
+     "pass": true,
+     "detail": "it was nudge: Start with the routine: none of your pieces can be taken, and they have no threat. Their only piece besides the king is knight on c6. Which squares can your queen reach that attack it?"
+    },
+    {
+     "check": "never says /\\bQ[a-h]?x?[a-h][1-8]|\\bK[a-h][1-8]/",
+     "pass": true
+    }
+   ],
+   "ms": 7249,
+   "says": {
+    "ok": 1,
+    "total": 1
+   },
+   "messages": [
+    {
+     "kind": "nudge",
+     "source": "coach",
+     "text": "Start with the routine: none of your pieces can be taken, and they have no threat. Their only piece besides the king is knight on c6. Which squares can your queen reach that attack it?"
+    }
+   ],
+   "refused": [],
+   "tools": [
+    "say"
+   ]
+  }
+ ]
+}

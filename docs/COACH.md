@@ -85,6 +85,11 @@ what a rejected `say` means and how to fix it.
 | `summary` | Wrap-up, takeaways | — |
 | `general` | Chess knowledge that is not about this position ("what is a fork?"). No tokens, nothing about the board | shown as general knowledge, not checked against the board |
 
+- **Heard as well as read (A20, D108).** With the voice on, the page reads every message aloud as it
+  arrives: the bubble's text, with a move token said in words ("knight takes e5, check") and a piece
+  token said with whatever the words around it leave out ("their queen {pc:Qd4}" → "their queen on d4").
+  Plain sentences read best; markdown and symbols add nothing. The playbooks need no change for it, and
+  what the owner says out loud reaches the coach as typed text (A21).
 - **Expecting a reply:** `expect: 'move'` (answer on the board), `'choice'` (chips), `'text'`.
 - The page always shows four chips beside the coach's last message: **Hint · Just tell me · Why? ·
   Show me** (A12).
@@ -464,6 +469,18 @@ game, asked what to play). Haiku 2/2 and Sonnet 2/2, every message a question ab
 reply or move named, no verdict. Sonnet's first try named the move asked about and was refused: the
 board then shows the position one move on. The question's own board now counts as in front of the
 owner, and the rerun was valid at the first try (2/2).
+
+**Full regression, every coach (2026-11-25/26, TRACKER session 11, Haiku 5.5):** 86 of 86 scenarios, hard
+rules 86/86. The analysis board 30/30 (first-try validity 33/36 = 92%), the game review 10/10 (25/29 = 86%),
+the drill coach 12/12 (13/15 = 87%), the sparring coach 10/10 (21/22 = 95%), the opening coach 14/14 (11/11 =
+100%), the endgame coach 10/10 (10/10 = 100%). Two things on the way, neither the coach's: the plan's usage
+limit was reached during the first run, so the opening and endgame coaches' later scenarios failed with
+nothing said (the endgame run reached the model zero times); run again after the limit reset. And the
+sparring coach's `blunder-asks` failed three times with one message: the harness's scripted bot shares its
+stand-in with the explorer's "Maia's guess" and the findable move, whose calls used up the script, so the
+game went 1...a5 instead of 1...d5 and 2.Qg4 hung nothing. The script now answers only the game's own
+position on the bot's turn (`tools/coach-harness.ts`); the real Maia has no script, so the app was never
+affected.
 
 The first full run on Haiku scored 74% first-try validity. Reading the refused messages showed that
 most were true and had been bounced for form (a move without its braces) or by a rule that read a

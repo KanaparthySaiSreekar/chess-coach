@@ -41,9 +41,17 @@ export function spokenMove(san: string, from?: string): string {
   return words + tail;
 }
 
-/** A token as the page shows it, said aloud: a move in words, a square (or a piece's square) as written. */
-export function spokenToken(t: ResolvedToken): string {
-  return t.kind === 'move' ? spokenMove(t.san, t.from) : t.square;
+/**
+ * A token said aloud: a move in words, a square as written. A piece is said with what the words before
+ * it leave out (the token holds both its kind and its square): after "on", its square; after its own
+ * name ("their bishop"), "on g4"; otherwise "knight on f3".
+ */
+export function spokenToken(t: ResolvedToken, before = ''): string {
+  if (t.kind === 'move') return spokenMove(t.san, t.from);
+  if (t.kind === 'square') return t.square;
+  if (/\bon\s*$/i.test(before)) return t.square;
+  if (new RegExp(`\\b${t.role}\\s*$`, 'i').test(before)) return `on ${t.square}`;
+  return `${t.role} on ${t.square}`;
 }
 
 // a move written in plain prose (a move the owner asked about that cannot be played is left as text by the validator)
@@ -66,7 +74,9 @@ export function spokenProse(text: string): string {
  */
 export function spokenMessage(m: Pick<CoachMessage, 'from' | 'segments' | 'text'>): string {
   if (m.from !== 'coach') return '';
-  const raw = m.segments?.length ? m.segments.map((s) => (s.type === 'text' ? spokenProse(s.text) : spokenToken(s.token))).join('') : spokenProse(plainText(m.text));
+  let raw = '';
+  if (m.segments?.length) for (const s of m.segments) raw += s.type === 'text' ? spokenProse(s.text) : spokenToken(s.token, raw);
+  else raw = spokenProse(plainText(m.text));
   return raw.replace(/\s+/g, ' ').replace(/\s+([,.;:!?])/g, '$1').trim();
 }
 
